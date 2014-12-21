@@ -1,0 +1,16 @@
+[user]
+	email = kyle.coberly@gmail.com
+	name = Kyle Coberly
+[push]
+	default = simple
+[branch]
+	autosetuprebase = always
+[rerere]
+	enabled = true
+[color]
+	ui = true
+[alias]
+	s = "status -s"
+	lg = "log --oneline --decorate --all --"
+[core]
+	autocrlf = input
