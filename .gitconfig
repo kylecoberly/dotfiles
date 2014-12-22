@@ -14,5 +14,6 @@
 	lg = "log --oneline --decorate --all --"
 [core]
 	autocrlf = input
+	editor = nano
 [credential]
 	helper = cache
