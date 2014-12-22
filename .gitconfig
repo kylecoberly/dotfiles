@@ -14,3 +14,5 @@
 	lg = "log --oneline --decorate --all --"
 [core]
 	autocrlf = input
+[credential]
+	helper = cache
