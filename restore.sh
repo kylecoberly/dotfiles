@@ -2,4 +2,4 @@
 
 #Restore personal settings
 cp ~/dotfiles/settings-backup ~/.config/dconf/user
-cp -r -v ~/dotfiles/metacity ~/.gconf/apps
+#cp -r -v ~/dotfiles/metacity ~/.gconf/apps
