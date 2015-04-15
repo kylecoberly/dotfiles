@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/home/kylecoberly/projects/minerva/tests/unit'
+let g:netrw_dirhist_2='/home/kylecoberly/projects/minerva/tests/unit/components'
+let g:netrw_dirhist_3='/home/kylecoberly/projects/minerva/tests/unit'
+let g:netrw_dirhist_4='/home/kylecoberly/projects/minerva/tests'
+let g:netrw_dirhist_5='/home/kylecoberly/projects/minerva'
+let g:netrw_dirhist_6='/home/kylecoberly/projects/minerva/app'
+let g:netrw_dirhist_7='/home/kylecoberly/projects/minerva/app/components'

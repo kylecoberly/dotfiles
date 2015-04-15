@@ -1,0 +1,32 @@
+[user]
+	email = kyle.coberly@gmail.com
+	name = Kyle Coberly
+
+[color]
+    ui = true
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = red
+
+[alias]
+    co = checkout
+    cob = checkout -b
+    c = commit
+    cm = commit -m
+    cam = commit -am
+    st = status
+    br = branch
+    s = status -s
