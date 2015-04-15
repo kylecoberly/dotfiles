@@ -30,3 +30,16 @@
     st = status
     br = branch
     s = status -s
+	lg = "log --oneline --decorate --all --"
+[push]
+	default = simple
+[branch]
+	autosetuprebase = always
+[rerere]
+	enabled = true
+	s = "status -s"
+[core]
+	autocrlf = input
+	editor = vim 
+[credential]
+	helper = cache
