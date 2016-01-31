@@ -1,0 +1,1 @@
+sudo sh ~/Downloads/crouton -r trusty -t audio chrome cli-extra core extension keyboard touch unity xbmc xfce xorg

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+DOTFILES=(.gitconfig .tmux .tmux.conf .bashrc .zshrc .vimrc .vim)
+
+#Remove old dotfiles and replace them
+for dotfile in $(echo ${DOTFILES[*]});
+do
+    sudo rm -rf ~/$(echo $dotfile)
+    ln -s ~/dotfiles/$(echo $dotfile) ~/$(echo $dotfile)
+done

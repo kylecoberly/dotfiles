@@ -1,0 +1,20 @@
+#!/bin/bash
+
+#General
+sudo apt-get update
+sudo apt-get install -y curl git xclip tmux vim ranger
+
+#LAMP
+sudo apt-get install -y apache2 mysql-server php5 libapache2-mod-php5
+curl -sS https://getcomposer.org/installer | php
+sudo mv composer.phar /usr/local/bin/composer
+
+#Mongo
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 7F0CEB10
+echo "deb http://repo.mongodb.org/apt/ubuntu "$(lsb_release -sc)"/mongodb-org/3.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-3.0.list
+sudo apt-get install -y mongodb-org
+
+#zsh
+sudo apt-get install -y zsh
+wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+chsh -s `which zsh`

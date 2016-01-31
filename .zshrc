@@ -85,4 +85,3 @@ bindkey -M viins 'jj' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 export VISUAL=vim
 export EDITOR="$VISUAL"
-source ~/.bin/tmuxinator.zsh

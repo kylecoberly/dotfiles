@@ -3,6 +3,7 @@ set laststatus=2
 let g:mustache_abbreviations = 1
 syntax enable
 au BufRead,BufNewFile *.hbs set filetype=handlebars
+command E Ex
 
 set nocompatible
 let iCanHazNeoBundle=1
