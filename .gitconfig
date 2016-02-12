@@ -43,3 +43,5 @@
 	editor = vim 
 [credential]
 	helper = cache
+[merge]
+    tool = vimdiff
