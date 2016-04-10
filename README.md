@@ -60,6 +60,7 @@ Links up installed dotfiles:
 * `.zshrc`
 * `.vimrc`
 * `.vim`
+* `.jshintrc`
 
 ### Custom vim stuff:
 
