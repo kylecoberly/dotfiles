@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES=(.gitconfig .tmux .tmux.conf .bashrc .zshrc .vimrc .vim)
+DOTFILES=(.gitconfig .tmux .tmux.conf .bashrc .zshrc .vimrc .vim .jshintrc)
 
 #Remove old dotfiles and replace them
 for dotfile in $(echo ${DOTFILES[*]});
