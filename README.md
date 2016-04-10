@@ -60,3 +60,21 @@ Links up installed dotfiles:
 * `.zshrc`
 * `.vimrc`
 * `.vim`
+
+### Custom vim stuff:
+
+#### Syntastic
+
+Syntax-checks and style-checks JavaScript files on open and save
+
+#### ctrlp
+
+`Space-n` to do a fuzzy file search
+
+#### Vim Commentary
+
+`gcc` to comment out a line, `3gcc` to comment out 3 lines
+
+#### Find/Replace
+
+`Space-fr` to find/replace in the open file. Works within a selection also.

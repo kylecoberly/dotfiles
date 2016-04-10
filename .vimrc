@@ -20,9 +20,15 @@ if has('vim_starting')
 endif
 call neobundle#begin(expand($HOME.'/.vim/bundle/'))
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'tpope/vim-vinegar'
+NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'bling/vim-airline'
+NeoBundle 'tpope/vim-commentary'
+NeoBundle 'scrooloose/syntastic'
+NeoBundle 'osyo-manga/vim-over'
+NeoBundle 'thinca/vim-qfreplace'
+
 call neobundle#end()
 
 if iCanHazNeoBundle == 0
@@ -42,6 +48,10 @@ set tabstop=4
 set softtabstop=4
 set shiftwidth=4
 set expandtab
+set nobackup
+set noswapfile
+set noerrorbells
+
 syntax enable
 colorscheme solarized
 let g:solarized_termcolors = &t_Co
@@ -56,11 +66,55 @@ let g:ctrlp_custom_ignore = 'bin$\|build$\|node_modules$\|.git|.bak|.swp|.pyc|.c
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_max_height = 18
+
+function s:find_jshintrc(dir)
+    let l:found = globpath(a:dir, '.jshintrc')
+    if filereadable(l:found)
+        return l:found
+    endif
+
+    let l:parent = fnamemodify(a:dir, ':h')
+    if l:parent != a:dir
+        return s:find_jshintrc(l:parent)
+    endif
+
+    return "~/.jshintrc"
+endfunction
+
+function UpdateJsHintConf()
+    let l:dir = expand('%:p:h')
+    let l:jshintrc = s:find_jshintrc(l:dir)
+    let g:syntastic_javascript_jshint_conf = l:jshintrc
+endfunction
+
+au BufEnter * call UpdateJsHintConf()
+
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_javascript_jshint_args = "--config $HOME/.jshintrc"
+
+function! VisualFindAndReplace()
+    :OverCommandLine%s/
+endfunction
+function! VisualFindAndReplaceWithSelection() range
+    :'<,'>OverCommandLine s/
+endfunction
+
 let mapleader=" "
 
-nnoremap <C-S-n> :CtrlP<CR>
+nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
+xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
+
+nnoremap <Leader>n :CtrlP<CR>
 nnoremap <Leader>ff :CtrlP<CR>
 map <Leader>fb :CtrlPBuffer<CR>
+
 nmap <Leader><Leader> <c-^>
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
