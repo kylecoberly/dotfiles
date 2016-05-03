@@ -2,7 +2,7 @@
 
 #nvm se#tup
 wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-nvm install 0.12
+nvm install 6.0
 nvm install node
 nvm alias default node
 
