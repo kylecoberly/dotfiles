@@ -57,3 +57,5 @@ export EDITOR="$VISUAL"
 
 # SSH into AWS server
 alias bixby='ssh -i ~/.ssh/bixby.pem ubuntu@ec2-54-68-200-127.us-west-2.compute.amazonaws.com'
+
+source ~/.aliases
