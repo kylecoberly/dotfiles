@@ -31,6 +31,7 @@
     br = branch
     s = status -s
 	lg = "log --oneline --decorate --all --"
+    sq = rebase -i HEAD~2
 [push]
 	default = simple
 [branch]
