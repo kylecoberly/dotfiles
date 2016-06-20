@@ -4,6 +4,9 @@ function mkcd () {
     cd $1
 }
 
+# SSH into AWS server
+alias bixby='ssh -i ~/.ssh/bixby.pem ubuntu@ec2-54-68-200-127.us-west-2.compute.amazonaws.com'
+
 # Shortcuts
 alias c="clear"
 alias j="jobs"
