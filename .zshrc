@@ -6,7 +6,6 @@ export ZSH="$HOME/.oh-my-zsh"
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="robbyrussell"
-alias tmux='tmux -u' # Fixes dumb unicode bug with oh-my-zsh themes and tmux
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -55,7 +54,5 @@ bindkey '^R' history-incremental-search-backward
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
-# SSH into AWS server
-alias bixby='ssh -i ~/.ssh/bixby.pem ubuntu@ec2-54-68-200-127.us-west-2.compute.amazonaws.com'
 
 source ~/.aliases
