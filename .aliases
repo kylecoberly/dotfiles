@@ -16,3 +16,4 @@ alias update="sudo apt-get update && sudo apt-get upgrade"
 alias vi="vim"
 alias mv="mv -i"
 alias cp="cp -i"
+alias tmux='tmux -u' # Fixes dumb unicode bug with oh-my-zsh themes and tmux
