@@ -11,6 +11,8 @@ alias bixby='ssh -i ~/.ssh/bixby.pem ubuntu@ec2-54-68-200-127.us-west-2.compute.
 alias c="clear"
 alias j="jobs"
 alias update="sudo apt-get update && sudo apt-get upgrade"
+alias vimrc="$EDITOR ~/.vimrc"
+alias zshrc="$EDITOR ~/.zshrc"
 
 # Overwrites
 alias vi="vim"
