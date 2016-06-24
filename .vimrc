@@ -92,7 +92,7 @@ xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 nnoremap <Leader>n :CtrlP<CR>
 nnoremap <Leader>ff :CtrlP<CR>
-map <Leader>fb :CtrlPBuffer<CR>
+map <Leader>b :CtrlPBuffer<CR>
 
 nmap <Leader><Leader> <c-^>
 nnoremap <Esc><Esc> :nohlsearch<CR>
