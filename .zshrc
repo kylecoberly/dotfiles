@@ -54,5 +54,6 @@ bindkey '^R' history-incremental-search-backward
 export VISUAL=vim
 export EDITOR="$VISUAL"
 
+setopt extendedglob nocaseglob globdots
 
 source ~/.aliases
