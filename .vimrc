@@ -28,6 +28,7 @@ NeoBundle 'tpope/vim-commentary'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'thinca/vim-qfreplace'
+NeoBundle 'kshenoy/vim-signature'
 
 call neobundle#end()
 
