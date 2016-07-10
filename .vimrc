@@ -29,6 +29,7 @@ NeoBundle 'scrooloose/syntastic'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'kshenoy/vim-signature'
+NeoBundle 'editorconfig/editorconfig-vim'
 
 call neobundle#end()
 
