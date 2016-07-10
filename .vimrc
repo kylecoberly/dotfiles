@@ -89,6 +89,8 @@ endfunction
 
 let mapleader=" "
 
+nnoremap <Tab> :b#<CR>
+
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
