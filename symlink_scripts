@@ -1,6 +1,6 @@
 #!/bin/bash
 
-SCRIPTS=(serena)
+SCRIPTS=(serena paul)
 
 #Remove old dotfiles and replace them
 for script in $(echo ${SCRIPTS[*]});
