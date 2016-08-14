@@ -1,0 +1,10 @@
+#!/bin/bash
+
+SCRIPTS=(serena)
+
+#Remove old dotfiles and replace them
+for script in $(echo ${SCRIPTS[*]});
+do
+    sudo rm -rf /usr/bin/$(echo $script)
+    sudo ln -s ~/dotfiles/$(echo $script) /usr/bin/$(echo $script)
+done

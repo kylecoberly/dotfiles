@@ -2,4 +2,5 @@
 
 ./install_apt_packages
 ./symlink_dotfiles
+./symlink_scripts
 ./install_node_global_packages
