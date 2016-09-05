@@ -15,7 +15,8 @@ alias vimrc="$EDITOR ~/.vimrc"
 alias zshrc="$EDITOR ~/.zshrc"
 
 # Overwrites
-alias vi="vim"
+alias vi="nvim"
+alias vim="nvim"
 alias mv="mv -i"
 alias cp="cp -i"
 alias tmux='tmux -u' # Fixes dumb unicode bug with oh-my-zsh themes and tmux

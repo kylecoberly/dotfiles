@@ -1,9 +1,12 @@
 #!/bin/bash
 
+#Other repos
+sudo add-apt-repository ppa:neovim-ppa/unstable
+
 #General
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo apt-get install -y curl git xclip tmux vim ranger ftp arp-scan
+sudo apt-get install -y curl git xclip tmux vim ranger ftp arp-scan software-properties-common neovim
 
 #LAMP
 sudo apt-get install -y apache2 mysql-server php5 libapache2-mod-php5
