@@ -1,1 +1,1 @@
-sudo sh ~/Downloads/crouton -r trusty -n dev -t audio,chrome,cli-extra,core,extension,keyboard,touch,unity,xbmc,xfce,xiwi,xorg
+sudo sh ~/Downloads/crouton -r trusty -n dev -t audio,chrome,cli-extra,core,extension,keyboard,touch,unity,xbmc,xfce,x11,xorg
