@@ -11,4 +11,5 @@ done
 
 #Different for Neovim
 sudo rm -rf ~/.config/nvim/init.vim
+mkdir ~/.config/nvim
 ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
