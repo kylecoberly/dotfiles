@@ -7,6 +7,6 @@ nvm install node
 nvm alias default node
 
 #global installs
-PACKAGES=(ember-cli bower express-generator http-server knex nodemon mocha chai webdriverio phantomjs)
+PACKAGES=(ember-cli bower express-generator http-server knex nodemon mocha chai webdriverio phantomjs-prebuilt)
 
 npm install -g $(echo ${PACKAGES[*]})
