@@ -28,3 +28,6 @@ sudo apt-get install -y mongodb-org
 sudo apt-get install -y zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
+
+#Heroku
+wget -O- https://toolbelt.heroku.com/install-ubuntu.sh | sh
