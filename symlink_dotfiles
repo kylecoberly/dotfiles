@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES=(.gitconfig .tmux .tmux.conf .bashrc .zshrc .vim .jshintrc .nvmrc .aliases)
+DOTFILES=(.gitconfig .tmux .tmux.conf .bashrc .zshrc .vim .jshintrc .nvmrc .aliases .vimrc)
 
 #Remove old dotfiles and replace them
 for dotfile in $(echo ${DOTFILES[*]});
@@ -10,6 +10,7 @@ do
 done
 
 #Different for Neovim
-sudo rm -rf ~/.config/nvim/init.vim
-mkdir ~/.config/nvim
-ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
+# sudo rm -rf ~/.config/nvim/init.vim
+# mkdir ~/.config/nvim
+# ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
+mv ~/.vimrc ~/.nvimrc

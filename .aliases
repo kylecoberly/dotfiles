@@ -3,6 +3,7 @@ function mkcd () {
     mkdir $1
     cd $1
 }
+alias scan="sudo nmap -sP `ip a | grep 'wlan0' | grep 'inet' | awk '{print $2}'`"
 
 # SSH into AWS server
 alias bixby='ssh -i ~/.ssh/bixby.pem ubuntu@ec2-54-68-200-127.us-west-2.compute.amazonaws.com'
@@ -15,8 +16,8 @@ alias vimrc="$EDITOR ~/.vimrc"
 alias zshrc="$EDITOR ~/.zshrc"
 
 # Overwrites
-alias vi="nvim"
-alias vim="nvim"
+alias vi="vim"
+alias vim="vim"
 alias mv="mv -i"
 alias cp="cp -i"
 alias tmux='tmux -u' # Fixes dumb unicode bug with oh-my-zsh themes and tmux

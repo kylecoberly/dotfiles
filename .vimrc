@@ -2,7 +2,7 @@ inoremap jj <ESC>
 set laststatus=2
 let g:mustache_abbreviations = 1
 syntax enable
-au BufRead,BufNewFile *.hbs set filetype=handlebars
+au BufRead,BufNewFile *.hbs set filetype=html
 command E Ex
 
 set nocompatible
@@ -113,10 +113,10 @@ nnoremap <Leader>- <C-W>-
 nnoremap <Leader>, <C-W><
 nnoremap <Leader>. <C-W>>
 
-tnoremap <A-h> <C-\><C-n><C-w>h
-tnoremap <A-j> <C-\><C-n><C-w>j
-tnoremap <A-k> <C-\><C-n><C-w>k
-tnoremap <A-l> <C-\><C-n><C-w>l
+" tnoremap <A-h> <C-\><C-n><C-w>h
+" tnoremap <A-j> <C-\><C-n><C-w>j
+" tnoremap <A-k> <C-\><C-n><C-w>k
+" tnoremap <A-l> <C-\><C-n><C-w>l
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
