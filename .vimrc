@@ -2,7 +2,7 @@ inoremap jj <ESC>
 set laststatus=2
 let g:mustache_abbreviations = 1
 syntax enable
-au BufRead,BufNewFile *.hbs set filetype=html
+au BufRead,BufNewFile *.hbs set filetype=handlebars
 command E Ex
 
 set nocompatible
@@ -23,14 +23,14 @@ NeoBundle 'Shougo/neobundle.vim'
 NeoBundle 'tpope/vim-vinegar'
 NeoBundle 'ctrlpvim/ctrlp.vim'
 NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'bling/vim-airline'
+NeoBundle 'vim-airline/vim-airline'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'tpope/vim-commentary'
 NeoBundle 'scrooloose/syntastic'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'editorconfig/editorconfig-vim'
-
 call neobundle#end()
 
 if iCanHazNeoBundle == 0
@@ -53,8 +53,11 @@ set expandtab
 set nobackup
 set noswapfile
 set noerrorbells
-
 syntax enable
+
+let g:airline_theme='molokai'
+let g:airline#extensions#tabline#enabled = 1
+
 colorscheme solarized
 let g:solarized_termcolors = &t_Co
 let g:solarized_termtrans = 1
@@ -96,9 +99,9 @@ xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 nnoremap <Leader>n :CtrlP<CR>
 nnoremap <Leader>ff :CtrlP<CR>
-map <Leader>b :CtrlPBuffer<CR>
+map <Leader><Leader> :CtrlPBuffer<CR>
+map <Leader>d :bd<CR>
 
-nmap <Leader><Leader> <c-^>
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
 highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
