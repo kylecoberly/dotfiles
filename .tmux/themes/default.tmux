@@ -1,7 +1,7 @@
 # -------------
 # Try to get close to normal colors in tmux
 # -------------
-# set -g default-terminal "screen-256color"
+set -g default-terminal "screen-256color"
 
 # -------------
 # start with window 1 (instead of 0)
@@ -42,7 +42,7 @@ setw -g window-status-attr default
 # -------------
 set -g status-left ''
 set -g status-right-length 150
-set -g status-right '#[fg=colour69] #(hostname -I | cut -d " " -f 1) | %H:%M '
+set -g status-right '#[fg=colour69] %m/%d - %l:%M '
 set -g status-utf8 on
 
 # -------------
