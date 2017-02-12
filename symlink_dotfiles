@@ -14,3 +14,6 @@ done
 # mkdir ~/.config/nvim
 # ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
 mv ~/.vimrc ~/.nvimrc
+
+# Set oh-my-zsh theme
+ln -s ~/dotfiles/coberly-agnoster.zsh-theme ~/.oh-my-zsh/themes/coberly-agnoster.zsh-theme
