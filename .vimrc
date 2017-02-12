@@ -1,4 +1,5 @@
 inoremap jj <ESC>
+set encoding=utf-8
 set laststatus=2
 let g:mustache_abbreviations = 1
 syntax enable
@@ -57,6 +58,7 @@ syntax enable
 
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
+let g:airline_powerline_fonts = 1
 
 colorscheme solarized
 let g:solarized_termcolors = &t_Co
@@ -97,10 +99,11 @@ nnoremap <Tab> :b#<CR>
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
-nnoremap <Leader>n :CtrlP<CR>
 nnoremap <Leader>ff :CtrlP<CR>
-map <Leader><Leader> :CtrlPBuffer<CR>
-map <Leader>d :bd<CR>
+nnoremap <Leader><Leader> :CtrlPBuffer<CR>
+nnoremap <Leader>d :bd<CR>
+nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>N :bN<CR>
 
 nnoremap <Esc><Esc> :nohlsearch<CR>
 
