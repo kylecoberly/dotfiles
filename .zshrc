@@ -58,3 +58,5 @@ export EDITOR="$VISUAL"
 setopt extendedglob nocaseglob globdots
 
 source ~/.aliases
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
