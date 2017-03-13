@@ -1,9 +1,13 @@
 # Scripts
-function mkcd () {
+function mkcd(){
     mkdir $1
     cd $1
 }
 alias scan="sudo nmap -sP `ip a | grep 'wlan0' | grep 'inet' | awk '{print $2}'`"
+
+function untar(){
+    tar -zxvf $1
+}
 
 # SSH into AWS server
 alias bixby='ssh -i ~/.ssh/bixby.pem ubuntu@ec2-54-68-200-127.us-west-2.compute.amazonaws.com'
