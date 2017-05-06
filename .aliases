@@ -3,6 +3,9 @@ function mkcd(){
     mkdir $1
     cd $1
 }
+function e(){
+    tree -L $1
+}
 alias scan="sudo nmap -sP `ip a | grep 'wlan0' | grep 'inet' | awk '{print $2}'`"
 
 function untar(){
