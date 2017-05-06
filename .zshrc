@@ -40,7 +40,7 @@ source ~/.nvm/nvm.sh
 nvm use
 
 # Tmuxinator
-source ~/.tmuxinator.zsh
+# source ~/.tmuxinator.zsh
 
 # shell
 bindkey -v
@@ -54,3 +54,7 @@ export LANG="en_US.UTF-8"
 
 # Aliases
 source ~/.aliases
+
+# Synaptic Touchpad
+synclient PalmDetect=1
+synclient SingleTapTimeout=10

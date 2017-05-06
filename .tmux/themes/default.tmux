@@ -48,4 +48,5 @@ set -g status-utf8 on
 # -------------
 # Mouse mode on
 # -------------
-setw -g mode-mouse on
+set -g mouse-utf8 on
+set -g mouse on
