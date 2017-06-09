@@ -3,6 +3,9 @@
 	name = Kyle Coberly
     username = kylecoberly
 
+[github]
+	user = kylecoberly
+
 [color]
     ui = true
 

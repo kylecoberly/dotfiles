@@ -8,7 +8,7 @@ export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="coberly-agnoster"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -54,7 +54,3 @@ export LANG="en_US.UTF-8"
 
 # Aliases
 source ~/.aliases
-
-# Synaptic Touchpad
-synclient PalmDetect=1
-synclient SingleTapTimeout=10

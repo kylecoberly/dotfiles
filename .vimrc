@@ -32,6 +32,11 @@ NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'editorconfig/editorconfig-vim'
+NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
+" NeoBundle 'SirVer/ultisnips'
+" NeoBundle 'honza/vim-snippets'
+NeoBundle 'Valloric/YouCompleteMe', {'build': './install.sh --clang-completer --tern-completer --system-libclang --omnisharp-completer'}
+
 call neobundle#end()
 
 if iCanHazNeoBundle == 0
@@ -85,6 +90,11 @@ let g:syntastic_check_on_wq = 0
 let g:syntastic_javascript_jshint_args = ""
 " --config $HOME/.jshintrc"
 
+
+let mapleader=" "
+
+nnoremap <Tab> :b#<CR>
+
 function! VisualFindAndReplace()
     :OverCommandLine%s/
 endfunction
@@ -92,15 +102,10 @@ function! VisualFindAndReplaceWithSelection() range
     :'<,'>OverCommandLine s/
 endfunction
 
-let mapleader=" "
-
-nnoremap <Tab> :b#<CR>
-
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 nnoremap <Leader>ff :CtrlP<CR>
-nnoremap <Leader><Leader> :CtrlPBuffer<CR>
 nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>n :bn<CR>
 nnoremap <Leader>N :bN<CR>
@@ -119,10 +124,6 @@ nnoremap <Leader>- <C-W>-
 nnoremap <Leader>, <C-W><
 nnoremap <Leader>. <C-W>>
 
-" tnoremap <A-h> <C-\><C-n><C-w>h
-" tnoremap <A-j> <C-\><C-n><C-w>j
-" tnoremap <A-k> <C-\><C-n><C-w>k
-" tnoremap <A-l> <C-\><C-n><C-w>l
 nnoremap <A-h> <C-w>h
 nnoremap <A-j> <C-w>j
 nnoremap <A-k> <C-w>k
