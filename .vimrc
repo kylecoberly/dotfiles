@@ -49,7 +49,6 @@ NeoBundleCheck
 filetype plugin on
 filetype indent on
 set nowrap
-set rnu
 set ignorecase
 set t_Co=256
 set number
