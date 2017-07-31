@@ -39,6 +39,9 @@ source $ZSH/oh-my-zsh.sh
 source ~/.nvm/nvm.sh
 nvm use
 
+# rvm
+source $(rvm 2.4 do rvm env --path)
+
 # Tmuxinator
 # source ~/.tmuxinator.zsh
 
