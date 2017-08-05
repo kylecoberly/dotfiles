@@ -28,3 +28,4 @@ alias vim="vim"
 alias mv="mv -i"
 alias cp="cp -i"
 alias tmux='tmux -u' # Fixes dumb unicode bug with oh-my-zsh themes and tmux
+alias ranger='ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`; rm -f $HOME/rangerdir; cd "$LASTDIR"'
