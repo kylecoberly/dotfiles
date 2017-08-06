@@ -28,6 +28,8 @@ NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 NeoBundle 'Valloric/YouCompleteMe', {'build': './install.sh --clang-completer --tern-completer --system-libclang --omnisharp-completer'}
+NeoBundle 'reedes/vim-pencil'
+NeoBundle 'junegunn/goyo.vim'
 
 call neobundle#end()
 if iCanHazNeoBundle == 0
@@ -79,6 +81,17 @@ set diffopt+=iwhite
 set listchars=tab:▹\ ,trail:·,nbsp:⚋
 set fillchars=fold:-
 set list
+
+" Pencil
+let g:pencil#wrapModeDefault = 'soft'
+augroup pencil
+    autocmd!
+    autocmd FileType markdown,mkd,md call pencil#init()
+    autocmd FileType text call pencil#init({'wrap': 'hard'})
+augroup END
+
+" Goyo
+let g:goyo_width=60
 
 " Handlebars
 au BufRead,BufNewFile *.hbs set filetype=handlebars
@@ -142,11 +155,15 @@ nnoremap <space>gg :Gcommit -v -q %:p<CR> " Commits current file
 nnoremap <space>gp :Git push<CR>
 nnoremap <space>gm :Git merge<CR>
 
+" Goyo
+nnoremap <Leader>m :Goyo<CR>
+
 " Buffer management
 nnoremap <Leader>ff :CtrlP<CR> " Find a file in the current folder recursively
 nnoremap <Leader>d :bd<CR> " Delete current buffer
 nnoremap <Leader>n :bn<CR> " Next buffer
 nnoremap <Leader>N :bN<CR> " Previous buffer
+nnoremap <Leader>t :enew<CR> " Make a new empty buffer
 nnoremap <Tab> :b#<CR> " Tab between buffers
 
 " Split navigation
