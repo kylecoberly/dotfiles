@@ -139,6 +139,8 @@ nnoremap <space>gb :Git branch<Space>
 nnoremap <space>go :Git checkout<Space>
 nnoremap <space>gc :Gcommit -v -q<CR>
 nnoremap <space>gg :Gcommit -v -q %:p<CR> " Commits current file
+nnoremap <space>gp :Git push<CR>
+nnoremap <space>gm :Git merge<CR>
 
 " Buffer management
 nnoremap <Leader>ff :CtrlP<CR> " Find a file in the current folder recursively
