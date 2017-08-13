@@ -31,3 +31,4 @@ alias tmux='tmux -u' # Fixes dumb unicode bug with oh-my-zsh themes and tmux
 alias ranger='ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`; rm -f $HOME/rangerdir; cd "$LASTDIR"'
 alias lsa="ls -lAGhp --group-directories-first --color=always | awk '{print \$1,\$3,\$4,\$8}' | column -t"
 alias ll="ls -lGhp --group-directories-first --color=always | awk '{print \$1,\$3,\$4,\$8}' | column -t"
+alias du="du -h --max-depth=1"
