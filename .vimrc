@@ -32,6 +32,8 @@ NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 NeoBundle 'Valloric/YouCompleteMe', {'build': './install.sh --clang-completer --tern-completer --system-libclang --omnisharp-completer'}
 NeoBundle 'reedes/vim-pencil'
 NeoBundle 'junegunn/goyo.vim'
+NeoBundle 'easymotion/vim-easymotion'
+NeoBundle 'posva/vim-vue'
 
 call neobundle#end()
 if iCanHazNeoBundle == 0
@@ -147,15 +149,15 @@ nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
 " Fugitive
-nnoremap <space>ga :Git add %:p<CR><CR>
-nnoremap <space>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
-nnoremap <space>gd :Gdiff<CR>
-nnoremap <space>gb :Git branch<Space>
-nnoremap <space>go :Git checkout<Space>
-nnoremap <space>gc :Gcommit -v -q<CR>
-nnoremap <space>gg :Gcommit -v -q %:p<CR> " Commits current file
-nnoremap <space>gp :Git push<CR>
-nnoremap <space>gm :Git merge<CR>
+nnoremap <Leader>ga :Git add %:p<CR><CR>
+nnoremap <Leader>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
+nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gb :Git branch<Space>
+nnoremap <Leader>go :Git checkout<Space>
+nnoremap <Leader>gc :Gcommit -v -q<CR>
+nnoremap <Leader>gg :Gcommit -v -q %:p<CR> " Commits current file
+nnoremap <Leader>gp :Git push<CR>
+nnoremap <Leader>gm :Git merge<CR>
 
 " Goyo
 nnoremap <Leader>m :Goyo<CR>

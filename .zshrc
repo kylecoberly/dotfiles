@@ -28,7 +28,7 @@ plugins=(git git-extras web-search bower command-not-found common-aliases debian
 # User configuration
 
 # PATH
-export PATH="/usr/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/java/jdk1.8.0_74/bin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/java/jdk1.8.0_74/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
@@ -54,3 +54,23 @@ export LANG="en_US.UTF-8"
 
 # Aliases
 source ~/.aliases
+source ~/.fzf
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Wacom Tablet
+if (xsetwacom list | grep "Wacom Intuos PT M 2 (WL) Pad pad")
+then
+    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 3 "key ,"
+    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 1 "key ."
+    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 8 "key ctrl y"
+    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 9 "key ctrl z"
+    xsetwacom -v --set "Wacom Intuos PT M 2 (WL) Finger touch" touch off
+elif (xsetwacom list | grep "Wacom Intuos PT M 2 Pad pad")
+then
+    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 3 "key ,"
+    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 1 "key ."
+    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 8 "key ctrl y"
+    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 9 "key ctrl z"
+    xsetwacom -v --set "Wacom Intuos PT M 2 Finger touch" touch off
+fi
