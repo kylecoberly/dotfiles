@@ -34,6 +34,7 @@ NeoBundle 'reedes/vim-pencil'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'posva/vim-vue'
+NeoBundle 'tpope/vim-unimpaired'
 
 call neobundle#end()
 if iCanHazNeoBundle == 0
@@ -78,7 +79,7 @@ set sidescrolloff=7
 set relativenumber
 set wildmenu
 set wildchar=<TAB>
-set wildmode=list:longest
+set wildmode=full
 set wildignore+=*.DS_STORE,*.db,node_modules/**,*.jpg,*.png,*.gif
 set diffopt=filler
 set diffopt+=iwhite
