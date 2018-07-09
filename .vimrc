@@ -189,5 +189,5 @@ nnoremap <Leader>, <C-W><
 nnoremap <Leader>. <C-W>>
 
 " Newline Generation
-nmap <C-o> O<Esc>j
-nmap <CR> o<Esc>k
+nmap <C-o> O<Esc>
+nmap <CR> o<Esc>
