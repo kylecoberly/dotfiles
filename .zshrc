@@ -30,6 +30,7 @@ plugins=(git git-extras web-search bower command-not-found common-aliases debian
 # PATH
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/java/jdk1.8.0_74/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/snap/bin:$PATH"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Oh-My-ZSH
@@ -45,6 +46,7 @@ nvm use
 # shell
 bindkey -v
 bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 setopt extendedglob nocaseglob globdots
 export VISUAL=vim
@@ -57,6 +59,11 @@ source ~/.aliases
 source ~/.fzf
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Budgie Overrides
+gsettings set org.ubuntubudgie.visualspace show-visual false
+# gsettings reset org.gnome.desktop.wm.keybindings switch-to-workspace-right
+# gsettings reset org.gnome.desktop.wm.keybindings switch-to-workspace-left
 
 # Wacom Tablet
 if (xsetwacom list | grep "Wacom Intuos PT M 2 (WL) Pad pad")
