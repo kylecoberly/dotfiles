@@ -35,6 +35,7 @@ NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'posva/vim-vue'
 NeoBundle 'tpope/vim-unimpaired'
+NeoBundle 'mileszs/ack.vim'
 
 call neobundle#end()
 if iCanHazNeoBundle == 0
@@ -83,9 +84,11 @@ set wildmode=full
 set wildignore+=*.DS_STORE,*.db,node_modules/**,*.jpg,*.png,*.gif
 set diffopt=filler
 set diffopt+=iwhite
-set listchars=tab:▹\ ,trail:·,nbsp:⚋
+set listchars=trail:·,nbsp:⚋
 set fillchars=fold:-
-set list
+
+" vim.ack
+let g:ackprg = 'ag --nogroup --nocolor --column'
 
 " Pencil
 let g:pencil#wrapModeDefault = 'soft'

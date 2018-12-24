@@ -38,6 +38,7 @@
     sq = rebase -i HEAD~2
 [push]
 	default = simple
+	followTags = true
 [branch]
 	autosetuprebase = always
 [rerere]
