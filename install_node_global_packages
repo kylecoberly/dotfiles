@@ -1,6 +1,0 @@
-#!/bin/bash
-
-#global installs
-PACKAGES=(ember-cli @vue/cli http-server lite-server knex nodemon mocha yarn eslint typescript)
-
-npm install -g $(echo ${PACKAGES[*]})

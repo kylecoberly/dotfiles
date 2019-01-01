@@ -6,8 +6,8 @@ DOTFILES=(.gitconfig .tmux .tmux.conf .bashrc .zshrc .aliases .vimrc)
 for dotfile in $(echo ${DOTFILES[*]});
 do
     sudo rm -rf ~/$(echo $dotfile)
-    ln -s ~/dotfiles/$(echo $dotfile) ~/$(echo $dotfile)
+    ln -sf ~/dotfiles/$(echo $dotfile) ~/$(echo $dotfile)
 done
 
 # Set oh-my-zsh theme
-ln -s ~/dotfiles/coberly-agnoster.zsh-theme ~/.oh-my-zsh/themes/coberly-agnoster.zsh-theme
+ln -sf ~/dotfiles/coberly-agnoster.zsh-theme ~/.oh-my-zsh/themes/coberly-agnoster.zsh-theme
