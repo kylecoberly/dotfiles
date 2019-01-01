@@ -3,7 +3,7 @@
 #General
 sudo apt-get update
 sudo apt-get -y upgrade
-PACKAGES=(curl wget git xclip tmux vim ranger nmap tree virtualbox vagrant fonts-powerline tilix zsh ag)
+PACKAGES=(curl wget git xclip tmux vim ranger nmap tree virtualbox vagrant fonts-powerline tilix zsh silversearcher-ag)
 sudo apt-get install -y $(echo ${PACKAGES[*]})
 
 #zsh
