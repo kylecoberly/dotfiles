@@ -1,4 +1,0 @@
-#!/bin/bash
-serena_mac_id="b8:27:eb:9a:a9:a7"
-
-ssh -t pi@$(sudo arp-scan --localnet | grep "$serena_mac_id" | awk '{print $1}') "export DISPLAY=':0' ; bash"

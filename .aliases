@@ -12,12 +12,8 @@ function untar(){
     tar -zxvf $1
 }
 
-# SSH into AWS server
-alias bixby='ssh -i ~/.ssh/bixby.pem ubuntu@ec2-54-68-200-127.us-west-2.compute.amazonaws.com'
-
 # Shortcuts
 alias c="clear"
-alias j="jobs"
 alias update="sudo apt-get update && sudo apt-get upgrade"
 alias vimrc="$EDITOR ~/.vimrc"
 alias zshrc="$EDITOR ~/.zshrc"
@@ -32,4 +28,4 @@ alias ranger='ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`;
 alias lsa="ls -lAGhp --group-directories-first --color=always | awk '{print \$1,\$3,\$4,\$8}' | column -t"
 alias ll="ls -lGhp --group-directories-first --color=always | awk '{print \$1,\$3,\$4,\$8}' | column -t"
 alias du="du -h --max-depth=1"
-alias find="find . -type d -path '*/node_modules/*' -prune -o -type d -path '*/\.git/*' -prune -o -type d -path '*/bundle/*' -prune -o -type d -path '*/tmp/*' -prune -o -type d -path '*/.*' -prune -o -print"
+alias match="find . -type d -path '*/node_modules/*' -prune -o -type d -path '*/\.git/*' -prune -o -type d -path '*/bundle/*' -prune -o -type d -path '*/tmp/*' -prune -o -type d -path '*/.*' -prune -o -print"

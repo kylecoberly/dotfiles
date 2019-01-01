@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOTFILES=(.gitconfig .tmux .tmux.conf .bashrc .zshrc .vim .jshintrc .nvmrc .aliases .vimrc .fzf)
+DOTFILES=(.gitconfig .tmux .tmux.conf .bashrc .zshrc .aliases .vimrc) 
 
 #Remove old dotfiles and replace them
 for dotfile in $(echo ${DOTFILES[*]});
@@ -8,12 +8,6 @@ do
     sudo rm -rf ~/$(echo $dotfile)
     ln -s ~/dotfiles/$(echo $dotfile) ~/$(echo $dotfile)
 done
-
-#Different for Neovim
-# sudo rm -rf ~/.config/nvim/init.vim
-# mkdir ~/.config/nvim
-# ln -s ~/dotfiles/.vimrc ~/.config/nvim/init.vim
-mv ~/.vimrc ~/.nvimrc
 
 # Set oh-my-zsh theme
 ln -s ~/dotfiles/coberly-agnoster.zsh-theme ~/.oh-my-zsh/themes/coberly-agnoster.zsh-theme

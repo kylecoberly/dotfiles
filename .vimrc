@@ -23,7 +23,6 @@ NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'tpope/vim-commentary'
-NeoBundle 'scrooloose/syntastic'
 NeoBundle 'osyo-manga/vim-over'
 NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'kshenoy/vim-signature'
@@ -32,9 +31,7 @@ NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
 NeoBundle 'Valloric/YouCompleteMe', {'build': './install.sh --clang-completer --tern-completer --system-libclang --omnisharp-completer'}
 NeoBundle 'reedes/vim-pencil'
 NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'easymotion/vim-easymotion'
 NeoBundle 'posva/vim-vue'
-NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'mileszs/ack.vim'
 
 call neobundle#end()
@@ -101,10 +98,6 @@ augroup END
 " Goyo
 let g:goyo_width=60
 
-" Handlebars
-au BufRead,BufNewFile *.hbs set filetype=handlebars
-let g:mustache_abbreviations = 1
-
 " Airline
 let g:airline_theme='molokai'
 let g:airline#extensions#tabline#enabled = 1
@@ -131,13 +124,6 @@ let g:ctrlp_custom_ignore = 'bin$\|build$\|node_modules$\|tmp$\|dist$\|.git|.bak
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_max_height = 18
-
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_jshint_args = ""
 
 " Custom key commands
 let mapleader=" "
@@ -179,17 +165,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-nnoremap <A-h> <C-w>h
-nnoremap <A-j> <C-w>j
-nnoremap <A-k> <C-w>k
-nnoremap <A-l> <C-w>l
-
-" Split management
-nnoremap <Leader>= <C-W>+
-nnoremap <Leader>- <C-W>-
-nnoremap <Leader>, <C-W><
-nnoremap <Leader>. <C-W>>
 
 " Newline Generation
 nmap <C-o> O<Esc>

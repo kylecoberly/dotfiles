@@ -23,25 +23,16 @@ HIST_STAMPS="mm/dd/yyyy"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git git-extras web-search bower command-not-found common-aliases debian npm sudo tmux vi-mode)
+plugins=(git git-extras command-not-found common-aliases npm tmux vi-mode)
 
 # User configuration
 
 # PATH
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/usr/java/jdk1.8.0_74/bin"
+export PATH="/home/kylecoberly/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="/snap/bin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 # Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
-
-# nvm
-source ~/.nvm/nvm.sh
-nvm use
-
-# Tmuxinator
-# source ~/.tmuxinator.zsh
 
 # shell
 bindkey -v
@@ -56,14 +47,6 @@ export LANG="en_US.UTF-8"
 
 # Aliases
 source ~/.aliases
-source ~/.fzf
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Budgie Overrides
-gsettings set org.ubuntubudgie.visualspace show-visual false
-# gsettings reset org.gnome.desktop.wm.keybindings switch-to-workspace-right
-# gsettings reset org.gnome.desktop.wm.keybindings switch-to-workspace-left
 
 # Wacom Tablet
 if (xsetwacom list | grep "Wacom Intuos PT M 2 (WL) Pad pad")
@@ -81,3 +64,9 @@ then
     xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 9 "key ctrl z"
     xsetwacom -v --set "Wacom Intuos PT M 2 Finger touch" touch off
 fi
+
+# Make USB ports wake from suspend
+# echo enabled > /sys/bus/usb/devices/usb1/power/wakeup
+# echo enabled > /sys/bus/usb/devices/usb2/power/wakeup
+# echo enabled > /sys/bus/usb/devices/1-3/power/wakeup
+# echo enabled > /sys/bus/usb/devices/1-4/power/wakeup

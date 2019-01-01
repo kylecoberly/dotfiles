@@ -1,12 +1,6 @@
 #!/bin/bash
 
-#nvm se#tup
-wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.30.2/install.sh | bash
-nvm install 6.0
-nvm install node
-nvm alias default node
-
 #global installs
-PACKAGES=(ember-cli bower express-generator http-server knex nodemon mocha chai webdriverio phantomjs-prebuilt)
+PACKAGES=(ember-cli @vue/cli http-server lite-server knex nodemon mocha yarn eslint typescript)
 
 npm install -g $(echo ${PACKAGES[*]})

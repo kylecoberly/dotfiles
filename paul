@@ -1,4 +1,0 @@
-#!/bin/bash
-paul_mac_id="b8:27:eb:52:b4:87"
-
-ssh -t pi@$(sudo arp-scan --localnet | grep "$paul_mac_id" | awk '{print $1}') "export DISPLAY=':0' ; bash"
