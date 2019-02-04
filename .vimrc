@@ -33,6 +33,7 @@ NeoBundle 'reedes/vim-pencil'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'posva/vim-vue'
 NeoBundle 'mileszs/ack.vim'
+NeoBundle 'airblade/vim-gitgutter'
 
 call neobundle#end()
 if iCanHazNeoBundle == 0
@@ -83,6 +84,7 @@ set diffopt=filler
 set diffopt+=iwhite
 set listchars=trail:·,nbsp:⚋
 set fillchars=fold:-
+set updatetime=100 " Keeps gitgutter speedy
 
 " vim.ack
 let g:ackprg = 'ag --nogroup --nocolor --column'

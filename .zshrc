@@ -30,6 +30,7 @@ plugins=(git git-extras command-not-found common-aliases npm tmux vi-mode)
 # PATH
 export PATH="/home/kylecoberly/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
+export PATH="/home/kylecoberly/.config/composer/vendor/bin:$PATH"
 
 # Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
@@ -65,8 +66,10 @@ then
     xsetwacom -v --set "Wacom Intuos PT M 2 Finger touch" touch off
 fi
 
-# Make USB ports wake from suspend
-# echo enabled > /sys/bus/usb/devices/usb1/power/wakeup
-# echo enabled > /sys/bus/usb/devices/usb2/power/wakeup
-# echo enabled > /sys/bus/usb/devices/1-3/power/wakeup
-# echo enabled > /sys/bus/usb/devices/1-4/power/wakeup
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
