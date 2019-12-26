@@ -3,12 +3,8 @@
 #General
 sudo apt-get update
 sudo apt-get -y upgrade
-PACKAGES=(curl wget git xclip tmux vim ranger nmap tree virtualbox vagrant fonts-powerline tilix zsh silversearcher-ag)
+PACKAGES=(curl wget git xclip tmux vim ranger nmap tree fonts-powerline zsh silversearcher-ag)
 sudo apt-get install -y $(echo ${PACKAGES[*]})
-
-#zsh
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-chsh -s `which zsh`
 
 #Heroku
 wget -qO- https://toolbelt.heroku.com/install-ubuntu.sh | sh
