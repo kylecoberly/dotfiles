@@ -28,12 +28,13 @@ NeoBundle 'thinca/vim-qfreplace'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
-NeoBundle 'Valloric/YouCompleteMe', {'build': './install.sh --clang-completer --tern-completer --system-libclang --omnisharp-completer'}
 NeoBundle 'reedes/vim-pencil'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'posva/vim-vue'
 NeoBundle 'mileszs/ack.vim'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'prettier/vim-prettier', { 'do': 'npm install' }
 
 call neobundle#end()
 if iCanHazNeoBundle == 0
@@ -57,11 +58,11 @@ set nowrap
 set ignorecase smartcase
 set t_Co=256
 set number
-set tabstop=4
+set tabstop=2
 set expandtab
 set autoindent smartindent
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set nobackup
 set noswapfile
 set noerrorbells
@@ -85,6 +86,20 @@ set diffopt+=iwhite
 set listchars=trail:·,nbsp:⚋
 set fillchars=fold:-
 set updatetime=100 " Keeps gitgutter speedy
+
+" Prettier
+let g:prettier#quickfix_enabled = 0
+let g:prettier#autoformat = 0
+autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+let g:prettier#config#single_quote = 'false'
+let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#config#jsx_bracket_same_line = 'false'
+let g:prettier#config#arrow_parens = 'avoid'
+let g:prettier#config#trailing_comma = 'none'
+let g:prettier#config#parser = 'babylon'
+let g:prettier#config#config_precedence = 'prefer-file'
+let g:prettier#config#prose_wrap = 'preserve'
+let g:prettier#config#html_whitespace_sensitivity = 'css'
 
 " vim.ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -157,10 +172,14 @@ nnoremap <Leader>m :Goyo<CR>
 " Buffer management
 nnoremap <Leader>ff :CtrlP<CR> " Find a file in the current folder recursively
 nnoremap <Leader>d :bd<CR> " Delete current buffer
+nnoremap <Leader>D :bd!<CR> " Delete current buffer
 nnoremap <Leader>n :bn<CR> " Next buffer
 nnoremap <Leader>N :bN<CR> " Previous buffer
 nnoremap <Leader>t :enew<CR> " Make a new empty buffer
 nnoremap <Tab> :b#<CR> " Tab between buffers
+
+" Eslint
+nnoremap <Leader>e :new<Bar>0r!npm run lint<CR> " Run eslint in vue
 
 " Split navigation
 nnoremap <C-J> <C-W><C-J>
