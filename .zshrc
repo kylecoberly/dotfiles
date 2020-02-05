@@ -52,16 +52,22 @@ source ~/.aliases
 # Wacom Tablet
 if (xsetwacom list | grep "Wacom Intuos PT M 2 (WL) Pad pad")
 then
-    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 3 "key ,"
-    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 1 "key ."
-    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 8 "key ctrl y"
+    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 3 "key ="
+    # xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 3 "key ,"
+    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 1 "key -"
+    # xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 1 "key ."
+    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 8 "key shift ctrl z"
+    # xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 8 "key ctrl y"
     xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 9 "key ctrl z"
     xsetwacom -v --set "Wacom Intuos PT M 2 (WL) Finger touch" touch off
 elif (xsetwacom list | grep "Wacom Intuos PT M 2 Pad pad")
 then
-    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 3 "key ,"
-    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 1 "key ."
-    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 8 "key ctrl y"
+    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 3 "key ="
+    # xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 3 "key ,"
+    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 1 "key -"
+    # xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 1 "key ."
+    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 8 "key shift ctrl z"
+    # xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 8 "key ctrl y"
     xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 9 "key ctrl z"
     xsetwacom -v --set "Wacom Intuos PT M 2 Finger touch" touch off
 fi

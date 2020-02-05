@@ -1,14 +1,13 @@
 #!/bin/bash
 
-
 #nvm
-wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash
+wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.35.2/install.sh | bash
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 nvm install node 
 
 #global installs
-PACKAGES=(ember-cli @vue/cli http-server lite-server knex nodemon mocha yarn eslint typescript)
+PACKAGES=(ember-cli @vue/cli lite-server knex nodemon mocha yarn eslint typescript)
 
 npm install -g $(echo ${PACKAGES[*]})

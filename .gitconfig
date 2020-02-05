@@ -47,6 +47,7 @@
 [core]
 	autocrlf = input
 	editor = vim 
+	filemode = false
 [credential]
 	helper = cache
 [merge]
