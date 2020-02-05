@@ -7,8 +7,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # time that oh-my-zsh is loaded.
 ZSH_THEME="coberly-agnoster"
 
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+# uncomment the following line to enable command auto-correction.
+# enable_correction="true"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
@@ -73,3 +73,5 @@ export NVM_DIR="$HOME/.nvm"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
