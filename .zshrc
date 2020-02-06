@@ -41,7 +41,7 @@ bindkey -M viins 'jj' vi-cmd-mode
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 setopt extendedglob nocaseglob globdots
-export VISUAL=vim
+export VISUAL=nvim
 export EDITOR="$VISUAL"
 export DEFAULT_USER="kylecoberly"
 export LANG="en_US.UTF-8"

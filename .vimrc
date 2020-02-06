@@ -1,48 +1,35 @@
 " Plugins
-let iCanHazNeoBundle=1
-let neobundle_readme=expand($HOME.'/.vim/bundle/neobundle.vim/README.md')
-if !filereadable(neobundle_readme)
-    echo "Installing NeoBundle.."
-    echo ""
-    silent !mkdir -p $HOME/.vim/bundle
-    silent !git clone https://github.com/Shougo/neobundle.vim $HOME/.vim/bundle/neobundle.vim
-    let iCanHazNeoBundle=0
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-if has('vim_starting')
-    set rtp+=$HOME/.vim/bundle/neobundle.vim/
-endif
-call neobundle#begin(expand($HOME.'/.vim/bundle/'))
 
-NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'tpope/vim-vinegar'
-NeoBundle 'tpope/vim-fugitive'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-repeat'
-NeoBundle 'ctrlpvim/ctrlp.vim'
-NeoBundle 'altercation/vim-colors-solarized'
-NeoBundle 'vim-airline/vim-airline'
-NeoBundle 'vim-airline/vim-airline-themes'
-NeoBundle 'tpope/vim-commentary'
-NeoBundle 'osyo-manga/vim-over'
-NeoBundle 'thinca/vim-qfreplace'
-NeoBundle 'kshenoy/vim-signature'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'mattn/gist-vim', {'depends': 'mattn/webapi-vim'}
-NeoBundle 'reedes/vim-pencil'
-NeoBundle 'junegunn/goyo.vim'
-NeoBundle 'posva/vim-vue'
-NeoBundle 'mileszs/ack.vim'
-NeoBundle 'airblade/vim-gitgutter'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'prettier/vim-prettier', { 'do': 'npm install' }
-
-call neobundle#end()
-if iCanHazNeoBundle == 0
-    echo "Installing Bundles, please ignore key map error messages"
-    echo ""
-    :NeoBundleInstall
-endif
-NeoBundleCheck
+call plug#begin(stdpath('data') . '/plugged')
+Plug 'Shougo/neobundle.vim'
+Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-commentary'
+Plug 'osyo-manga/vim-over'
+Plug 'thinca/vim-qfreplace'
+Plug 'kshenoy/vim-signature'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'reedes/vim-pencil'
+Plug 'junegunn/goyo.vim'
+Plug 'posva/vim-vue'
+Plug 'mileszs/ack.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'leafgarland/typescript-vim'
+Plug 'dense-analysis/ale'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+call plug#end()
 
 " General config
 inoremap jj <ESC>
@@ -87,19 +74,24 @@ set listchars=trail:·,nbsp:⚋
 set fillchars=fold:-
 set updatetime=100 " Keeps gitgutter speedy
 
-" Prettier
-let g:prettier#quickfix_enabled = 0
-let g:prettier#autoformat = 0
-autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
-let g:prettier#config#single_quote = 'false'
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#config#jsx_bracket_same_line = 'false'
-let g:prettier#config#arrow_parens = 'avoid'
-let g:prettier#config#trailing_comma = 'none'
-let g:prettier#config#parser = 'babylon'
-let g:prettier#config#config_precedence = 'prefer-file'
-let g:prettier#config#prose_wrap = 'preserve'
-let g:prettier#config#html_whitespace_sensitivity = 'css'
+" ALE
+let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_lint_on_save = 1
+let g:ale_fixers = ['prettier', 'eslint']
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:airline#extensions#ale#enabled = 1
+autocmd BufWritePost *.js ALEFix
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+call deoplete#custom#option('sources', {
+\ '_': ['ale'],
+\})
 
 " vim.ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
@@ -122,7 +114,6 @@ let g:airline_powerline_fonts = 1
 
 " Status line
 set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
 " Colors
