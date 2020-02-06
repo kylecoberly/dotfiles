@@ -181,3 +181,13 @@ nnoremap <C-H> <C-W><C-H>
 " Newline Generation
 nmap <C-o> O<Esc>
 nmap <CR> o<Esc>
+
+" Insert mode commands
+
+inoremap II <Esc>I
+inoremap AA <Esc>A
+inoremap OO <Esc>O
+inoremap CC <Esc>C
+inoremap SS <Esc>S
+inoremap DD <Esc>dd
+inoremap UU <Esc>u
