@@ -2,4 +2,5 @@
 
 ## Installation
 
-`./install` runs `install_apt_packages`, `symlink_dotfiles`, and `install_node`
+* `./install`
+* Go to your home directory and type dev to get fully configured dev environment

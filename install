@@ -1,6 +1,13 @@
 #!/bin/bash
 
-./install_apt_packages
-./symlink_dotfiles
-./install_node
+# Link the docker compose file and put in the PATH
+ln -sf ~/dotfiles/docker-compose.yml ~/docker-compose.yml
+sudo ln -sf ~/dotfiles/dev /usr/local/bin/dev
 
+#Remove old dotfiles and replace them for the host machine
+DOTFILES=(.gitconfig .bashrc .zshrc .aliases .vimrc) 
+for dotfile in $(echo ${DOTFILES[*]});
+do
+    sudo rm -rf ~/$(echo $dotfile)
+    ln -sf ~/dotfiles/dotfiles/$(echo $dotfile) ~/$(echo $dotfile)
+done

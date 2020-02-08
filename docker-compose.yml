@@ -1,0 +1,9 @@
+version: "3"
+services:
+  dev:
+    image: kylecoberly/dev:beta
+    stdin_open: true
+    tty: true
+    volumes:
+      - "./projects:/home/kylecoberly/projects"
+    working_dir: "/home/kylecoberly/projects"

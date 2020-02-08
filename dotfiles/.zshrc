@@ -28,9 +28,9 @@ plugins=(git git-extras command-not-found common-aliases npm tmux vi-mode)
 # User configuration
 
 # PATH
-export PATH="/home/kylecoberly/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="/home/kylecoberly/.config/composer/vendor/bin:$PATH"
+export PATH="/root/.config/composer/vendor/bin:$PATH"
 
 # Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
@@ -43,41 +43,17 @@ bindkey '^R' history-incremental-search-backward
 setopt extendedglob nocaseglob globdots
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export DEFAULT_USER="kylecoberly"
 export LANG="en_US.UTF-8"
 
 # Aliases
 source ~/.aliases
-
-# Wacom Tablet
-if (xsetwacom list | grep "Wacom Intuos PT M 2 (WL) Pad pad")
-then
-    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 3 "key ="
-    # xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 3 "key ,"
-    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 1 "key -"
-    # xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 1 "key ."
-    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 8 "key shift ctrl z"
-    # xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 8 "key ctrl y"
-    xsetwacom set "Wacom Intuos PT M 2 (WL) Pad pad" button 9 "key ctrl z"
-    xsetwacom -v --set "Wacom Intuos PT M 2 (WL) Finger touch" touch off
-elif (xsetwacom list | grep "Wacom Intuos PT M 2 Pad pad")
-then
-    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 3 "key ="
-    # xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 3 "key ,"
-    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 1 "key -"
-    # xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 1 "key ."
-    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 8 "key shift ctrl z"
-    # xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 8 "key ctrl y"
-    xsetwacom set "Wacom Intuos PT M 2 Pad pad" button 9 "key ctrl z"
-    xsetwacom -v --set "Wacom Intuos PT M 2 Finger touch" touch off
-fi
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
-
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+source ~/.rvm/scripts/rvm
