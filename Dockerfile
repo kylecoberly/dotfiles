@@ -46,8 +46,7 @@ RUN sudo apt update && \
 COPY --chown=kylecoberly:kylecoberly ./dotfiles/init.vim $HOME/.config/nvim/init.vim
 RUN nvim +PlugInstall +qall
 
-# Personal
-COPY --chown=kylecoberly:kylecoberly ./dotfiles $HOME
-RUN sh -c "mv ${HOME}/coberly-agnoster.zsh-theme ${HOME}/.oh-my-zsh/themes/coberly-agnoster.zsh-theme"
+# Theme
+RUN sh -c "mv ${HOME}/dotfiles/dotfiles/coberly-agnoster.zsh-theme ${HOME}/.oh-my-zsh/themes/coberly-agnoster.zsh-theme"
 
 ENTRYPOINT ["zsh", "-l"]

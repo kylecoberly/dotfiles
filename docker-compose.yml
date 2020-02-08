@@ -5,5 +5,5 @@ services:
     stdin_open: true
     tty: true
     volumes:
-      - "./projects:/home/kylecoberly/projects"
-    working_dir: "/home/kylecoberly/projects"
+      - "./:/home/kylecoberly"
+    working_dir: "/home/kylecoberly"
