@@ -89,9 +89,8 @@ autocmd BufWritePost *.js ALEFix
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
-call deoplete#custom#option('sources', {
-\ '_': ['ale'],
-\})
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
 " vim.ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
