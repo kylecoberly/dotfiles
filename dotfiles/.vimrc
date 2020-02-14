@@ -182,11 +182,7 @@ nmap <C-o> O<Esc>
 nmap <CR> o<Esc>
 
 " Insert mode commands
-
-inoremap II <Esc>I
-inoremap AA <Esc>A
-inoremap OO <Esc>O
-inoremap CC <Esc>C
-inoremap SS <Esc>S
-inoremap DD <Esc>dd
-inoremap UU <Esc>u
+imap <C-h> <left>
+imap <C-j> <down>
+imap <C-k> <up>
+imap <C-l> <right>
