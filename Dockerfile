@@ -35,7 +35,7 @@ RUN sudo locale-gen en_US.UTF-8 && \
   nvm install 12 && \
   nvm alias default $NODE_VERSION && \
   nvm use default && \
-  npm i -g eslint knex mocha jest nodemon lite-server typescript yarn && \
+  npm i -g eslint knex mocha jest nodemon lite-server typescript yarn firebase-tools && \
   yarn global add ember-cli @vue/cli && \
 # Packages
   sudo apt update && \
