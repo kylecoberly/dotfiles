@@ -183,6 +183,4 @@ nmap <CR> o<Esc>
 
 " Insert mode commands
 imap <C-h> <left>
-imap <C-j> <down>
-imap <C-k> <up>
 imap <C-l> <right>
