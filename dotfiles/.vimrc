@@ -145,6 +145,9 @@ endfunction
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
+" Goyo
+nnoremap <leader>m :Goyo<cr>
+
 " Fugitive
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
@@ -155,9 +158,6 @@ nnoremap <Leader>gc :Gcommit -v -q<CR>
 nnoremap <Leader>gg :Gcommit -v -q %:p<CR> " Commits current file
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gm :Git merge<CR>
-
-" Goyo
-nnoremap <Leader>m :Goyo<CR>
 
 " Buffer management
 nnoremap <Leader>ff :CtrlP<CR> " Find a file in the current folder recursively
@@ -181,6 +181,12 @@ nnoremap <C-H> <C-W><C-H>
 nmap <C-o> O<Esc>
 nmap <CR> o<Esc>
 
-" Insert mode commands
-imap <C-h> <left>
-imap <C-l> <right>
+nnoremap <Leader>. @: " Repeat last ex command
+nnoremap <Leader>r :set relativenumber!<CR> " Toggle relative line numbers
+
+let @s = "* { box-sizing: border-box; } body { align-items: center; background-color: #ddd; background-image: linear-gradient( 0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.6)), linear-gradient(90deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.6)); background-size: 25px 25px; color: #333; display: flex; font-family: Arial, sans-serif; justify-content: center; margin-top: -5%; min-height: 100vh; } .content-wrapper { width: 100%; } #app { display: flex; width: 300px; h1 { color: #ccc; font-size: 16px; left: 24px; position: absolute; top: 16px; } .days-remaining { border-bottom: 1px solid #ccc; padding: 24px; text-align: center; text-transform: uppercase; width: 100%; span { display: block; font-size: 256px; font-weight: 700; } } .roll-rate, .rolls-remaining { color: #666; } .roll-commands { display: flex; justify-content: space-around; width: 100%; button { background: none; border: none; cursor: pointer; font-size: 64px; padding: 24px; } } }"
+let @p = '"cypress-cucumber-preprocessor": { "nonGlobalStepDefinitions": true, "stepDefinitions": "tests/e2e/specs", "commonPath": "tests/e2e/common", "cucumberJson": { "generate": true, "outputFolder": "tests/e2e/cucumber-json", "filePrefix": "", "fileSuffix": ".cucumber" } },'
+let @c = '"baseUrl": "http://localhost:8080", "chromeWebSecurity": false, "testFiles": "**/*.{feature,features}"'
+let @m = 'Cypress.Commands.add("the", testSelector => cy.get(`[data-test-${testSelector}]`)); Cypress.Commands.add("clickThe", testSelector => { cy.get(`[data-test-${testSelector}]`).click(); }); Cypress.Commands.add("clickTheFirst", testSelector => { cy.get(`[data-test-${testSelector}]`) .eq(0) .click(); }); Cypress.Commands.add("theFirst", testSelector => cy.get(`[data-test-${testSelector}]`).eq(0)); Cypress.Commands.add("fillOutThe", testSelector => cy.get(`[data-test-${testSelector}]`)); Cypress.Commands.add("with", { prevSubject: true }, (form, formData) => { cy.wrap(Object.keys(formData)).each(key => { cy.get(form) .find(`[name=${key}]`) .type(formData[key]); }); cy.get(form).submit(); }); Cypress.Commands.add("getStore", () => { return cy.window().its("app.__vue__.$store"); }); Cypress.Commands.add( "dispatch", { prevSubject: true }, (store, methodToDispatch, ...dispatchArguments) => { return store.dispatch(methodToDispatch, ...dispatchArguments); }); Cypress.Commands.add( "commit", { prevSubject: true }, (store, methodToCommit, ...commitArguments) => { return store.commit(methodToCommit, ...commitArguments); }); Cypress.Commands.add( "setState", { prevSubject: true }, (store, property, value) => { store.state[property] = value; return value; }); Cypress.Commands.add("getState", { prevSubject: true }, (store, property) => { return store.state[property]; });'
+let @u = 'const cucumber = require("cypress-cucumber-preprocessor").default; on("file:preprocessor", cucumber());'
+
