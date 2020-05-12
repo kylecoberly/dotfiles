@@ -29,6 +29,11 @@ Plug 'leafgarland/typescript-vim'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+Plug 'leafgarland/typescript-vim'
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
 call plug#end()
 
 " General config
@@ -73,6 +78,33 @@ set diffopt+=iwhite
 set listchars=trail:·,nbsp:⚋
 set fillchars=fold:-
 set updatetime=100 " Keeps gitgutter speedy
+
+" Leader
+let mapleader=" "
+
+" Typescript
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+
+" Go
+au FileType go set noexpandtab
+au FileType go set shiftwidth=4
+au FileType go set softtabstop=4
+au FileType go set tabstop=4
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+au FileType go nnoremap <leader>got :GoTest -short<cr>
+au Filetype go nnoremap <leader>goa <Plug>(go-alternate-edit)
+au FileType go nnoremap <leader>goc :GoCoverageToggle -short<cr>
+au FileType go nnoremap <leader>god <Plug>(go-def)
 
 " ALE
 let g:ale_linters = {'javascript': ['eslint']}
@@ -133,7 +165,6 @@ let g:ctrlp_max_files=0
 let g:ctrlp_max_height = 18
 
 " Custom key commands
-let mapleader=" "
 
 " Find and replace
 function! VisualFindAndReplace()
@@ -183,10 +214,3 @@ nmap <CR> o<Esc>
 
 nnoremap <Leader>. @: " Repeat last ex command
 nnoremap <Leader>r :set relativenumber!<CR> " Toggle relative line numbers
-
-let @s = "* { box-sizing: border-box; } body { align-items: center; background-color: #ddd; background-image: linear-gradient( 0deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.6)), linear-gradient(90deg, hsla(0, 0%, 100%, 0.9), hsla(0, 0%, 100%, 0.6)); background-size: 25px 25px; color: #333; display: flex; font-family: Arial, sans-serif; justify-content: center; margin-top: -5%; min-height: 100vh; } .content-wrapper { width: 100%; } #app { display: flex; width: 300px; h1 { color: #ccc; font-size: 16px; left: 24px; position: absolute; top: 16px; } .days-remaining { border-bottom: 1px solid #ccc; padding: 24px; text-align: center; text-transform: uppercase; width: 100%; span { display: block; font-size: 256px; font-weight: 700; } } .roll-rate, .rolls-remaining { color: #666; } .roll-commands { display: flex; justify-content: space-around; width: 100%; button { background: none; border: none; cursor: pointer; font-size: 64px; padding: 24px; } } }"
-let @p = '"cypress-cucumber-preprocessor": { "nonGlobalStepDefinitions": true, "stepDefinitions": "tests/e2e/specs", "commonPath": "tests/e2e/common", "cucumberJson": { "generate": true, "outputFolder": "tests/e2e/cucumber-json", "filePrefix": "", "fileSuffix": ".cucumber" } },'
-let @c = '"baseUrl": "http://localhost:8080", "chromeWebSecurity": false, "testFiles": "**/*.{feature,features}"'
-let @m = 'Cypress.Commands.add("the", testSelector => cy.get(`[data-test-${testSelector}]`)); Cypress.Commands.add("clickThe", testSelector => { cy.get(`[data-test-${testSelector}]`).click(); }); Cypress.Commands.add("clickTheFirst", testSelector => { cy.get(`[data-test-${testSelector}]`) .eq(0) .click(); }); Cypress.Commands.add("theFirst", testSelector => cy.get(`[data-test-${testSelector}]`).eq(0)); Cypress.Commands.add("fillOutThe", testSelector => cy.get(`[data-test-${testSelector}]`)); Cypress.Commands.add("with", { prevSubject: true }, (form, formData) => { cy.wrap(Object.keys(formData)).each(key => { cy.get(form) .find(`[name=${key}]`) .type(formData[key]); }); cy.get(form).submit(); }); Cypress.Commands.add("getStore", () => { return cy.window().its("app.__vue__.$store"); }); Cypress.Commands.add( "dispatch", { prevSubject: true }, (store, methodToDispatch, ...dispatchArguments) => { return store.dispatch(methodToDispatch, ...dispatchArguments); }); Cypress.Commands.add( "commit", { prevSubject: true }, (store, methodToCommit, ...commitArguments) => { return store.commit(methodToCommit, ...commitArguments); }); Cypress.Commands.add( "setState", { prevSubject: true }, (store, property, value) => { store.state[property] = value; return value; }); Cypress.Commands.add("getState", { prevSubject: true }, (store, property) => { return store.state[property]; });'
-let @u = 'const cucumber = require("cypress-cucumber-preprocessor").default; on("file:preprocessor", cucumber());'
-
