@@ -25,11 +25,9 @@ Plug 'junegunn/goyo.vim'
 Plug 'posva/vim-vue'
 Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-gitgutter'
-Plug 'leafgarland/typescript-vim'
 Plug 'dense-analysis/ale'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-Plug 'leafgarland/typescript-vim'
 Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'HerringtonDarkholme/yats.vim'

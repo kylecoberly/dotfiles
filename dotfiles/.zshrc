@@ -31,6 +31,7 @@ plugins=(git git-extras command-not-found common-aliases npm tmux vi-mode)
 export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/root/.config/composer/vendor/bin:$PATH"
+export PATH="/usr/bin/gradle-6.6.1/bin:$PATH"
 
 # Oh-My-ZSH
 source $ZSH/oh-my-zsh.sh
