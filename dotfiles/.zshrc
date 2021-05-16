@@ -45,6 +45,7 @@ setopt extendedglob nocaseglob globdots
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LANG="en_US.UTF-8"
+bindkey "\e." insert-last-word
 
 # Aliases
 source ~/.aliases

@@ -32,6 +32,8 @@ Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+Plug 'Yggdroot/indentLine'
+Plug 'joukevandermaas/vim-ember-hbs'
 call plug#end()
 
 " General config
@@ -76,12 +78,16 @@ set diffopt+=iwhite
 set listchars=trail:·,nbsp:⚋
 set fillchars=fold:-
 set updatetime=100 " Keeps gitgutter speedy
+au FocusGained,BufEnter * :checktime " Auto-updates file
 
 " Leader
 let mapleader=" "
 
 " Typescript
 autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+
+" Yaml
+autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
 " Go
 au FileType go set noexpandtab
@@ -103,11 +109,12 @@ au FileType go nnoremap <leader>got :GoTest -short<cr>
 au Filetype go nnoremap <leader>goa <Plug>(go-alternate-edit)
 au FileType go nnoremap <leader>goc :GoCoverageToggle -short<cr>
 au FileType go nnoremap <leader>god <Plug>(go-def)
+autocmd BufNewFile,BufRead *.vue set filetype=vue
 
 " ALE
-let g:ale_linters = {'javascript': ['eslint']}
+let g:ale_linters = {'javascript': ['eslint', 'prettier'], 'hbs': ['ember-template-lint']}
 let g:ale_lint_on_save = 1
-let g:ale_fixers = ['eslint']
+let g:ale_fixers = {'typescript': ['eslint'], 'vue': ['eslint'], 'javascript': ['eslint'], 'css': ['prettier']}
 let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = '❌'
@@ -212,3 +219,4 @@ nmap <CR> o<Esc>
 
 nnoremap <Leader>. @: " Repeat last ex command
 nnoremap <Leader>r :set relativenumber!<CR> " Toggle relative line numbers
+vnoremap <Leader>s :sort<CR> " Sort lines alphabetically
