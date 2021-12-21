@@ -68,7 +68,7 @@ set autoread
 set title
 set scrolloff=5
 set sidescrolloff=7
-set relativenumber
+set norelativenumber
 set wildmenu
 set wildchar=<TAB>
 set wildmode=full
@@ -109,10 +109,11 @@ au FileType go nnoremap <leader>got :GoTest -short<cr>
 au Filetype go nnoremap <leader>goa <Plug>(go-alternate-edit)
 au FileType go nnoremap <leader>goc :GoCoverageToggle -short<cr>
 au FileType go nnoremap <leader>god <Plug>(go-def)
+
 autocmd BufNewFile,BufRead *.vue set filetype=vue
 
 " ALE
-let g:ale_linters = {'javascript': ['eslint', 'prettier'], 'hbs': ['ember-template-lint']}
+let g:ale_linters = {'typescript': ['eslint'], 'javascript': ['eslint', 'prettier'], 'hbs': ['ember-template-lint']}
 let g:ale_lint_on_save = 1
 let g:ale_fixers = {'typescript': ['eslint'], 'vue': ['eslint'], 'javascript': ['eslint'], 'css': ['prettier']}
 let g:ale_fix_on_save = 1
@@ -122,7 +123,7 @@ let g:ale_sign_warning = '⚠️'
 highlight ALEErrorSign ctermbg=NONE ctermfg=red
 highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
 let g:airline#extensions#ale#enabled = 1
-autocmd BufWritePost *.js ALEFix
+" autocmd BufWritePost *.js ALEFix
 
 " Deoplete
 let g:deoplete#enable_at_startup = 1
@@ -144,7 +145,8 @@ augroup END
 let g:goyo_width=60
 
 " Airline
-let g:airline_theme='molokai'
+let g:airline_theme='solarized'
+let g:airline_solarized_bg='light'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
@@ -168,6 +170,9 @@ let g:ctrlp_custom_ignore = 'bin$\|build$\|node_modules$\|tmp$\|dist$\|.git|.bak
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_max_height = 18
+
+" IndentLine
+let g:indentLine_setConceal = 1
 
 " Custom key commands
 

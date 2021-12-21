@@ -18,8 +18,8 @@ set -g pane-base-index 1
 # -------------
 set -g status-utf8 on
 set -g status-justify left
-set -g status-bg black
-set -g status-fg white
+set -g status-bg colour230
+set -g status-fg black
 set -g status-interval 4
 
 # -------------

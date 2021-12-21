@@ -5,7 +5,7 @@ export ZSH="$HOME/.oh-my-zsh"
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="coberly-agnoster"
+ZSH_THEME="agnoster-light"
 
 # uncomment the following line to enable command auto-correction.
 # enable_correction="true"
@@ -29,6 +29,7 @@ plugins=(git git-extras command-not-found common-aliases npm tmux vi-mode)
 
 # PATH
 export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+export PATH="${HOME}/.local/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/root/.config/composer/vendor/bin:$PATH"
 export PATH="/usr/bin/gradle-6.6.1/bin:$PATH"
