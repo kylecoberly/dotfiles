@@ -1,0 +1,62 @@
+" Plugins
+Plug 'dense-analysis/ale'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+
+"Vue
+Plug 'posva/vim-vue'
+
+"Go
+Plug 'deoplete-plugins/deoplete-go', { 'do': 'make'}
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
+"TS
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', { 'do': './install.sh' }
+
+"Ember
+Plug 'joukevandermaas/vim-ember-hbs'
+call plug#end()
+
+" General config
+
+
+" Typescript
+autocmd FileType typescript setlocal formatprg=prettier\ --parser\ typescript
+
+
+" Go
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_auto_sameids = 1
+let g:go_fmt_command = "goimports"
+let g:go_auto_type_info = 1
+
+autocmd BufNewFile,BufRead *.vue set filetype=vue
+
+" ALE
+let g:ale_linters = {'typescript': ['eslint'], 'javascript': ['eslint', 'prettier'], 'hbs': ['ember-template-lint']}
+let g:ale_lint_on_save = 1
+let g:ale_fixers = {'typescript': ['eslint'], 'vue': ['eslint'], 'javascript': ['eslint'], 'css': ['prettier']}
+let g:ale_fix_on_save = 1
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+highlight ALEErrorSign ctermbg=NONE ctermfg=red
+highlight ALEWarningSign ctermbg=NONE ctermfg=yellow
+let g:airline#extensions#ale#enabled = 1
+" autocmd BufWritePost *.js ALEFix
+
+" Deoplete
+let g:deoplete#enable_at_startup = 1
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+" Eslint
+nnoremap <Leader>e :new<Bar>0r!npm run lint<CR> " Run eslint in vue
