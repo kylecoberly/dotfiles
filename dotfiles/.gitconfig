@@ -1,54 +1,48 @@
 [user]
-	email = kyle.coberly@gmail.com
-	name = Kyle Coberly
-    username = kylecoberly
-
+  email = kyle.coberly@gmail.com
+  name = Kyle Coberly
+  username = kylecoberly
 [github]
-	user = kylecoberly
-
+  user = kylecoberly
 [color]
-    ui = true
-
+  ui = true
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
-
+  current = yellow reverse
+  local = yellow
+  remote = green
 [color "diff"]
-    meta = yellow bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = red
-
+  added = yellow
+  changed = green
+  untracked = red
 [alias]
-    co = checkout
-    cob = checkout -b
-    c = commit
-    cm = commit -m
-    cam = commit -am
-    st = status
-    br = branch
-    s = status -s
-	lg = "log --oneline --decorate --all --"
-    sq = rebase -i HEAD~2
+  co = checkout
+  cob = checkout -b
+  c = commit
+  cm = commit -m
+  cam = commit -am
+  st = status
+  br = branch
+  s = status -s
+  lg = "log --oneline --decorate --all --"
+  sq = rebase -i HEAD~2
 [push]
-	default = simple
-	followTags = true
+  default = simple
+  followTags = true
 [branch]
-	autosetuprebase = always
+  autosetuprebase = always
 [rerere]
-	enabled = true
-	s = "status -s"
+  enabled = true
+  s = "status -s"
 [core]
-	autocrlf = input
-	editor = vim 
-	filemode = false
+  autocrlf = input
+  editor = vim 
+  filemode = false
 [credential]
-	helper = cache
+  helper = cache
 [merge]
-    tool = vimdiff
+  tool = vimdiff
