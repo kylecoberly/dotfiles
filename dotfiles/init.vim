@@ -17,6 +17,8 @@ set spelllang=en_us
 set autoread " Auto update on change
 au FocusGained,BufEnter * :checktime " Auto update on change
 set title " Adds file to window title
+set termguicolors " More colors
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 filetype plugin on
 filetype indent on
 let mapleader=" " " Leader
@@ -46,21 +48,22 @@ nnoremap <Leader>. @: " Repeat last ex command
 " Theme
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-
-let g:tokyonight_style='day'
-autocmd VimEnter * colorscheme tokyonight
-
-syntax enable
-set background=light
+Plug 'morhetz/gruvbox'
+set background=dark
+let g:gruvbox_contrast_dark='soft'
+let g:gruvbox_contrast_light='soft'
+let g:gruvbox_improved_strings=1
+let g:gruvbox_improved_warnings=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline_powerline_fonts=1
-let g:airline_theme='papercolor'
+let g:airline_theme='gruvbox'
+autocmd vimenter * ++nested colorscheme gruvbox
+autocmd vimenter * ++nested let g:airline_theme='base16_gruvbox_dark_hard'
 let g:airline_section_c=''
 let g:airline_section_y=''
 let g:airline_section_z=''
 let g:airline_skip_empty_sections = 1 " Skip empty sections
-
+syntax enable
 set listchars=trail:·,nbsp:⚋ " Character used for extra whitespace
 set fillchars=fold:- " Character used for extra whitespace in the statusline
 
@@ -78,12 +81,12 @@ set shiftwidth=2 " How far to indent successive lines
 " Scrolling
 Plug 'yuttie/comfortable-motion.vim'
 let g:comfortable_motion_no_default_key_mappings = 1
-let g:comfortable_motion_friction = 50.0
+let g:comfortable_motion_friction = 400.0
 let g:comfortable_motion_air_drag = 4.0
-nnoremap <silent> <C-d> :call comfortable_motion#flick(100)<CR>
-nnoremap <silent> <C-u> :call comfortable_motion#flick(-100)<CR>
-nnoremap <silent> <C-f> :call comfortable_motion#flick(200)<CR>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(-200)<CR>
+nnoremap <silent> <C-d> :call comfortable_motion#flick(200)<CR>
+nnoremap <silent> <C-u> :call comfortable_motion#flick(-200)<CR>
+nnoremap <silent> <C-f> :call comfortable_motion#flick(400)<CR>
+nnoremap <silent> <C-b> :call comfortable_motion#flick(-400)<CR>
 set scrolloff=5
 set sidescrolloff=7
 
@@ -96,7 +99,6 @@ nnoremap <Leader>r :set relativenumber!<CR> " Toggle relative line numbers
 " Pane Management
 Plug 'christoomey/vim-tmux-navigator'
 let g:tmux_navigator_no_mappings = 1
-
 nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
 nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
 nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
@@ -106,13 +108,11 @@ let g:tmux_navigator_save_on_switch=2
 
 " Buffer Management
 Plug 'ctrlpvim/ctrlp.vim'
-
 let g:ctrlp_use_caching=0
 let g:ctrlp_custom_ignore = 'bin$\|build$\|node_modules$\|tmp$\|dist$\|.git|.bak|.swp|.pyc|.class'
 let g:ctrlp_working_path_mode = 0
 let g:ctrlp_max_files=0
 let g:ctrlp_max_height = 18
-
 nnoremap <Leader>ff :CtrlP<CR> " Find a file in the current folder recursively
 nnoremap <Leader>d :bd<CR> " Delete current buffer
 nnoremap <Leader>D :bd!<CR> " Delete current buffer
@@ -121,17 +121,15 @@ nnoremap <Leader>N :bN<CR> " Previous buffer
 nnoremap <Leader>t :enew<CR> " Make a new empty buffer
 nnoremap <Tab> :b#<CR> " Tab between buffers
 
-" Find and Replace
+" Search
 Plug 'osyo-manga/vim-over' " Preview in buffer
 set ignorecase smartcase
-
 function! VisualFindAndReplace()
     :OverCommandLine%s/
 endfunction
 function! VisualFindAndReplaceWithSelection() range
     :'<,'>OverCommandLine s/
 endfunction
-
 nnoremap <Leader>fr :call VisualFindAndReplace()<CR>
 xnoremap <Leader>fr :call VisualFindAndReplaceWithSelection()<CR>
 
@@ -179,7 +177,6 @@ let g:coc_global_extensions = [
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
 nmap <silent> gd <Plug>(coc-definition) " Go to definition
 nmap <silent> gy <Plug>(coc-type-definition) " Go to type definition
 nmap <silent> gr <Plug>(coc-references) " Go to references
@@ -194,25 +191,9 @@ Plug 'pangloss/vim-javascript'
 " TypeScript
 Plug 'leafgarland/typescript-vim'
 
-" React
-" Plug 'maxmellon/vim-jsx-pretty'
-" autocmd BufEnter *.{js,jsx,ts,tsx} :syntax sync fromstart
-" autocmd BufLeave *.{js,jsx,ts,tsx} :syntax sync clear
-
-" Go
-au FileType go set noexpandtab
-au FileType go set shiftwidth=4
-au FileType go set softtabstop=4
-au FileType go set tabstop=4
-
-au FileType go nnoremap <leader>got :GoTest -short<cr>
-au Filetype go nnoremap <leader>goa <Plug>(go-alternate-edit)
-au FileType go nnoremap <leader>goc :GoCoverageToggle -short<cr>
-au FileType go nnoremap <leader>god <Plug>(go-def)
-
 " HTML/CSS
 Plug 'mattn/emmet-vim'
-let g:user_emmet_install_global = 0 "Only HTML and CSS
+let g:user_emmet_install_global = 0 " Only HTML and CSS
 let g:user_emmet_mode='i' " Only in insert mode
 autocmd FileType html,css EmmetInstall
 
@@ -223,7 +204,7 @@ let g:vim_json_syntax_conceal = 0 " Keep double quotes
 " YAML
 autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 
-" Text Writing
+" Text
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
 Plug 'godlygeek/tabular'
@@ -241,7 +222,6 @@ let g:vim_markdown_folding_disabled = 1
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter' " Git line status in gutter
-
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
 nnoremap <Leader>gd :Gdiff<CR>
@@ -253,9 +233,7 @@ nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gm :Git merge<CR>
 
 " TMUX
-
 Plug 'tmux-plugins/vim-tmux'
 Plug 'tpope/vim-obsession'
 
 call plug#end()
-

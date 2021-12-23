@@ -49,7 +49,9 @@ tmux_conf_24b_colour=true
 tmux_conf_theme_colour_1="#080808"    # dark gray
 tmux_conf_theme_colour_2="#303030"    # gray
 tmux_conf_theme_colour_3="#8a8a8a"    # light gray
-tmux_conf_theme_colour_4="#00afff"    # light blue
+# tmux_conf_theme_colour_4="#00afff"    # light blue
+# tmux_conf_theme_colour_4="#fabd2f"    # Gruvbox hard yellow
+tmux_conf_theme_colour_4="#d79921"    # Gruvbox soft yellow
 tmux_conf_theme_colour_5="#ffff00"    # yellow
 tmux_conf_theme_colour_6="#080808"    # dark gray
 tmux_conf_theme_colour_7="#e4e4e4"    # white
@@ -65,23 +67,23 @@ tmux_conf_theme_colour_16="#d70000"   # red
 tmux_conf_theme_colour_17="#e4e4e4"   # white
 
 # default theme (ansi)
-#tmux_conf_theme_colour_1="colour0"
-#tmux_conf_theme_colour_2="colour8"
-#tmux_conf_theme_colour_3="colour8"
-#tmux_conf_theme_colour_4="colour14"
-#tmux_conf_theme_colour_5="colour11"
-#tmux_conf_theme_colour_6="colour0"
-#tmux_conf_theme_colour_7="colour15"
-#tmux_conf_theme_colour_8="colour0"
-#tmux_conf_theme_colour_9="colour11"
-#tmux_conf_theme_colour_10="colour13"
-#tmux_conf_theme_colour_11="colour10"
-#tmux_conf_theme_colour_12="colour8"
-#tmux_conf_theme_colour_13="colour15"
-#tmux_conf_theme_colour_14="colour0"
-#tmux_conf_theme_colour_15="colour0"
-#tmux_conf_theme_colour_16="colour1"
-#tmux_conf_theme_colour_17="colour15"
+# tmux_conf_theme_colour_1="colour0"
+# tmux_conf_theme_colour_2="colour8"
+# tmux_conf_theme_colour_3="colour8"
+# tmux_conf_theme_colour_4="colour172" # For Gruvbox, I don't know why this works
+# tmux_conf_theme_colour_5="colour11"
+# tmux_conf_theme_colour_6="colour0"
+# tmux_conf_theme_colour_7="colour15"
+# tmux_conf_theme_colour_8="colour0"
+# tmux_conf_theme_colour_9="colour11"
+# tmux_conf_theme_colour_10="colour13"
+# tmux_conf_theme_colour_11="colour10"
+# tmux_conf_theme_colour_12="colour8"
+# tmux_conf_theme_colour_13="colour15"
+# tmux_conf_theme_colour_14="colour0"
+# tmux_conf_theme_colour_15="colour0"
+# tmux_conf_theme_colour_16="colour1"
+# tmux_conf_theme_colour_17="colour15"
 
 # window style
 tmux_conf_theme_window_fg="default"
@@ -326,27 +328,11 @@ tmux_conf_copy_to_os_clipboard=true
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
 
-# increase history size
-#set -g history-limit 10000
-
-# start with mouse mode enabled
-#set -g mouse on
-
-# force Vi mode
-#   really you should export VISUAL or EDITOR environment variable, see manual
-#set -g status-keys vi
-#set -g mode-keys vi
-
-# replace C-b by C-a instead of using both prefixes
-#set -gu prefix2
+set -g default-terminal "screen-256color"
+set -g mouse on
 unbind C-a
 unbind C-b
-# set -g prefix C-a
 set -g prefix C-Space
-# bind C-a send-prefix
-
-# move status line to top
-#set -g status-position top
 
 bind -r C-h run "tmux select-pane -L"
 bind -r C-j run "tmux select-pane -D"
@@ -359,6 +345,8 @@ unbind %
 bind | split-window -h
 bind - split-window -v
 
+# Gruvbox
+tmux_conf_theme_colour_5="colour20"  # Can't match up the actual colors, this is close
 
 # -- tpm -----------------------------------------------------------------------
 
@@ -398,7 +386,9 @@ tmux_conf_uninstall_plugins_on_reload=true
 #set -g @plugin 'tmux-plugins/tmux-copycat'
 set -g @plugin 'tmux-plugins/tmux-cpu'
 set -g @resurrect-strategy-nvim 'session'
+set -g @resurrect-capture-pane-contents 'on'
 set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @continuum-save-interval '5'
 set -g @continuum-restore 'on'
 set -g @continuum-boot 'on'
 set -g @plugin 'tmux-plugins/tmux-continuum'
