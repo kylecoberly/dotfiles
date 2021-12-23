@@ -14,7 +14,7 @@ SOLARIZED_THEME="dark"
 COLORTERM=truecolor
 
 # Plugins
-plugins=(git git-extras command-not-found common-aliases npm tmux vi-mode zsh-autosuggestions)
+plugins=(git git-extras command-not-found common-aliases npm tmux vi-mode zsh-autosuggestions zsh-syntax-highlighting)
 
 # PATH
 export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
