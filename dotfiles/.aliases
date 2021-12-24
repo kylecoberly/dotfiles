@@ -30,3 +30,7 @@ alias ll="ls -lGhp --group-directories-first --color=always | awk '{print \$1,\$
 alias du="du -h --max-depth=1"
 alias match="find . -type d -path '*/node_modules/*' -prune -o -type d -path '*/\.git/*' -prune -o -type d -path '*/bundle/*' -prune -o -type d -path '*/tmp/*' -prune -o -type d -path '*/.*' -prune -o -print"
 alias open="xdg-open"
+alias cat=batcat
+alias top=htop
+alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
+alias help='tldr'
