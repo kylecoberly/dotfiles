@@ -207,7 +207,6 @@ autocmd FileType yaml setlocal ts=2 sts=2 sw=2 expandtab
 " Text
 Plug 'junegunn/goyo.vim'
 Plug 'reedes/vim-pencil'
-Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 let g:goyo_width=60
 nnoremap <leader>m :Goyo<cr>
@@ -223,14 +222,20 @@ let g:vim_markdown_folding_disabled = 1
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter' " Git line status in gutter
 nnoremap <Leader>ga :Git add %:p<CR><CR>
-nnoremap <Leader>gs :Gstatus<CR> " Views status, use `-` and `p` to add/remove files
-nnoremap <Leader>gd :Gdiff<CR>
+nnoremap <Leader>gs :Git status<CR> " Views status, use `-` and `p` to add/remove files
+nnoremap <Leader>gd :Git diff<CR>
 nnoremap <Leader>gb :Git branch<Space>
 nnoremap <Leader>go :Git checkout<Space>
-nnoremap <Leader>gc :Gcommit -v -q<CR>
-nnoremap <Leader>gg :Gcommit -v -q %:p<CR> " Commits current file
+nnoremap <Leader>gc :Git commit -v -q<CR>
+nnoremap <Leader>gg :Git commit -v -q %:p<CR> " Commits current file
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gm :Git merge<CR>
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+nmap <Leader>hs <Plug>(GitGutterStageHunk)
+nmap <Leader>hu <Plug>(GitGutterUndoHunk)
+nmap <Leader>hs <Plug>(GitGutterStageHunk)
+nmap <Leader>hu <Plug>(GitGutterUndoHunk)
 
 " TMUX
 Plug 'tmux-plugins/vim-tmux'
