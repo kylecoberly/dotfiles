@@ -15,7 +15,11 @@ set nowrap
 set noerrorbells
 set spelllang=en_us
 set autoread " Auto update on change
-autocmd FocusGained,BufEnter,CursorHold,CursorHoldI * if !bufexists("[Command Line]") | checktime | endif " Auto update on change
+augroup auto_read
+  autocmd!
+  autocmd FocusGained,BufEnter,CursorHold,CursorHoldI *
+    \ if mode() == 'n' && getcmdwintype() == '' | checktime | endif
+augroup END
 set title " Adds file to window title
 set termguicolors " More colors
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
