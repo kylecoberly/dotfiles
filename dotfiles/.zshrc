@@ -23,7 +23,6 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/root/.config/composer/vendor/bin:$PATH"
 export PATH="/usr/bin/gradle-6.6.1/bin:$PATH"
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export PATH="$PATH:$HOME/.rvm/bin"
 
 # Search
 bindkey '^R' history-incremental-search-backward # Search
@@ -45,5 +44,6 @@ source $ZSH/oh-my-zsh.sh
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+nvm use node
 
-source ~/.rvm/scripts/rvm
+tmux

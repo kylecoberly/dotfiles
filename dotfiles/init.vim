@@ -124,6 +124,7 @@ nnoremap <Leader>n :bn<CR> " Next buffer
 nnoremap <Leader>N :bN<CR> " Previous buffer
 nnoremap <Leader>t :enew<CR> " Make a new empty buffer
 nnoremap <Tab> :b#<CR> " Tab between buffers
+nnoremap <Leader>bw :bufdo bwipeout<CR> " Close all buffers
 
 " Search
 Plug 'osyo-manga/vim-over' " Preview in buffer
@@ -161,9 +162,9 @@ let g:coc_global_extensions = [
   \ 'coc-angular',
   \ 'coc-css',
   \ 'coc-git',
-  \ 'coc-go',
   \ 'coc-html',
   \ 'coc-java',
+  \ 'coc-markdownlint',
   \ 'coc-jedi',
   \ 'coc-json',
   \ 'coc-snippets',
@@ -188,6 +189,15 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev) " Go to previous error
 nmap <silent> ]g <Plug>(coc-diagnostic-next) " Go to next error
 nmap <leader>do <Plug>(coc-codeaction) " Apply automatic fix
 nmap <leader>rn <Plug>(coc-rename) " Bulk rename
+" Use K to show documentation in preview window
+nnoremap <silent> gt :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
@@ -217,14 +227,19 @@ nnoremap <leader>m :Goyo<cr>
 let g:pencil#wrapModeDefault = 'soft'
 augroup pencil
     autocmd!
-    autocmd VimEnter FileType markdown,mkd,md call pencil#init()
-    autocmd FileType text call pencil#init({'wrap': 'hard'})
+    autocmd FileType markdown,mkd call pencil#init()
 augroup END
 let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_no_default_key_mappings = 1
+let g:vim_markdown_frontmatter = 1
+let g:vim_markdown_strikethrough = 1
+let g:pencil#conceallevel = 0
 
 " Git
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter' " Git line status in gutter
+Plug 'sodapopcan/vim-twiggy' " Fugitive plugin for branch management
+Plug 'junegunn/gv.vim' " Fugitive plugin for commit management
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gs :Git status<CR> " Views status, use `-` and `p` to add/remove files
 nnoremap <Leader>gd :Git diff<CR>
