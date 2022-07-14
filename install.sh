@@ -13,5 +13,5 @@ DOTFILES=(.gitconfig .bashrc .zshrc .aliases init.vim .tmux.conf, .tmux.conf.loc
 for dotfile in $(echo ${DOTFILES[*]});
 do
   sudo rm -rf ~/$(echo $dotfile)
-  ln -sf ~/dotfiles/dotfiles/$(echo $dotfile) ~/$(echo $dotfile)
+  ln -sf $(echo $dotfile) ~/$(echo $dotfile)
 done
