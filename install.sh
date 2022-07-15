@@ -15,11 +15,11 @@ sudo apt update
 
 ## Utilities
 
-sudo apt install -y ranger htop ncdu nmap p7zip peek powertop tldr tree unrar whereami zsh wget curl
+sudo apt install -y --no-install-recommends ranger bat htop ncdu nmap tldr tree wget
 
 ## Development
 
-sudo apt install -y tmux neovim fonts-powerline
+sudo apt install -y --no-install-recomends tmux neovim
 
 ## Link Files
 
