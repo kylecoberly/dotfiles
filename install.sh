@@ -23,12 +23,11 @@ sudo apt install -y --no-install-recomends tmux neovim
 
 ## Link Files
 
-#DOTFILES=(.gitconfig .zshrc .aliases init.vim .tmux.conf, .tmux.conf.local) 
-#for dotfile in $(echo ${DOTFILES[*]});
-#do
-  #sudo rm -f $HOME/$(echo $dotfile)
-  #ln -sf $(echo $dotfile) $HOME/$(echo $dotfile)
-#done
+DOTFILES=(.gitconfig .zshrc .aliases init.vim .tmux.conf, .tmux.conf.local) 
+for dotfile in $(echo ${DOTFILES[*]});
+do
+  ln -sf ./$(echo $dotfile) $HOME/$(echo $dotfile)
+done
 
 pwd | wall
 echo "Environment setup complete" | wall
