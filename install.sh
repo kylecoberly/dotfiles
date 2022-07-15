@@ -13,16 +13,16 @@ sudo apt update
 
 ## Utilities
 
-sudo apt install -y --no-install-recommends ranger bat htop ncdu nmap tldr tree wget zsh-syntax-highlighting
+sudo apt install -y --no-install-recommends ranger bat htop ncdu nmap tldr tree wget
 
 ## Development
 
 sudo apt install -y --no-install-recommends tmux neovim
-if command -v nvm
+if [command -v nvm]
 then
   nvm install node
 fi
-if command -v pip
+if [command -v pip]
 then
   pip install pynvim
 fi
