@@ -20,3 +20,12 @@ sudo apt install -y ranger htop ncdu nmap p7zip peek powertop tldr tree unrar wh
 ## Development
 
 sudo apt install -y tmux neovim fonts-powerline
+
+## Link Files
+
+DOTFILES=(.gitconfig .zshrc .aliases init.vim .tmux.conf, .tmux.conf.local) 
+for dotfile in $(echo ${DOTFILES[*]});
+do
+  sudo rm -f ~/$(echo $dotfile)
+  ln -sf $(echo $dotfile) ~/$(echo $dotfile)
+done
