@@ -7,7 +7,7 @@ then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 ln -sf ./coberly-gruvbox.zsh-theme ~/.oh-my-zsh/custom/themes
-chsh -s /bin/zsh $USERNAME
+# chsh -s /bin/zsh $USERNAME
 
 # Programs
 
