@@ -44,7 +44,7 @@ inoremap jj <ESC>
 inoremap jk <ESC>
 nmap <C-o> O<Esc>
 nmap <CR> o<Esc>
-command E Ex " Disambiguates E
+command! E Ex " Disambiguates E
 vnoremap <Leader>s :sort<CR> " Sort lines alphabetically
 nnoremap <Leader>. @: " Repeat last ex command
 
