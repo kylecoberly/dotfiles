@@ -30,4 +30,4 @@ sudo apt install -y --no-install-recomends tmux neovim
   #ln -sf $(echo $dotfile) $HOME/$(echo $dotfile)
 #done
 
-wall "Environment setup complete"
+echo "Environment setup complete" | wall
