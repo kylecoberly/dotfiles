@@ -18,11 +18,11 @@ sudo apt install -y --no-install-recommends ranger bat htop ncdu nmap tldr tree 
 ## Development
 
 sudo apt install -y --no-install-recommends tmux neovim
-if command -v nvm &> /dev/null
+if command -v nvm
 then
   nvm install node
 fi
-if command -v pip &> /dev/null
+if command -v pip
 then
   pip install pynvim
 fi
