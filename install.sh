@@ -26,7 +26,7 @@ sudo apt install -y --no-install-recomends tmux neovim
 DOTFILES=(.gitconfig .zshrc .aliases init.vim .tmux.conf, .tmux.conf.local) 
 for dotfile in $(echo ${DOTFILES[*]});
 do
-  ln -sf ./$(echo $dotfile) $HOME/$(echo $dotfile)
+  ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/$(echo $dotfile) $HOME/$(echo $dotfile)
 done
 
 pwd | wall
