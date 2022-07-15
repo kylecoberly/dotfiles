@@ -18,8 +18,17 @@ sudo apt install -y --no-install-recommends ranger bat htop ncdu nmap tldr tree 
 ## Development
 
 sudo apt install -y --no-install-recommends tmux neovim
+if command -v nvm &> /dev/null
+then
+  nvm install node
+fi
+if command -v pip &> /dev/null
+then
+  pip install pynvim
+fi
 
 ## Link Files
+
 ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/coberly-gruvbox.zsh-theme $HOME/.oh-my-zsh/custom/themes
 mkdir -p $HOME/.config/nvim && ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/init.vim $HOME/.config/nvim
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
