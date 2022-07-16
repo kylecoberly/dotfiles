@@ -144,28 +144,6 @@ prompt_git() {
   fi
 }
 
-prompt_bzr() {
-    (( $+commands[bzr] )) || return
-    if (bzr status >/dev/null 2>&1); then
-        status_mod=`bzr status | head -n1 | grep "modified" | wc -m`
-        status_all=`bzr status | head -n1 | wc -m`
-        revision=`bzr log | head -n2 | tail -n1 | sed 's/^revno: //'`
-        if [[ $status_mod -gt 0 ]] ; then
-            prompt_segment 3 0
-            echo -n "bzr@"$revision "✚ "
-        else
-            if [[ $status_all -gt 0 ]] ; then
-                prompt_segment 3 0
-                echo -n "bzr@"$revision
-
-            else
-                prompt_segment 2 0
-                echo -n "bzr@"$revision
-            fi
-        fi
-    fi
-}
-
 prompt_hg() {
   (( $+commands[hg] )) || return
   local rev st branch
@@ -235,7 +213,6 @@ build_prompt() {
   prompt_status
   prompt_dir
   prompt_git
-  prompt_bzr
   prompt_hg
   prompt_end
 }
