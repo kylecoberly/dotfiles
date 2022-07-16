@@ -29,26 +29,27 @@ nvm install node
 
 ## Link Files
 
-ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/coberly-gruvbox.zsh-theme $HOME/.oh-my-zsh/custom/themes
-mkdir -p $HOME/.config/nvim && ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/init.vim $HOME/.config/nvim
-git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
-
-if [ $CODESPACES = "true" ]
-then
+if [ "${CODESPACES}" == "true" ]; then
   DOTFILE_DIRECTORY="/workspaces/.codespaces/.persistedshare/dotfiles"
 else
   DOTFILE_DIRECTORY="${HOME}/dotfiles"
 fi
 
+ln -sf "${DOTFILE_DIRECTORY}/coberly-gruvbox.zsh-theme" "${HOME}/.oh-my-zsh/custom/themes"
+mkdir -p "${HOME}/.config/nvim" && ln -sf "${DOTFILE_DIRECTORY}/init.vim" "${HOME}/.config/nvim"
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
 DOTFILES=(.gitconfig .zshrc .aliases .tmux.conf .tmux.conf.local) 
 for dotfile in $(echo ${DOTFILES[*]});
 do
-  ln -sf ${DOTFILE_DIRECTORY}/$(echo $dotfile) ${HOME}/
+  ln -sf "${DOTFILE_DIRECTORY}/${dotfile}" "${HOME}/"
 done
 
 ###################################
 
 nvim --headless +PlugInstall! +qall
 
-echo "Environment setup complete" | wall
+if [ "${CODESPACES}" == "true" ]; then
+  echo "Environment setup complete" | wall
+fi
