@@ -166,7 +166,6 @@ let g:coc_global_extensions = [
   \ 'coc-markdownlint',
   \ 'coc-jedi',
   \ 'coc-json',
-  \ 'coc-snippets',
   \ 'coc-spell-checker',
   \ 'coc-sql',
   \ 'coc-svg',
