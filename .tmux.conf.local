@@ -328,6 +328,7 @@ tmux_conf_copy_to_os_clipboard=true
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
 
+set-option -g default-shell /bin/zsh
 set -g default-terminal "screen-256color"
 set -g mouse on
 unbind C-a
