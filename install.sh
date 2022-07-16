@@ -17,7 +17,7 @@ sudo apt install -y --no-install-recommends ranger bat htop ncdu nmap tldr tree 
 
 ## Development
 
-sudo apt install -y --no-install-recommends tmux neovim python3-pip
+sudo apt install -y --no-install-recommends tmux neovim python3
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
@@ -36,6 +36,7 @@ for dotfile in $(echo ${DOTFILES[*]});
 do
   ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/$(echo $dotfile) $HOME/$(echo $dotfile)
 done
-nvim --headless +PlugInstall +qall
+nvim --headless +PlugInstall +qall # First time for most plugin installs
+nvim --headless +PlugInstall +qall # Second time to install CoC
 
 echo "Environment setup complete" | wall
