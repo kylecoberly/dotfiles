@@ -21,7 +21,7 @@ sudo apt install -y --no-install-recommends tmux neovim
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-nvim --headless +PlugInstall +qall
+nvm install node
 if command -v pip
 then
   pip install pynvim
@@ -39,5 +39,6 @@ for dotfile in $(echo ${DOTFILES[*]});
 do
   ln -sf /workspaces/.codespaces/.persistedshare/dotfiles/$(echo $dotfile) $HOME/$(echo $dotfile)
 done
+nvim --headless +PlugInstall +qall
 
 echo "Environment setup complete" | wall
