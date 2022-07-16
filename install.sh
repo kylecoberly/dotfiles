@@ -17,15 +17,12 @@ sudo apt install -y --no-install-recommends ranger bat htop ncdu nmap tldr tree 
 
 ## Development
 
-sudo apt install -y --no-install-recommends tmux neovim
+sudo apt install -y --no-install-recommends tmux neovim python3-pip
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 nvm install node
-if command -v pip
-then
-  pip install pynvim
-fi
+pip install pynvim
 
 ## Link Files
 
