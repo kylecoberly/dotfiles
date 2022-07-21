@@ -33,12 +33,12 @@ bindkey -v # Enable vim mode
 bindkey -M viins 'jj' vi-cmd-mode # Go to normal with jj
 bindkey -M viins 'jk' vi-cmd-mode # Go to normal with jk
 
+# Bootstrap
+source $ZSH/oh-my-zsh.sh
+
 # Shortcuts
 source ~/.aliases
 bindkey "\e." insert-last-word
-
-# Bootstrap
-source $ZSH/oh-my-zsh.sh
 
 # nvm
 export NVM_DIR="$HOME/.nvm"
