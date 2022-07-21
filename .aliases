@@ -27,7 +27,6 @@ alias tmux='TERM=xterm-256color tmux -u' # Fixes dumb unicode bug with oh-my-zsh
 alias ranger='ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`; rm -f $HOME/rangerdir; cd "$LASTDIR"'
 alias lsa="ls -lAGhp --group-directories-first --color=always | awk '{print \$1,\$3,\$4,\$8}' | column -t"
 alias ll="ls -lGhp --group-directories-first --color=always | awk '{print \$1,\$3,\$4,\$8}' | column -t"
-alias du="du -h --max-depth=1"
 alias match="find . -type d -path '*/node_modules/*' -prune -o -type d -path '*/\.git/*' -prune -o -type d -path '*/bundle/*' -prune -o -type d -path '*/tmp/*' -prune -o -type d -path '*/.*' -prune -o -print"
 alias open="xdg-open"
 alias cat=batcat
