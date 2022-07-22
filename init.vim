@@ -66,6 +66,7 @@ let g:airline_section_c=''
 let g:airline_section_y=''
 let g:airline_section_z=''
 let g:airline_skip_empty_sections = 1 " Skip empty sections
+
 syntax enable
 set listchars=trail:·,nbsp:⚋ " Character used for extra whitespace
 set fillchars=fold:- " Character used for extra whitespace in the statusline
@@ -249,8 +250,6 @@ nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gm :Git merge<CR>
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
-nmap <Leader>hs <Plug>(GitGutterStageHunk)
-nmap <Leader>hu <Plug>(GitGutterUndoHunk)
 nmap <Leader>hs <Plug>(GitGutterStageHunk)
 nmap <Leader>hu <Plug>(GitGutterUndoHunk)
 
