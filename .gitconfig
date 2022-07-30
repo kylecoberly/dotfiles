@@ -42,7 +42,7 @@
   autocrlf = input
   editor = vim 
   filemode = false
-  pager = bat
+  pager = batcat
   excludesfile = ~/.gitignore
   abbrev = 4
 [log]
