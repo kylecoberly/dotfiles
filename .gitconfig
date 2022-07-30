@@ -29,7 +29,8 @@
   br = branch
   s = status -s
   sq = rebase -i HEAD~2
-  graph = log --graph
+  lg = log --pretty=format:'%C(yellow)%h -%C(auto)%d %C(bold cyan)%s %C(bold white)(%cr)%Creset %C(dim white)<%an>'
+  graph = log --graph --pretty=format:'%C(yellow)%h -%C(auto)%d %C(bold cyan)%s %C(bold white)(%cr)%Creset %C(dim white)<%an>'
 [push]
   default = upstream
   followTags = true
