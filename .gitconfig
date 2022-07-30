@@ -40,12 +40,12 @@
   enabled = true
   s = "status -s"
 [core]
+  abbrev = 4
   autocrlf = input
   editor = vim 
   filemode = false
   pager = batcat
   excludesfile = ~/.gitignore
-  abbrev = 4
 [log]
   decorate = short
   abbrevCommit = true
@@ -53,7 +53,13 @@
 [credential]
   helper = cache
 [merge]
-  tool = vimdiff
+  tool = vim_mergetool
+  conflictstyle = diff3
+[mergetool "vim_mergetool"]
+  cmd = nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
+  trustExitCode = true
+[mergetool]
+  keepBackup = false
 [help]
   autocorrect = 1
 [status]

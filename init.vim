@@ -239,6 +239,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter' " Git line status in gutter
 Plug 'sodapopcan/vim-twiggy' " Fugitive plugin for branch management
 Plug 'junegunn/gv.vim' " Fugitive plugin for commit management
+Plug 'samoshkin/vim-mergetool' " Vimdiff replacement for git merges
 nnoremap <Leader>ga :Git add %:p<CR><CR>
 nnoremap <Leader>gs :Git status<CR> " Views status, use `-` and `p` to add/remove files
 nnoremap <Leader>gd :Git diff<CR>
@@ -252,6 +253,11 @@ nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 nmap <Leader>hs <Plug>(GitGutterStageHunk)
 nmap <Leader>hu <Plug>(GitGutterUndoHunk)
+nmap <leader>mt <plug>(MergetoolToggle)
+nmap <leader>dg :diffget<CR>
+nmap <leader>dp :diffput<CR>
+let g:mergetool_layout = 'mr'
+let g:mergetool_prefer_revision = 'local'
 
 " TMUX
 Plug 'tmux-plugins/vim-tmux'
