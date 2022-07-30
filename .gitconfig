@@ -28,10 +28,10 @@
   st = status
   br = branch
   s = status -s
-  lg = "log --oneline --decorate --all --"
   sq = rebase -i HEAD~2
+  graph = git log --graph
 [push]
-  default = simple
+  default = upstream
   followTags = true
 [branch]
   autosetuprebase = always
@@ -42,7 +42,18 @@
   autocrlf = input
   editor = vim 
   filemode = false
+  pager = bat
+  excludesfile = ~/.gitignore
+  abbrev = 4
+[log]
+  decorate = short
+  abbrevCommit = true
+  showRoot = true
 [credential]
   helper = cache
 [merge]
   tool = vimdiff
+[help]
+  autocorrect = 1
+[status]
+  short = true

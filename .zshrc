@@ -47,5 +47,5 @@ export NVM_DIR="$HOME/.nvm"
 nvm use node
 
 if [[ ! -v TMUX ]]; then
-  tmux
+  tmux attach || tmux
 fi
