@@ -29,7 +29,7 @@
   br = branch
   s = status -s
   sq = rebase -i HEAD~2
-  graph = git log --graph
+  graph = log --graph
 [push]
   default = upstream
   followTags = true
