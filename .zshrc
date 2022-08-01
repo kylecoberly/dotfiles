@@ -22,7 +22,8 @@ export PATH="${HOME}/.local/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/root/.config/composer/vendor/bin:$PATH"
 export PATH="/usr/bin/gradle-6.6.1/bin:$PATH"
-export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+export PATH="${HOME}/dotfiles/git-scrub:$PATH"
 
 # Search
 bindkey '^R' history-incremental-search-backward # Search

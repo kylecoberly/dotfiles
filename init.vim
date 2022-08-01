@@ -249,6 +249,10 @@ nnoremap <Leader>gc :Git commit -v -q<CR>
 nnoremap <Leader>gg :Git commit -v -q %:p<CR> " Commits current file
 nnoremap <Leader>gp :Git push<CR>
 nnoremap <Leader>gm :Git merge<CR>
+nnoremap <Leader>gn :Git next<CR>
+nnoremap <Leader>gN :Git prev<CR>
+nnoremap <Leader>g0 :Git first<CR>
+nnoremap <Leader>g$ :Git last<CR>
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
 nmap <Leader>hs <Plug>(GitGutterStageHunk)
