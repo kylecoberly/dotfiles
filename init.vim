@@ -199,6 +199,7 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
+autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 
 " JavaScript
 Plug 'pangloss/vim-javascript'
