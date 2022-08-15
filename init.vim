@@ -181,6 +181,8 @@ let g:coc_global_extensions = [
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+xmap <leader>f <Plug>(coc-format-selected)
+nmap <leader>f <Plug>(coc-format-selected)
 nmap <silent> gd <Plug>(coc-definition) " Go to definition
 nmap <silent> gy <Plug>(coc-type-definition) " Go to type definition
 nmap <silent> gr <Plug>(coc-references) " Go to references
