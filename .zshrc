@@ -14,7 +14,7 @@ SOLARIZED_THEME="dark"
 COLORTERM=truecolor
 
 # Plugins
-plugins=(git git-extras command-not-found common-aliases npm tmux vi-mode zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git git-extras command-not-found common-aliases nvm npm tmux vi-mode zsh-autosuggestions zsh-syntax-highlighting ubuntu docker-compose)
 
 # PATH
 export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
@@ -24,6 +24,7 @@ export PATH="/root/.config/composer/vendor/bin:$PATH"
 export PATH="/usr/bin/gradle-6.6.1/bin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="${HOME}/dotfiles/git-scrub:$PATH"
+export PATH="${HOME}/.fly/bin:$PATH"
 
 # Search
 bindkey '^R' history-incremental-search-backward # Search

@@ -89,8 +89,8 @@ let g:comfortable_motion_friction = 400.0
 let g:comfortable_motion_air_drag = 4.0
 nnoremap <silent> <C-d> :call comfortable_motion#flick(200)<CR>
 nnoremap <silent> <C-u> :call comfortable_motion#flick(-200)<CR>
-nnoremap <silent> <C-f> :call comfortable_motion#flick(400)<CR>
-nnoremap <silent> <C-b> :call comfortable_motion#flick(-400)<CR>
+" nnoremap <silent> <C-f> :call comfortable_motion#flick(400)<CR>
+" nnoremap <silent> <C-b> :call comfortable_motion#flick(-400)<CR>
 set scrolloff=5
 set sidescrolloff=7
 
@@ -199,7 +199,13 @@ function! s:show_documentation()
     call CocAction('doHover')
   endif
 endfunction
-autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+autocmd FileType ts User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+
+" Scroll hint window
+nnoremap <nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+nnoremap <nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+inoremap <nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+inoremap <nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
 
 " JavaScript
 Plug 'pangloss/vim-javascript'

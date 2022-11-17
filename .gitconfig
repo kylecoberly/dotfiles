@@ -23,6 +23,7 @@
   cob = checkout -b
   c = commit
   cm = commit -m
+  wip = commit -am 'WIP'
   cam = commit -am
   st = status
   br = branch
