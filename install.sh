@@ -1,5 +1,10 @@
 #!/bin/bash
 
+## Programs
+
+sudo apt update
+sudo apt install zsh
+
 ## Shell
 
 OHMYZSH_DIR="$HOME/.oh-my-zsh"
@@ -7,10 +12,6 @@ if [ ! -d "${OHMYZSH_DIR}" ]
 then
   sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
-
-## Programs
-
-sudo apt update
 
 ### Utilities
 
