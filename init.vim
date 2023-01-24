@@ -172,6 +172,7 @@ let g:coc_global_extensions = [
   \ 'coc-svg',
   \ 'coc-tabnine',
   \ 'coc-tsserver',
+  \ 'coc-eslint',
   \ 'coc-vetur',
   \ 'coc-xml',
   \ 'coc-yaml',
