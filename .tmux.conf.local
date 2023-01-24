@@ -331,6 +331,7 @@ tmux_conf_copy_to_os_clipboard=true
 set-option -g default-shell /bin/zsh
 set -g default-terminal "screen-256color"
 set -g mouse on
+set -gu prefix2 # Needed to remove compatible prefix
 unbind C-a
 unbind C-b
 set -g prefix C-Space
