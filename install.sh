@@ -44,7 +44,7 @@ mkdir -p "${HOME}/.config/nvim" && ln -sf "${DOTFILE_DIRECTORY}/init.vim" "${HOM
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
 
-DOTFILES=(.gitconfig .gitignore .zshrc .aliases .tmux.conf .tmux.conf.local) 
+DOTFILES=(.gitconfig .gitignore .zshrc .aliases .tmux.conf .tmux.conf.local .markdownlintrc) 
 for dotfile in $(echo ${DOTFILES[*]});
 do
   ln -sf "${DOTFILE_DIRECTORY}/${dotfile}" "${HOME}/"

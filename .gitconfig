@@ -64,3 +64,5 @@
   autocorrect = 1
 [status]
   short = true
+[init]
+	defaultBranch = main
