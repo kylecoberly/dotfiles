@@ -1,17 +1,28 @@
 return {
   {
-    "junegunn/goyo.vim",
-    config = function()
-      vim.g.goyo_width = 60
-
-      vim.keymap.set("n", "m", ":Goyo<CR>", { silent = true })
-    end
-  },
-  {
     "jghauser/follow-md-links.nvim",
     config = function()
       vim.keymap.set("n", "<BS>", ":edit #<CR>", { silent = true })
     end
+  },
+  {
+    "Pocco81/true-zen.nvim",
+    config = function()
+      local truezen = require("true-zen")
+      truezen.setup({
+        integrations = {
+          tmux = true,
+          lualine = true
+        }
+      })
+
+      vim.keymap.set("n", "<Leader>m", function()
+        truezen.ataraxis()
+      end, {
+        desc = "Zen: Ataraxis",
+        noremap = true
+      })
+    end,
   },
   {
     "iamcco/markdown-preview.nvim",
