@@ -40,9 +40,9 @@
   enabled = true
   s = "status -s"
 [core]
-  abbrev = 4
+  # abbrev = 4
   autocrlf = input
-  editor = vim 
+  editor = nvim
   filemode = false
   pager = batcat
   excludesfile = ~/.gitignore

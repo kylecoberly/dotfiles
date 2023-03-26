@@ -393,7 +393,8 @@ set -g @plugin 'tmux-plugins/tmux-continuum'
 set -g @continuum-save-interval '5'
 set -g @continuum-restore 'on'
 set -g @continuum-boot 'on'
-set -g @plugin 'christoomey/vim-tmux-navigator'
+set -g @plugin 'aserowy/tmux.nvim'
+run '~/.tmux/plugins/tpm/tpm'
 set -g @plugin 'tmux-plugins/tmux-yank'
 
 # -- custom variables ----------------------------------------------------------

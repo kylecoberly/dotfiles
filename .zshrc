@@ -14,7 +14,12 @@ SOLARIZED_THEME="dark"
 COLORTERM=truecolor
 
 # Plugins
-plugins=(git git-extras command-not-found common-aliases nvm npm tmux vi-mode zsh-autosuggestions zsh-syntax-highlighting ubuntu docker-compose)
+plugins=( \
+  git git-extras command-not-found common-aliases \
+  npm tmux vi-mode zsh-autosuggestions sudo \
+  zsh-syntax-highlighting ubuntu docker-compose asdf \
+  copyfile history colored-man-pages fancy-ctrl-z \
+)
 
 # PATH
 export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
@@ -42,11 +47,10 @@ source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 bindkey "\e." insert-last-word
 
-# nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-nvm use node
+## asdf Java
+if [[ -d ~/.asdf/plugins/java ]]; then
+  . ~/.asdf/plugins/java/set-java-home.zsh
+fi
 
 if [[ ! -v TMUX ]]; then
   tmux attach || tmux
