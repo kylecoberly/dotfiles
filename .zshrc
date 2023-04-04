@@ -52,6 +52,6 @@ if [[ -d ~/.asdf/plugins/java ]]; then
   . ~/.asdf/plugins/java/set-java-home.zsh
 fi
 
-if [[ ! -v TMUX ]]; then
-  tmux attach || tmux
-fi
+# if [[ ! -v TMUX ]]; then
+#   tmux attach || tmux
+# fi
