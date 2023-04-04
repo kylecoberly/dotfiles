@@ -58,10 +58,17 @@ return {
       require("nvim-surround").setup()
     end
   },
-  "tpope/vim-repeat",
-  "tpope/vim-unimpaired",
   {
-   "numToStr/Comment.nvim",
+    "tpope/vim-repeat",
+  },
+  {
+    "tummetott/unimpaired.nvim",
+    config = function()
+      require("unimpaired").setup()
+    end
+  },
+  {
+    "numToStr/Comment.nvim",
     config = function ()
       require("Comment").setup()
     end
