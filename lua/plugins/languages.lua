@@ -111,16 +111,19 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
+      "JoosepAlviste/nvim-ts-context-commentstring",
     },
     config = function()
       pcall(require("nvim-treesitter.install").update { with_sync = true })
       -- [[ Configure Treesitter ]]
       -- See `:help nvim-treesitter`
       require("nvim-treesitter.configs").setup {
+        context_commentstring = {
+          enable = true
+        },
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
           "bash",
-          "help",
           "html",
           "javascript",
           "json",
@@ -194,7 +197,7 @@ return {
           },
         },
       }
-    end,
+    end
   },
   {
     -- Autocompletion
@@ -207,7 +210,7 @@ return {
         "tzachar/cmp-tabnine",
         build = "./install.sh"
       }
-     },
+    },
     config = function()
       -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
       local capabilities = vim.lsp.protocol.make_client_capabilities()
