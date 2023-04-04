@@ -35,7 +35,7 @@ vim.o.swapfile = false
 -- Decrease update time
 vim.o.updatetime = 150
 vim.o.timeout = true
-vim.o.timeoutlen = 300
+vim.o.timeoutlen = 1000
 
 --
 -- SEARCH

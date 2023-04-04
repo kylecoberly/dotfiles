@@ -60,8 +60,20 @@ return {
   },
   "tpope/vim-repeat",
   "tpope/vim-unimpaired",
-  "numToStr/Comment.nvim",
-  "folke/which-key.nvim",
+  {
+   "numToStr/Comment.nvim",
+    config = function ()
+      require("Comment").setup()
+    end
+  },
+  {
+    "folke/which-key.nvim",
+    config = function ()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 500
+      require("which-key").setup()
+    end
+  },
   {
     "akinsho/toggleterm.nvim",
     config = function()
