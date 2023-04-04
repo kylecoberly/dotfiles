@@ -1,24 +1,25 @@
+local nmap = function(keys, func, desc)
+  vim.keymap.set("n", keys, func, { desc = desc })
+end
+
 -- Diff tool
 vim.g.mergetool_layout = "mr"
 vim.g.mergetool_prefer_revision = "local"
-vim.keymap.set("n", "<Leader>dg", ":diffget<CR>")
-vim.keymap.set("n", "<Leader>dp", ":diffput<CR>")
+nmap("<Leader>dg", ":diffget<CR>", "Diff: Get")
+nmap("<Leader>dp", ":diffput<CR>", "Diff: Put")
 
 return {
   {
     "tpope/vim-fugitive",
     config = function ()
-      -- Stage current file
-      vim.keymap.set("n", "<Leader>ga", ":Git add %<CR><CR>")
-      -- Interactive tool
-      vim.keymap.set("n", "<Leader>gs", ":Git<CR>")
-      vim.keymap.set("n", "<Leader>gd", ":Git diff<CR>")
-      vim.keymap.set("n", "<Leader>gb", ":Git branch<Space>")
-      vim.keymap.set("n", "<Leader>go", ":Git checkout<Space>")
-      vim.keymap.set("n", "<Leader>gc", ":Git commit -v -q<CR>")
-      -- Commit current file
-      vim.keymap.set("n", "<Leader>gg", ":Git commit -v -q %:p<CR>")
-      vim.keymap.set("n", "<Leader>gp", ":Git push<CR>")
+      nmap("<Leader>ga", ":Git add %<CR><CR>", "Git Add this file")
+      nmap("<Leader>gs", ":Git<CR>", "Git: Interactive tool")
+      nmap("<Leader>gd", ":Git diff<CR>", "Git Diff")
+      nmap("<Leader>gb", ":Git branch<Space>", "Git Branch")
+      nmap("<Leader>go", ":Git checkout<Space>", "Git Checkout")
+      nmap("<Leader>gc", ":Git commit -v -q<CR>", "Git Commit")
+      nmap("<Leader>gg", ":Git commit -v -q %:p<CR>", "Git Commit this file")
+      nmap("<Leader>gp", ":Git push<CR>", "Git Push")
     end
   },
   "tpope/vim-rhubarb",
@@ -64,13 +65,19 @@ return {
           })
 
           -- Git commands
-          vim.keymap.set({"n", "v"}, "<Leader>hs", ":Gitsigns stage_hunk<CR>")
-          vim.keymap.set({"n", "v"}, "<Leader>hr", ":Gitsigns reset_hunk<CR>")
-          vim.keymap.set("n", "<Leader>hS", gs.stage_buffer)
-          vim.keymap.set("n", "<Leader>hu", gs.undo_stage_hunk)
+          vim.keymap.set({"n", "v"}, "<Leader>hs", ":Gitsigns stage_hunk<CR>", {
+            desc = "Git: Stage hunk"
+          })
+          vim.keymap.set({"n", "v"}, "<Leader>hr", ":Gitsigns reset_hunk<CR>", {
+            desc = "Git: Reset hunk"
+          })
+          nmap("<Leader>hS", gs.stage_buffer, "Git: Stage file")
+          nmap("<Leader>hu", gs.undo_stage_hunk, "Git: Undo stage hunk")
 
           -- Create a text object
-          vim.keymap.set({ "o", "x" }, "ih", ":<C-U>GitSigns select_hunk<CR>")
+          vim.keymap.set({ "o", "x" }, "ih", ":<C-U>GitSigns select_hunk<CR>", {
+            desc = "Select hunk"
+          })
         end
       })
     end
