@@ -32,7 +32,9 @@ return {
       vim.g.mkdp_auto_close = 0
       vim.g.mkdp_echo_preview_url = 1
 
-      vim.keymap.set("n", "<Leader>p", ":MarkdownPreviewToggle<CR>")
+      vim.keymap.set("n", "<Leader>p", ":MarkdownPreviewToggle<CR>", {
+        desc = "Toggle live markdown preview",
+      })
     end,
   }
 }
