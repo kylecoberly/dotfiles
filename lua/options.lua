@@ -24,6 +24,15 @@ vim.o.clipboard = "unnamedplus"
 -- Save undo history
 vim.o.undofile = true
 
+--#region
+--INDENTATION
+--
+vim.o.expandtab = false
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.softtabstop = 0
+vim.o.smarttab = true
+
 --
 -- PERFORMANCE
 --
