@@ -20,7 +20,7 @@ vim.o.termguicolors = true
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 -- Sync clipboard between OS and Neovim.
-vim.o.clipboard = "unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 -- Save undo history
 vim.o.undofile = true
 
