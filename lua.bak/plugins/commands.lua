@@ -82,6 +82,13 @@ return {
     end
   },
   {
+    "mbbill/undotree",
+    config = function ()
+      require("undotree").setup()
+      vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+    end
+  },
+  {
     "akinsho/toggleterm.nvim",
     config = function()
       require("toggleterm").setup({

@@ -74,8 +74,7 @@ sudo apt install -y --no-install-recommends tmux
 ## Neovim
 sudo apt install -y --no-install-recommends neovim ripgrep fd-find
 mkdir -p "${HOME}/.config/nvim" \
-  && ln -sf "${DOTFILE_DIRECTORY}/init.lua" "${HOME}/.config/nvim" \
-  && ln -sf "${DOTFILE_DIRECTORY}/lua" "${HOME}/.config/nvim"
+  && ln -sf "${DOTFILE_DIRECTORY}/neovim" "${HOME}/.config/nvim"
 npm i -g neovim # Needed for Neovim
 gem install neovim
 
