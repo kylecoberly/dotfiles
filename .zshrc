@@ -23,13 +23,13 @@ plugins=( \
 
 # PATH
 export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-export PATH="${HOME}/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH="/usr/local/heroku/bin:$PATH"
 export PATH="/root/.config/composer/vendor/bin:$PATH"
 export PATH="/usr/bin/gradle-6.6.1/bin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-export PATH="${HOME}/dotfiles/git-scrub:$PATH"
-export PATH="${HOME}/.fly/bin:$PATH"
+export PATH="$HOME/.fly/bin:$PATH"
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # Search
 bindkey '^R' history-incremental-search-backward # Search
@@ -52,6 +52,6 @@ if [[ -d ~/.asdf/plugins/java ]]; then
   . ~/.asdf/plugins/java/set-java-home.zsh
 fi
 
-# if [[ ! -v TMUX ]]; then
-#   tmux attach || tmux
-# fi
+if [[ ! -v TMUX ]]; then
+  tmux attach || tmux
+fi

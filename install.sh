@@ -65,13 +65,6 @@ jq -c '.languages[]' "languages.json" | while read language; do
 	asdf global "$target" "$version"
 done
 
-## Zellij
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-cargo install --locked zellij
-mkdir -p ~/.config/zellij
-ln -sf "$DOTFILE_DIRECTORY/zellij.kdl" "$HOME/.config/zellij/config.kdl"
-ln -sf "$DOTFILE_DIRECTORY/zellij-themes" "$HOME/.config/zellij/themes"
-
 ## Neovim
 sudo apt install -y --no-install-recommends neovim ripgrep fd-find
 cp -rf --symbolic-link "${DOTFILE_DIRECTORY}/neovim" "${HOME}/.config/nvim"
