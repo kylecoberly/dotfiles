@@ -67,7 +67,7 @@ done
 
 ## Neovim
 sudo apt install -y --no-install-recommends neovim ripgrep fd-find
-cp -rf --symbolic-link "${DOTFILE_DIRECTORY}/neovim" "${HOME}/.config/nvim"
+ln -sf "${DOTFILE_DIRECTORY}/neovim" "${HOME}/.config/nvim"
 npm i -g neovim # Needed for Neovim
 gem install neovim
 
