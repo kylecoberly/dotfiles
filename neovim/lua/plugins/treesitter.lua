@@ -12,6 +12,7 @@ return {
           "make",
           "toml",
           "vimdoc",
+          "ruby",
         })
       end
     end,

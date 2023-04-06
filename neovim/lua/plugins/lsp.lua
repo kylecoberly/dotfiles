@@ -12,7 +12,7 @@ return {
         jdtls = {},
         marksman = {},
         jedi_language_server = {},
-        rubyls = {},
+        ruby_ls = {},
         sqlls = {},
         volar = {},
         yamlls = {},
