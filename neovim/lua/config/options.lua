@@ -35,11 +35,3 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 -- Highlight matches on search
 vim.opt.hlsearch = false
-
---
--- NOTIFICATIONS
---
--- Turn off dings
-vim.opt.errorbells = false
--- Enable visual dings
-vim.opt.visualbell = false
