@@ -18,5 +18,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install tmux
 fi
 
+rm "${HOME}/.tmux.conf" "${HOME}/.tmux.conf.local"
 ln -sf "${DOTFILE_DIRECTORY}/tmux/.tmux.conf" "${HOME}/"
 ln -sf "${DOTFILE_DIRECTORY}/tmux/.tmux.conf.local" "${HOME}/"

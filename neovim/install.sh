@@ -20,6 +20,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 ## Link dotfiles
+rm -rf "${HOME/.config/nvim}"
 ln -sf "${DOTFILE_DIRECTORY}/neovim" "${HOME}/.config/nvim"
 
 ## Install language dependencies
