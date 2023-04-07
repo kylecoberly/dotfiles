@@ -1,9 +1,4 @@
 export ZSH="$HOME/.oh-my-zsh" # Path to your oh-my-zsh installation.
-# if [ "${CODESPACES}" == "true" ]; then
-# 	export DOTFILE_DIRECTORY="/workspaces/.codespaces/.persistedshare/dotfiles"
-# else
-# 	export DOTFILE_DIRECTORY="$HOME/dotfiles"
-# fi
 
 # Global
 enable_correction="true"

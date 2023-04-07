@@ -53,7 +53,7 @@ esac
   # what font the user is viewing this source code in. Do not replace the
   # escape sequence with a single literal character.
   # Do not change this! Do not make it '\u2b80'; that is the old, wrong code point.
-  SEGMENT_SEPARATOR=$'\ue0b0'
+  SEGMENT_SEPARATOR=$'\ue0b0' # 
 }
 
 # Begin a segment
@@ -92,13 +92,49 @@ prompt_context() {
     # prompt_segment 237 7 "%(!.%{%F{3}%}.)%n@%m"
   # fi
   case "$OSTYPE" in
-    darwin*)  OS_LOGO="\ue29e" ;; 
-    linux*)   OS_LOGO="\ue712" ;;
+    darwin*)  OS_LOGO="\ue29e" ;; # 
+    linux*)   OS_LOGO="\ue712" ;; # 
   esac
   prompt_segment 237 7 $OS_LOGO
 }
 
 # Git: branch/detached head, dirty status
+function +vi-git-st() {
+    local ahead behind
+    local -a gitstatus
+
+    # Exit early in case the worktree is on a detached HEAD
+    #git rev-parse ${hook_com[branch]}@{upstream} >/dev/null 2>&1 || return 0
+
+    local -a ahead_and_behind=(
+        $(git rev-list --left-right --count HEAD...${hook_com[branch]}@{upstream} 2>/dev/null)
+    )
+		local -a stat=("$(git status --porcelain)")
+    local -a untracked=(
+    	$(echo "$stat" | grep '^??' | wc -l)
+    )
+    local -a modified=(
+		$(echo "$stat" | grep '^.M' | wc -l)
+    )
+    local -a staged=(
+        $(echo "$stat" | grep '^[AM]' | wc -l)
+    )
+
+    ahead=${ahead_and_behind[1]}
+    behind=${ahead_and_behind[2]}
+
+    (( $modified )) && gitstatus+=( "%{\033[1m%}${modified}●" )
+    (( $staged )) && gitstatus+=( "%{\033[1m%}${staged}" )
+    (( $untracked )) && gitstatus+=( "%{\033[1m%}${untracked}" )
+    (( $ahead )) && gitstatus+=( '' )
+    (( $behind )) && gitstatus+=( '' )
+
+    if [[ gitstatus != '' ]] then
+	    hook_com[misc]+=' '
+    fi
+    hook_com[misc]+=${(j:  :)gitstatus}
+}
+
 prompt_git() {
   (( $+commands[git] )) || return
   if [[ "$(git config --get oh-my-zsh.hide-status 2>/dev/null)" = 1 ]]; then
@@ -135,13 +171,36 @@ prompt_git() {
     zstyle ':vcs_info:*' enable git
     zstyle ':vcs_info:*' get-revision true
     zstyle ':vcs_info:*' check-for-changes true
-    zstyle ':vcs_info:*' stagedstr '✚'
-    zstyle ':vcs_info:*' unstagedstr '●'
-    zstyle ':vcs_info:*' formats ' %u%c'
-    zstyle ':vcs_info:*' actionformats ' %u%c'
+    #zstyle ':vcs_info:*' stagedstr '✚'
+    #zstyle ':vcs_info:*' unstagedstr '●'
+    zstyle ':vcs_info:*' formats ' %m'
+    zstyle ':vcs_info:*' actionformats ' %m'
+    zstyle ':vcs_info:git*+set-message:*' hooks git-st
     vcs_info
     echo -n "${ref/refs\/heads\//$PL_BRANCH_CHAR }${vcs_info_msg_0_%% }${mode}"
   fi
+}
+
+prompt_bzr() {
+    (( $+commands[bzr] )) || return
+    if (bzr status >/dev/null 2>&1); then
+        status_mod=`bzr status | head -n1 | grep "modified" | wc -m`
+        status_all=`bzr status | head -n1 | wc -m`
+        revision=`bzr log | head -n2 | tail -n1 | sed 's/^revno: //'`
+        if [[ $status_mod -gt 0 ]] ; then
+            prompt_segment 3 0
+            echo -n "bzr@"$revision "✚ "
+        else
+            if [[ $status_all -gt 0 ]] ; then
+                prompt_segment 3 0
+                echo -n "bzr@"$revision
+
+            else
+                prompt_segment 2 0
+                echo -n "bzr@"$revision
+            fi
+        fi
+    fi
 }
 
 prompt_hg() {
@@ -182,14 +241,15 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment 4 $CURRENT_FG '%c'
+  prompt_segment 4 $CURRENT_FG '%~'
 }
 
 # Virtualenv: current working virtualenv
 prompt_virtualenv() {
   local virtualenv_path="$VIRTUAL_ENV"
   if [[ -n $virtualenv_path && -n $VIRTUAL_ENV_DISABLE_PROMPT ]]; then
-    prompt_segment 4 0 "(`basename $virtualenv_path`)"
+    #prompt_segment 4 0 "(`basename $virtualenv_path`)"
+    prompt_segment 2 0 "(`basename $virtualenv_path`)"
   fi
 }
 
@@ -200,9 +260,9 @@ prompt_virtualenv() {
 prompt_status() {
   local -a symbols
 
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{1}%}\uf7d3" #✘
-  [[ $UID -eq 0 ]] && symbols+="%{%F{3}%}\ufaf5" #⚡
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{6}%}\uf7d0" #⚙
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{1}%}\uf7d3" #
+  [[ $UID -eq 0 ]] && symbols+="%{%F{11}%}\ue77a" #
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{15}%}\ufb36" #󰘷
 
   [[ -n "$symbols" ]] && prompt_segment 166 7 "$symbols"
 }
@@ -213,6 +273,7 @@ build_prompt() {
   prompt_status
   prompt_dir
   prompt_git
+  prompt_bzr
   prompt_hg
   prompt_end
 }

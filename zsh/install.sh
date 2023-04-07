@@ -1,7 +1,5 @@
 #!/bin/bash
 
-THEME=coberly-gruvbox.zsh-theme
-
 if [ -z "$HOME" ]; then
 	exit 1
 fi
@@ -23,7 +21,10 @@ if [ ! -d "${OHMYZSH_DIR}" ]; then
 fi
 
 ## Theme
-ln -sf "${DOTFILE_DIRECTORY}/zsh/${THEME}" "${HOME}/.oh-my-zsh/custom/themes"
+if [ ! -d "${HOME}/.oh-my-zsh/themes/powerlevel10k" ]; then
+	git clone --depth=1 https://github.com/romkatv/powerlevel10k.git "${HOME}/.oh-my-zsh/themes/powerlevel10k"
+fi
+ln -sf "${DOTFILE_DIRECTORY}/zsh/coberly-gruvbox.zsh-theme" "${HOME}/.oh-my-zsh/themes"
 
 ## Zsh plugins
 if [ ! -d "${OHMYZSH_DIR}/custom/plugins/zsh-autosuggestions" ]; then
@@ -34,4 +35,5 @@ if [ ! -d "${OHMYZSH_DIR}/custom/plugins/zsh-syntax-highlighting" ]; then
 fi
 
 ## Dotfile
+rm "${HOME}/.zshrc"
 ln -sf "${DOTFILE_DIRECTORY}/zsh/.zshrc" "${HOME}/"
