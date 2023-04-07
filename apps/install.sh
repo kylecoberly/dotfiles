@@ -27,5 +27,6 @@ fi
 
 DOTFILES=(.gitconfig .gitignore .aliases .markdownlintrc)
 for dotfile in "${DOTFILES[@]}"; do
+	rm "${HOME}/${dotfile}"
 	ln -sf "${DOTFILE_DIRECTORY}/apps/${dotfile}" "${HOME}/"
 done

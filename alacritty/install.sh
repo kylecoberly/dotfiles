@@ -32,6 +32,7 @@ fi
 
 ## Link dotfiles
 mkdir -p "${HOME}/.config"
+rm -rf "${HOME}/.config/alacritty"
 ln -sf "${DOTFILE_DIRECTORY}/alacritty" "${HOME}/.config/alacritty"
 
 ## ChromeOS and Ubuntu Desktop Icon
