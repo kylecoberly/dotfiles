@@ -1,0 +1,188 @@
+# : << EOF
+# https://github.com/gpakosz/.tmux
+# (‑●‑●)> dual licensed under the WTFPL v2 license and the MIT license,
+#         without any warranty.
+#         Copyright 2012— Gregory Pakosz (@gpakosz).
+
+
+# -- navigation ----------------------------------------------------------------
+
+# if you're running tmux within iTerm2
+#   - and tmux is 1.9 or 1.9a
+#   - and iTerm2 is configured to let option key act as +Esc
+#   - and iTerm2 is configured to send [1;9A -> [1;9D for option + arrow keys
+# then uncomment the following line to make Meta + arrow keys mapping work
+#set -ga terminal-overrides "*:kUP3=\e[1;9A,*:kDN3=\e[1;9B,*:kRIT3=\e[1;9C,*:kLFT3=\e[1;9D"
+
+
+# -- windows & pane creation ---------------------------------------------------
+
+# new window retains current path, possible values are:
+#   - true
+#   - false (default)
+tmux_conf_new_window_retain_current_path=true
+
+# new pane retains current path, possible values are:
+#   - true (default)
+#   - false
+tmux_conf_new_pane_retain_current_path=true
+
+# prompt for session name when creating a new session, possible values are:
+#   - true
+#   - false (default)
+tmux_conf_new_session_prompt=true
+
+# -- display -------------------------------------------------------------------
+
+# RGB 24-bit colour support (tmux >= 2.2), possible values are:
+#  - true
+#  - false (default)
+tmux_conf_24b_colour=true
+
+# -- clipboard -----------------------------------------------------------------
+
+# in copy mode, copying selection also copies to the OS clipboard
+#   - true
+#   - false (default)
+# on macOS, this requires installing reattach-to-user-namespace, see README.md
+# on Linux, this requires xsel or xclip
+tmux_conf_copy_to_os_clipboard=true
+
+
+# -- user customizations -------------------------------------------------------
+# this is the place to override or undo settings
+
+set-option -g default-shell /bin/zsh
+set -g default-terminal "screen-256color"
+set -g mouse on
+set -gu prefix2 # Needed to remove compatible prefix
+unbind C-b
+set -g prefix C-Space
+
+bind -r C-h run "tmux select-pane -L"
+bind -r C-j run "tmux select-pane -D"
+bind -r C-k run "tmux select-pane -U"
+bind -r C-l run "tmux select-pane -R"
+bind -r C-\\ run "tmux select-pane -l"
+
+unbind '"'
+unbind %
+bind | split-window -h
+bind - split-window -v
+
+# -- tpm -----------------------------------------------------------------------
+
+# while I don't use tpm myself, many people requested official support so here
+# is a seamless integration that automatically installs plugins in parallel
+
+# whenever a plugin introduces a variable to be used in 'status-left' or
+# 'status-right', you can use it in 'tmux_conf_theme_status_left' and
+# 'tmux_conf_theme_status_right' variables.
+
+# /!\ the tpm bindings differ slightly from upstream:
+#   - installing plugins: <prefix> + I
+#   - uninstalling plugins: <prefix> + Alt + u
+#   - updating plugins: <prefix> + u
+
+# /!\ do not add set -g @plugin 'tmux-plugins/tpm'
+# /!\ do not add run '~/.tmux/plugins/tpm/tpm'
+
+# to enable a plugin, use the 'set -g @plugin' syntax:
+# visit https://github.com/tmux-plugins for available plugins
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Sessions
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @resurrect-strategy-nvim 'session'
+set -g @resurrect-capture-pane-contents 'on'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-save-interval '5'
+set -g @continuum-restore 'on'
+set -g @continuum-boot 'on'
+
+# Interaction
+set -g @plugin 'aserowy/tmux.nvim'
+set -g @plugin 'tmux-plugins/tmux-yank'
+set -g @plugin 'tmux-plugins/tmux-open'
+set -g @plugin 'b0o/tmux-autoreload'
+
+# set -g @plugin 'jabirali/tmux-tilish'
+# set -g @tilish-default 'main-vertical'
+
+# Theme
+
+### PLUGINS ###
+set -g @plugin 'o0th/tmux-nova'
+set -g @plugin 'tmux-plugins/tmux-cpu'
+set -g @plugin 'ofirgall/tmux-keyboard-layout'
+
+### THEME ###
+set -g @nova-nerdfonts true
+set -g @nova-nerdfonts-left 
+set -g @nova-nerdfonts-right 
+
+set -g @nova-pane "#I #W"
+set -g @nova-rows 0
+
+### COLORS ###
+b_bg="#504945"
+
+seg_a="#a89984 #282828"
+seg_b="$b_bg #ddc7a1"
+
+inactive_bg="#32302f"
+inactive_fg="#ddc7a1"
+active_bg=$b_bg
+active_fg="#ddc7a1"
+
+set -gw window-status-current-style bold
+set -g "@nova-status-style-bg" "$inactive_bg"
+set -g "@nova-status-style-fg" "$inactive_fg"
+set -g "@nova-status-style-active-bg" "$active_bg"
+set -g "@nova-status-style-active-fg" "$active_fg"
+
+set -g "@nova-pane-active-border-style" "#44475a"
+set -g "@nova-pane-border-style" "#827d51"
+
+### STATUS BAR ###
+set -g @nova-segment-prefix "#{?client_prefix,PREFIX,}"
+set -g @nova-segment-prefix-colors "$seg_b"
+
+set -g @nova-segment-session "#{session_name}"
+set -g @nova-segment-session-colors "$seg_a"
+
+set -g @nova-segment-cpu " #(~/.tmux/plugins/tmux-cpu/scripts/cpu_percentage.sh) #(~/.tmux/plugins/tmux-cpu/scripts/ram_percentage.sh)"
+set -g @nova-segment-cpu-colors "$seg_b"
+
+set -g @nova-segment-layout "#(~/.tmux/plugins/tmux-keyboard-layout/scripts/get_keyboard_layout.sh)"
+set -g @nova-segment-layout-colors "$seg_a"
+
+set -g @nova-segments-0-left "session"
+set -g @nova-segments-0-right "prefix cpu layout"
+
+# -- custom variables ----------------------------------------------------------
+
+# to define a custom #{foo} variable, define a POSIX shell function between the
+# '# EOF' and the '# "$@"' lines. Please note that the opening brace { character
+# must be on the same line as the function name otherwise the parse won't detect
+# it.
+#
+# then, use #{foo} in e.g. the 'tmux_conf_theme_status_left' or the
+# 'tmux_conf_theme_status_right' variables.
+
+# # /!\ do not remove the following line
+# EOF
+#
+# # /!\ do not "uncomment" the functions: the leading "# " characters are needed
+#
+# weather() {
+#   curl -m 1 wttr.in?format=3 2>/dev/null
+#   sleep 900 # sleep for 15 minutes, throttle network requests whatever the value of status-interval
+# }
+#
+# online() {
+#   ping -c 1 1.1.1.1 >/dev/null 2>&1 && printf '✔' || printf '✘'
+# }
+#
+# "$@"
+# # /!\ do not remove the previous line
