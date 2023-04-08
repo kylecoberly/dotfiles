@@ -1,10 +1,10 @@
 export ZSH="$HOME/.oh-my-zsh" # Path to your oh-my-zsh installation.
+export TERM=xterm-256color
 
 # Global
 enable_correction="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy" # Log format
-export TERM=xterm-256color
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LANG="en_US.UTF-8"
@@ -32,6 +32,13 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="$HOME/.fly/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# Tmux
+ZSH_TMUX_AUTOSTART=true
+ZSH_TMUX_FIXTERM=true
+ZSH_TMUX_UNICODE=true
+ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"
+ZSH_TMUX_DEFAULT_SESSION_NAME=Playground
+
 # Search
 bindkey '^R' history-incremental-search-backward # Search
 setopt extendedglob nocaseglob globdots
@@ -51,8 +58,4 @@ bindkey "\e." insert-last-word
 ## asdf Java
 if [[ -d ~/.asdf/plugins/java ]]; then
   . ~/.asdf/plugins/java/set-java-home.zsh
-fi
-
-if [[ ! -v TMUX ]]; then
-  tmux attach || tmux
 fi

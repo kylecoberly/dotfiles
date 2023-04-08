@@ -4,6 +4,7 @@
 #         without any warranty.
 #         Copyright 2012— Gregory Pakosz (@gpakosz).
 
+
 # -- session creation ----------------------------------------------------------
 
 # prompt for session name when creating a new session, possible values are:
@@ -12,13 +13,33 @@
 #   - disabled (do not modify new-session bindings)
 tmux_conf_new_session_prompt=true
 
+
 # -- windows & pane creation ---------------------------------------------------
 
 # new window retains current path, possible values are:
 #   - true
 #   - false (default)
 #   - disabled (do not modify new-window bindings)
-tmux_conf_new_window_retain_current_path=true
+tmux_conf_new_window_retain_current_path=false
+
+# new window tries to reconnect ssh sessions, possible values are:
+#   - true
+#   - false (default)
+#   - disabled (do not modify new-window bindings)
+tmux_conf_new_window_reconnect_ssh=false
+
+# new pane retains current path, possible values are:
+#   - true (default)
+#   - false
+#   - disabled (do not modify split-window bindings)
+tmux_conf_new_pane_retain_current_path=true
+
+# new pane tries to reconnect ssh sessions, possible values are:
+#   - true
+#   - false (default)
+#   - disabled (do not modify split-window bindings)
+tmux_conf_new_pane_reconnect_ssh=false
+
 
 # -- display -------------------------------------------------------------------
 
@@ -32,7 +53,19 @@ tmux_conf_new_window_retain_current_path=true
 # see https://github.com/termstandard/colors
 tmux_conf_24b_colour=true
 
+
 # -- theming -------------------------------------------------------------------
+
+# enable or disable theming:
+#   - enabled (default)
+#   - disabled
+# when disabled, all tmux_conf_theme_xxx variables are ignored except:
+#   - tmux_conf_theme_pairing
+#   - tmux_conf_theme_prefix
+#   - tmux_conf_theme_mouse
+#   - tmux_conf_theme_root
+#   - tmux_conf_theme_synchronized
+tmux_conf_theme=disabled
 
 # -- clipboard -----------------------------------------------------------------
 
@@ -43,6 +76,7 @@ tmux_conf_24b_colour=true
 # on macOS, this requires installing reattach-to-user-namespace, see README.md
 # on Linux, this requires xsel, xclip or wl-copy
 tmux_conf_copy_to_os_clipboard=true
+
 
 # -- user customizations -------------------------------------------------------
 # this is the place to override or undo settings
@@ -66,19 +100,35 @@ bind - split-window -v
 
 # -- tpm -----------------------------------------------------------------------
 
+# by default, launching tmux will update tpm and all plugins
+#   - true (default)
+#   - false
+tmux_conf_update_plugins_on_launch=true
+
+# by default, reloading the configuration will update tpm and all plugins
+#   - true (default)
+#   - false
+tmux_conf_update_plugins_on_reload=true
+
+# by default, reloading the configuration will uninstall tpm and plugins when no
+# plugins are enabled
+#   - true (default)
+#   - false
+tmux_conf_uninstall_plugins_on_reload=true
+
 # /!\ do not add set -g @plugin 'tmux-plugins/tpm'
 # /!\ do not add run '~/.tmux/plugins/tpm/tpm'
 
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
 ## Sessions
-set -g @plugin 'tmux-plugins/tmux-resurrect'
-set -g @resurrect-strategy-nvim 'session'
-set -g @resurrect-capture-pane-contents 'on'
-set -g @plugin 'tmux-plugins/tmux-continuum'
-set -g @continuum-save-interval '5'
-set -g @continuum-restore 'on'
-set -g @continuum-boot 'on'
+# set -g @plugin 'tmux-plugins/tmux-resurrect'
+# set -g @resurrect-strategy-nvim 'session'
+# set -g @resurrect-capture-pane-contents 'on'
+# set -g @plugin 'tmux-plugins/tmux-continuum'
+# set -g @continuum-save-interval '5'
+# set -g @continuum-restore 'on'
+# set -g @continuum-boot 'on'
 
 ## Interaction
 set -g @plugin 'aserowy/tmux.nvim'
