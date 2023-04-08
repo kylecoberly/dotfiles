@@ -9,5 +9,10 @@ return {
         require("telescope").load_extension("fzf")
       end,
     },
+    keys = {
+      -- Handle git through fugitive
+      { "<leader>gs", false },
+      { "<leader>gc", false },
+    },
   },
 }
