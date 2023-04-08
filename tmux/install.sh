@@ -19,7 +19,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 rm -rf "${HOME}/.config/tmux"
-mkdir "${HOME}/.config/tmux"
-rm -f "${HOME}/.tmux.conf.local"
-ln -sf "${DOTFILE_DIRECTORY}/tmux/.tmux.conf" "${HOME}/.config/tmux/"
-ln -sf "${DOTFILE_DIRECTORY}/tmux/.tmux.conf.local" "${HOME}/"
+ln -sf "${DOTFILE_DIRECTORY}/tmux" "${HOME}/.config/tmux"
