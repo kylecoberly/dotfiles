@@ -4,6 +4,7 @@ export ZSH="$HOME/.oh-my-zsh" # Path to your oh-my-zsh installation.
 enable_correction="true"
 COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy" # Log format
+export TERM=xterm-256color
 export VISUAL=nvim
 export EDITOR="$VISUAL"
 export LANG="en_US.UTF-8"
