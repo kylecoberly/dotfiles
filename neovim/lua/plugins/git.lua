@@ -11,16 +11,20 @@ nmap("<Leader>dp", ":diffput<CR>", "Diff: Put")
 return {
   {
     "tpope/vim-fugitive",
-    keys = {
-      { "<Leader>ga", ":Git add %<CR><CR>", desc = "Git Add this file" },
-      { "<Leader>gs", ":Git<CR>", desc = "Git: Interactive tool" },
-      { "<Leader>gd", ":Git diff<CR>", desc = "Git Diff" },
-      { "<Leader>gb", ":Git branch<Space>", desc = "Git Branch" },
-      { "<Leader>go", ":Git checkout<Space>", desc = "Git Checkout" },
-      { "<Leader>gc", ":Git commit -v -q<CR>", desc = "Git Commit" },
-      { "<Leader>gg", ":Git commit -v -q %:p<CR>", desc = "Git Commit this file" },
-      { "<Leader>gp", ":Git push<CR>", desc = "Git Push" },
-    },
+    config = function()
+      require("vim-fugitive").setup({
+        on_attach = function(bufnr)
+          nmap("<Leader>ga", ":Git add %<CR><CR>", "Git Add this file")
+          nmap("<Leader>gs", ":Git<CR>", "Git: Interactive tool")
+          nmap("<Leader>gd", ":Git diff<CR>", "Git Diff")
+          nmap("<Leader>gb", ":Git branch<Space>", "Git Branch")
+          nmap("<Leader>go", ":Git checkout<Space>", "Git Checkout")
+          nmap("<Leader>gc", ":Git commit -v -q<CR>", "Git Commit")
+          nmap("<Leader>gg", ":Git commit -v -q %:p<CR>", "Git Commit this file")
+          nmap("<Leader>gp", ":Git push<CR>", "Git Push")
+        end,
+      })
+    end,
   },
   "tpope/vim-rhubarb",
   {
