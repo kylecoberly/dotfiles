@@ -2,10 +2,6 @@
 vim.keymap.set("i", "jj", "<Esc>", { noremap = true })
 vim.keymap.set("i", "jk", "<Esc>", { noremap = true })
 
--- Add blank lines in normal mode
-vim.keymap.set("n", "<C-o>", "O<Esc>", { silent = true })
-vim.keymap.set("n", "<CR>", "o<Esc>", { silent = true })
-
 vim.keymap.set("v", "<Leader>s", ":sort<CR>", {
   remap = false,
   desc = "Sort selection",

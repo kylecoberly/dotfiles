@@ -5,12 +5,8 @@
 --
 --INDENTATION
 --
--- Tabs count as 4 spaces
-vim.opt.tabstop = 2
 -- Tabs insead of spaces
 vim.opt.expandtab = false
--- Automatic indent size
-vim.opt.shiftwidth = 2
 -- Keep indentation level with word wrap
 vim.opt.breakindent = true
 
@@ -28,15 +24,8 @@ vim.opt.timeout = true
 vim.opt.timeoutlen = 300
 
 --
--- SEARCH
---
--- Case insensitive searching UNLESS /C or capital in search
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
--- Highlight matches on search
-vim.opt.hlsearch = false
-
---
 -- OTHER
 --
 vim.opt.conceallevel = 0
+-- Highlight matches on search
+vim.opt.hlsearch = false
