@@ -14,6 +14,7 @@ fi
 
 ## Install dependencies
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+	# It might be better to get neovim from a .deb file to get a more current version
 	sudo apt-get install -y --no-install-recommends neovim ripgrep fd-find >/dev/null
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install neovim ripgrep fd-find >/dev/null
