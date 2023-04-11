@@ -7,5 +7,4 @@ return {
   { "SmiteshP/nvim-navic", enabled = false },
   { "rcarriga/nvim-notify", enabled = false },
   { "ggandor/flit.nvim", enabled = false },
-  { "ggandor/leap.nvim", enabled = false },
 }
