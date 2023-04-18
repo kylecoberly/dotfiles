@@ -38,9 +38,13 @@
   rebase = true
 [branch]
   autosetuprebase = always
+[rebase]
+	autosquash = true
 [rerere]
   enabled = true
   s = "status -s"
+[diff]
+	colorMoved = zebra
 [core]
   # abbrev = 4
   autocrlf = input
