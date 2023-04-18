@@ -1,5 +1,4 @@
 export ZSH="$HOME/.oh-my-zsh" # Path to your oh-my-zsh installation.
-export TERM=xterm-256color
 
 # Global
 enable_correction="true"
