@@ -22,7 +22,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install ranger bat htop ncdu nmap tldr tree wget ffmpeg \
 		openssh-server docker xsel
-	brew install --cask firefox chrome alt-tab
+	brew install --cask firefox chrome alt-tab rectangle
 fi
 
 DOTFILES=(.gitconfig .gitignore .aliases .markdownlintrc)
