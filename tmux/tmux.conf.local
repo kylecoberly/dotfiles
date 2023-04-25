@@ -63,7 +63,7 @@ tmux_conf_copy_to_os_clipboard=true
 
 set -gu prefix2 # Needed to remove compatible prefix
 unbind C-b
-set -g prefix C-Space
+set -g prefix C-a
 
 ## Pane navigation
 bind -r C-h run "tmux select-pane -L"
