@@ -1,0 +1,3 @@
+# Let floating windows float
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
