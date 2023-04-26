@@ -17,9 +17,10 @@ bell:
   duration: 10
 font:
   normal:
-    family: Noto Sans Mono
+    # Must match installed font name
+    family: NotoSansMono Nerd Font
     style: Regular
-  size: 13.0
+  size: 18.0
 import:
   - ~/.config/alacritty/gruvbox_material.yaml
 scrolling:
