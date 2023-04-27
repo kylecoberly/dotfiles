@@ -13,7 +13,7 @@ yabai -m config                                 \
     window_shadow                on             \
     window_animation_duration    0.1            \
     window_animation_frame_rate  120            \
-    active_window_border_color   0xffe78a4e     \
+    active_window_border_color   0xffdeb587     \
     normal_window_border_color   0xff504945     \
     window_border                on             \
     window_border_width          1              \
