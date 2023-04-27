@@ -37,6 +37,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install koekeishiya/formulae/skhd
 	brew services start skhd
 
-	brew install cmacrae/formulae/spacebar
-	brew services start spacebar
+	brew install --cask ubersicht
+	git clone https://github.com/Jean-Tinland/simple-bar $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
+	# Activate Simple Bar in spotlight now
 fi
