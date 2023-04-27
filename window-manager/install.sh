@@ -25,7 +25,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	rm -f "${HOME}/.config/i3/config"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/i3-config" "${HOME}/.config/i3/config"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	DOTFILES=(.yabairc .skhdrc .spacebarrc)
+	DOTFILES=(.yabairc .skhdrc .simplebarrc)
 	for dotfile in "${DOTFILES[@]}"; do
 		rm "${HOME}/${dotfile}"
 		ln -sf "${DOTFILE_DIRECTORY}/window-manager/${dotfile}" "${HOME}/"
@@ -39,5 +39,5 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 	brew install --cask ubersicht
 	git clone https://github.com/Jean-Tinland/simple-bar $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
-	# Activate Simple Bar in spotlight now
+	# Activate Simple Bar manually in spotlight now
 fi
