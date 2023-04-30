@@ -18,7 +18,7 @@ bell:
 font:
   normal:
     # Must match installed font name
-    family: NotoSansMono Nerd Font
+    family: NotoMono Nerd Font
     style: Regular
   size: 18.0
 import:

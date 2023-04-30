@@ -1,5 +1,5 @@
 ## App Control
-shift + ctrl - t : open -n /Applications/Alacritty.app
+cmd + ctrl - t : open -n /Applications/Alacritty.app
 shift + ctrl - w : yabai -m window --close
 # shift + ctrl - space : Launch (native)
 
