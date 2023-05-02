@@ -40,4 +40,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install --cask ubersicht
 	git clone https://github.com/Jean-Tinland/simple-bar $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
 	# Activate Simple Bar manually in spotlight now
+
+	brew install --cask karabiner-elements
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
+
+	brew install --cask alt-tab
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 fi
