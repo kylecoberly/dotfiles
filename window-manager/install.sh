@@ -23,8 +23,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sudo apt update && sudo apt install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst playerctl network-manager-gnome libnotify-bin pavucontrol light acpi
 	playerctld daemon
 
-	rm -rf ${HOME}/.config/{i3,dunst/dunstrc,rofi/config.rasi,polybar}
-	mkdir -p ${HOME}/.config/{i3,dunst,rofi,polybar}
+	rm -rf $HOME/.config/{i3,dunst/dunstrc,rofi/config.rasi,polybar}
+	mkdir -p $HOME/.config/{dunst,rofi}
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/i3" "${HOME}/.config/i3"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/dunstrc" "${HOME}/.config/dunst/dunstrc"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/rofi-config.rasi" "${HOME}/.config/rofi/config.rasi"
