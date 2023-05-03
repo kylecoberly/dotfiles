@@ -23,20 +23,20 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sudo apt update && sudo apt install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst playerctl network-manager-gnome libnotify-bin pavucontrol light acpi
 	playerctld daemon
 
-	mkdir -p "${HOME}/.config/i3"
+	mkdir -p "${HOME}/.config/{i3,dunst,rofi,polybar}"
 	rm -f "${HOME}/.config/i3/config"
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/i3-config" "${HOME}/.config/i3/config"
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/dunstrc" "${HOME}/.config/dunst/dunstrc"
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/rofi-config.rasi" "${HOME}/.config/rofi/config.rasi"
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/polybar" "${HOME}/.config/polybar"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/i3/i3-config" "${HOME}/.config/i3/config"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/dunstrc" "${HOME}/.config/dunst/dunstrc"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/rofi-config.rasi" "${HOME}/.config/rofi/config.rasi"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/polybar" "${HOME}/.config/polybar"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	DOTFILES=(.yabairc .skhdrc .simplebarrc)
 	for dotfile in "${DOTFILES[@]}"; do
 		rm "${HOME}/${dotfile}"
-		ln -sf "${DOTFILE_DIRECTORY}/window-manager/${dotfile}" "${HOME}/"
+		ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/${dotfile}" "${HOME}/"
 	done
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 
 	brew install koekeishiya/formulae/yabai
 	brew services start yabai
