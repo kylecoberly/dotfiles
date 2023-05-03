@@ -7,7 +7,7 @@
 # For example:
 # kylecoberly ALL=(root) NOPASSWD: sha256:740b9e6aab46f8c499f0fc651ae1861d4ebe48b6e6a50296bf4a9ad879bbad93 /usr/local/bin/yabai --load-sa
 
-# Requires Brew
+# Requires Brew and NotoMono Nerd Font
 
 if [ -z "$HOME" ]; then
 	exit 1
@@ -20,7 +20,7 @@ else
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo apt update && sudo apt install i3
+	sudo apt update && sudo apt install -y --no-install-recommends i3 flameshot nitrogen picom
 	mkdir -p "${HOME}/.config/i3"
 	rm -f "${HOME}/.config/i3/config"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/i3-config" "${HOME}/.config/i3/config"
