@@ -21,7 +21,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 ## Build Alacritty
-if command -v alacritty &>/dev/null; then
+if ! command -v alacritty &>/dev/null; then
 	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
 		cargo install alacritty
