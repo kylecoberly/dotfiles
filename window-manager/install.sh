@@ -20,7 +20,7 @@ else
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo apt update && sudo apt install -y --no-install-recommends i3 flameshot nitrogen picom
+	sudo apt update && sudo apt install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst
 	mkdir -p "${HOME}/.config/i3"
 	rm -f "${HOME}/.config/i3/config"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/i3-config" "${HOME}/.config/i3/config"

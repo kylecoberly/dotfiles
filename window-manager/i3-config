@@ -18,6 +18,7 @@ set $ws0 "0"
 #exec --no-startup-id sleep 1 && ~/.screenlayout/default.sh
 set $primary-display eDP-1
 set $secondary-display eDP-2
+exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 ### Assign workspaces to screens
 workspace $ws1 output $primary-display
 workspace $ws2 output $primary-display
@@ -30,6 +31,9 @@ workspace $ws8 output $secondary-display
 workspace $ws9 output $secondary-display
 workspace $ws0 output $secondary-display
 
+## Notifications
+exec_always --no-startup-id dunst -config ~/.config/dunst/dunstrc 
+
 # Theme
 ## Wallpaper
 exec --no-startup-id nitrogen --restore
@@ -37,13 +41,38 @@ exec --no-startup-id nitrogen --restore
 font pango:NotoMono Nerd Font 16px
 
 ## Colors setup
-## class                border  backgr. text    indicator child_border
-client.focused          #4C566A #81A1C1 #2E3440 #EBCB8B   #81A1C1
-client.focused_inactive #2E3440 #4C566A #ECEFF4 #8FBCBB   #434C5E
-client.unfocused        #2E3440 #2E3440 #4C566A #8FBCBB   #3B4252
-client.urgent           #BF616A #BF616A #2E3440 #BF616A   #BF616A
-client.placeholder      #88C0D0 #2E3440 #B48EAD #2E3440   #2E3440
-client.background       #D8DEE9
+set $bg       #282828
+set $fg       #d4be98
+set $red      #ea6962
+set $orange   #e78a4e
+set $green    #a9b665
+set $blue     #7daea3
+set $purple   #d3869b
+set $aqua     #89b482
+set $darkgray #282828
+bar {
+    colors {
+            background $bg
+            statusline $fg
+
+            # workspaces section
+            #                    border     backgr.     text
+            focused_workspace    $orange    $orange     $bg
+            inactive_workspace   $bg        $aqua       $bg
+            active_workspace     $bg        $blue       $bg
+            urgent_workspace     $red       $red        $fg
+
+        }
+}
+
+#       Gruvbox Theme   brdr        bg          text    indictr     chld_brdr
+client.focused          $orange     $orange     $bg     $orange     $orange
+client.focused_inactive $aqua       $aqua       $bg     $aqua       $aqua
+client.unfocused        $bg         $bg         $bg     $bg         $bg
+client.urgent           $red        $red        $bg     $red        $red
+client.placeholder      $bg         $bg         $bg     $bg         $bg
+client.background       $bg
+
 ## Gaps
 smart_gaps off
 hide_edge_borders none
@@ -51,6 +80,9 @@ gaps inner 10
 gaps outer 10
 for_window [class=".*"] border pixel 6
 default_floating_border none
+
+## Status Bar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Settings
 workspace_layout default
@@ -113,6 +145,8 @@ for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
 # bindsym $mod+i exec notify-send --expire-time=10000 --urgency=low "$(~/.config/i3/scripts/infos.sh)"
 bindsym $mod+$mod2+r restart
 ### Screenshot
+exec --no-startup-id flameshot
+### Screenshot
 bindsym Print exec flameshot gui
 ### Screenshot the focused window
 bindsym $mod+Print exec flameshot screen -c -p ~/Pictures/Screenshot/
@@ -145,8 +179,6 @@ bindsym $mod+$mod2+o focus mode_toggle
 
 ## Drun
 # bindsym $mod+d exec rofi -modi drun -show drun
-## Windows
-# bindsym $mod+Tab exec rofi -show window
 # Dunst
 # bindsym $mod+n exec dunstctl close
 # bindsym $mod+Shift+n exec dunstctl close-all
@@ -243,37 +275,17 @@ mode "$media_mode" {
 }
 bindsym $mod+s mode "$media_mode", exec notify-send --expire-time=8000 --urgency=critical "Media Mode" "$(echo -e "h => previous \n j => play \n k => pause \n l => next\ns => toggle play and exit\na => lower audio\nd => upper audio\nm => toggle mute\nq or escape => go back")"
 
-
-
-#######################
-# === Compositor ======
-#######################
-
-# Picom
-exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
-
 #######################
 # === Autostart =======
 #######################
-
-
-# Desktop notifications
-exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
-
-# Network
-exec --no-startup-id nm-applet
-
-# Screenshot
-exec --no-startup-id flameshot
 
 exec --no-startup-id dex-autostart --autostart --environment i3
 exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.local/bin/betterlockscreen -l dimblur
 exec --no-startup-id xinput set-prop 11 332 1
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
-#######################
-# === Bar ============
-#######################
+# Desktop notifications
+exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
 
-# Polybar
-#exec_always ~/.config/polybar/launch.sh &
+# Network
+exec --no-startup-id nm-applet
