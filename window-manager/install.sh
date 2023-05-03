@@ -20,16 +20,23 @@ else
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo apt update && sudo apt install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst
+	sudo apt update && sudo apt install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst playerctl
+	playerctld daemon
+
 	mkdir -p "${HOME}/.config/i3"
 	rm -f "${HOME}/.config/i3/config"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/i3-config" "${HOME}/.config/i3/config"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/dunstrc" "${HOME}/.config/dunst/dunstrc"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/rofi-config.rasi" "${HOME}/.config/rofi/config.rasi"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/polybar" "${HOME}/.config/polybar"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	DOTFILES=(.yabairc .skhdrc .simplebarrc)
 	for dotfile in "${DOTFILES[@]}"; do
 		rm "${HOME}/${dotfile}"
 		ln -sf "${DOTFILE_DIRECTORY}/window-manager/${dotfile}" "${HOME}/"
 	done
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 
 	brew install koekeishiya/formulae/yabai
 	brew services start yabai
@@ -38,12 +45,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew services start skhd
 
 	brew install --cask ubersicht
-	git clone https://github.com/Jean-Tinland/simple-bar $HOME/Library/Application\ Support/Übersicht/widgets/simple-bar
+	git clone https://github.com/Jean-Tinland/simple-bar "$HOME/Library/Application\ Support/Übersicht/widgets/simple-bar"
 	# Activate Simple Bar manually in spotlight now
-
 	brew install --cask karabiner-elements
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
-
 	brew install --cask alt-tab
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 fi

@@ -11,12 +11,10 @@ return {
     },
   },
   opts = {
-    window = {
-      filesystem = {
-        hide_dotfiles = false,
-        hide_gitignored = false,
-      },
-      follow_current_file = true,
+    close_if_last_window = true,
+    filesystem = {
+      hide_dotfiles = false,
+      hide_gitignored = false,
       window = {
         mappings = {
           ["-"] = "navigate_up",
