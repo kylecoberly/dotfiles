@@ -1,12 +1,11 @@
 include settings.conf
-include workspaces.conf
 include theme.conf
-include layouts.conf
 
 ## Commands
 include commands/arrange.conf
 include commands/focus.conf
 include commands/apps.conf
+include commands/layouts.conf
 include commands/keys.conf
 
 ## Modes
