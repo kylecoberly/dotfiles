@@ -1,139 +1,20 @@
-include variables.conf
-include displays.conf
-include theme.conf
-include bars-and-notifications.conf
+include settings.conf
 include workspaces.conf
+include theme.conf
+include layouts.conf
 
 ## Commands
-include arrange.conf
-include focus.conf
+include commands/arrange.conf
+include commands/focus.conf
+include commands/apps.conf
+include commands/keys.conf
 
 ## Modes
 ### System: <mod> + Escape
 include modes/system.conf
 ### Resize: <mod> + r
 include modes/resize.conf
-
-
-# Apps
-bindsym $mod+$mod2+w kill
-bindsym $mod+Return exec alacritty
-### Set these apps to float
-for_window [window_role="About"] floating enable
-for_window [class="Arandr"] floating enable
-for_window [class="Pavucontrol" instance="pavucontrol"] floating enable
-### Bind program to workspace and focus to them on startup:
-# assign [class="(?i)firefox"] $ws2
-
-## System
-# Info notify
-# bindsym $mod+i exec notify-send --expire-time=10000 --urgency=low "$(~/.config/i3/scripts/infos.sh)"
-bindsym $mod+$mod2+r restart
-### Screenshot
-exec --no-startup-id flameshot
-### Screenshot
-bindsym Print exec flameshot gui
-### Screenshot the focused window
-bindsym $mod+Print exec flameshot screen -c -p ~/Pictures/Screenshot/
-### Volume
-bindsym XF86AudioRaiseVolume exec amixer sset Master 5%+, exec notify-send --expire-time=500 --urgency=normal "Volume Up $(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))"
-bindsym XF86AudioLowerVolume exec amixer sset Master 5%-, exec notify-send --expire-time=500 --urgency=normal "Volume Down $(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))"
-bindsym XF86AudioMute exec amixer sset Master toggle, exec notify-send --expire-time=1500 --urgency=critical "Volume Toggle mute"
-bindsym $mod+XF86AudioMute exec pavucontrol
-### Media
-bindsym XF86AudioPlay exec playerctl play-pause, exec notify-send --expire-time=1000 --urgency=normal "Play/Pause"
-bindsym XF86AudioPause exec playerctl pause, exec notify-send --expire-time=1000 --urgency=normal "Pause"
-bindsym XF86AudioNext exec playerctl next, exec notify-send --expire-time=1000 --urgency=normal "Next"
-bindsym XF86AudioPrev exec playerctl previous, exec notify-send --expire-time=1000 --urgency=normal "Previous"
-### Backlight
-bindsym XF86MonBrightnessUp exec light -A 10, exec notify-send --expire-time=500 --urgency=normal "Brightness $(light -G)"
-bindsym XF86MonBrightnessDown exec light -U 10, exec notify-send --expire-time=500 --urgency=normal "Brightness $(light -G)"
-# Display
-bindsym XF86Display exec arandr
-
-
-## Drun
-# bindsym $mod+d exec rofi -modi drun -show drun
-# Dunst
-# bindsym $mod+n exec dunstctl close
-# bindsym $mod+Shift+n exec dunstctl close-all
-
-#######################
-# === Modes ===========
-#######################
-
-
-# Move workspace
-set $workspace_move Workspace
-mode "$workspace_move" {
-
-    # Move workspace between outputs
-    bindsym h move workspace to output left
-    bindsym l move workspace to output right
-    bindsym j move workspace to output down
-    bindsym k move workspace to output up
-
-    # Change focus window
-    bindsym $mod+h focus left
-    bindsym $mod+j focus down
-    bindsym $mod+k focus up
-    bindsym $mod+l focus right
-
-    # Move focused window
-    bindsym $mod+Shift+h move left
-    bindsym $mod+Shift+j move down
-    bindsym $mod+Shift+k move up
-    bindsym $mod+Shift+l move right
-
-    bindsym q mode "default", exec notify-send --expire-time=1000 --urgency=normal "Exit Workspace Mode"
-    bindsym Escape mode "default", exec notify-send --expire-time=1000 --urgency=normal "Exit Workspace Mode"
-}
-bindsym $mod+Shift+w mode "$workspace_move", exec notify-send --expire-time=1500 --urgency=critical "Workspace Mode"
-
-# Output move orientations
-set $output_move Output 
-mode "$output_move" {
-    
-    # Secondary screen orientation
-    bindsym h exec ~/.screenlayout/left.sh, exec sleep 2 && nitrogen --restore && ~/.config/polybar/launch.sh, mode "default"
-    bindsym k exec ~/.screenlayout/up.sh, exec sleep 2 && nitrogen --restore && ~/.config/polybar/launch.sh, mode "default"
-    bindsym s exec ~/.screenlayout/solo.sh, exec sleep 2 && nitrogen --restore && ~/.config/polybar/launch.sh, mode "default"
-
-    bindsym q mode "default", exec notify-send --expire-time=1000 --urgency=normal "Exit Output Mode"
-    bindsym Escape mode "default", exec notify-send --expire-time=1000 --urgency=normal "Exit Output Mode"
-}
-bindsym $mod+Shift+m mode "$output_move", exec notify-send --expire-time=1500 --urgency=critical "Output Mode"
-
-# Media
-set $media_mode Media
-mode "$media_mode" {
-    bindsym j exec playerctl play, exec dunstctl close, exec notify-send --expire-time=1000 --urgency=normal "Media Play"
-    bindsym k exec playerctl pause, exec dunstctl close, exec notify-send --expire-time=1000 --urgency=normal "Media Pause"
-    bindsym l exec playerctl next, exec dunstctl close, exec notify-send --expire-time=1000 --urgency=normal "Media Next"
-    bindsym h exec playerctl previous, exec dunstctl close, exec notify-send --expire-time=1000 --urgency=normal "Media Previous"
-
-    bindsym s exec playerctl play-pause, exec dunstctl close, exec notify-send --expire-time=1000 --urgency=normal "Media Play/Pause", exec notify-send --expire-time=2000 --urgency=normal "Exit Media Mode", mode "default"
-
-    bindsym a exec amixer sset Master 5%-, exec dunstctl close, exec notify-send --expire-time=500 --urgency=normal "Media Vol. Down $(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))"
-    bindsym d exec amixer sset Master 5%+, exec dunstctl close, exec notify-send --expire-time=500 --urgency=normal "Media Vol. Up $(awk -F"[][]" '/Left:/ { print $2 }' <(amixer sget Master))"
-    bindsym m exec amixer sset Master toggle, exec dunstctl close, exec notify-send --expire-time=500 --urgency=normal 'Vol. toggle mute'
-
-    bindsym q mode "default", exec dunstctl close, exec notify-send --expire-time=1000 --urgency=normal "Exit Media Mode"
-    bindsym Escape mode "default", exec dunstctl close, exec notify-send --expire-time=1000 --urgency=normal "Exit Media Mode"
-}
-bindsym $mod+s mode "$media_mode", exec notify-send --expire-time=8000 --urgency=critical "Media Mode" "$(echo -e "h => previous \n j => play \n k => pause \n l => next\ns => toggle play and exit\na => lower audio\nd => upper audio\nm => toggle mute\nq or escape => go back")"
-
-#######################
-# === Autostart =======
-#######################
-
-exec --no-startup-id dex-autostart --autostart --environment i3
-exec --no-startup-id xss-lock --transfer-sleep-lock -- ~/.local/bin/betterlockscreen -l dimblur
-exec --no-startup-id xinput set-prop 11 332 1
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-# Desktop notifications
-exec --no-startup-id dbus-launch dunst --config ~/.config/dunst/dunstrc
-
-# Network
-exec --no-startup-id nm-applet
+### Media: <mod> + m
+include modes/media.conf
+### Arrange: <mod> + a
+include modes/arrange.conf
