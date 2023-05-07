@@ -34,7 +34,7 @@ shift + ctrl - b : yabai -m display --focus 2
 
 ## Layout Management
 
-shift + ctrl - f : yabai -m window --toggle native-fullscreen
+shift + ctrl - f : yabai -m window --toggle zoom-fullscreen
 shift + ctrl - e : yabai -m space --layout bsp
 shift + ctrl - s : yabai -m space --layout stack
 shift + ctrl - x : yabai -m space --mirror x-axis
@@ -56,7 +56,7 @@ arrange_mode < q ; default
 
 ### Layout
 
-arrange_mode < f : yabai -m window --toggle native-fullscreen
+arrange_mode < f : yabai -m window --toggle zoom-fullscreen
 arrange_mode < e : yabai -m space --layout bsp
 arrange_mode < s : yabai -m space --layout stack
 arrange_mode < x : yabai -m space --mirror x-axis
@@ -72,8 +72,8 @@ arrange_mode < h : yabai -m window --focus west
 arrange_mode < j : yabai -m window --focus south
 arrange_mode < k : yabai -m window --focus north
 arrange_mode < l : yabai -m window --focus east
-arrange_mode < shift + ctrl - h : yabai -m space --focus prev || yabai -m space --focus last
-arrange_mode < shift + ctrl - l : yabai -m space --focus next || yabai -m space --focus first
+arrange_mode < shift - h : yabai -m space --focus prev || yabai -m space --focus last
+arrange_mode < shift - l : yabai -m space --focus next || yabai -m space --focus first
 arrange_mode < 1 : yabai -m space --focus 1
 arrange_mode < 2 : yabai -m space --focus 2
 arrange_mode < 3 : yabai -m space --focus 3
@@ -110,11 +110,11 @@ arrange_mode < ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9
 arrange_mode < ctrl - a : yabai -m space --display 1; yabai -m display --focus 1
 arrange_mode < ctrl - b : yabai -m space --display 2; yabai -m display --focus 2
 
-### Maximize (=), left ([), right (])
+### Maximize (=), left ([), right (]), (only works in float)
 
 arrange_mode < shift - 0x18 : yabai -m window --grid 1:1:0:0:1:1
-arrange_mode < shift - 0x21 : yabai -m window --grid 1:2:0:0:1:1
-arrange_mode < shift - 0x1E : yabai -m window --grid 1:2:1:0:1:1
+arrange_mode < 0x1E : yabai -m window --grid 1:2:1:0:1:1
+arrange_mode < 0x21 : yabai -m window --grid 1:2:0:0:1:1
 
 ## System Mode (Shift + Control - ')
 
