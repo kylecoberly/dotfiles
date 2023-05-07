@@ -1,17 +1,22 @@
 ## App Control
-cmd + ctrl - t : open -n /Applications/Alacritty.app
-shift + ctrl - w : yabai -m window --close
+
+shift + ctrl - return : open -n /Applications/Alacritty.app
+shift + ctrl - q : yabai -m window --close
 # shift + ctrl - space : Launch (native)
 
 ## Focus
+
 ### Focus Window
+
 shift + ctrl - h : yabai -m window --focus west
 shift + ctrl - j : yabai -m window --focus south
 shift + ctrl - k : yabai -m window --focus north
 shift + ctrl - l : yabai -m window --focus east
+
 ### Focus Workspace
-alt - 0x1E : yabai -m space --focus next || yabai -m space --focus first
-alt - 0x21 : yabai -m space --focus prev || yabai -m space --focus last
+
+shift + ctrl - 0x1E : yabai -m space --focus next || yabai -m space --focus first
+shift + ctrl - 0x21 : yabai -m space --focus prev || yabai -m space --focus last
 shift + ctrl - 1 : yabai -m space --focus 1
 shift + ctrl - 2 : yabai -m space --focus 2
 shift + ctrl - 3 : yabai -m space --focus 3
@@ -21,41 +26,14 @@ shift + ctrl - 6 : yabai -m space --focus 6
 shift + ctrl - 7 : yabai -m space --focus 7
 shift + ctrl - 8 : yabai -m space --focus 8
 shift + ctrl - 9 : yabai -m space --focus 9
+
 ### Focus Monitor
+
 shift + ctrl - a : yabai -m display --focus 1
 shift + ctrl - b : yabai -m display --focus 2
 
-## Arrange
-### Swap Window
-shift + ctrl + alt  - h : yabai -m window --swap west
-shift + ctrl + alt  - j : yabai -m window --swap south
-shift + ctrl + alt  - l : yabai -m window --swap east
-shift + ctrl + alt  - k : yabai -m window --swap north
-### Move window to workspace
-shift + ctrl + alt  - 1 : yabai -m window --space 1; yabai -m space --focus 1
-shift + ctrl + alt  - 2 : yabai -m window --space 2; yabai -m space --focus 2
-shift + ctrl + alt  - 3 : yabai -m window --space 3; yabai -m space --focus 3
-shift + ctrl + alt  - 4 : yabai -m window --space 4; yabai -m space --focus 4
-shift + ctrl + alt  - 5 : yabai -m window --space 5; yabai -m space --focus 5
-shift + ctrl + alt  - 6 : yabai -m window --space 6; yabai -m space --focus 6
-shift + ctrl + alt  - 7 : yabai -m window --space 7; yabai -m space --focus 7
-shift + ctrl + alt  - 8 : yabai -m window --space 8; yabai -m space --focus 8
-shift + ctrl + alt  - 9 : yabai -m window --space 9; yabai -m space --focus 9
-### Move workspace to screen
-shift + ctrl + alt  - a : yabai -m space --display 1; yabai -m display --focus 1
-shift + ctrl + alt  - b : yabai -m space --display 2; yabai -m display --focus 2
-
-## Floating Windows
-### Float this window
-shift + ctrl - o : yabai -m window --toggle float --grid 4:4:1:1:2:2
-### Maximize (=), left ([), right (])
-shift + ctrl - 0x18 : yabai -m window --grid 1:1:0:0:1:1
-shift + ctrl - 0x21 : yabai -m window --grid 1:2:0:0:1:1
-shift + ctrl - 0x1E : yabai -m window --grid 1:2:1:0:1:1
-### Picture-in-Picture
-shift + ctrl - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
-
 ## Layout Management
+
 shift + ctrl - f : yabai -m window --toggle native-fullscreen
 shift + ctrl - e : yabai -m space --layout bsp
 shift + ctrl - s : yabai -m space --layout stack
@@ -63,3 +41,84 @@ shift + ctrl - x : yabai -m space --mirror x-axis
 shift + ctrl - y : yabai -m space --mirror y-axis
 shift + ctrl - r : yabai -m space --rotate 90
 shift + ctrl - 0 : yabai -m space --balance
+shift + ctrl - o : yabai -m window --toggle float --grid 4:4:1:1:2:2
+shift + ctrl - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
+
+## Arrange Mode
+
+:: arrange_mode @ : osascript -e 'display notification "Arrange" with title "Mode"'
+shift + ctrl - a ; arrange_mode
+arrange_mode < escape ; default
+arrange_mode < q ; default
+
+### Layout
+
+arrange_mode < f : yabai -m window --toggle native-fullscreen
+arrange_mode < e : yabai -m space --layout bsp
+arrange_mode < s : yabai -m space --layout stack
+arrange_mode < x : yabai -m space --mirror x-axis
+arrange_mode < y : yabai -m space --mirror y-axis
+arrange_mode < r : yabai -m space --rotate 90
+arrange_mode < 0 : yabai -m space --balance
+arrange_mode < o : yabai -m window --toggle float --grid 4:4:1:1:2:2
+arrange_mode < p : yabai -m window --toggle sticky --toggle topmost --toggle pip
+
+### Focus
+
+arrange_mode < h : yabai -m window --focus west
+arrange_mode < j : yabai -m window --focus south
+arrange_mode < k : yabai -m window --focus north
+arrange_mode < l : yabai -m window --focus east
+arrange_mode < 0x1E : yabai -m space --focus next || yabai -m space --focus first
+arrange_mode < 0x21 : yabai -m space --focus prev || yabai -m space --focus last
+arrange_mode < 1 : yabai -m space --focus 1
+arrange_mode < 2 : yabai -m space --focus 2
+arrange_mode < 3 : yabai -m space --focus 3
+arrange_mode < 4 : yabai -m space --focus 4
+arrange_mode < 5 : yabai -m space --focus 5
+arrange_mode < 6 : yabai -m space --focus 6
+arrange_mode < 7 : yabai -m space --focus 7
+arrange_mode < 8 : yabai -m space --focus 8
+arrange_mode < 9 : yabai -m space --focus 9
+arrange_mode < a : yabai -m display --focus 1
+arrange_mode < b : yabai -m display --focus 2
+
+### Swap window
+
+arrange_mode < ctrl - h : yabai -m window --swap west
+arrange_mode < ctrl - j : yabai -m window --swap south
+arrange_mode < ctrl - l : yabai -m window --swap east
+arrange_mode < ctrl - k : yabai -m window --swap north
+
+### Move window to workspace
+
+arrange_mode < ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1
+arrange_mode < ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
+arrange_mode < ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3
+arrange_mode < ctrl - 4 : yabai -m window --space 4; yabai -m space --focus 4
+arrange_mode < ctrl - 5 : yabai -m window --space 5; yabai -m space --focus 5
+arrange_mode < ctrl - 6 : yabai -m window --space 6; yabai -m space --focus 6
+arrange_mode < ctrl - 7 : yabai -m window --space 7; yabai -m space --focus 7
+arrange_mode < ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8
+arrange_mode < ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9
+
+### Move workspace to screen
+
+arrange_mode < ctrl - a : yabai -m space --display 1; yabai -m display --focus 1
+arrange_mode < ctrl - b : yabai -m space --display 2; yabai -m display --focus 2
+
+### Maximize (=), left ([), right (])
+
+arrange_mode < shift - 0x18 : yabai -m window --grid 1:1:0:0:1:1
+arrange_mode < shift - 0x21 : yabai -m window --grid 1:2:0:0:1:1
+arrange_mode < shift - 0x1E : yabai -m window --grid 1:2:1:0:1:1
+
+## System Mode
+
+:: system_mode @ : osascript -e 'display notification "System" with title "Mode"'
+shift + ctrl - escape ; system_mode
+system_mode < escape ; default
+system_mode < q ; default
+
+system_mode< r : "\necho 'Restarting window manager...\n' yabai --stop-service ; skhd --stop-service ; yabai --start-service ; skhd --start-service; echo '\nRestarted window manager\n'"
+system_mode< ctrl - r : sudo reboot

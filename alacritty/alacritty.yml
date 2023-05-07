@@ -22,7 +22,7 @@ font:
     style: Regular
   size: 18.0
 import:
-  - ~/.config/alacritty/gruvbox_material.yaml
+  - ~/.config/alacritty/gruvbox_material.yml
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
@@ -34,7 +34,7 @@ window:
   # Values for `decorations`:
   #     - full: Borders and title bar
   #     - none: Neither borders nor title bar
-  decorations: none
+  decorations: full
   # Make `Option` key behave as `Alt` (macOS only):
   #   - OnlyLeft
   #   - OnlyRight
@@ -47,4 +47,6 @@ window:
   #   - Fullscreen
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  startup_mode: Maximized
+  startup_mode: Windowed
+# key_bindings:
+#  - { key: F, mods: Control|Shift, action: None }

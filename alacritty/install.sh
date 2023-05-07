@@ -31,9 +31,10 @@ if ! command -v alacritty &>/dev/null; then
 fi
 
 ## Link dotfiles
-mkdir -p "${HOME}/.config"
 rm -rf "${HOME}/.config/alacritty"
-ln -sf "${DOTFILE_DIRECTORY}/alacritty" "${HOME}/.config/alacritty"
+mkdir -p "${HOME}/.config/alacritty"
+ln -sf "${DOTFILE_DIRECTORY}/alacritty/alacritty.yml" "${HOME}/.config/alacritty/alacritty.yml"
+ln -sf "${DOTFILE_DIRECTORY}/alacritty/alacritty-gruvbox.yml" "${HOME}/.config/alacritty/gruvbox-material.yml"
 
 ## ChromeOS and Ubuntu Desktop Icon
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
