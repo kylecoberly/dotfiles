@@ -44,11 +44,14 @@ shift + ctrl - 0 : yabai -m space --balance
 shift + ctrl - o : yabai -m window --toggle float --grid 4:4:1:1:2:2
 shift + ctrl - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
 
-## Arrange Mode
+## Default Mode
 
-:: arrange_mode @ : osascript -e 'display notification "Arrange" with title "Mode"'
-shift + ctrl - a ; arrange_mode
-arrange_mode < escape ; default
+:: default : yabai -m config active_window_border_color 0xffdeb587
+
+## Arrange Mode (Shift + Control - ;)
+
+:: arrange_mode @ : yabai -m config active_window_border_color 0xffea6962
+shift + ctrl - 0x29 ; arrange_mode
 arrange_mode < q ; default
 
 ### Layout
@@ -69,8 +72,8 @@ arrange_mode < h : yabai -m window --focus west
 arrange_mode < j : yabai -m window --focus south
 arrange_mode < k : yabai -m window --focus north
 arrange_mode < l : yabai -m window --focus east
-arrange_mode < 0x1E : yabai -m space --focus next || yabai -m space --focus first
-arrange_mode < 0x21 : yabai -m space --focus prev || yabai -m space --focus last
+arrange_mode < shift + ctrl - h : yabai -m space --focus prev || yabai -m space --focus last
+arrange_mode < shift + ctrl - l : yabai -m space --focus next || yabai -m space --focus first
 arrange_mode < 1 : yabai -m space --focus 1
 arrange_mode < 2 : yabai -m space --focus 2
 arrange_mode < 3 : yabai -m space --focus 3
@@ -113,12 +116,9 @@ arrange_mode < shift - 0x18 : yabai -m window --grid 1:1:0:0:1:1
 arrange_mode < shift - 0x21 : yabai -m window --grid 1:2:0:0:1:1
 arrange_mode < shift - 0x1E : yabai -m window --grid 1:2:1:0:1:1
 
-## System Mode
+## System Mode (Shift + Control - ')
 
-:: system_mode @ : osascript -e 'display notification "System" with title "Mode"'
-shift + ctrl - escape ; system_mode
-system_mode < escape ; default
+:: system_mode @ : yabai -m config active_window_border_color 0xff7daea3
+shift + ctrl - 0x27 ; system_mode
 system_mode < q ; default
-
-system_mode< r : "\necho 'Restarting window manager...\n' yabai --stop-service ; skhd --stop-service ; yabai --start-service ; skhd --start-service; echo '\nRestarted window manager\n'"
-system_mode< ctrl - r : sudo reboot
+system_mode < r : echo '\nRestarting window manager...\n' ; yabai --stop-service ; skhd --stop-service ; yabai --start-service ; skhd --start-service; echo '\nRestarted window manager\n'
