@@ -39,14 +39,15 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 		rm "${HOME}/${dotfile}"
 		ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/${dotfile}" "${HOME}/"
 	done
+	rm "${HOME}/.config/karabiner/karabiner.json"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 
 	brew install koekeishiya/formulae/yabai
-	brew services start yabai
+	yabai --start-service
 
 	brew install koekeishiya/formulae/skhd
-	brew services start skhd
+	skhd --start-service
 
 	brew install --cask ubersicht
 	git clone https://github.com/Jean-Tinland/simple-bar "$HOME/Library/Application\ Support/Übersicht/widgets/simple-bar"
