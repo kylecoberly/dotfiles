@@ -10,7 +10,7 @@ yabai -m config                                 \
     window_placement             second_child   \
     window_zoom_persist          on             \
     window_topmost               off            \
-    window_shadow                on             \
+    window_shadow                off            \
     window_animation_duration    0.1            \
     window_animation_frame_rate  120            \
     active_window_border_color   0xffdeb587     \
@@ -18,7 +18,7 @@ yabai -m config                                 \
     window_border                on             \
     window_border_width          1              \
     window_border_radius         10             \
-    window_border_blur           on             \
+    window_border_blur           off            \
     window_border_hidpi          on             \
     split_type                   auto           \
     auto_balance                 on             \
