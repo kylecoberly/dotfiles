@@ -1,3 +1,8 @@
+## Debugging
+## Errors from launching this script show up in `/tmp/skhd_kylecoberly.err.log`
+## You can check what key command is firing by running `skhd -o`
+## You can reload skhd with `skhd -r`
+
 ## App Control
 
 shift + ctrl - return : open -n /Applications/Alacritty.app
@@ -44,17 +49,31 @@ shift + ctrl - 0 : yabai -m space --balance
 shift + ctrl - o : yabai -m window --toggle float --grid 4:4:1:1:2:2
 shift + ctrl - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
 
-## Default Mode
+## Modes
 
 :: default : yabai -m config active_window_border_color 0xffdeb587
-
-## Arrange Mode (Shift + Control - ;)
-
 :: arrange_mode @ : yabai -m config active_window_border_color 0xffea6962
-shift + ctrl - 0x29 ; arrange_mode
-arrange_mode < q ; default
+:: resize_mode @ : yabai -m config active_window_border_color 0xffa9b665
+:: system_mode @ : yabai -m config active_window_border_color 0xff7daea3
 
-### Layout
+shift + ctrl - 0x29 ; arrange_mode
+shift + ctrl - 0x2C ; resize_mode
+shift + ctrl - 0x27 ; system_mode
+
+arrange_mode < shift + ctrl - 0x2C ; resize_mode
+arrange_mode < shift + ctrl - 0x27 ; system_mode
+resize_mode < shift + ctrl - 0x29 ; arrange_mode
+resize_mode < shift + ctrl - 0x27 ; system_mode
+system_mode < shift + ctrl - 0x29 ; arrange_mode
+system_mode < shift + ctrl - 0x2C ; resize_mode
+
+arrange_mode < q ; default
+resize_mode < q ; default
+system_mode < q ; default
+
+### Arrange Mode (Shift + Control - ;)
+
+#### Layout
 
 arrange_mode < f : yabai -m window --toggle zoom-fullscreen
 arrange_mode < e : yabai -m space --layout bsp
@@ -66,7 +85,7 @@ arrange_mode < 0 : yabai -m space --balance
 arrange_mode < o : yabai -m window --toggle float --grid 4:4:1:1:2:2
 arrange_mode < p : yabai -m window --toggle sticky --toggle topmost --toggle pip
 
-### Focus
+#### Focus
 
 arrange_mode < h : yabai -m window --focus west
 arrange_mode < j : yabai -m window --focus south
@@ -86,14 +105,14 @@ arrange_mode < 9 : yabai -m space --focus 9
 arrange_mode < a : yabai -m display --focus 1
 arrange_mode < b : yabai -m display --focus 2
 
-### Swap window
+#### Swap window
 
 arrange_mode < ctrl - h : yabai -m window --swap west
 arrange_mode < ctrl - j : yabai -m window --swap south
 arrange_mode < ctrl - l : yabai -m window --swap east
 arrange_mode < ctrl - k : yabai -m window --swap north
 
-### Move window to workspace
+#### Move window to workspace
 
 arrange_mode < ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1
 arrange_mode < ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
@@ -105,20 +124,39 @@ arrange_mode < ctrl - 7 : yabai -m window --space 7; yabai -m space --focus 7
 arrange_mode < ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8
 arrange_mode < ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9
 
-### Move workspace to screen
+#### Move workspace to screen
 
 arrange_mode < ctrl - a : yabai -m space --display 1; yabai -m display --focus 1
 arrange_mode < ctrl - b : yabai -m space --display 2; yabai -m display --focus 2
 
-### Maximize (=), left ([), right (]), (only works in float)
+#### Left ([), right (]) (only works in float)
 
-arrange_mode < shift - 0x18 : yabai -m window --grid 1:1:0:0:1:1
 arrange_mode < 0x1E : yabai -m window --grid 1:2:1:0:1:1
 arrange_mode < 0x21 : yabai -m window --grid 1:2:0:0:1:1
 
-## System Mode (Shift + Control - ')
+### Resize Mode (Shift + Control - /)
 
-:: system_mode @ : yabai -m config active_window_border_color 0xff7daea3
-shift + ctrl - 0x27 ; system_mode
-system_mode < q ; default
+#### Move Window
+
+resize_mode < h : yabai -m window --move rel:-20:0
+resize_mode < j : yabai -m window --move rel:0:20
+resize_mode < k : yabai -m window --move rel:0:-20
+resize_mode < l : yabai -m window --move rel:20:0
+
+#### Grow Window
+
+resize_mode < ctrl - h : yabai -m window --resize top_left:-20:0
+resize_mode < ctrl - j : yabai -m window --resize bottom_left:0:20
+resize_mode < ctrl - k : yabai -m window --resize top_left:0:-20
+resize_mode < ctrl - l : yabai -m window --resize top_right:20:0
+
+#### Shrink Window
+
+resize_mode < shift + ctrl - h : yabai -m window --resize top_left:20:0
+resize_mode < shift + ctrl - j : yabai -m window --resize bottom_left:0:-20
+resize_mode < shift + ctrl - k : yabai -m window --resize top_left:0:20
+resize_mode < shift + ctrl - l : yabai -m window --resize top_right:-20:0
+
+### System Mode (Shift + Control - ')
+
 system_mode < r : echo '\nRestarting window manager...\n' ; yabai --stop-service ; skhd --stop-service ; yabai --start-service ; skhd --start-service; echo '\nRestarted window manager\n'
