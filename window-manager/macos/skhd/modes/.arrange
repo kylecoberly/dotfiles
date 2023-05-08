@@ -1,19 +1,6 @@
 # Arrange Mode (Shift + Control - ;)
 
-## Layout
-
-arrange_mode < f : yabai -m window --toggle zoom-fullscreen
-arrange_mode < e : yabai -m space --layout bsp
-arrange_mode < s : yabai -m space --layout stack
-arrange_mode < x : yabai -m space --mirror x-axis
-arrange_mode < y : yabai -m space --mirror y-axis
-arrange_mode < r : yabai -m space --rotate 90
-arrange_mode < 0 : yabai -m space --balance
-arrange_mode < o : yabai -m window --toggle float --grid 4:4:1:1:2:2
-arrange_mode < p : yabai -m window --toggle sticky --toggle topmost --toggle pip
-
 ## Focus
-
 arrange_mode < h : yabai -m window --focus west
 arrange_mode < j : yabai -m window --focus south
 arrange_mode < k : yabai -m window --focus north
@@ -33,14 +20,12 @@ arrange_mode < a : yabai -m display --focus 1
 arrange_mode < b : yabai -m display --focus 2
 
 ## Swap window
-
 arrange_mode < ctrl - h : yabai -m window --swap west
 arrange_mode < ctrl - j : yabai -m window --swap south
-arrange_mode < ctrl - l : yabai -m window --swap east
 arrange_mode < ctrl - k : yabai -m window --swap north
+arrange_mode < ctrl - l : yabai -m window --swap east
 
 ## Move window to workspace
-
 arrange_mode < ctrl - 1 : yabai -m window --space 1; yabai -m space --focus 1
 arrange_mode < ctrl - 2 : yabai -m window --space 2; yabai -m space --focus 2
 arrange_mode < ctrl - 3 : yabai -m window --space 3; yabai -m space --focus 3
@@ -51,12 +36,24 @@ arrange_mode < ctrl - 7 : yabai -m window --space 7; yabai -m space --focus 7
 arrange_mode < ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8
 arrange_mode < ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9
 
-## Move workspace to screen
+# Can't do this in Yabai
+# arrange_mode < r : yabai -m space --label Name-Goes-Here
 
+## Move workspace to screen
 arrange_mode < ctrl - a : yabai -m space --display 1; yabai -m display --focus 1
 arrange_mode < ctrl - b : yabai -m space --display 2; yabai -m display --focus 2
 
 ## Left ([), right (]) (only works in float)
-
 arrange_mode < 0x1E : yabai -m window --grid 1:2:1:0:1:1
 arrange_mode < 0x21 : yabai -m window --grid 1:2:0:0:1:1
+
+## Layout
+arrange_mode < f : yabai -m window --toggle zoom-fullscreen
+arrange_mode < e : yabai -m space --layout bsp
+arrange_mode < s : yabai -m space --layout stack
+arrange_mode < x : yabai -m space --mirror x-axis
+arrange_mode < y : yabai -m space --mirror y-axis
+arrange_mode < r : yabai -m space --rotate 90
+arrange_mode < 0 : yabai -m space --balance
+arrange_mode < o : yabai -m window --toggle float --grid 4:4:1:1:2:2
+arrange_mode < p : yabai -m window --toggle sticky --toggle topmost --toggle pip
