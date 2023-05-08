@@ -13,11 +13,10 @@ set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
-set $ws0 "0"
-
 
 include settings.conf
 include theme.conf
+include floating-apps.conf
 
 ## Commands
 include commands/arrange.conf
@@ -27,11 +26,11 @@ include commands/layouts.conf
 # include commands/keys.conf
 
 ## Modes
-### System: <mod> + Escape
+### System: <mod> + '
 include modes/system.conf
-# ### Resize: <mod> + r
+# ### Resize: <mod> + /
 # include modes/resize.conf
 # ### Media: <mod> + m
 # include modes/media.conf
-# ### Arrange: <mod> + a
+# ### Arrange: <mod> + ;
 # include modes/arrange.conf
