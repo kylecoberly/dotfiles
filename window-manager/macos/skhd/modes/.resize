@@ -1,0 +1,22 @@
+# Resize Mode (Shift + Control - /)
+
+## Move Window
+
+resize_mode < h : yabai -m window --move rel:-20:0
+resize_mode < j : yabai -m window --move rel:0:20
+resize_mode < k : yabai -m window --move rel:0:-20
+resize_mode < l : yabai -m window --move rel:20:0
+
+## Grow Window
+
+resize_mode < ctrl - h : yabai -m window --resize top_left:-20:0
+resize_mode < ctrl - j : yabai -m window --resize bottom_left:0:20
+resize_mode < ctrl - k : yabai -m window --resize top_left:0:-20
+resize_mode < ctrl - l : yabai -m window --resize top_right:20:0
+
+## Shrink Window
+
+resize_mode < shift + ctrl - h : yabai -m window --resize top_left:20:0
+resize_mode < shift + ctrl - j : yabai -m window --resize bottom_left:0:-20
+resize_mode < shift + ctrl - k : yabai -m window --resize top_left:0:20
+resize_mode < shift + ctrl - l : yabai -m window --resize top_right:-20:0

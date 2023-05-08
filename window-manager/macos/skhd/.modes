@@ -1,0 +1,25 @@
+# Modes
+
+:: default : yabai -m config active_window_border_color 0xffdeb587
+:: arrange_mode @ : yabai -m config active_window_border_color 0xffea6962
+:: resize_mode @ : yabai -m config active_window_border_color 0xffa9b665
+:: system_mode @ : yabai -m config active_window_border_color 0xff7daea3
+
+shift + ctrl - 0x29 ; arrange_mode
+shift + ctrl - 0x2C ; resize_mode
+shift + ctrl - 0x27 ; system_mode
+
+arrange_mode < shift + ctrl - 0x2C ; resize_mode
+arrange_mode < shift + ctrl - 0x27 ; system_mode
+resize_mode < shift + ctrl - 0x29 ; arrange_mode
+resize_mode < shift + ctrl - 0x27 ; system_mode
+system_mode < shift + ctrl - 0x29 ; arrange_mode
+system_mode < shift + ctrl - 0x2C ; resize_mode
+
+arrange_mode < q ; default
+resize_mode < q ; default
+system_mode < q ; default
+
+.load "modes/.arrange"
+.load "modes/.resize"
+.load "modes/.system"

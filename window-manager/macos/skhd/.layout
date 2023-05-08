@@ -1,0 +1,11 @@
+# Layout Management
+
+shift + ctrl - f : yabai -m window --toggle zoom-fullscreen
+shift + ctrl - e : yabai -m space --layout bsp
+shift + ctrl - s : yabai -m space --layout stack
+shift + ctrl - x : yabai -m space --mirror x-axis
+shift + ctrl - y : yabai -m space --mirror y-axis
+shift + ctrl - r : yabai -m space --rotate 90
+shift + ctrl - 0 : yabai -m space --balance
+shift + ctrl - o : yabai -m window --toggle float --grid 4:4:1:1:2:2
+shift + ctrl - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
