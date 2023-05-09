@@ -48,5 +48,6 @@ window:
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
   startup_mode: Windowed
+
 # key_bindings:
 #  - { key: F, mods: Control|Shift, action: None }
