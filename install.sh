@@ -26,6 +26,8 @@ source "${DOTFILE_DIRECTORY}/tmux/install.sh" >/dev/null
 echo "TMUX configured..."
 source "${DOTFILE_DIRECTORY}/neovim/install.sh" >/dev/null
 echo "Neovim configured..."
+source "${DOTFILE_DIRECTORY}/window-manager/install.sh" >/dev/null
+echo "Window manager configured..."
 echo "Ready to go!"
 
 if [ "${CODESPACES}" == "true" ]; then
