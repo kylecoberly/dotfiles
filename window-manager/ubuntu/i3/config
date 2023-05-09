@@ -1,6 +1,5 @@
 ## Modifiers
 set $mod Control+Shift
-set $mod2 Mod1
 floating_modifier $mod
 
 ## Workspaces

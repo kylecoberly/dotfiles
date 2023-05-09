@@ -31,7 +31,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	mkdir -p $HOME/.config/{dunst,rofi}
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/i3" "${HOME}/.config/i3"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/dunstrc" "${HOME}/.config/dunst/dunstrc"
-	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/rofi-config.rasi" "${HOME}/.config/rofi/config.rasi"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/rofi/config.rasi" "${HOME}/.config/rofi/config.rasi"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/polybar" "${HOME}/.config/polybar"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	DOTFILES=(.yabairc .skhdrc .simplebarrc)
