@@ -23,14 +23,14 @@ include commands/arrange.conf
 include commands/focus.conf
 include commands/apps.conf
 include commands/layouts.conf
-# include commands/keys.conf
+include commands/keys.conf
 
 ## Modes
+### Arrange: <mod> + ;
+include modes/arrange.conf
+### Resize: <mod> + /
+include modes/resize.conf
 ### System: <mod> + '
 include modes/system.conf
-# ### Resize: <mod> + /
-# include modes/resize.conf
-# ### Media: <mod> + m
-# include modes/media.conf
-# ### Arrange: <mod> + ;
-# include modes/arrange.conf
+### Media: <mod> + m
+include modes/media.conf
