@@ -974,6 +974,104 @@
 						]
 					},
 					{
+						"description": ". (Ctrl)",
+						"manipulators": [
+							{
+								"conditions": [
+									{
+										"bundle_identifiers": [
+											"^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+											"^com\\.parallels\\.desktop\\.console$",
+											"^org\\.vmware\\.fusion$",
+											"^org\\.gnu\\.emacs$",
+											"^com\\.jetbrains",
+											"^com\\.microsoft\\.VSCode$",
+											"^com\\.sublimetext\\.3$",
+											"^net\\.kovidgoyal\\.kitty$",
+											"^com\\.citrix\\.XenAppViewer$",
+											"^com\\.microsoft\\.rdc\\.macos$",
+											"^org\\.alacritty$",
+											"^co\\.zeit\\.hyper$",
+											"^com\\.googlecode\\.iterm2$",
+											"^com\\.apple\\.Terminal$",
+											"^com\\.github\\.wez\\.wezterm$"
+										],
+										"file_paths": [
+											"Chrome Remote Desktop\\.app"
+										],
+										"type": "frontmost_application_unless"
+									}
+								],
+								"from": {
+									"key_code": "period",
+									"modifiers": {
+										"mandatory": [
+											"control"
+										]
+									}
+								},
+								"to": [
+									{
+										"key_code": "period",
+										"modifiers": [
+											"command"
+										]
+									}
+								],
+								"type": "basic"
+							}
+						]
+					},
+					{
+						"description": ", (Ctrl)",
+						"manipulators": [
+							{
+								"conditions": [
+									{
+										"bundle_identifiers": [
+											"^org\\.virtualbox\\.app\\.VirtualBoxVM$",
+											"^com\\.parallels\\.desktop\\.console$",
+											"^org\\.vmware\\.fusion$",
+											"^org\\.gnu\\.emacs$",
+											"^com\\.jetbrains",
+											"^com\\.microsoft\\.VSCode$",
+											"^com\\.sublimetext\\.3$",
+											"^net\\.kovidgoyal\\.kitty$",
+											"^com\\.citrix\\.XenAppViewer$",
+											"^com\\.microsoft\\.rdc\\.macos$",
+											"^org\\.alacritty$",
+											"^co\\.zeit\\.hyper$",
+											"^com\\.googlecode\\.iterm2$",
+											"^com\\.apple\\.Terminal$",
+											"^com\\.github\\.wez\\.wezterm$"
+										],
+										"file_paths": [
+											"Chrome Remote Desktop\\.app"
+										],
+										"type": "frontmost_application_unless"
+									}
+								],
+								"from": {
+									"key_code": "comma",
+									"modifiers": {
+										"mandatory": [
+											"control"
+										]
+									}
+								},
+								"to": [
+									{
+										"key_code": "comma",
+										"modifiers": [
+											"command"
+										]
+									}
+								],
+								"type": "basic"
+							}
+						]
+					},
+					{
 						"description": "Change right_command+hjkl to arrow keys",
 						"manipulators": [
 							{

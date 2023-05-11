@@ -1,3 +1,5 @@
+import:
+  - ~/.config/alacritty/gruvbox_material.yml
 bell:
   # Duration of the visual bell flash in milliseconds. A `duration` of `0` will
   # disable the visual bell animation.
@@ -20,9 +22,7 @@ font:
     # Must match installed font name
     family: NotoMono Nerd Font
     style: Regular
-  size: 18.0
-import:
-  - ~/.config/alacritty/gruvbox_material.yml
+  size: 15.0
 scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
