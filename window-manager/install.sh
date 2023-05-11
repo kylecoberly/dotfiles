@@ -45,9 +45,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 	brew install koekeishiya/formulae/yabai
 	yabai --start-service
-	sudo yabai --install-sa
-	# should come from .yabairc
-	# sudo yabai --load-sa
 
 	brew install koekeishiya/formulae/skhd
 	skhd --start-service
