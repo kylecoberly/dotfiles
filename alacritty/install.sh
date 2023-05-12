@@ -33,8 +33,8 @@ fi
 ## System Configuration
 ### Natural Scrolling, tapping
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo rm -rf /usr/share/X11/xorg.conf.d/40-libinput.conf
-	sudo ln -sf "${DOTFILE_DIRECTORY}/alacritty/40-libinput.conf" "/usr/share/X11/xorg.conf.d/40-libinput.conf"
+	sudo rm -rf /etc/X11/xorg.conf.d/40-libinput.conf
+	sudo ln -sf "${DOTFILE_DIRECTORY}/alacritty/40-libinput.conf" "/etc/X11/xorg.conf.d/40-libinput.conf"
 fi
 
 ## Link dotfiles
