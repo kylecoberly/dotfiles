@@ -36,7 +36,7 @@ sudo rm -rf /usr/share/X11/xorg.conf.d/40-libinput.conf
 mkdir -p "${HOME}/.config/alacritty"
 ln -sf "${DOTFILE_DIRECTORY}/alacritty/alacritty.yml" "${HOME}/.config/alacritty/alacritty.yml"
 ln -sf "${DOTFILE_DIRECTORY}/alacritty/gruvbox_material.yml" "${HOME}/.config/alacritty/gruvbox_material.yml"
-### Natural Scrolling
+### Natural Scrolling, tapping
 sudo ln -sf "${DOTFILE_DIRECTORY}/alacritty/40-libinput.conf" "/usr/share/X11/xorg.conf.d/40-libinput.conf"
 
 ## ChromeOS and Ubuntu Desktop Icon
