@@ -20,7 +20,7 @@ else
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo apt-get update && sudo apt-get install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst playerctl network-manager-gnome libnotify-bin pavucontrol light acpi alttab
+	sudo apt-get update && sudo apt-get install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst playerctl network-manager-gnome libnotify-bin pavucontrol light acpi alttab polybar
 	playerctld daemon
 
 	# Keybindings
