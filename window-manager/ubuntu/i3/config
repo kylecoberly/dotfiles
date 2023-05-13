@@ -13,6 +13,17 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 
+## Colors
+set $bg       #282828
+set $fg       #d4be98
+set $red      #ea6962
+set $orange   #e78a4e
+set $green    #a9b665
+set $blue     #7daea3
+set $purple   #d3869b
+set $aqua     #89b482
+set $darkgray #282828
+
 include settings.conf
 include theme.conf
 include floating-apps.conf
