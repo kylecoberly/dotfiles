@@ -36,9 +36,6 @@ arrange_mode < ctrl - 7 : yabai -m window --space 7; yabai -m space --focus 7
 arrange_mode < ctrl - 8 : yabai -m window --space 8; yabai -m space --focus 8
 arrange_mode < ctrl - 9 : yabai -m window --space 9; yabai -m space --focus 9
 
-# Can't do this in Yabai
-# arrange_mode < r : yabai -m space --label Name-Goes-Here
-
 ## Move workspace to screen
 arrange_mode < ctrl - a : yabai -m space --display 1; yabai -m display --focus 1
 arrange_mode < ctrl - b : yabai -m space --display 2; yabai -m display --focus 2

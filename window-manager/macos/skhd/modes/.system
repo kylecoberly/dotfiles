@@ -1,3 +1,5 @@
 # System Mode (Shift + Control - ')
 
 system_mode < r : echo '\nRestarting window manager...\n' ; yabai --stop-service ; skhd --stop-service ; yabai --start-service ; skhd --start-service; echo '\nRestarted window manager\n'
+system_mode < ctrl - r : echo '\nRebooting...\n' ; sudo shutdown -r
+system_mode < ctrl - s : echo '\nShutting down...\n' ; sudo shutdown

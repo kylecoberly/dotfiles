@@ -7,6 +7,9 @@
 # For example:
 # kylecoberly ALL=(root) NOPASSWD: sha256:740b9e6aab46f8c499f0fc651ae1861d4ebe48b6e6a50296bf4a9ad879bbad93 /usr/local/bin/yabai --load-sa
 
+# For MacOS, put Ubersicht in System Preferences → Users & Groups → Login Items to make it launch simple-bar on startup
+# You'll also need to put `macos/startup.sh` in there
+
 # Requires Brew and NotoMono Nerd Font
 
 if [ -z "$HOME" ]; then
