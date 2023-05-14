@@ -78,6 +78,9 @@ unbind %
 bind | split-window -h
 bind - split-window -v
 
+# Vi keys in copy mode
+setw -g mode-keys vi
+
 # -- tpm -----------------------------------------------------------------------
 
 # by default, launching tmux will update tpm and all plugins
