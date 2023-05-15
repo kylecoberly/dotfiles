@@ -81,6 +81,9 @@ bind - split-window -v
 # Vi keys in copy mode
 setw -g mode-keys vi
 
+# Turn off pane alert styles
+setw -g window-status-activity none
+
 # -- tpm -----------------------------------------------------------------------
 
 # by default, launching tmux will update tpm and all plugins
@@ -137,22 +140,33 @@ set -g @nova-nerdfonts-right 
 set -g @nova-pane "#I #W"
 set -g @nova-rows 0
 
-### Colors
-b_bg="#504945"
+### Colors - Gruvbox Material
+fg="#d4be98"
+fgalt="#ddc7a1"
 
-seg_a="#a89984 #282828"
-seg_b="$b_bg #ddc7a1"
+black="#101010"
+grey0="#282828"
+grey1="#32302f"
+grey2="#32302f"
+grey3="#45403d"
+grey4="#a89984"
+grey5="#5a524c"
 
-inactive_bg="#32302f"
-inactive_fg="#ddc7a1"
-active_bg=$b_bg
-active_fg="#ddc7a1"
+red="#ea6962"
+orange="#e78a4e"
+yellow="#d8a657"
+green="#a9b665"
+aqua="#89b482"
+blue="#7daea3"
+purple="#d3869b"
 
-set -gw window-status-current-style bold
-set -g "@nova-status-style-bg" "$inactive_bg"
-set -g "@nova-status-style-fg" "$inactive_fg"
-set -g "@nova-status-style-active-bg" "$active_bg"
-set -g "@nova-status-style-active-fg" "$active_fg"
+seg_a="$grey4 $grey3"
+seg_b="$grey5 $fg"
+
+set -g "@nova-status-style-bg" "$grey1"
+set -g "@nova-status-style-fg" "$fg"
+set -g "@nova-status-style-active-bg" "$fg"
+set -g "@nova-status-style-active-fg" "$grey0"
 
 set -g "@nova-pane-active-border-style" "#44475a"
 set -g "@nova-pane-border-style" "#827d51"
@@ -164,10 +178,10 @@ set -g @nova-segment-prefix-colors "$seg_b"
 set -g @nova-segment-session "#{session_name}"
 set -g @nova-segment-session-colors "$seg_a"
 
-set -g @nova-segment-cpu " #(~/.tmux/plugins/tmux-cpu/scripts/cpu_percentage.sh) #(~/.tmux/plugins/tmux-cpu/scripts/ram_percentage.sh)"
+set -g @nova-segment-cpu " #(~/dotfiles/tmux/plugins/tmux-cpu/scripts/cpu_percentage.sh) #(~/dotfiles/tmux/plugins/tmux-cpu/scripts/ram_percentage.sh)"
 set -g @nova-segment-cpu-colors "$seg_b"
 
-set -g @nova-segment-layout "#(~/.tmux/plugins/tmux-keyboard-layout/scripts/get_keyboard_layout.sh)"
+set -g @nova-segment-layout "#(~/dotfiles/tmux/plugins/tmux-keyboard-layout/scripts/get_keyboard_layout.sh)"
 set -g @nova-segment-layout-colors "$seg_a"
 
 set -g @nova-segments-0-left "session"
