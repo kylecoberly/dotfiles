@@ -24,6 +24,10 @@ set $purple   #d3869b
 set $aqua     #89b482
 set $darkgray #282828
 
+## Speed
+set $flash_time 500
+set $display_time 4000
+
 include settings.conf
 include theme.conf
 include floating-apps.conf
