@@ -40,6 +40,7 @@ require("lazy").setup({
         "tohtml",
         "tutor",
         "zipPlugin",
+        "cmp-tabnine",
       },
     },
   },

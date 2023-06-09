@@ -29,3 +29,4 @@ vim.opt.timeoutlen = 300
 vim.opt.conceallevel = 0
 -- Highlight matches on search
 vim.opt.hlsearch = false
+vim.opt.backupcopy = "auto"
