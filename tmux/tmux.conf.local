@@ -83,6 +83,7 @@ setw -g mode-keys vi
 
 # Turn off pane alert styles
 setw -g window-status-activity none
+set-option -g bell-action none
 
 # -- tpm -----------------------------------------------------------------------
 
