@@ -6,7 +6,18 @@ return {
 
       if type(opts.ensure_installed) == "table" then
         vim.list_extend(opts.ensure_installed, {
+          "bash",
+          "html",
           "dockerfile",
+          "java",
+          "css",
+          "scss",
+          "sql",
+          "javascript",
+          "typescript",
+          "vue",
+          "json",
+          "lua",
           "git_config",
           "jsdoc",
           "make",
