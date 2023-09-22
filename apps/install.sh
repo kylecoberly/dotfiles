@@ -18,7 +18,8 @@ fi
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sudo apt-get install -y --no-install-recommends \
 		ranger bat htop ncdu nmap tldr tree wget ffmpeg \
-		openssh-server xclip build-essential docker-ce docker-ce-cli
+		openssh-server xclip build-essential docker-ce docker-ce-cli \
+		p7zip
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install ranger bat htop ncdu nmap tldr tree wget ffmpeg \
 		openssh-server docker xsel
