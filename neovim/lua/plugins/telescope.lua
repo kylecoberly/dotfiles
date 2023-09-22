@@ -12,6 +12,9 @@ return {
       -- Handle git through fugitive
       { "<leader>gs", false },
       { "<leader>gc", false },
+      { "<leader>xq", false },
+      { "<leader>xl", false },
+      { "<leader>xt", false },
     },
   },
 }
