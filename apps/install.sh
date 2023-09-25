@@ -19,10 +19,10 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sudo apt-get install -y --no-install-recommends \
 		ranger bat htop ncdu nmap tldr tree wget ffmpeg \
 		openssh-server xclip build-essential docker-ce docker-ce-cli \
-		p7zip
+		p7zip rar unrar
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install ranger bat htop ncdu nmap tldr tree wget ffmpeg \
-		openssh-server docker xsel
+		openssh-server docker xsel rar
 	brew install --cask firefox chrome alt-tab rectangle
 fi
 
