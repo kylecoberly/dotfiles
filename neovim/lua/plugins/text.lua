@@ -1,7 +1,7 @@
 return {
   {
     "jghauser/follow-md-links.nvim",
-    keymaps = {
+    keys = {
       { "n", "<BS>", ":edit #<CR>" },
     },
   },
