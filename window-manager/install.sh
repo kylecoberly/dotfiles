@@ -46,6 +46,10 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 
+	# Stop Dock icon bouncing
+	defaults write com.apple.dock no-bouncing -bool TRUE
+	killall Dock
+
 	brew install koekeishiya/formulae/yabai
 	yabai --start-service
 
