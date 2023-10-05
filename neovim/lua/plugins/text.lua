@@ -1,15 +1,14 @@
 return {
   {
-    "jghauser/follow-md-links.nvim",
-    keys = {
-      { "n", "<BS>", ":edit #<CR>" },
-    },
-  },
-  {
     "Pocco81/true-zen.nvim",
     config = function()
       local truezen = require("true-zen")
       truezen.setup({
+        modes = {
+          ataraxis = {
+            shade = "dark",
+          },
+        },
         integrations = {
           tmux = true,
           lualine = true,

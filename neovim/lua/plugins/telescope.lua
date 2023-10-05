@@ -12,6 +12,7 @@ return {
       -- Handle git through fugitive
       { "<leader>gs", false },
       { "<leader>gc", false },
+      -- Use trouble for diagnostics
       { "<leader>xq", false },
       { "<leader>xl", false },
       { "<leader>xt", false },

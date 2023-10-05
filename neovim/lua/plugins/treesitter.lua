@@ -13,8 +13,6 @@ return {
           "css",
           "scss",
           "sql",
-          -- "javascript",
-          -- "typescript",
           "vue",
           "json",
           "lua",
@@ -24,19 +22,10 @@ return {
           "toml",
           "vimdoc",
           "ruby",
+          "typescript",
+          "tsx",
         })
       end
     end,
-  },
-  -- add any tools you want to have installed below
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "stylua",
-        "shellcheck",
-        "shfmt",
-      },
-    },
   },
 }
