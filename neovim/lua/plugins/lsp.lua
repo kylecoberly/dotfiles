@@ -2,10 +2,9 @@ return {
   {
     "nvimtools/none-ls.nvim",
     opts = function(_, opts)
-      local null_ls = require("none-ls")
+      local null_ls = require("null-ls")
       opts.sources = vim.list_extend(opts.sources, {
         null_ls.builtins.code_actions.eslint,
-        null_ls.builtins.code_actions.stylelint,
         null_ls.builtins.diagnostics.stylelint,
         null_ls.builtins.hover.dictionary,
         null_ls.builtins.hover.printenv,
@@ -27,7 +26,7 @@ return {
     -- autoformat = true,
     opts = {
       servers = {
-        cssls = {},
+        stylelint_lsp = {},
         eslint = {},
         html = {},
         jsonls = {
@@ -57,10 +56,15 @@ return {
           require("lazyvim.util").on_attach(function(client)
             if client.name == "eslint" then
               client.server_capabilities.documentFormattingProvider = true
+            elseif client.name == "stylelint_lsp" then
+              client.server_capabilities.documentFormattingProvider = true
             elseif client.name == "tsserver" then
               client.server_capabilities.documentFormattingProvider = false
             end
           end)
+        end,
+        stylelint_lsp = function(_, opts)
+          opts.filetypes = { "css", "scss", "less", "sass" }
         end,
       },
     },
@@ -72,11 +76,11 @@ return {
       ensure_installed = {
         "angular-language-server",
         "bash-language-server",
-        "css-lsp",
+        "stylelint-lsp",
         "cucumber-language-server",
         "docker-compose-language-service",
         "dockerfile-language-server",
-        -- "eslint-lsp",
+        "eslint-lsp",
         -- "grammarly-languageserver",
         "html-lsp",
         -- "htmlbeautifier",
