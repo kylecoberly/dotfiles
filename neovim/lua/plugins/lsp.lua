@@ -1,114 +1,159 @@
+local defaults = function()
+  local M = {}
+
+  M.add_read_only_maps = function(bufopts)
+    vim.keymap.set("n", "<leader>rr", "<cmd>LspRestart<cr>")
+
+    vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
+
+    vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", bufopts)
+    vim.keymap.set("n", "gt", "<cmd>Telescope lsp_type_definitions<cr>", bufopts)
+    vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", bufopts)
+    vim.keymap.set("n", "gr", "<cmd>Telescope lsp_references<cr>", bufopts)
+
+    vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
+    vim.keymap.set("n", "<leader>nF", vim.lsp.buf.add_workspace_folder, bufopts)
+    vim.keymap.set("n", "<leader>dF", vim.lsp.buf.remove_workspace_folder, bufopts)
+
+    vim.keymap.set("n", "<leader>qf", vim.lsp.buf.code_action, bufopts)
+  end
+
+  M.add_formatting = function(bufopts)
+    vim.keymap.set("n", "<leader>F", vim.lsp.buf.format, bufopts)
+  end
+
+  M.get_buffer_options = function(buffer_number)
+    return { noremap = true, silent = true, buffer = buffer_number }
+  end
+
+  M.on_attach = function(_, bufnr)
+    local options = M.get_buffer_options(bufnr)
+
+    M.add_read_only_maps(options)
+    M.add_formatting(options)
+  end
+
+  M.get_capabilities = function()
+    require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
+  end
+
+  return M
+end
+
+local prettier = {
+  formatCommand = 'prettierd "${INPUT}"',
+  formatStdin = true,
+}
+
 return {
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local null_ls = require("null-ls")
-      opts.sources = vim.list_extend(opts.sources, {
-        null_ls.builtins.code_actions.eslint,
-        null_ls.builtins.diagnostics.stylelint,
-        null_ls.builtins.hover.dictionary,
-        null_ls.builtins.hover.printenv,
-      })
-    end,
-  },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {
-      settings = {
-        expose_as_code_actions = "all",
-        complete_function_calls = true,
+  "neovim/nvim-lspconfig",
+  init = function()
+    local lspconfig = require("lspconfig")
+    lspconfig.efm.setup({
+      filetypes = {
+        "typescript",
+        "typescriptreact",
+        "javascript",
+        "javascriptreact",
+        "markdown",
+        "html",
+        "css",
+        "scss",
+        "lua",
       },
-    },
-  },
-  {
-    "neovim/nvim-lspconfig",
-    -- autoformat = true,
-    opts = {
-      servers = {
-        stylelint_lsp = {},
-        eslint = {},
-        html = {},
-        jsonls = {
-          settings = {
-            json = {
-              format = {
-                enable = true,
-              },
-              validate = {
-                enable = true,
-              },
+      init_options = { documentFormatting = true },
+      rootMarkers = { ".git/" },
+      settings = {
+        languages = {
+          typescript = { prettier },
+          typescriptreact = { prettier },
+          javascript = { prettier },
+          javascriptreact = { prettier },
+          markdown = { prettier },
+          html = { prettier },
+          css = { prettier },
+          scss = { prettier },
+          json = { prettier },
+        },
+      },
+      on_attach = defaults.on_attach,
+      capabilities = defaults.get_capabilities(),
+    })
+
+    lspconfig.tsserver.setup({
+      on_attach = function(client, bufnr)
+        client.server_capabilities.documentformattingprovider = false
+
+        local options = defaults.get_buffer_options(bufnr)
+        defaults.add_read_only_maps(options)
+      end,
+      capabilities = defaults.get_capabilities(),
+    })
+
+    lspconfig.eslint.setup({
+      on_attach = defaults.on_attach,
+      capabilities = defaults.get_capabilities(),
+    })
+
+    lspconfig.stylelint_lsp.setup({
+      on_attach = defaults.on_attach,
+      capabilities = defaults.get_capabilities(),
+      settings = {
+        stylelintplus = {
+          autoFixOnSave = true,
+          autoFixOnFormat = true,
+        },
+      },
+    })
+  end,
+  autoformat = true,
+  opts = {
+    servers = {
+      efm = {},
+      stylelint_lsp = {},
+      eslint = {},
+      html = {},
+      jsonls = {
+        settings = {
+          json = {
+            format = {
+              enable = true,
+            },
+            validate = {
+              enable = true,
             },
           },
         },
-        lua_ls = {
-          Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-          },
-        },
-        tsserver = {
-          enabled = false,
+      },
+      lua_ls = {
+        Lua = {
+          workspace = { checkThirdParty = false },
+          telemetry = { enable = false },
         },
       },
-      setup = {
-        eslint = function()
-          require("lazyvim.util").on_attach(function(client)
-            if client.name == "eslint" then
-              client.server_capabilities.documentFormattingProvider = true
-            elseif client.name == "stylelint_lsp" then
-              client.server_capabilities.documentFormattingProvider = true
-            elseif client.name == "tsserver" then
-              client.server_capabilities.documentFormattingProvider = false
-            end
-          end)
-        end,
-        stylelint_lsp = function(_, opts)
-          opts.filetypes = { "css", "scss", "less", "sass" }
-        end,
-      },
+      tsserver = {},
     },
   },
-  -- add any tools you want to have installed below
-  {
-    "williamboman/mason.nvim",
-    opts = {
-      ensure_installed = {
-        "angular-language-server",
-        "bash-language-server",
-        "stylelint-lsp",
-        "cucumber-language-server",
-        "docker-compose-language-service",
-        "dockerfile-language-server",
-        "eslint-lsp",
-        -- "grammarly-languageserver",
-        "html-lsp",
-        -- "htmlbeautifier",
-        -- "jdtls",
-        -- "jq",
-        "json-lsp",
-        -- "jsonlint",
-        -- "lua-language-server",
-        -- "markdownlint",
-        -- "marksman",
-        -- "proselint",
-        -- "remark-cli",
-        -- "remark-language-server",
-        -- "ruby-lsp",
-        "shellcheck",
-        -- "shfmt",
-        -- "spell",
-        -- "sql-formatter",
-        -- "sqlls",
-        -- "sqlfluff",
-        -- "stylelint-lsp",
-        -- "stylua",
-        -- "tags",
-        -- "ts_node_action",
-        -- "write-good",
-        -- "yaml-language-server",
-        -- "yamllint",
-      },
+}, {
+  "williamboman/mason.nvim",
+}, {
+  "williamboman/mason-lspconfig.nvim",
+  setup = {
+    automatic_installation = true,
+    ensure_installed = {
+      "efm",
+      "eslint",
+      "lua_ls",
+      "tsserver",
+      "bash-language-server",
+      "stylelint-lsp",
+      "cucumber-language-server",
+      "docker-compose-language-service",
+      "dockerfile-language-server",
+      "json-lsp",
+      "shellcheck",
     },
   },
+}, {
+  "folke/neodev.nvim",
 }
