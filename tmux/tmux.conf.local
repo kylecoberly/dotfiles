@@ -106,6 +106,9 @@ tmux_conf_uninstall_plugins_on_reload=true
 # /!\ do not add set -g @plugin 'tmux-plugins/tpm'
 # /!\ do not add run '~/.tmux/plugins/tpm/tpm'
 
+# NeoVim tmux plugin compatibility
+set-option -sa terminal-features ',screen-256color:RGB'
+
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
 ## Sessions
