@@ -1,46 +1,53 @@
 {
-	"languages": [
-		{
-			"target": "nodejs",
-			"command": "node",
-			"dependencies": "dirmngr gpg curl gawk",
-			"repo": "https://github.com/asdf-vm/asdf-nodejs",
-			"version": "19.8.1"
-		},
-		{
-			"target": "java",
-			"command": "java",
-			"dependencies": "curl coreutils unzip jq",
-			"repo": "https://github.com/halcyon/asdf-java",
-			"version": "openjdk-20"
-		},
-		{
-			"target": "php",
-			"command": "php",
-			"dependencies": "autoconf bison build-essential curl gettext git libgd-dev libcurl4-openssl-dev libedit-dev libicu-dev libjpeg-dev libmysqlclient-dev libonig-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev libssl-dev libxml2-dev libzip-dev openssl pkg-config re2c zlib1g-dev",
-			"repo": "https://github.com/asdf-community/asdf-php",
-			"version": "8.2.4"
-		},
-		{
-			"target": "ruby",
-			"command": "ruby",
-			"dependencies": "bison patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev",
-			"repo": "https://github.com/asdf-vm/asdf-ruby",
-			"version": "3.2.1"
-		},
-		{
-			"target": "python",
-			"command": "python",
-			"dependencies": "build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev",
-			"repo": "https://github.com/asdf-community/asdf-python",
-			"version": "3.11.2"
-		},
-		{
-			"target": "rust",
-			"command": "cargo",
-			"dependencies": "build-essential",
-			"repo": "https://github.com/asdf-community/asdf-rust",
-			"version": "1.68.2"
-		}
-	]
+  "languages": [
+    {
+      "target": "nodejs",
+      "command": "node",
+      "dependencies": "dirmngr gpg curl gawk",
+      "repo": "https://github.com/asdf-vm/asdf-nodejs",
+      "version": "19.8.1"
+    },
+    {
+      "target": "java",
+      "command": "java",
+      "dependencies": "curl coreutils unzip jq",
+      "repo": "https://github.com/halcyon/asdf-java",
+      "version": "openjdk-20"
+    },
+    {
+      "target": "php",
+      "command": "php",
+      "dependencies": "autoconf bison build-essential curl gettext git libgd-dev libcurl4-openssl-dev libedit-dev libicu-dev libjpeg-dev libmysqlclient-dev libonig-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev libssl-dev libxml2-dev libzip-dev openssl pkg-config re2c zlib1g-dev",
+      "repo": "https://github.com/asdf-community/asdf-php",
+      "version": "8.2.4"
+    },
+    {
+      "target": "ruby",
+      "command": "ruby",
+      "dependencies": "bison patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev",
+      "repo": "https://github.com/asdf-vm/asdf-ruby",
+      "version": "3.2.1"
+    },
+    {
+      "target": "python",
+      "command": "python",
+      "dependencies": "build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev",
+      "repo": "https://github.com/asdf-community/asdf-python",
+      "version": "3.11.2"
+    },
+    {
+      "target": "rust",
+      "command": "cargo",
+      "dependencies": "build-essential",
+      "repo": "https://github.com/asdf-community/asdf-rust",
+      "version": "1.68.2"
+    },
+    {
+      "target": "golang",
+      "command": "golang",
+      "dependencies": "coreutils curl",
+      "repo": "https://github.com/asdf-community/asdf-golang",
+      "version": "1.21.0"
+    }
+  ]
 }

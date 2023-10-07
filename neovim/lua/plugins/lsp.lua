@@ -58,10 +58,7 @@ return {
       virtual_text = {
         spacing = 4,
         source = "if_many",
-        prefix = "●",
-        -- this will set set the prefix to a function that returns the diagnostics icon based on the severity
-        -- this only works on a recent 0.10.0 build. Will be set to "●" when not supported
-        -- prefix = "icons",
+        prefix = "icons",
       },
       severity_sort = true,
     },
@@ -72,7 +69,6 @@ return {
     servers = {
       bashls = {},
       cssls = {},
-      diagnosticls = {},
       docker_compose_language_service = {},
       dockerls = {},
       eslint = {
@@ -110,7 +106,7 @@ return {
       marksman = {},
       mdx_analyzer = {},
       stylelint_lsp = {
-        filetypes = { "css", "scss" },
+        filetypes = { "css", "scss", "html" },
         settings = {
           stylelintplus = {
             autoFixOnFormat = true,
@@ -255,7 +251,6 @@ return {
 }, {
   "nvimtools/none-ls.nvim",
   {
-    event = "LazyFile",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "mason.nvim",
@@ -289,7 +284,7 @@ return {
           null_ls.builtins.completion.luasnip,
           null_ls.builtins.completion.tags,
           null_ls.builtins.code_actions.eslint_d,
-          null_ls.builtins.code_actions.gitsigns, -- not in mason?
+          null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.code_actions.proselint,
           null_ls.builtins.code_actions.refactoring, -- Requires visually selecting the code you want to refactor and calling :'<,'>lua vim.lsp.buf.range_code_action() (for the default handler) or :'<,'>Telescope lsp_range_code_actions (for Telescope).
           null_ls.builtins.code_actions.shellcheck,

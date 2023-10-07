@@ -106,54 +106,6 @@ return {
           ghost_text = { cmp_types.cmp.TriggerEvent.TextChanged },
         },
       })
-
-      -- Maybe not necessary?
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      require("lspconfig")["bashls"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["cssls"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["dockerls"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["eslint_d"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["grammarly"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["html"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["jsonls"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["ltex"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["lua_ls"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["marksman"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["markdown_cli2"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["stylelint_lsp"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["sqlls"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["textlsp"].setup({
-        capabilities = capabilities,
-      })
-      require("lspconfig")["tsserver"].setup({
-        capabilities = capabilities,
-      })
     end,
   },
 }

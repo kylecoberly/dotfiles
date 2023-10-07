@@ -58,3 +58,6 @@ bindkey "\e." insert-last-word
 if [[ -d ~/.asdf/plugins/java ]]; then
   . ~/.asdf/plugins/java/set-java-home.zsh
 fi
+if [[ -d ~/.asdf/plugins/golang ]]; then
+	. ~/.asdf/plugins/golang/set-env.zsh
+fi
