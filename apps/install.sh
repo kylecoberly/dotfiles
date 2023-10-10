@@ -32,7 +32,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	## Install apps
 	sudo apt-get install -y --no-install-recommends \
 		ranger bat htop ncdu nmap tldr tree wget ffmpeg \
-		openssh-server xclip build-essential p7zip rar unrar
+		openssh-server xclip build-essential p7zip rar unrar \
+		tidy
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install ranger bat htop ncdu nmap tldr tree wget ffmpeg \
 		openssh-server docker xsel rar
