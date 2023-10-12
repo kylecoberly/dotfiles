@@ -6,6 +6,7 @@ return {
       build = "make",
       config = function()
         require("telescope").load_extension("fzf")
+        require("telescope").load_extension("refactoring")
       end,
     },
     keys = {
