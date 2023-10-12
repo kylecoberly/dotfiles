@@ -100,10 +100,7 @@ return {
             },
           },
         },
-        ltex = {
-          filetypes = { "mardkown", "md" },
-          { debounce_text_changes = "300" },
-        },
+        ltex = {},
         lua_ls = {
           settings = {
             Lua = {
