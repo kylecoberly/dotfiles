@@ -3,6 +3,8 @@ return {
   { import = "lazyvim.plugins.extras.lang.json" },
   { import = "lazyvim.plugins.extras.linting.eslint" },
   { import = "lazyvim.plugins.extras.formatting.prettier" },
+  { import = "lazyvim.plugins.extras.lsp.none-ls" },
+
   {
     "neovim/nvim-lspconfig",
     lazy = false,
@@ -182,8 +184,8 @@ return {
         local plugin = require("lazy.core.config").spec.plugins["neoconf.nvim"]
         require("neoconf").setup(require("lazy.core.plugin").values(plugin, "opts", false))
       end
-      require("lazyvim.plugins.lsp.format").setup(opts)
-      Util.on_attach(function(client, buffer)
+      require("lazyvim.util").format.setup()
+      Util.lsp.on_attach(function(client, buffer)
         require("lazyvim.plugins.lsp.keymaps").on_attach(client, buffer)
       end)
       local register_capability = vim.lsp.handlers["client/registerCapability"]
@@ -207,7 +209,7 @@ return {
       local inlay_hint = vim.lsp.buf.inlay_hint or vim.lsp.inlay_hint
 
       if opts.inlay_hints.enabled and inlay_hint then
-        Util.on_attach(function(client, buffer)
+        Util.lsp.on_attach(function(client, buffer)
           if client.supports_method("textDocument/inlayHint") then
             inlay_hint(buffer, true)
           end
