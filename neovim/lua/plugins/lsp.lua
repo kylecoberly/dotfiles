@@ -76,6 +76,7 @@ return {
       servers = {
         bashls = {},
         cssls = {},
+        cucumber_language_server = {},
         docker_compose_language_service = {},
         dockerls = {},
         eslint = {
@@ -130,10 +131,6 @@ return {
         tsserver = {},
       },
       setup = {
-        -- tsserver = function(_, opts)
-        -- 	require("typescript-tools").setup({ server = opts })
-        -- 	return true
-        -- end,
         tsserver = function()
           require("typescript").setup({
             server = {
@@ -281,14 +278,6 @@ return {
       if have_mason then
         mlsp.setup({ ensure_installed = ensure_installed, handlers = { setup } })
       end
-
-      if Util.lsp_get_config("denols") and Util.lsp_get_config("tsserver") then
-        local is_deno = require("lspconfig.util").root_pattern("deno.json", "deno.jsonc")
-        Util.lsp_disable("tsserver", is_deno)
-        Util.lsp_disable("denols", function(root_dir)
-          return not is_deno(root_dir)
-        end)
-      end
     end,
   },
   {
@@ -322,7 +311,6 @@ return {
           null_ls.builtins.diagnostics.proselint,
           null_ls.builtins.diagnostics.sqlfluff.with({ extra_args = { "--dialect", "postgres" } }),
           null_ls.builtins.diagnostics.stylelint,
-          null_ls.builtins.diagnostics.tidy,
           null_ls.builtins.diagnostics.trail_space,
           null_ls.builtins.diagnostics.write_good,
           null_ls.builtins.diagnostics.zsh,
@@ -334,19 +322,10 @@ return {
           null_ls.builtins.code_actions.gitsigns,
           null_ls.builtins.code_actions.proselint,
           null_ls.builtins.code_actions.refactoring, -- Requires visually selecting the code you want to refactor and calling :'<,'>lua vim.lsp.buf.range_code_action() (for the default handler) or :'<,'>Telescope lsp_range_code_actions (for Telescope).
-          null_ls.builtins.formatting.fixjson,
-          null_ls.builtins.formatting.json_tool,
-          null_ls.builtins.formatting.markdown_toc,
           null_ls.builtins.formatting.prettierd,
           null_ls.builtins.formatting.shfmt,
           null_ls.builtins.formatting.sqlfluff.with({ extra_args = { "--dialect", "postgres" } }),
-          null_ls.builtins.formatting.stylelint,
           null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.textlint,
-          null_ls.builtins.formatting.tidy,
-          null_ls.builtins.formatting.trim_whitespace,
-          null_ls.builtins.formatting.yamlfix,
-          null_ls.builtins.formatting.yamlfmt,
           require("typescript.extensions.null-ls.code-actions"),
         },
         on_attach = function(client, bufnr)
@@ -375,7 +354,6 @@ return {
     build = ":MasonUpdate",
     opts = {
       ensure_installed = {
-        "fixjson",
         "markdown-toc",
         "marksman",
         "markuplint",
@@ -388,8 +366,6 @@ return {
         "stylua",
         "textlint",
         "write-good",
-        "yamlfix",
-        "yamlfmt",
       },
     },
     ---@param opts MasonSettings | {ensure_installed: string[]}
@@ -410,28 +386,5 @@ return {
         ensure_installed()
       end
     end,
-  },
-  {
-    "stevearc/conform.nvim",
-    opts = {
-      formatters_by_ft = {
-        ["javascript"] = { { "prettierd", "prettier" } },
-        ["javascriptreact"] = { { "prettierd", "prettier" } },
-        ["typescript"] = { { "prettierd", "prettier" } },
-        ["typescriptreact"] = { { "prettierd", "prettier" } },
-        ["vue"] = { { "prettierd", "prettier" } },
-        ["css"] = { { "prettierd", "prettier" } },
-        ["scss"] = { { "prettierd", "prettier" } },
-        ["less"] = { { "prettierd", "prettier" } },
-        ["html"] = { { "prettierd", "prettier" } },
-        ["json"] = { { "prettierd", "prettier" } },
-        ["jsonc"] = { { "prettierd", "prettier" } },
-        ["yaml"] = { { "prettierd", "prettier" } },
-        ["markdown"] = { { "prettierd", "prettier" } },
-        ["markdown.mdx"] = { { "prettierd", "prettier" } },
-        ["graphql"] = { { "prettierd", "prettier" } },
-        ["handlebars"] = { { "prettierd", "prettier" } },
-      },
-    },
   },
 }
