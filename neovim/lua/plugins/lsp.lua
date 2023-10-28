@@ -72,7 +72,7 @@ return {
         severity_sort = true,
       },
       inlay_hints = {
-        enabled = true,
+        enabled = false,
       },
       autoformat = true,
       servers = {
@@ -102,7 +102,6 @@ return {
             },
           },
         },
-        ltex = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -312,7 +311,6 @@ return {
           null_ls.builtins.diagnostics.proselint,
           null_ls.builtins.diagnostics.sqlfluff.with({ extra_args = { "--dialect", "postgres" } }),
           null_ls.builtins.diagnostics.stylelint,
-          null_ls.builtins.diagnostics.trail_space,
           null_ls.builtins.diagnostics.write_good,
           null_ls.builtins.diagnostics.zsh,
           null_ls.builtins.hover.dictionary,
@@ -324,7 +322,6 @@ return {
           null_ls.builtins.code_actions.proselint,
           null_ls.builtins.code_actions.refactoring, -- Requires visually selecting the code you want to refactor and calling :'<,'>lua vim.lsp.buf.range_code_action() (for the default handler) or :'<,'>Telescope lsp_range_code_actions (for Telescope).
           null_ls.builtins.formatting.prettierd,
-          null_ls.builtins.formatting.shfmt,
           null_ls.builtins.formatting.sqlfluff.with({ extra_args = { "--dialect", "postgres" } }),
           null_ls.builtins.formatting.stylua,
           require("typescript.extensions.null-ls.code-actions"),
@@ -361,7 +358,6 @@ return {
         "misspell",
         "prettierd",
         "proselint",
-        "shfmt",
         "sqlfluff",
         "stylelint",
         "stylua",
