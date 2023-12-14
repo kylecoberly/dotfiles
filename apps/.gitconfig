@@ -46,7 +46,7 @@
 [diff]
 	colorMoved = zebra
 [core]
-  # abbrev = 4
+  abbrev = 4
   autocrlf = input
   editor = nvim
   filemode = false
