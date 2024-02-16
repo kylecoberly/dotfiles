@@ -49,6 +49,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	# Stop Dock icon bouncing
 	defaults write com.apple.dock no-bouncing -bool TRUE
 	killall Dock
+ 	# Show hidden files by default
+ 	defaults write com.apple.Finder AppleShowAllFiles true
 
 	brew install koekeishiya/formulae/yabai
 	yabai --start-service
