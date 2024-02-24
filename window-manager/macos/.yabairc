@@ -21,6 +21,7 @@ yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add title='^Archive Utility$' manage=off
 yabai -m rule --add title='Settings$' manage=off
 yabai -m rule --add title='Install' manage=off
+yabai -m rule --add title='^Keyboard setup' manage=off
 
 yabai -m config                                 \
     window_origin_display        default        \
