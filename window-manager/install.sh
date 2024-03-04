@@ -23,7 +23,7 @@ else
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo apt-get update && sudo apt-get install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst playerctl network-manager-gnome libnotify-bin pavucontrol light acpi alttab polybar autorandr blueman luarocks vlc
+	sudo apt-get update && sudo apt-get install -y --no-install-recommends i3 flameshot nitrogen picom rofi dunst playerctl network-manager-gnome libnotify-bin pavucontrol light acpi alttab polybar autorandr blueman luarocks vlc p7zip
 	playerctld daemon
 
 	# Keybindings
@@ -63,4 +63,6 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	# Activate Simple Bar manually in spotlight now
 	brew install --cask karabiner-elements
 	brew install --cask alt-tab
+
+ 	brew install p7zip
 fi
