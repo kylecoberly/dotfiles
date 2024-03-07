@@ -21,25 +21,27 @@ yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add title='^Archive Utility$' manage=off
 yabai -m rule --add title='Settings$' manage=off
 yabai -m rule --add title='Install' manage=off
+yabai -m rule --add title='Todoist' manage=off
+yabai -m rule --add title='Software Update' manage=off
 yabai -m rule --add title='^Keyboard setup' manage=off
 
-yabai -m config                                 \
-    window_origin_display        default        \
-    window_placement             second_child   \
-    window_zoom_persist          on             \
-    window_topmost               off            \
-    window_shadow                off            \
-    window_animation_duration    0.1            \
-    window_animation_frame_rate  120            \
-    active_window_border_color   0xffdeb587     \
-    normal_window_border_color   0xff504945     \
-    window_border                on             \
-    window_border_width          1              \
-    window_border_radius         10             \
-    window_border_blur           off            \
-    window_border_hidpi          on             \
-    split_type                   auto           \
-    auto_balance                 on             \
-    layout                       bsp            \
+yabai -m config \
+	window_origin_display default \
+	window_placement second_child \
+	window_zoom_persist on \
+	window_topmost off \
+	window_shadow off \
+	window_animation_duration 0.1 \
+	window_animation_frame_rate 120 \
+	active_window_border_color 0xffdeb587 \
+	normal_window_border_color 0xff504945 \
+	window_border on \
+	window_border_width 1 \
+	window_border_radius 10 \
+	window_border_blur off \
+	window_border_hidpi on \
+	split_type auto \
+	auto_balance on \
+	layout bsp
 
 echo "yabai configuration loaded.."
