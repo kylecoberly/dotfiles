@@ -24,6 +24,7 @@ yabai -m rule --add title='Install' manage=off
 yabai -m rule --add title='Todoist' manage=off
 yabai -m rule --add title='Software Update' manage=off
 yabai -m rule --add title='^Keyboard setup' manage=off
+yabai -m rule --add title='^Canon IJ Scan Utility Lite$' manage=off
 
 yabai -m config \
 	window_origin_display default \
