@@ -1,7 +1,9 @@
 #!/bin/bash
 
 # IMPORTANT: For MacOS, disable SIP first: https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
-# On Intel: Hold command-R while booting. Go to "Utilities" → "Terminal" to open bash, then run `csrutil disable --with kext --with dtrace --with nvram --with basesystem`. Reboot.
+# On Intel: Hold command-R while booting. Then, go to "Utilities" → "Terminal" to open bash, then run `csrutil disable --with kext --with dtrace --with nvram --with basesystem`. Reboot.
+# On Apple Silicon: Press and hold the power button on your Mac until “Loading startup options” appears. Click Options, then click Continue.
+#   Run `csrutil enable --without fs --without debug --without nvram`. Reboot. Run `sudo nvram boot-args=-arm64e_preview_abi`.
 # After reboot, run `sudo visudo -f /private/etc/sudoers.d/yabai` to add Yabai to sudoers and add the following line:
 # <output of `whoami`> ALL=(root) NOPASSWD: sha256:<output of `shasum -a 256 $(which yabai)`> <output of `which yabai`> --load-sa
 # For example:
