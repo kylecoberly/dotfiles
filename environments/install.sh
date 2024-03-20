@@ -25,7 +25,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]] && [ ! -d "$HOME/.asdf" ]; then
 	chmod u+x "$HOME/.asdf/asdf.sh"
 	sh -c "$HOME/.asdf/asdf.sh"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	brew install asdf
+	brew install asdf coreutils
 fi
 
 ## Link dotfile
