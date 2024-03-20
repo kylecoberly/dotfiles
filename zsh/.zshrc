@@ -31,8 +31,13 @@ export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="$HOME/.fly/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# MacOS - Brew
+if [[ "$OSTYPE" == "darwin"* ]]; then
+	export PATH="/opt/homebrew/bin:$PATH"
+fi
+
 # Tmux
-ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_FIXTERM=true
 ZSH_TMUX_UNICODE=true
 ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"

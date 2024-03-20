@@ -4,7 +4,7 @@
       "target": "nodejs",
       "command": "node",
       "ubuntu_dependencies": "python3 g++ make python3-pip",
-      "mac_dependencies": "",
+      "mac_dependencies": "curl coreutils",
       "repo": "https://github.com/asdf-vm/asdf-nodejs",
       "version": "20.8.1"
     },
@@ -44,7 +44,7 @@
       "target": "rust",
       "command": "cargo",
       "ubuntu_dependencies": "build-essential",
-      "mac_dependencies": "build-essential",
+      "mac_dependencies": "coreutils",
       "repo": "https://github.com/asdf-community/asdf-rust",
       "version": "1.68.2"
     },

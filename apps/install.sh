@@ -37,7 +37,7 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		tidy
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install ranger bat htop ncdu nmap tldr tree wget ffmpeg \
-		docker xsel rar p7zip
+		docker xsel rar p7zip awk iproute2mac grep
 	brew install --cask firefox
 fi
 
