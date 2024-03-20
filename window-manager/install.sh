@@ -65,6 +65,4 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	# Activate Simple Bar manually in spotlight now
 	brew install --cask karabiner-elements
 	brew install --cask alt-tab
-
- 	brew install p7zip
 fi
