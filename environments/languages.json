@@ -20,7 +20,7 @@
       "target": "php",
       "command": "php",
       "ubuntu_dependencies": "autoconf bison build-essential curl gettext git libgd-dev libcurl4-openssl-dev libedit-dev libicu-dev libjpeg-dev libmysqlclient-dev libonig-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev libssl-dev libxml2-dev libzip-dev openssl pkg-config re2c zlib1g-dev",
-      "mac_dependencies": "autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip pkg-config re2c zlib gmp libsodium imagemagick",
+      "mac_dependencies": "autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip openssl@1.1 pkg-config re2c zlib",
       "repo": "https://github.com/asdf-community/asdf-php",
       "version": "8.2.4"
     },
@@ -36,7 +36,7 @@
       "target": "python",
       "command": "python",
       "ubuntu_dependencies": "build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev curl libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-dev",
-      "mac_dependencies": "openssl readline sqlite3 xz zlib tcl-tk",
+      "mac_dependencies": "openssl readline sqlite3 xz zlib tcl-tk pygments",
       "repo": "https://github.com/asdf-community/asdf-python",
       "version": "3.11.2"
     },

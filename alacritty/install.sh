@@ -40,7 +40,7 @@ fi
 ## Link dotfiles
 rm -rf "${HOME}/.config/alacritty"
 mkdir -p "${HOME}/.config/alacritty"
-ln -sf "${DOTFILE_DIRECTORY}/alacritty/alacritty.yml" "${HOME}/.config/alacritty/alacritty.yml"
+ln -sf "${DOTFILE_DIRECTORY}/alacritty/alacritty.toml" "${HOME}/.config/alacritty/alacritty.toml"
 ln -sf "${DOTFILE_DIRECTORY}/alacritty/gruvbox_material.yml" "${HOME}/.config/alacritty/gruvbox_material.yml"
 
 ## ChromeOS and Ubuntu Desktop Icon
