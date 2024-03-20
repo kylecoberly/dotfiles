@@ -13,6 +13,7 @@ fi
 ## Install Brew on MacOS
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+	eval "$(/opt/homebrew/bin/brew shellenv)"
 fi
 
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
@@ -36,8 +37,8 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		tidy
 elif [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install ranger bat htop ncdu nmap tldr tree wget ffmpeg \
-		openssh-server docker xsel rar
-	brew install --cask firefox chrome alt-tab rectangle
+		docker xsel rar p7zip
+	brew install --cask firefox
 fi
 
 DOTFILES=(.gitconfig .gitignore .aliases .markdownlintrc)
