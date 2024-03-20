@@ -16,6 +16,7 @@ fi
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	sudo apt-get install -y --no-install-recommends git curl jq
 elif [[ "$OSTYPE" == "darwin"* ]]; then
+	xcode-select --install
 	brew install jq
 fi
 
@@ -31,6 +32,8 @@ fi
 ## Link dotfile
 rm "${HOME}/.tool-versions"
 touch "${HOME}/.tool-versions"
+rm "${HOME}/.asdfrc"
+ln -sf "${DOTFILE_DIRECTORY}/environments/.asdfrc" "${HOME}/.asdfrc"
 
 ## Install all of the languages in languages.json and write .tool-versions
 for language in $(cat "$DOTFILE_DIRECTORY/environments/languages.json" | jq -r '.languages[] | @base64'); do
@@ -39,14 +42,19 @@ for language in $(cat "$DOTFILE_DIRECTORY/environments/languages.json" | jq -r '
 		echo "${language}" | base64 --decode | jq -r "${property}"
 	}
 
-	dependencies=$(get '.dependencies')
+	ubuntu_dependencies=$(get '.ubuntu_dependencies')
+	mac_dependencies=$(get '.mac_dependencies')
 	repo=$(get '.repo')
 	target=$(get '.target')
 	command=$(get '.command')
 	version=$(get '.version')
 
 	if ! command -v "${command}" &>/dev/null; then
-		sudo apt-get install -y --no-install-recommends $dependencies
+		if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+			sudo apt-get install -y --no-install-recommends $ubuntu_dependencies
+		elif [[ "$OSTYPE" == "darwin"* ]]; then
+			brew install $mac_dependencies
+		fi
 		asdf plugin add "${target}" "${repo}"
 		asdf install "${target}" "${version}"
 		asdf global "${target}" "${version}"
