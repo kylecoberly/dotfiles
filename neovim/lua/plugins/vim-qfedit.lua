@@ -1,5 +1,0 @@
-return {
-  {
-    "itchyny/vim-qfedit",
-  },
-}
