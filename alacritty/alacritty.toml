@@ -1,4 +1,4 @@
-import = ["/Users/kylecoberly/.config/alacritty/gruvbox_material.toml"]
+import = ["/Users/kylecoberly/.config/alacritty/melange.toml"]
 
 [bell]
 animation = "EaseOutExpo"
@@ -6,7 +6,7 @@ color = "#111111"
 duration = 10
 
 [font]
-size = 12.0
+size = 14.0
 
 [font.normal]
 family = "NotoMono Nerd Font"

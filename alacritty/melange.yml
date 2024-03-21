@@ -1,0 +1,26 @@
+## Melange Colors
+
+[colors.cursor]
+cursor = '#403A36'
+
+[colors.selection]
+text = "CellForeground"
+background = '#403A36'
+
+[colors.indexed_colors]
+- { index: 0, color: '#34302C' }
+- { index: 1, color: '#BD8183' }
+- { index: 2, color: '#78997A' }
+- { index: 3, color: '#E49B5D' }
+- { index: 4, color: '#7F91B2' }
+- { index: 5, color: '#B380B0' }
+- { index: 6, color: '#7B9695' }
+- { index: 7, color: '#C1A78E' }
+- { index: 8, color: '#867462' }
+- { index: 9, color: '#D47766' }
+- { index: 10, color: '#85B695' }
+- { index: 11, color: '#EBC06D' }
+- { index: 12, color: '#A3A9CE' }
+- { index: 13, color: '#CF9BC2' }
+- { index: 14, color: '#89B3B6' }
+- { index: 15, color: '#ECE1D7' }
