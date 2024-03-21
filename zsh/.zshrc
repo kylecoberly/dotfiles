@@ -37,7 +37,7 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 fi
 
 # Tmux
-ZSH_TMUX_AUTOSTART=true
+# ZSH_TMUX_AUTOSTART=true
 ZSH_TMUX_FIXTERM=true
 ZSH_TMUX_UNICODE=true
 ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"

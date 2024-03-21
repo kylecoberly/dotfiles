@@ -22,7 +22,7 @@ fi
 
 ## Link dotfiles
 rm -rf "${HOME}/.config/nvim"
-ln -sf "${DOTFILE_DIRECTORY}/neovim" "${HOME}/.config/nvim"
+ln -sf "${DOTFILE_DIRECTORY}/astronvim/nvim" "${HOME}/.config/nvim"
 
 ## Install language dependencies
 npm i -g neovim >/dev/null
