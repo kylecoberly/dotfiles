@@ -39,11 +39,18 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/rofi/config.rasi" "${HOME}/.config/rofi/config.rasi"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/polybar" "${HOME}/.config/polybar"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	DOTFILES=(.yabairc .skhdrc .simplebarrc)
+	DOTFILES=(.yabairc .skhdrc)
 	for dotfile in "${DOTFILES[@]}"; do
 		rm "${HOME}/${dotfile}"
 		ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/${dotfile}" "${HOME}/"
 	done
+	# simple-bar config
+	rm "${HOME}/.simplebarrc"
+	if [[ $(uname -p) == 'arm' ]]; then
+		ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/.simplebarrc-m1" "${HOME}/.simplebarrc"
+	else
+		ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/.simplebarrc-intel" "${HOME}/.simplebarrc"
+	fi
 	rm "${HOME}/.config/karabiner/karabiner.json"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
@@ -59,9 +66,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 
 	brew install koekeishiya/formulae/skhd
 	skhd --start-service
-
 	brew install --cask ubersicht
-	git clone https://github.com/Jean-Tinland/simple-bar "$HOME/Library/Application\ Support/Übersicht/widgets/simple-bar"
+	git clone https://github.com/Jean-Tinland/simple-bar "$HOME/Library/Application Support/Übersicht/widgets/simple-bar"
 	# Activate Simple Bar manually in spotlight now
 	brew install --cask karabiner-elements
 	brew install --cask alt-tab
