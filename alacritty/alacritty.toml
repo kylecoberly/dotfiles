@@ -1,16 +1,18 @@
 import = ["/Users/kylecoberly/.config/alacritty/melange.toml"]
 
+live_config_reload = true
+
 [bell]
 animation = "EaseOutExpo"
 color = "#111111"
 duration = 10
 
 [font]
-size = 14.0
-
-[font.normal]
-family = "NotoMono Nerd Font"
-style = "Regular"
+normal = { family = "NotoMono Nerd Font", style = "Regular" }
+bold = { family = "NotoMono Nerd Font", style = "Bold" }
+italic = { family = "NotoMono Nerd Font", style = "Italic" }
+bold_italic = { family = "NotoMono Nerd Font", style = "Bold Italic" }
+size = 18.0
 
 [scrolling]
 history = 10000
@@ -21,4 +23,5 @@ save_to_clipboard = true
 [window]
 decorations = "full"
 option_as_alt = "Both"
-startup_mode = "Windowed"
+startup_mode = "Maximized"
+title = "Alacritty"

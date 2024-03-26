@@ -5,7 +5,7 @@ cursor = '#403A36'
 
 [colors.selection]
 text = "CellForeground"
-background = '#403A36'
+background = '#292522'
 
 [colors.indexed_colors]
 - { index: 0, color: '#34302C' }

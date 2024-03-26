@@ -23,8 +23,10 @@ fi
 ## Build Alacritty
 if ! command -v alacritty &>/dev/null; then
 	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-		sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-		cargo install alacritty
+		# sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+		# cargo install alacritty
+		sudo apt-get update
+		sudo apt-get install alacritty
 	elif [[ "$OSTYPE" == "darwin"* ]]; then
 		brew install --cask alacritty
 	fi
@@ -41,7 +43,7 @@ fi
 rm -rf "${HOME}/.config/alacritty"
 mkdir -p "${HOME}/.config/alacritty"
 ln -sf "${DOTFILE_DIRECTORY}/alacritty/alacritty.toml" "${HOME}/.config/alacritty/alacritty.toml"
-ln -sf "${DOTFILE_DIRECTORY}/alacritty/gruvbox_material.yml" "${HOME}/.config/alacritty/gruvbox_material.yml"
+ln -sf "${DOTFILE_DIRECTORY}/alacritty/melange.yml" "${HOME}/.config/alacritty/melange.yml"
 
 ## ChromeOS and Ubuntu Desktop Icon
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
