@@ -2,50 +2,59 @@ return {
   colorscheme = "melange",
   mappings = {
     n = {
-      ["<Leader>m"] = { "<cmd>ZenMode<cr>" }
+      ["<Leader>z"] = { "<cmd>ZenMode<cr>" },
+      ["<Leader>m"] = { "<cmd>PeekOpen<cr>" },
     },
   },
   plugins = {
     {
-      import = "astrocommunity.colorscheme.melange-nvim",
-    },
-    {
-      import = "astrocommunity.pack.typescript-all-in-one",
-    },
-    {
-      import = "astrocommunity.diagnostics.lsp_lines-nvim",
-    },
-    {
-      import = "astrocommunity.diagnostics.trouble-nvim",
-    },
-    {
-      import = "astrocommunity.editing-support.telescope-undo-nvim",
-    },
-    {
-      import = "astrocommunity.editing-support.zen-mode-nvim",
+      "AstroNvim/astrocommunity",
+      {
+        import = "astrocommunity.colorscheme.melange-nvim",
+      },
+      {
+        import = "astrocommunity.pack.typescript-all-in-one",
+      },
+      {
+        import = "astrocommunity.diagnostics.lsp_lines-nvim",
+      },
+      {
+        import = "astrocommunity.diagnostics.trouble-nvim",
+      },
+      {
+        import = "astrocommunity.editing-support.telescope-undo-nvim",
+      },
+      {
+        import = "astrocommunity.editing-support.zen-mode-nvim",
+      },
+      {
+        import = "astrocommunity.motion.flash-nvim",
+      },
+      {
+        import = "astrocommunity.motion.marks-nvim",
+      },
+      {
+        import = "astrocommunity.motion.nvim-surround",
+      },
+      {
+        import = "astrocommunity.scrolling.mini-animate",
+      },
+      {
+        import = "astrocommunity.project.nvim-spectre",
+      },
+      {
+        import = "astrocommunity.markdown-and-latex.peek-nvim",
+      },
+      {
+        import = "astrocommunity.git.blame-nvim",
+      },
+      {
+        import = "astrocommunity.completion.tabnine-nvim",
+      },
     },
     {
       "nvim-autopairs",
       enabled = false,
-    },
-    {
-      "akinsho/toggleterm.nvim",
-      version = "false",
-      opts = {
-        open_mapping = [[<Leader>t]]
-        direction = "tab"
-      }
-    },
-    {
-      "kylechui/nvim-surround",
-      version = "*",
-      event = "VeryLazy",
-      config = function()
-          require("nvim-surround").setup({})
-      end
-    },
-    {
-      "chentoast/marks.nvim",
     },
     {
       "aserowy/tmux.nvim",
@@ -54,7 +63,7 @@ return {
       "rmagatti/auto-session",
     },
     {
-    "toppair/peek.nvim",
+      "toppair/peek.nvim",
       event = { "VeryLazy" },
       build = "deno task --quiet build:fast",
       config = function()
@@ -63,5 +72,5 @@ return {
         vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
       end,
     },
-  }
+  },
 }
