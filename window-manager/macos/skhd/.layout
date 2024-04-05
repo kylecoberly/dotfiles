@@ -9,3 +9,10 @@ alt - r : yabai -m space --rotate 90
 alt - 0 : yabai -m space --balance
 alt - o : yabai -m window --toggle float --grid 4:4:1:1:2:2
 alt - p : yabai -m window --toggle sticky --toggle topmost --toggle pip
+
+## Swapping
+
+shift + alt - j : yabai -m window --swap south
+shift + alt - k : yabai -m window --swap north
+shift + alt - h : yabai -m window --swap west
+shift + alt - l : yabai -m window --swap east
