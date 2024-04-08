@@ -71,4 +71,8 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	# Activate Simple Bar manually in spotlight now
 	brew install --cask karabiner-elements
 	brew install --cask alt-tab
+
+	# Add borders for Yabai
+	brew tap FelixKratz/formulae
+	brew install borders
 fi

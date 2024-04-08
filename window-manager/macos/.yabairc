@@ -35,15 +35,15 @@ yabai -m config \
 	window_shadow off \
 	window_animation_duration 0.1 \
 	window_animation_frame_rate 120 \
-	active_window_border_color 0xffdeb587 \
-	normal_window_border_color 0xff504945 \
 	window_border on \
-	window_border_width 1 \
+	window_border_width 2 \
 	window_border_radius 10 \
 	window_border_blur off \
 	window_border_hidpi on \
 	split_type auto \
 	auto_balance on \
-	layout bsp
+	layout stack
+
+borders active_color=0xffdeb587 inactive_color=0xff504945 width=5.0 &
 
 echo "yabai configuration loaded.."
