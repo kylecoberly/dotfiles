@@ -1,0 +1,24 @@
+import = ["/Users/kylecoberly/.config/alacritty/melange.toml"]
+
+[bell]
+animation = "EaseOutExpo"
+color = "#111111"
+duration = 10
+
+[font]
+size = 20.0
+
+[font.normal]
+family = "NotoMono Nerd Font"
+style = "Regular"
+
+[scrolling]
+history = 10000
+
+[selection]
+save_to_clipboard = true
+
+[window]
+decorations = "full"
+option_as_alt = "Both"
+startup_mode = "Maximized"
