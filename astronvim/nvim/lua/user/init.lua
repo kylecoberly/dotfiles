@@ -16,9 +16,6 @@ return {
         import = "astrocommunity.pack.typescript-all-in-one",
       },
       {
-        import = "astrocommunity.diagnostics.lsp_lines-nvim",
-      },
-      {
         import = "astrocommunity.diagnostics.trouble-nvim",
       },
       {
