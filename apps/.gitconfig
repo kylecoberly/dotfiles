@@ -50,7 +50,7 @@
   autocrlf = input
   editor = nvim
   filemode = false
-  pager = batcat
+  pager = bat
   excludesfile = ~/.gitignore
 [log]
   decorate = short
@@ -59,7 +59,7 @@
 [credential]
   helper = cache
 [merge]
-  tool = vim_mergetool
+  tool = nvimdiff
   conflictstyle = diff3
 [mergetool "vim_mergetool"]
   cmd = nvim -f -c "MergetoolStart" "$MERGED" "$BASE" "$LOCAL" "$REMOTE"
