@@ -30,6 +30,7 @@ export PATH="/usr/bin/gradle-6.6.1/bin:$PATH"
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export PATH="$HOME/.fly/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:/nix/var/nix/profiles/default/bin"
 
 # MacOS - Brew
 if [[ "$OSTYPE" == "darwin"* ]]; then
