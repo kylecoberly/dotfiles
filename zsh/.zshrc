@@ -60,6 +60,8 @@ source $ZSH/oh-my-zsh.sh
 source ~/.aliases
 bindkey "\e." insert-last-word
 
+. "$HOME/.asdf/asdf.sh"
+
 ## asdf Java
 if [[ -d ~/.asdf/plugins/java ]]; then
   . ~/.asdf/plugins/java/set-java-home.zsh

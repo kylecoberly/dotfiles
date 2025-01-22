@@ -12,9 +12,7 @@ else
 	DOTFILE_DIRECTORY="${HOME}/dotfiles"
 fi
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo apt-get install -y --no-install-recommends tmux mawk perl sed entr
-elif [[ "$OSTYPE" == "darwin"* ]]; then
+if [[ "$OSTYPE" == "darwin"* ]]; then
 	brew install tmux
 fi
 

@@ -20,7 +20,7 @@ elif [[ "$OSTYPE" == "darwin"* ]]; then
 	cp "${DOTFILE_DIRECTORY}/alacritty/Noto Mono Nerd Font Complete.ttf" /Library/Fonts
 fi
 
-## Build Alacritty
+## Install Alacritty
 if ! command -v alacritty &>/dev/null; then
 	if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 		# sudo apt-get install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
@@ -47,7 +47,7 @@ ln -sf "${DOTFILE_DIRECTORY}/alacritty/melange.toml" "${HOME}/.config/alacritty/
 
 ## ChromeOS and Ubuntu Desktop Icon
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	if [ -d "/usr/share/Applications/desktop" ]; then
-		cp -f "${DOTFILE_DIRECTORY}/alacritty/Alacritty.desktop" /usr/share/Applications/desktop/
+	if [ -d "/usr/share/applications" ]; then
+		sudo cp -f "${DOTFILE_DIRECTORY}/alacritty/Alacritty.desktop" /usr/share/applications/
 	fi
 fi

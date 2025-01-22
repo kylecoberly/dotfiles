@@ -10,10 +10,6 @@ else
 	DOTFILE_DIRECTORY="${HOME}/dotfiles"
 fi
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo apt-get install -y --no-install-recommends zsh git curl
-fi
-
 ## Install oh-my-zsh
 OHMYZSH_DIR="$HOME/.oh-my-zsh"
 if [ ! -d "${OHMYZSH_DIR}" ]; then
