@@ -1,8 +1,4 @@
 { inputs, lib, config, pkgs, ... }: {
-  imports = [
-    ./programs/git.nix
-  ];
-
   ## User
   home-manager.users.kylecoberly = {
     isNormalUser = true;
@@ -40,5 +36,12 @@
     eza.enable = true; # A modern replacement for ‘ls’
     jq.enable = true; # A lightweight and flexible command-line JSON processor
     ssh.enable = true;
+    git = {
+      enable = true;
+      includes = [{
+        path = "~/dotfiles/apps/.gitconfig";
+      }];
+    };
   };
+
 }
