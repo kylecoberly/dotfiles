@@ -4,7 +4,7 @@
   ];
 
   ## User
-  users.users.kylecoberly = {
+  users.kylecoberly = {
     isNormalUser = true;
     description = "Kyle Coberly";
     extraGroups = [ "networkmanager" "wheel" ];
