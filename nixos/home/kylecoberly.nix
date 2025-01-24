@@ -34,10 +34,7 @@
     };
     git = {
       enable = true;
-      includes = [{
-        path = "~/dotfiles/apps/.gitconfig";
-      }];
     };
   };
-
+  programs.git.includes = [{ path = "~/dotfiles/apps/.gitconfig"; }]
 }
