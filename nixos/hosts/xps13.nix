@@ -61,7 +61,6 @@
   ## User
   home-manager.users.kylecoberly = {
     isNormalUser = true;
-    description = "Kyle Coberly";
     extraGroups = [ "networkmanager" "wheel" ];
     packages = with pkgs; [
       chromium
