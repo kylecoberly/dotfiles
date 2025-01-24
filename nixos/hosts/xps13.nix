@@ -4,6 +4,7 @@
     ./common.nix
     ../hardware-configuration.nix
     ../desktops/gnome.nix
+    ../home/kylecoberly.nix
   ];
 
   home-manager = {
@@ -11,7 +12,6 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     extraSpecialArgs = { inherit inputs; };
-    users.kylecoberly = import ../home/kylecoberly.nix;
   };
 
   networking.hostName = "nixos-xps13";
