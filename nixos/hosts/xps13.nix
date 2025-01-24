@@ -1,8 +1,8 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
     inputs.home-manager.nixosModules.home-manager
-    ./hardware-configuration.nix
     ./common.nix
+    ../hardware-configuration.nix
     ../desktops/gnome.nix
   ];
 
