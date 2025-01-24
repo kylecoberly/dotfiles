@@ -5,9 +5,9 @@
       grub.enable = true;
       grub.device = "/dev/vda";
       grub.useOSProber = true;
-    }
+    };
     kernel.sysctl = { "vm.swappiness" = 10;};
-  }
+  };
 
   ## Networking
   networking.hostName = "nixos"; # Define your hostname.
