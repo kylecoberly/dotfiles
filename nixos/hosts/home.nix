@@ -1,4 +1,9 @@
 { inputs, lib, config, pkgs, ... }: {
+  programs.home-manager.enable = true
+  home.username = "kylecoberly"
+  home.homeDirectory = "/home/kylecoberly"
+  home.stateVersion = "24.11"
+
   imports = [
     inputs.home-manager.nixosModules.home-manager
     ../hardware-configuration.nix
@@ -55,14 +60,8 @@
     extraSpecialArgs = { inherit inputs; };
   };
 
-  environment.systemPackages = with pkgs; [
-  ];
-
   ## User
-  home-manager.users.kylecoberly = {
-    isNormalUser = true;
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
+  home.packages = with pkgs; {
       chromium
       obsidian
       rambox
@@ -80,7 +79,6 @@
       # deno
       # luarocks
       # html-tidy
-    ];
   };
 
   programs = {
