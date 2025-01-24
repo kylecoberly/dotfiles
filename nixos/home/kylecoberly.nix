@@ -1,6 +1,6 @@
 { inputs, lib, config, pkgs, ... }: {
   ## User
-  home-manager.users.kylecoberly = {
+  inputs.home-manager.users.kylecoberly = {
     isNormalUser = true;
     description = "Kyle Coberly";
     extraGroups = [ "networkmanager" "wheel" ];

@@ -7,7 +7,7 @@
     ../home/kylecoberly.nix
   ];
 
-  home-manager = {
+  inputs.home-manager = {
     backupFileExtension = "back";
     useGlobalPkgs = true;
     useUserPackages = true;
