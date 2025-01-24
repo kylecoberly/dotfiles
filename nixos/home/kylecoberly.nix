@@ -35,20 +35,9 @@
       keyMode = "vi";
       extraConfig = "mouse on";
     };
-
-    bat = {
-      enable = true;
-      config = {
-        pager = "less -FR";
-        theme = "catppuccin-mocha";
-      };
-      themes = {
-        # https://raw.githubusercontent.com/catppuccin/bat/main/Catppuccin-mocha.tmTheme
-        catppuccin-mocha = {
-          src = catppuccin-bat;
-          file = "Catppuccin-mocha.tmTheme";
-        };
-      };
+    catppuccin-bat = {
+      url = "github:catppuccin/bat";
+      flake = true;
     };
     btop.enable = true; # replacement of htop/nmon
     eza.enable = true; # A modern replacement for ‘ls’
