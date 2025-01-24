@@ -55,8 +55,6 @@
     extraSpecialArgs = { inherit inputs; };
   };
 
-  networking.hostName = "nixos-xps13";
-
   environment.systemPackages = with pkgs; [
   ];
 
