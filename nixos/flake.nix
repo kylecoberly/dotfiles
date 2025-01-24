@@ -17,7 +17,7 @@
         specialArgs = {inherit inputs outputs;};
         modules = [
           ./nix.nix
-          ./hosts/xps13
+          ./hosts/xps13.nix
         ];
       };
     };
