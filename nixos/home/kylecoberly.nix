@@ -36,5 +36,5 @@
       enable = true;
     };
   };
-  programs.git.includes = [{ path = "~/dotfiles/apps/.gitconfig"; }]
+  programs.git.includes = [{ path = "~/dotfiles/apps/.gitconfig"; }];
 }
