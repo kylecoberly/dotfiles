@@ -27,6 +27,7 @@
       # luarocks
       # html-tidy
     ];
+  };
 
   programs = {
     tmux = {
