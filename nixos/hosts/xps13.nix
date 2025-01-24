@@ -48,7 +48,7 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  inputs.home-manager = {
+  home-manager = {
     backupFileExtension = "back";
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -59,7 +59,7 @@
   ];
 
   ## User
-  inputs.home-manager.users.kylecoberly = {
+  home-manager.users.kylecoberly = {
     isNormalUser = true;
     description = "Kyle Coberly";
     extraGroups = [ "networkmanager" "wheel" ];
