@@ -5,6 +5,8 @@
     ./hardware-configuration.nix
   ];
 
+  nixpkgs.config.allowUnfree = true;
+
   users.users = {
    kylecoberly = {
       # TODO: You can set an initial password for your user.
@@ -21,13 +23,12 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  pkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command, so git must be installed first
     gnome-tweaks
     # gnome-shell-extension-just-perfection
     git
-    nvim
+    neovim
     wget
     zsh
     neovim

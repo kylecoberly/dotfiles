@@ -3,7 +3,7 @@
     username = "kylecoberly";
     homeDirectory = "/home/kylecoberly";
     stateVersion = "24.11";
-    packages = with pkgs; {
+    packages = with pkgs; [
         chromium
         obsidian
         rambox
@@ -21,7 +21,7 @@
         # deno
         # luarocks
         # html-tidy
-    };
+    ];
   };
 
   programs = {
@@ -34,11 +34,6 @@
     };
     git = {
       enable = true;
-    };
-    # Some programs need SUID wrappers, can be configured further or are started in user sessions.
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
     };
   };
 
