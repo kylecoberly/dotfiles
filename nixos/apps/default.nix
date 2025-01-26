@@ -1,6 +1,9 @@
 { config, lib, pkgs, ... }:
 
 {
+  imports = [
+    ./networking
+  ];
   home.packages = with pkgs; [
       chromium
       obsidian
