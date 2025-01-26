@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; {
+  home.packages = with pkgs; [
       chromium
       obsidian
       rambox
@@ -19,7 +19,7 @@
       # deno
       # luarocks
       # html-tidy
-  };
+  ];
 
   programs = {
     home-manager.enable = true;
