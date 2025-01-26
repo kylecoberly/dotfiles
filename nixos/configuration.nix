@@ -21,7 +21,7 @@
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
-  inputs.nixpkgs.config.allowUnfree = true;
+  pkgs.config.allowUnfree = true;
   environment.systemPackages = with pkgs; [
     # Flakes clones its dependencies through the git command, so git must be installed first
     gnome-tweaks
@@ -58,6 +58,7 @@
     entr
     tldr
   ];
+
   ## Remove from Gnome
   environment.gnome.excludePackages = with pkgs; [
     baobab      # disk usage analyzer
@@ -121,7 +122,6 @@
     };
     kernel.sysctl = { "vm.swappiness" = 10;};
   };
-  powerManagement.cpuFreqGovernor = "performance"
 
   ## Networking
   networking.hostName = "nixos"; # Define your hostname.
@@ -154,13 +154,6 @@
     LC_PAPER = "en_US.UTF-8";
     LC_TELEPHONE = "en_US.UTF-8";
     LC_TIME = "en_US.UTF-8";
-  };
-
-  home-manager = {
-    backupFileExtension = "back";
-    useGlobalPkgs = true;
-    useUserPackages = true;
-    extraSpecialArgs = { inherit inputs; };
   };
 
   ## Gnome

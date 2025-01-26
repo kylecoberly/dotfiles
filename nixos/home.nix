@@ -1,35 +1,31 @@
-{ inputs, nixpkgs, ... }: {
-  imports = [
-    inputs.home-manager.nixosModules.home-manager
-  ];
-
-  programs.home-manager.enable = true
-  home.username = "kylecoberly"
-  home.homeDirectory = "/home/kylecoberly"
-  home.stateVersion = "24.11"
-
-  ## User
-  home.packages = with pkgs; {
-      chromium
-      obsidian
-      rambox
-      neovim
-      obs-studio
-      docker
-      # Languages
-      # asdf-vm
-      # perl
-      # ruby
-      # python3
-      # php
-      # go
-      # rustc
-      # deno
-      # luarocks
-      # html-tidy
+{ config, pkgs, ... }: {
+  home = {
+    username = "kylecoberly";
+    homeDirectory = "/home/kylecoberly";
+    stateVersion = "24.11";
+    packages = with pkgs; {
+        chromium
+        obsidian
+        rambox
+        neovim
+        obs-studio
+        docker
+        # Languages
+        # asdf-vm
+        # perl
+        # ruby
+        # python3
+        # php
+        # go
+        # rustc
+        # deno
+        # luarocks
+        # html-tidy
+    };
   };
 
   programs = {
+    home-manager.enable = true;
     tmux = {
       enable = true;
       clock24 = true;
