@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./networking
+    ./networking.nix
   ];
   home.packages = with pkgs; [
       chromium
