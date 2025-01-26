@@ -11,6 +11,7 @@
       neovim
       obs-studio
       docker
+      gparted
       # Languages
       # asdf-vm
       # perl

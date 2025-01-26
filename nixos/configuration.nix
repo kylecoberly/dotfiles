@@ -157,12 +157,9 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  ## Gnome
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "kylecoberly";
+  imports = with pkgs; [
+    ./os/gnome.nix
+  ];
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
