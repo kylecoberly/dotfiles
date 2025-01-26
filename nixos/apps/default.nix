@@ -22,6 +22,7 @@
   };
 
   programs = {
+    home-manager.enable = true;
     tmux = {
       enable = true;
       clock24 = true;
@@ -30,11 +31,6 @@
     };
     git = {
       enable = true;
-    };
-    # Some programs need SUID wrappers, can be configured further or are started in user sessions.
-    gnupg.agent = {
-      enable = true;
-      enableSSHSupport = true;
     };
   };
 }
