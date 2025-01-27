@@ -33,9 +33,6 @@
       # html-tidy
   ];
 
-  # Set the default editor to vim
-  environment.variables.EDITOR = "nvim";
-
   programs = {
     home-manager.enable = true;
     tmux = {
