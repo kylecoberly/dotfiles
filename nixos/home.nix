@@ -5,6 +5,7 @@
   ];
 
   programs.home-manager.enable = true;
+  dconf.enable = true;
 
   home = {
     username = "kylecoberly";
