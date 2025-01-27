@@ -3,6 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ./os/gnome.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -157,9 +158,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  imports = with pkgs; [
-    ./os/gnome.nix
-  ];
   systemd.services."getty@tty1".enable = false;
   systemd.services."autovt@tty1".enable = false;
 
