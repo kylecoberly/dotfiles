@@ -2,10 +2,7 @@
 
 {
   imports = [
-    ./gnome.nix
-    ./networking.nix
     ./unix.nix
-    ./editor.nix
   ];
 
   nixpkgs.config.allowUnfree = true;

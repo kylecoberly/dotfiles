@@ -6,10 +6,13 @@
 
   home.packages = with pkgs; [
     zsh
+
+    # Navigation
     ranger
     tree
     bat
 
+    # Compression
     rar
     unrar
     zip
@@ -17,16 +20,29 @@
     p7zip
     xz
 
+    # Networking
+    dnsutils
+    nmap
+    iftop
+
+    # Fetching
     curl
     wget
 
+    # Desktop interaction
+    xclip
+
+    # Monitoring
     btop
     htop-vim
+
+    # Manipulation
     mawk
-    ripgrep
-    fd
     jq
-    entr
+
+    ## Search
+    ripgrep
     tldr
+    fd
   ];
 }

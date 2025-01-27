@@ -2,10 +2,17 @@
 
 {
   imports = [
-    ./gnome.nix
-    ./media.nix
-    ./networking.nix
-    ./input.nix
+    ./nix.nix
     ./boot.nix
+    ./locale.nix
+    ./users.nix
+    ./input.nix
+    ./peripherals.nix
+    ./networking.nix
+    ./media.nix
+    ./vm.nix
+    ../desktop
   ];
+
+  environment.variables.EDITOR = "nvim";
 }

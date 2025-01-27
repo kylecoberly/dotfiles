@@ -3,23 +3,19 @@
 {
   ## Desktop
   services.xserver.enable = true;
-
   services.xserver.displayManager.gdm.enable = true;
   services.xserver.desktopManager.gnome.enable = true;
-
-  services.displayManager.autoLogin.enable = true;
-  services.displayManager.autoLogin.user = "kylecoberly";
+  services.xserver.displayManager.autoLogin.enable = true;
+  services.xserver.displayManager.autoLogin.user = "kylecoberly";
 
   environment.systemPackages = with pkgs; [
-    # Flakes clones its dependencies through the git command, so git must be installed first
+    git
     gnome-tweaks
-    # gnome-shell-extension-just-perfection
+    gnomeExtensions.just-perfection
     flameshot
     openssh
-    xclip
     autorandr
   ];
-  environment.variables.EDITOR = "nvim";
 
   ## Remove from Gnome
   environment.gnome.excludePackages = with pkgs; [

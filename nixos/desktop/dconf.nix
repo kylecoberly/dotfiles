@@ -1,17 +1,13 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    gnomeExtensions.just-perfection
-  ];
-
-  programs.dconf = {
+  dconf = {
     enable = true;
     settings = {
       "org/gnome/shell" = {
         disable-user-extensions = false;
         enabled-extensions = [
-          ""
+          "just-perfection"
         ];
         favorite-apps = [
           "chromium.desktop"

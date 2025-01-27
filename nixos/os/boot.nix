@@ -3,10 +3,15 @@
 {
   boot = {
     loader = {
-      grub.enable = true;
-      grub.device = "/dev/vda";
-      grub.useOSProber = true;
+      grub = {
+        enable = true;
+        device = "/dev/vda";
+        useOSProber = true;
+        configurationLimit = 10;
+      };
     };
-    kernel.sysctl = { "vm.swappiness" = 10;};
+    kernel.sysctl = {
+      "vm.swappiness" = 10;
+    };
   };
 }

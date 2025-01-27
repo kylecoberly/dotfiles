@@ -3,15 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./os/boot.nix
-    ./os/users.nix
-    ./os/gnome.nix
-    ./os/input.nix
-    ./os/peripherals.nix
-    ./os/locale.nix
-    ./os/networking.nix
-    ./os/media.nix
-    ./os/vm.nix
+    ./os
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
