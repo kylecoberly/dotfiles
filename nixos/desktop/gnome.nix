@@ -8,6 +8,8 @@
   services.xserver.displayManager.autoLogin.enable = true;
   services.xserver.displayManager.autoLogin.user = "kylecoberly";
 
+  services.flatpak.enable = true;
+
   environment.systemPackages = with pkgs; [
     git
     gnome-tweaks

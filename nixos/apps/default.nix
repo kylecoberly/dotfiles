@@ -5,9 +5,6 @@
     ./unix.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
-  services.flatpak.enable = true;
-
   home.packages = with pkgs; [
       chromium
       obsidian
