@@ -10,7 +10,6 @@
     bat
 
     # Compression
-    rar
     unrar
     zip
     unzip
