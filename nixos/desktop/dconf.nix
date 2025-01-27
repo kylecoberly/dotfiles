@@ -5,76 +5,10 @@ with lib.hm.gvariant;
 
 {
   dconf.settings = {
-    "apps/update-manager" = {
-      first-run = false;
-      launch-count = 150;
-      launch-time = mkInt64 1737440357;
-    };
-
-    "ca/desrt/dconf-editor" = {
-      saved-pathbar-path = "/apps/";
-      saved-view = "/";
-      show-warning = false;
-      window-height = 500;
-      window-is-maximized = false;
-      window-width = 540;
-    };
-
-    "com/mattjakeman/ExtensionManager" = {
-      is-maximized = false;
-      last-used-version = "0.5.0";
-    };
-
-    "com/ubuntu/update-notifier" = {
-      release-check-time = mkUint32 1737419290;
-    };
-
-    "desktop/ibus/general" = {
-      preload-engines = [ "xkb:us::eng" ];
-      version = "1.5.27";
-    };
-
-    "org/blueman/general" = {
-      window-properties = [ 960 482 160 269 ];
-    };
-
-    "org/blueman/plugins/powermanager" = {
-      auto-power-on = true;
-    };
-
-    "org/blueman/plugins/recentconns" = {
-      recent-connections = [ {
-        adapter = "4C:1D:96:DA:89:81";
-        address = "AC:80:0A:27:D9:EE";
-        alias = "WF-1000XM5";
-        icon = "audio-headset";
-        name = "Audio and input profiles";
-        uuid = "00000000-0000-0000-0000-000000000000";
-        time = "1695440866.0259454";
-      } ];
-    };
-
-    "org/gnome/Disks" = {
-      image-dir-uri = "file:///home/kylecoberly/Downloads";
-    };
-
-    "org/gnome/Totem" = {
-      active-plugins = [ "screenshot" "vimeo" "autoload-subtitles" "rotation" "variable-rate" "open-directory" "mpris" "movie-properties" "recent" "save-file" "screensaver" "apple-trailers" "skipto" ];
-      subtitle-encoding = "UTF-8";
-    };
-
-    "org/gnome/baobab/ui" = {
-      is-maximized = false;
-      window-size = mkTuple [ 960 600 ];
-    };
-
     "org/gnome/boxes" = {
       first-run = false;
-      shared-folders = "[<{'uuid': <'1c3fe670-cf29-4968-8e63-a2ebad52550b'>, 'path': <'/home/kylecoberly/Public'>, 'name': <'NixOS'>}>]";
       view = "list-view";
-      window-maximized = true;
-      window-position = [ 26 23 ];
-      window-size = [ 768 600 ];
+      window-maximized = false;
     };
 
     "org/gnome/calculator" = {
@@ -90,59 +24,12 @@ with lib.hm.gvariant;
       target-currency = "";
       target-units = "radian";
       window-maximized = false;
-      window-size = mkTuple [ 349 500 ];
       word-size = 64;
     };
 
     "org/gnome/calendar" = {
       active-view = "month";
-      window-maximized = true;
-      window-size = mkTuple [ 768 600 ];
-    };
-
-    "org/gnome/cheese" = {
-      burst-delay = 1000;
-      camera = "Integrated_Webcam_HD (V4L2)";
-      photo-x-resolution = 1280;
-      photo-y-resolution = 720;
-      video-x-resolution = 1280;
-      video-y-resolution = 720;
-    };
-
-    "org/gnome/control-center" = {
-      last-panel = "system";
-      window-state = mkTuple [ 960 508 true ];
-    };
-
-    "org/gnome/deja-dup" = {
-      backend = "google";
-      prompt-check = "2025-01-21T05:33:42.746517Z";
-    };
-
-    "org/gnome/desktop/app-folders" = {
-      folder-children = [ "Utilities" "YaST" ];
-    };
-
-    "org/gnome/desktop/app-folders/folders/Utilities" = {
-      apps = [ "gnome-abrt.desktop" "gnome-system-log.desktop" "nm-connection-editor.desktop" "org.gnome.baobab.desktop" "org.gnome.Connections.desktop" "org.gnome.DejaDup.desktop" "org.gnome.Dictionary.desktop" "org.gnome.DiskUtility.desktop" "org.gnome.eog.desktop" "org.gnome.Evince.desktop" "org.gnome.FileRoller.desktop" "org.gnome.fonts.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.tweaks.desktop" "org.gnome.Usage.desktop" "vinagre.desktop" ];
-      categories = [ "X-GNOME-Utilities" ];
-      name = "X-GNOME-Utilities.directory";
-      translate = true;
-    };
-
-    "org/gnome/desktop/app-folders/folders/YaST" = {
-      categories = [ "X-SuSE-YaST" ];
-      name = "suse-yast.directory";
-      translate = true;
-    };
-
-    "org/gnome/desktop/background" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file:///usr/share/backgrounds/Northan_lights_by_mizuno.webp";
-      picture-uri-dark = "file:///usr/share/backgrounds/Northan_lights_by_mizuno.webp";
-      primary-color = "#000000";
-      secondary-color = "#000000";
+      window-maximized = false;
     };
 
     "org/gnome/desktop/calendar" = {
@@ -170,191 +57,6 @@ with lib.hm.gvariant;
       icon-theme = "Adwaita";
       locate-pointer = true;
       show-battery-percentage = true;
-    };
-
-    "org/gnome/desktop/notifications" = {
-      application-children = [ "firefox-firefox" "org-gnome-tweaks" "org-gnome-terminal-preferences" "org-gnome-fileroller" "discord-discord" "io-snapcraft-sessionagent" "gnome-network-panel" "slack-slack" "org-gnome-dejadup" "gnome-printers-panel" "update-manager" "zoom" "snap-store-ubuntu-software" "teams" "org-gnome-eog" "org-gnome-nautilus" "miro-miro" "org-gnome-terminal" "org-gnome-settings" "gnome-power-panel" "balena-etcher" "google-chrome" "gnome-datetime-panel" "apport-gtk" "todoist-todoist" "org-gnome-shell-portalhelper" "code-code" "fr-handbrake-ghb" "alacritty" "com-mattjakeman-extensionmanager-desktop" "virtualbox" "virt-manager" "rambox" "vlc" "gnome-system-monitor" "obs-studio-obs-studio" "org-gnome-boxes" "simple-scan" "gimp-gimp" "com-obsproject-studio" "obsidian" "rambox-rambox" "snapd-desktop-integration-snapd-desktop-integration" "com-mattjakeman-extensionmanager" "ca-desrt-dconf-editor" ];
-      show-banners = false;
-    };
-
-    "org/gnome/desktop/notifications/application/alacritty" = {
-      application-id = "Alacritty.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/apport-gtk" = {
-      application-id = "apport-gtk.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/balena-etcher" = {
-      application-id = "balena-etcher.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/ca-desrt-dconf-editor" = {
-      application-id = "ca.desrt.dconf-editor.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/code-code" = {
-      application-id = "code_code.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/com-mattjakeman-extensionmanager-desktop" = {
-      application-id = "com.mattjakeman.ExtensionManager.desktop.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/com-mattjakeman-extensionmanager" = {
-      application-id = "com.mattjakeman.ExtensionManager.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/com-obsproject-studio" = {
-      application-id = "com.obsproject.Studio.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/discord-discord" = {
-      application-id = "discord_discord.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/firefox-firefox" = {
-      application-id = "firefox_firefox.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/fr-handbrake-ghb" = {
-      application-id = "fr.handbrake.ghb.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/gimp-gimp" = {
-      application-id = "gimp_gimp.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/gnome-datetime-panel" = {
-      application-id = "gnome-datetime-panel.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/gnome-network-panel" = {
-      application-id = "gnome-network-panel.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/gnome-power-panel" = {
-      application-id = "gnome-power-panel.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/gnome-printers-panel" = {
-      application-id = "gnome-printers-panel.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/gnome-system-monitor" = {
-      application-id = "gnome-system-monitor.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/google-chrome" = {
-      application-id = "google-chrome.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/io-snapcraft-sessionagent" = {
-      application-id = "io.snapcraft.SessionAgent.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/miro-miro" = {
-      application-id = "miro_miro.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/obs-studio-obs-studio" = {
-      application-id = "obs-studio_obs-studio.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/obsidian" = {
-      application-id = "obsidian.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-boxes" = {
-      application-id = "org.gnome.Boxes.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-dejadup" = {
-      application-id = "org.gnome.DejaDup.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-eog" = {
-      application-id = "org.gnome.eog.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-fileroller" = {
-      application-id = "org.gnome.FileRoller.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-nautilus" = {
-      application-id = "org.gnome.Nautilus.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-settings" = {
-      application-id = "org.gnome.Settings.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-shell-portalhelper" = {
-      application-id = "org.gnome.Shell.PortalHelper.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-terminal-preferences" = {
-      application-id = "org.gnome.Terminal.Preferences.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-terminal" = {
-      application-id = "org.gnome.Terminal.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/org-gnome-tweaks" = {
-      application-id = "org.gnome.tweaks.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/rambox-rambox" = {
-      application-id = "rambox_rambox.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/rambox" = {
-      application-id = "rambox.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/simple-scan" = {
-      application-id = "simple-scan.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/slack-slack" = {
-      application-id = "slack_slack.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/snap-store-ubuntu-software" = {
-      application-id = "snap-store_ubuntu-software.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/snapd-desktop-integration-snapd-desktop-integration" = {
-      application-id = "snapd-desktop-integration_snapd-desktop-integration.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/teams" = {
-      application-id = "teams.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/todoist-todoist" = {
-      application-id = "todoist_todoist.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/update-manager" = {
-      application-id = "update-manager.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/virt-manager" = {
-      application-id = "virt-manager.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/virtualbox" = {
-      application-id = "virtualbox.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/vlc" = {
-      application-id = "vlc.desktop";
-    };
-
-    "org/gnome/desktop/notifications/application/zoom" = {
-      application-id = "Zoom.desktop";
     };
 
     "org/gnome/desktop/peripherals/mouse" = {
@@ -490,26 +192,6 @@ with lib.hm.gvariant;
       report-technical-problems = true;
     };
 
-    "org/gnome/desktop/remote-desktop/rdp" = {
-      enable = true;
-      tls-cert = "/home/kylecoberly/.local/share/gnome-remote-desktop/rdp-tls.crt";
-      tls-key = "/home/kylecoberly/.local/share/gnome-remote-desktop/rdp-tls.key";
-      view-only = false;
-    };
-
-    "org/gnome/desktop/screensaver" = {
-      color-shading-type = "solid";
-      picture-options = "zoom";
-      picture-uri = "file:///usr/share/backgrounds/Northan_lights_by_mizuno.webp";
-      primary-color = "#000000";
-      secondary-color = "#000000";
-    };
-
-    "org/gnome/desktop/search-providers" = {
-      disabled = [ "org.gnome.Calendar.desktop" "org.gnome.Characters.desktop" "org.gnome.seahorse.Application.desktop" ];
-      sort-order = [ "org.gnome.Contacts.desktop" "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop" ];
-    };
-
     "org/gnome/desktop/session" = {
       idle-delay = mkUint32 0;
     };
@@ -523,8 +205,12 @@ with lib.hm.gvariant;
       close = [ "<Alt>w" ];
       switch-applications = [ "<Super>Tab" ];
       switch-applications-backward = [ "<Shift><Super>Tab" ];
-      switch-to-workspace-1 = [ "<Shift><Control>1" ];
-      switch-to-workspace-3 = [ "<Shift><Control>3" ];
+      move-to-workspace-1 = [ "<Shift><Alt>1" ];
+      move-to-workspace-2 = [ "<Shift><Alt>2" ];
+      move-to-workspace-3 = [ "<Shift><Alt>3" ];
+      switch-to-workspace-1 = [ "<Alt>1" ];
+      switch-to-workspace-2 = [ "<Alt>2" ];
+      switch-to-workspace-3 = [ "<Alt>3" ];
       switch-to-workspace-left = [ "<Alt>bracketleft" ];
       switch-to-workspace-right = [ "<Alt>bracketright" ];
       switch-windows = [ "<Alt>Tab" ];
@@ -550,54 +236,11 @@ with lib.hm.gvariant;
       window-ratio = mkTuple [ 1.9092436974789917 0.7505938242280285 ];
     };
 
-    "org/gnome/evolution-data-server" = {
-      migrated = true;
-    };
-
-    "org/gnome/file-roller/dialogs/extract" = {
-      recreate-folders = true;
-      skip-newer = false;
-    };
-
-    "org/gnome/file-roller/listing" = {
-      list-mode = "as-folder";
-      name-column-width = 250;
-      show-path = false;
-      sort-method = "name";
-      sort-type = "ascending";
-    };
-
-    "org/gnome/file-roller/ui" = {
-      sidebar-width = 200;
-      window-height = 305;
-      window-width = 444;
-    };
-
-    "org/gnome/gnome-system-monitor" = {
-      current-tab = "processes";
-      maximized = false;
-      network-total-in-bits = false;
-      show-dependencies = false;
-      show-whose-processes = "user";
-      window-state = mkTuple [ 700 500 26 23 ];
-    };
-
-    "org/gnome/gnome-system-monitor/disktreenew" = {
-      col-6-visible = true;
-      col-6-width = 0;
-    };
-
-    "org/gnome/gnome-system-monitor/proctree" = {
-      columns-order = [ 0 1 2 3 4 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 ];
-      sort-col = 8;
-      sort-order = 0;
-    };
-
     "org/gnome/mutter" = {
       center-new-windows = true;
       dynamic-workspaces = false;
       experimental-features = [];
-      workspaces-only-on-primary = false;
+      workspaces-only-on-primary = true;
     };
 
     "org/gnome/mutter/keybindings" = {
@@ -621,81 +264,10 @@ with lib.hm.gvariant;
       search-view = "list-view";
     };
 
-    "org/gnome/nautilus/window-state" = {
-      initial-size = mkTuple [ 1014 380 ];
-      maximized = true;
-    };
-
-    "org/gnome/nm-applet/eap/5b7bd29c-7837-4d4d-91c2-6556824aa4ff" = {
-      ignore-ca-cert = false;
-      ignore-phase2-ca-cert = false;
-    };
-
-    "org/gnome/portal/filechooser/1password" = {
-      last-folder-path = "/home/kylecoberly/snap/obs-studio/current";
-    };
-
-    "org/gnome/portal/filechooser/google-chrome" = {
-      last-folder-path = "/home/kylecoberly/Videos";
-    };
-
-    "org/gnome/portal/filechooser/rambox" = {
-      last-folder-path = "/home/kylecoberly/Videos";
-    };
-
-    "org/gnome/portal/filechooser/simple-scan" = {
-      last-folder-path = "/home/kylecoberly/Pictures/Scans";
-    };
-
-    "org/gnome/portal/filechooser/snap/code" = {
-      last-folder-path = "/home/kylecoberly/Projects/du/week-2";
-    };
-
-    "org/gnome/portal/filechooser/snap/firefox" = {
-      last-folder-path = "/home/kylecoberly/Downloads";
-    };
-
-    "org/gnome/portal/filechooser/snap/slack" = {
-      last-folder-path = "/home/kylecoberly/Documents/Resumes/Manager";
-    };
-
-    "org/gnome/rhythmbox" = {
-      position = mkTuple [ 50 32 ];
-    };
-
-    "org/gnome/rhythmbox/library" = {
-      layout-filename = "%tN - %tt";
-      layout-path = "%aa/%at";
-    };
-
-    "org/gnome/rhythmbox/library/encoding" = {
-      media-type = "audio/x-flac";
-    };
-
-    "org/gnome/rhythmbox/player" = {
-      volume = 1.0;
-    };
-
-    "org/gnome/rhythmbox/plugins" = {
-      seen-plugins = [ "alternative-toolbar" ];
-    };
-
-    "org/gnome/rhythmbox/podcast" = {
-      download-location = "file:///home/kylecoberly/Music";
-    };
-
-    "org/gnome/rhythmbox/rhythmdb" = {
-      locations = [ "cdda://sr0/" ];
-      monitor-library = false;
-    };
-
-    "org/gnome/rhythmbox/sources" = {
-      visible-columns = [ "post-time" "duration" "track-number" "album" "genre" "artist" ];
-    };
-
-    "org/gnome/settings-daemon/plugins/color" = {
-      night-light-last-coordinates = mkTuple [ 39.77501830900187 (-104.8988106) ];
-    };
+    # Etc.
+    # "org/gnome/portal/filechooser/rambox" = {
+    #   last-folder-path = "/home/kylecoberly/Videos";
+    # };
 
     "org/gnome/settings-daemon/plugins/power" = {
       power-button-action = "suspend";
@@ -705,11 +277,11 @@ with lib.hm.gvariant;
 
     "org/gnome/shell" = {
       disable-user-extensions = false;
-      disabled-extensions = [ "ding@rastersoft.com" "tiling-assistant@ubuntu.com" "smart-auto-move@khimaros.com" "user-theme-x@tuberry.github.io" ];
+      disabled-extensions = [ ];
       enabled-extensions = [ "just-perfection-desktop@just-perfection" "ubuntu-dock@ubuntu.com" "ubuntu-appindicators@ubuntu.com" ];
       favorite-apps = [ "org.gnome.Nautilus.desktop" "Zoom.desktop" "google-chrome.desktop" "Alacritty.desktop" ];
       had-bluetooth-devices-setup = true;
-      last-selected-power-profile = "power-saver";
+      last-selected-power-profile = "performance";
       welcome-dialog-last-shown-version = "43.0";
     };
 
@@ -758,45 +330,6 @@ with lib.hm.gvariant;
       world-clock = true;
     };
 
-    "org/gnome/shell/extensions/smart-auto-move" = {
-      activate-workspace = true;
-      debug-logging = false;
-      freeze-saves = false;
-      ignore-position = false;
-      ignore-workspace = false;
-      match-threshold = 0.7;
-      overrides = ''
-        {}
-      '';
-      save-frequency = 1000;
-      saved-windows = ''
-        {"firefox":[{"id":2829603083,"hash":2829603083,"sequence":7,"title":"shortcut keys - How to set keyboard layout switching on Wayland (Ubuntu 22.04) with \\"Ctrl+1\\" for \\"Language1\\", \\"Ctrl+2\\" for \\"Language2\\", etc - Ask Ubuntu — Mozilla Firefox","workspace":0,"maximized":0,"fullscreen":false,"above":false,"monitor":0,"x":260,"y":213,"width":1280,"height":693,"occupied":false},{"id":3685176138,"hash":3685176138,"sequence":8,"title":"(6) Discord | @Elyse Coberly — Mozilla Firefox","workspace":1,"maximized":3,"fullscreen":false,"above":false,"monitor":0,"x":0,"y":27,"width":1280,"height":693,"occupied":false},{"id":3685176139,"hash":3685176139,"sequence":9,"title":"2023 On Cinema Summer Movie Recap (Audio Only) - HEI Network — Mozilla Firefox","workspace":2,"maximized":3,"fullscreen":false,"above":false,"monitor":0,"x":0,"y":27,"width":1280,"height":693,"occupied":false},{"id":650363041,"hash":650363041,"sequence":3,"title":"shortcut keys - How to set keyboard layout switching on Wayland (Ubuntu 22.04) with \\"Ctrl+1\\" for \\"Language1\\", \\"Ctrl+2\\" for \\"Language2\\", etc - Ask Ubuntu — Mozilla Firefox","workspace":1,"maximized":3,"fullscreen":false,"above":false,"monitor":1,"x":0,"y":27,"width":1920,"height":1053,"occupied":false},{"id":650363043,"hash":650363043,"sequence":5,"title":"2023 On Cinema Summer Movie Recap (Audio Only) - HEI Network — Mozilla Firefox","workspace":0,"maximized":3,"fullscreen":false,"above":false,"monitor":0,"x":1920,"y":0,"width":1920,"height":1080,"occupied":false},{"id":2029053799,"hash":2029053799,"sequence":3,"title":"shortcut keys - How to set keyboard layout switching on Wayland (Ubuntu 22.04) with \\"Ctrl+1\\" for \\"Language1\\", \\"Ctrl+2\\" for \\"Language2\\", etc - Ask Ubuntu — Mozilla Firefox","workspace":0,"maximized":3,"fullscreen":false,"above":false,"monitor":1,"x":0,"y":27,"width":1920,"height":1053,"occupied":false},{"id":1284708452,"hash":1284708452,"sequence":3,"title":"TurboTax® Login - Sign in to Get Started on Your Tax Return — Mozilla Firefox","workspace":0,"maximized":3,"fullscreen":false,"above":false,"monitor":1,"x":0,"y":27,"width":1920,"height":1053,"occupied":false},{"id":2498667713,"hash":2498667713,"sequence":2,"title":"Restore Session — Mozilla Firefox","workspace":0,"maximized":3,"fullscreen":false,"above":false,"monitor":0,"x":0,"y":27,"width":1280,"height":693,"occupied":false}],"com.mattjakeman.ExtensionManager":[{"id":1469151883,"hash":1469151883,"sequence":4,"title":"Extension Manager","workspace":0,"maximized":0,"fullscreen":false,"above":false,"monitor":0,"x":58,"y":98,"width":800,"height":600,"occupied":true}],"gnome-terminal-server":[{"id":2829603086,"hash":2829603086,"sequence":10,"title":"dotfiles:2:python3 - \\"xps13\\" 1#","workspace":0,"maximized":0,"fullscreen":false,"above":false,"monitor":0,"x":0,"y":27,"width":1054,"height":673,"occupied":false}],"extension-manager":[{"id":650363047,"hash":650363047,"sequence":9,"title":"Extension Manager","workspace":0,"maximized":0,"fullscreen":false,"above":false,"monitor":1,"x":74,"y":128,"width":1600,"height":1200,"occupied":false}],"org.gnome.Shell.Extensions":[{"id":650363048,"hash":650363048,"sequence":10,"title":"Smart Auto Move","workspace":0,"maximized":0,"fullscreen":false,"above":false,"monitor":1,"x":124,"y":178,"width":1280,"height":1152,"occupied":false}],"gnome-control-center":[{"id":3685176140,"hash":3685176140,"sequence":10,"title":"Settings","workspace":0,"maximized":0,"fullscreen":false,"above":false,"monitor":1,"x":626,"y":138,"width":518,"height":766,"occupied":false}],"miro":[{"id":3685176155,"hash":3685176155,"sequence":25,"title":"9/21/23, Visual Workspace for Innovation","workspace":0,"maximized":3,"fullscreen":false,"above":false,"monitor":0,"x":0,"y":27,"width":1280,"height":693,"occupied":false}],"Gnome-terminal":[{"id":3685176133,"hash":3685176133,"sequence":3,"title":"Playground:1:zsh - \\"xps13\\" 2#,3#,4#,5#,6#","workspace":0,"maximized":3,"fullscreen":false,"above":false,"monitor":0,"x":0,"y":27,"width":1280,"height":693,"occupied":false}],"Apport-gtk":[{"id":2498667714,"hash":2498667714,"sequence":3,"title":"Ubuntu","workspace":0,"maximized":0,"fullscreen":false,"above":false,"monitor":0,"x":377,"y":276,"width":525,"height":232,"occupied":false}],"rambox":[{"id":1469151882,"hash":1469151882,"sequence":3,"title":"Rambox","workspace":0,"maximized":0,"fullscreen":false,"above":false,"monitor":0,"x":640,"y":143,"width":1280,"height":1034,"occupied":true}]}
-      '';
-      startup-delay = 2500;
-      sync-frequency = 100;
-      sync-mode = "RESTORE";
-    };
-
-    "org/gnome/shell/extensions/tiling-assistant" = {
-      active-window-hint-color = "rgb(119,100,216)";
-      last-version-installed = 44;
-      tiling-popup-all-workspace = false;
-    };
-
-    "org/gnome/shell/extensions/user-theme-x" = {
-      x-autoswitch = false;
-    };
-
-    "org/gnome/shell/world-clocks" = {
-      locations = [];
-    };
-
-    "org/gnome/shotwell/preferences/window" = {
-      direct-height = 1011;
-      direct-maximize = false;
-      direct-width = 1920;
-    };
-
     "org/gnome/simple-scan" = {
       jpeg-quality = 84;
       page-side = "front";
@@ -804,28 +337,6 @@ with lib.hm.gvariant;
       save-directory = "file:///home/kylecoberly/Pictures/Scans/";
       save-format = "image/png";
       text-dpi = 600;
-    };
-
-    "org/gnome/software" = {
-      install-timestamp = mkInt64 1713289894;
-      security-timestamp = mkInt64 0;
-      update-notification-timestamp = mkInt64 1735262350;
-    };
-
-    "org/gnome/sound-juicer" = {
-      audio-profile = "audio/x-flac";
-      eject = true;
-      file-pattern = "%dn - %tt";
-      path-pattern = "%aa/%at";
-      volume = 1.0;
-    };
-
-    "org/gnome/system/location" = {
-      enabled = true;
-    };
-
-    "org/gnome/terminal/legacy/profiles:" = {
-      list = [ "30eaa304-cfa1-49a6-9596-63b5aac24099" "8bd61f7f-3b26-4b10-9438-36b6294263d5" ];
     };
 
     "org/gnome/terminal/legacy/profiles:/:30eaa304-cfa1-49a6-9596-63b5aac24099" = {
@@ -925,120 +436,5 @@ with lib.hm.gvariant;
       window-position = mkTuple [ 26 23 ];
       window-size = mkTuple [ 1920 1004 ];
     };
-
-    "org/virt-manager/virt-manager" = {
-      manager-window-height = 508;
-      manager-window-width = 550;
-    };
-
-    "org/virt-manager/virt-manager/confirm" = {
-      delete-storage = false;
-      forcepoweroff = false;
-      unapplied-dev = true;
-    };
-
-    "org/virt-manager/virt-manager/connections" = {
-      autoconnect = [ "qemu:///system" ];
-      uris = [ "qemu:///system" ];
-    };
-
-    "org/virt-manager/virt-manager/conns/qemu:system" = {
-      window-size = mkTuple [ 800 600 ];
-    };
-
-    "org/virt-manager/virt-manager/details" = {
-      show-toolbar = true;
-    };
-
-    "org/virt-manager/virt-manager/paths" = {
-      media-default = "/home/kylecoberly/Downloads";
-    };
-
-    "org/virt-manager/virt-manager/urls" = {
-      isos = [ "/home/kylecoberly/Downloads/Windosw 7 Pro 64 Bit.iso" "/home/kylecoberly/Downloads/nixos-plasma6-24.05.1135.9b5328b7f761-x86_64-linux.iso" ];
-    };
-
-    "org/virt-manager/virt-manager/vmlist-fields" = {
-      disk-usage = false;
-      network-traffic = false;
-    };
-
-    "org/virt-manager/virt-manager/vms/10160b1e93a04091b77dae5324e92a33" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1024 833 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/6e2e12bcdc744b2ab5b83c226e51d0b7" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1024 810 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/7054db9599fd4062879c6510ad94bf27" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1024 810 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/75f3778fe4a04233a2d0d76d114002e5" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1024 810 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/7c5974a9af864e52864240759b60e95d" = {
-      autoconnect = 1;
-      scaling = 2;
-      vm-window-size = mkTuple [ 1920 1014 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/88576bcd48d049f690a186f9b42cf0f7" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1920 1014 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/98ef1a9e44e640759992003ba1bf5ddd" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1024 810 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/a91234549aaa4662a5b9f590721f6a16" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1024 810 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/b3371de8773e4a90ab17bbbdb1ab2105" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1920 1011 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/c6e735a405ff4c9aadbc5e58d3ce502e" = {
-      autoconnect = 1;
-      resize-guest = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1920 1011 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/d910bdde28654b6581a3597b51af9082" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1024 835 ];
-    };
-
-    "org/virt-manager/virt-manager/vms/f8a59632f6c34f0eb963299875575f2c" = {
-      autoconnect = 1;
-      scaling = 1;
-      vm-window-size = mkTuple [ 1024 810 ];
-    };
-
-    "system/proxy" = {
-      mode = "none";
-    };
-
   };
 }

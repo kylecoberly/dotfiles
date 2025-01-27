@@ -14,6 +14,20 @@
       docker
       gparted
       neovim
+      # etcher?
+      # gimp?
+      # vs-code?
+      # discord?
+      # slack?
+      # handbrake?
+      # firefox?
+      # google-chrome?
+      # miro?
+      # simple scan?
+      # teams?
+      # todoist?
+      # zoom?
+
       # Languages
       # asdf-vm
       # perl
