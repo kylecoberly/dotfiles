@@ -23,7 +23,7 @@
       # just-perfection/dash icon size 64px
 
       "org/gnome/desktop/wm/preferences" = {
-        num-workspaces - 3;
+        num-workspaces = 3;
         workspace-names = [
           "Home"
           "Web"
