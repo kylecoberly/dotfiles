@@ -2,8 +2,15 @@
 
 {
   imports = [
+    ./gnome.nix
     ./networking.nix
+    ./unix.nix
+    ./editor.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
+  services.flatpak.enable = true;
+
   home.packages = with pkgs; [
       chromium
       obsidian
@@ -12,6 +19,7 @@
       obs-studio
       docker
       gparted
+      neovim
       # Languages
       # asdf-vm
       # perl
@@ -24,6 +32,9 @@
       # luarocks
       # html-tidy
   ];
+
+  # Set the default editor to vim
+  environment.variables.EDITOR = "nvim";
 
   programs = {
     home-manager.enable = true;
