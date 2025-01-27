@@ -19,6 +19,7 @@
     xclip
     autorandr
   ];
+  environment.variables.EDITOR = "nvim";
 
   ## Remove from Gnome
   environment.gnome.excludePackages = with pkgs; [
