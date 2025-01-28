@@ -5,7 +5,7 @@
     enable = true;
     configFile = {
       "git/config" = {
-        source = lib.file.mkOutOfStoreSymLink "${config.home.homeDirectory}/dotfiles/nixos/apps/dotfiles/.gitconfig";
+        source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/dotfiles/.gitconfig";
       };
     };
   };
