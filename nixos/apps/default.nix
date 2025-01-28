@@ -3,7 +3,7 @@
 {
   imports = [
     ./unix.nix
-    ./dotfiles.nix
+    ./dotfiles
   ];
 
   home.packages = with pkgs; [
