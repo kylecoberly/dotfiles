@@ -4,5 +4,5 @@
   xdg = {
     enable = true;
     configFile."git/config".source = "../../apps/.gitconfig";
-  }
+  };
 }
