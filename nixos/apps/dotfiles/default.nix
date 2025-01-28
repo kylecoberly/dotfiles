@@ -3,6 +3,6 @@
 {
   xdg = {
     enable = true;
-    configFile."git/config".source = "../../apps/.gitconfig";
+    configFile."git/config".source = "./.gitconfig";
   };
 }
