@@ -40,5 +40,8 @@
     ripgrep
     tldr
     fd
+
+    ## System
+    parted
   ];
 }

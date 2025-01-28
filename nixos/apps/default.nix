@@ -27,8 +27,9 @@
     # Development
     docker
     neovim
-    vs-code-with-extensions
+    vscode
     asdf-vm
+    awscli2
 
     # Communication - These are in Rambox
     # discord
