@@ -11,7 +11,7 @@
 
     syntaxHighlighting.enable = true;
 
-    autocd.enable = true;
+    autocd = true;
 
     initExtraFirst = "
 # PATH
