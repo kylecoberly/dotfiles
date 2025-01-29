@@ -2,7 +2,7 @@
 
 {
   config.environment.pathsToLink = [ "/share/zsh" ];
-  programs.zsh = {
+  config.programs.zsh = {
     enable = true;
 
     history.size = 10000;
