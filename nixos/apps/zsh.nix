@@ -131,4 +131,3 @@ function scan(){
     };
   };
 }
-
