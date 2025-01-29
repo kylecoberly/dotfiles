@@ -1,9 +1,9 @@
-{ lib, pkgs, osConfig, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  osConfig.programs.alacritty.enable = true;
-  osConfig.xdg = {
-    configFile."alacritty/alacritty.toml".source = "../../apps/alacritty/alacritty.toml";
-    configFile."alacritty/melange.toml".source = "../../apps/alacritty/melange.toml";
+  programs.alacritty.enable = true;
+  xdg = {
+    configFile."alacritty/alacritty.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/alacritty/alacritty.toml";
+    configFile."alacritty/melange.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/alacritty/melange.toml";
   };
 }
