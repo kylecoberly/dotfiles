@@ -3,7 +3,7 @@
 {
   fonts = {
     enableDefaultPackages = true;
-    fontDir = true;
+    fontDir.enable = true;
     packages = with pkgs; [
       noto-fonts
       noto-fonts-emoji
