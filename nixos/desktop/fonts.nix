@@ -7,14 +7,15 @@
     packages = with pkgs; [
       noto-fonts
       noto-fonts-emoji
-      nerd-fonts.fira-code
-      nerd-fonts.jetbrains-mono
-      nerd-fonts.noto
-      nerd-fonts.open-dyslexic
-      nerd-fonts.roboto-mono
-      nerd-fonts.ubuntu
-      nerd-fonts.ubuntu-sans
-      nerd-fonts.ubuntu-mono
+      # nerd-fonts.fira-code
+      # nerd-fonts.jetbrains-mono
+      # nerd-fonts.noto
+      # nerd-fonts.open-dyslexic
+      # nerd-fonts.roboto-mono
+      # nerd-fonts.ubuntu
+      # nerd-fonts.ubuntu-sans
+      # nerd-fonts.ubuntu-mono
+      nerdfonts
       liberation_ttf
       fira-code
       fira-code-symbols
