@@ -1,4 +1,4 @@
-import = ["./melange.toml"]
+import = ["/Users/kylecoberly/.config/alacritty/melange.toml"]
 
 [bell]
 animation = "EaseOutExpo"

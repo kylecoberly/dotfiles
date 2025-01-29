@@ -44,4 +44,7 @@
     ## System
     parted
   ];
+
+  config.environment.variables.VISUAL = "nvim";
+  config.environment.variables.EDITOR = "nvim";
 }

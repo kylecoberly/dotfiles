@@ -13,6 +13,4 @@
     ./vm.nix
     ../desktop
   ];
-
-  environment.variables.EDITOR = "nvim";
 }

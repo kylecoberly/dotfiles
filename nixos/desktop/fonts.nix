@@ -19,7 +19,7 @@
       defaultFonts = {
         serif = [  "Noto Serif" ];
         sansSerif = [ "Noto Sans" ];
-        monospace = [ "Noto Mono Nerd Font" ];
+        monospace = [ "NotoMono Nerd Font" ];
       };
     };
   };
