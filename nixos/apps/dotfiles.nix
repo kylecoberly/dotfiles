@@ -8,5 +8,5 @@
   ];
   xdg = {
     enable = true;
-  }
+  };
 }

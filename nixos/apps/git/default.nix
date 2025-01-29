@@ -7,5 +7,5 @@
   };
   config.home.file = {
     ".gitignore".source  = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/git/.gitignore";
-  }
+  };
 }
