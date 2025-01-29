@@ -1,8 +1,8 @@
 { config, osConfig, lib, pkgs, ... }:
 
 {
-  options.environment.pathsToLink = [ "/share/zsh" ];
-  options.programs.zsh = {
+  environment.pathsToLink = [ "/share/zsh" ];
+  programs.zsh = {
     enable = true;
 
     history.size = 10000;
