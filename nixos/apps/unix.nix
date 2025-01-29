@@ -1,7 +1,7 @@
-{ osConfig, lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  osConfig.home.packages = with pkgs; [
+  home.packages = with pkgs; [
     zsh
 
     # Navigation
@@ -44,7 +44,4 @@
     ## System
     parted
   ];
-
-  osConfig.environment.variables.VISUAL = "nvim";
-  osConfig.environment.variables.EDITOR = "nvim";
 }
