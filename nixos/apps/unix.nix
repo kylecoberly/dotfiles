@@ -1,7 +1,7 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
+  config.home.packages = with pkgs; [
     zsh
 
     # Navigation

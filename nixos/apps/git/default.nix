@@ -1,11 +1,11 @@
-{ lib, pkgs, ... }:
+{ config, lib, pkgs, ... }:
 
 {
-  programs.git = enable;
-  xdg.configFile = {
+  config.programs.git = enable;
+  config.xdg.configFile = {
     "git/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/git/.gitconfig";
   };
-  home.file = {
+  config.home.file = {
     ".gitignore".source  = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/git/.gitignore";
   }
 }
