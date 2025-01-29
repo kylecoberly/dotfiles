@@ -1,4 +1,4 @@
-{ lib, pkgs, osConfig, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 
 {
   osConfig.programs.git.enable = true;
