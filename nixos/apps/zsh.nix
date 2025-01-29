@@ -114,7 +114,7 @@ function scan(){
     };
     prezto = {
       enable = true;
-      syntaxHighlighting = [
+      syntaxHighlighting.highlighters = [
         "main"
         "brackets"
         "pattern"
