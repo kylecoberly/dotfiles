@@ -16,10 +16,10 @@
 
     initExtraFirst = "
 # PATH
-export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-export PATH="$PATH:/nix/var/nix/profiles/default/bin"
+export PATH=\"/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin\"
+export PATH=\"$HOME/.local/bin:$PATH\"
+export PATH=\"/opt/local/bin:/opt/local/sbin:$PATH\"
+export PATH=\"$PATH:/nix/var/nix/profiles/default/bin\"
 
 # Search
 bindkey '^R' history-incremental-search-backward # Search
@@ -31,7 +31,7 @@ bindkey -M viins 'jj' vi-cmd-mode # Go to normal with jj
 bindkey -M viins 'jk' vi-cmd-mode # Go to normal with jk
 
 # Autocomplete
-bindkey "\e." insert-last-word
+bindkey \"\e.\" insert-last-word
 
 # Make and Move
 function mkcd(){
@@ -63,6 +63,7 @@ function scan(){
       "top" = "htop";
       "du"="ncdu --color dark -rr -x --exclude .git --exclude node_modules";
       "help" = "tldr";
+      "update" = "sudo nixos-rebuild switch";
     };
 
     oh-my-zsh = {
