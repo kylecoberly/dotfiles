@@ -108,7 +108,7 @@ function scan(){
         "command-not-found" # suggestions from db for missing commands
       ];
       theme = "agnoster";
-      extra-config = "
+      extraConfig = "
         DEFAULT_USER=kylecoberly
       ";
     };
