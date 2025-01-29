@@ -6,7 +6,6 @@ COMPLETION_WAITING_DOTS="true"
 HIST_STAMPS="mm/dd/yyyy" # Log format
 export VISUAL=nvim
 export EDITOR="$VISUAL"
-export LANG="en_US.UTF-8"
 
 # Theme
 ZSH_THEME="coberly-gruvbox"
