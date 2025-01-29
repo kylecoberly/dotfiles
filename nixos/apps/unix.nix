@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  config.home.packages = with pkgs; [
+  options.home.packages = with pkgs; [
     zsh
 
     # Navigation
@@ -45,6 +45,6 @@
     parted
   ];
 
-  config.environment.variables.VISUAL = "nvim";
-  config.environment.variables.EDITOR = "nvim";
+  options.environment.variables.VISUAL = "nvim";
+  options.environment.variables.EDITOR = "nvim";
 }
