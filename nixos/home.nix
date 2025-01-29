@@ -5,6 +5,7 @@
   ];
 
   programs.home-manager.enable = true;
+  programs.zsh.enable = true;
   dconf.enable = true;
 
   home = {
