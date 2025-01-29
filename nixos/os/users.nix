@@ -14,4 +14,6 @@
       extraGroups = ["networkmanager docker wheel"];
     };
   };
+
+  config.environment.pathsToLink = [ "/share/zsh" ];
 }
