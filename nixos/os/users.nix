@@ -13,6 +13,7 @@
       ];
       extraGroups = ["networkmanager docker wheel"];
     };
+    defaultUserShell = pkgs.zsh;
   };
 
   environment.pathsToLink = [ "/share/zsh" ];

@@ -1,3 +1,4 @@
+[general]
 import = ["/Users/kylecoberly/.config/alacritty/melange.toml"]
 
 [bell]
