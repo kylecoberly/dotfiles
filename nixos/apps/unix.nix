@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  options.home.packages = with pkgs; [
+  osConfig.home.packages = with pkgs; [
     zsh
 
     # Navigation
@@ -45,6 +45,6 @@
     parted
   ];
 
-  options.environment.variables.VISUAL = "nvim";
-  options.environment.variables.EDITOR = "nvim";
+  osConfig.environment.variables.VISUAL = "nvim";
+  osConfig.environment.variables.EDITOR = "nvim";
 }

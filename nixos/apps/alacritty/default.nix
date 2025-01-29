@@ -1,8 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, osConfig, ... }:
 
 {
-  options.programs.alacritty.enable = true;
-  options.xdg = {
+  osConfig.programs.alacritty.enable = true;
+  osConfig.xdg = {
     configFile."alacritty/alacritty.toml".source = "../../apps/alacritty/alacritty.toml";
     configFile."alacritty/melange.toml".source = "../../apps/alacritty/melange.toml";
   };

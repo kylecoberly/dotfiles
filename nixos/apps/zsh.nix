@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ osConfig, lib, pkgs, ... }:
 
 {
-  options.environment.pathsToLink = [ "/share/zsh" ];
+  osConfig.environment.pathsToLink = [ "/share/zsh" ];
   options.programs.zsh = {
     enable = true;
 
