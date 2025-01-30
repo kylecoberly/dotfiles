@@ -16,11 +16,9 @@
     disableConfirmationPrompt = true;
     newSession = true;
     shell = "\${pkgs.zsh}/bin/zsh";
-    extraConfig = ''
-    '';
     plugins = with pkgs; [
       tmuxPlugins.yank
-      tmuxPlugins.tmux-which-key
+      # tmuxPlugins.tmux-which-key
       tmuxPlugins.power-theme
       tmuxPlugins.open
       tmuxPlugins.mode-indicator
