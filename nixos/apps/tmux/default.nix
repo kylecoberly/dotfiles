@@ -2,8 +2,12 @@
 
 {
   xdg.configFile = {
-    "tmux" = {
-      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/tmux";
+    "tmux/tmux.conf" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/tmux.conf";
+      recursive = true;
+    };
+    "tmux/tmux.conf.local" = {
+      source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/tmux/tmux.conf.local";
       recursive = true;
     };
   };
