@@ -4,6 +4,7 @@
   imports = [
     ./git
     ./alacritty
+    ./tmux
     ./zsh.nix
   ];
   xdg = {
