@@ -75,7 +75,7 @@ set -g @nova-segment-cpu-colors "$seg_b"
 
 set -g @nova-segments-0-left "session"
 set -g @nova-segments-0-right "prefix cpu layout"
-        ''
+        '';
       }
       {
         plugin = tmuxPlugins.resurrect;
