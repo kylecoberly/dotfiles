@@ -41,6 +41,7 @@
     handbrake # Vide and DVD ripper
     gparted # Partition manager
     simple-scan # Document scanner
+    just # Shell command runner
 
     # Remotes and VMs
     gnome-boxes

@@ -13,13 +13,8 @@
 
     autocd = true;
 
-    initExtraFirst = "
+    initExtraFirst = ''
 # PATH
-export PATH=\"/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin\"
-export PATH=\"$HOME/.local/bin:$PATH\"
-export PATH=\"/opt/local/bin:/opt/local/sbin:$PATH\"
-export PATH=\"$PATH:/nix/var/nix/profiles/default/bin\"
-
 # Search
 bindkey '^R' history-incremental-search-backward # Search
 setopt extendedglob nocaseglob globdots
@@ -47,7 +42,7 @@ function e(){
 function scan(){
     sudo nmap -sP `ip a | grep 'wlan0' | grep 'inet' | awk '{print $2}'`
 }
-    ";
+    '';
     initExtra = "";
 
     shellAliases = {
@@ -108,9 +103,9 @@ function scan(){
         "command-not-found" # suggestions from db for missing commands
       ];
       theme = "agnoster";
-      extraConfig = "
+      extraConfig = ''
         DEFAULT_USER=kylecoberly
-      ";
+      '';
     };
     prezto = {
       enable = true;

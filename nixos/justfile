@@ -1,0 +1,8 @@
+alias x := switch-xps-13
+alias iso := build-iso
+
+switch-xps-13:
+  sudo nixos-rebuild --flake .#xps13 switch
+
+build-iso:
+  nix build .#nixosConfigurations.live.config.system.build.isoImage

@@ -1,3 +1,0 @@
-#/bin/bash
-
-sudo nixos-rebuild --flake .#xps13 switch

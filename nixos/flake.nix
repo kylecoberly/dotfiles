@@ -12,20 +12,16 @@
   outputs = { self, nixpkgs, home-manager, ...}@inputs: let
     inherit (self) outputs;
   in {
-    nixosConfigurations.xps13 = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = {
-        inherit inputs;
+    nixosConfigurations = {
+      xps13 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = {
+          inherit inputs;
+        };
+        modules = [
+          ./configuration.nix
+        ];
       };
-      modules = [
-        ./configuration.nix
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users.kylecoberly = import ./home.nix;
-        }
-      ];
     };
   };
 }
