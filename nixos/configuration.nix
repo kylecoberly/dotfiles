@@ -8,7 +8,6 @@
   environment.etc = {
     "tmux" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/tmux";
-      recursive = true;
     };
   };
 
