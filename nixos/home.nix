@@ -1,7 +1,6 @@
 { config, pkgs, ... }: {
   imports = [
     ./apps
-    ./desktop/dconf.nix
   ];
 
   programs.home-manager.enable = true;
