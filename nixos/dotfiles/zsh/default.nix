@@ -65,23 +65,23 @@ function scan(){
         ## Aliases and completion
         "aliases" # als command to list available aliases
         "common-aliases" # standard aliases
-        # "asdf" # Completion asdf language manager
-        # "aws" # awscli v2 completion
-        # "docker" # autocompletion and aliases for docker
-        # "docker-compose" # autocompletion and aliases for docker-compose
+        "asdf" # Completion asdf language manager
+        "aws" # awscli v2 completion
+        "docker" # autocompletion and aliases for docker
+        "docker-compose" # autocompletion and aliases for docker-compose
         "git" # aliases and functions
         "git-extras" # completion for extra commands
-        # "mongo-atlas" # completion for mongo-atlas
-        # "mongocli" # completion for mongo
-        # "node" # node docs links
-        # "npm" # completion and aliases
-        # "postgres" # aliases
-        # "ssh" # Complete from .ssh folder
-        # "snap" # aliases for Linux snap commands
-        # "ubuntu" # completions and aliases
-        # "history" # aliases
-        # "vscode" # Enable interaction between terminal and VS code
-        # "tmux" # aliases
+        "mongo-atlas" # completion for mongo-atlas
+        "mongocli" # completion for mongo
+        "node" # node docs links
+        "npm" # completion and aliases
+        "postgres" # aliases
+        "ssh" # Complete from .ssh folder
+        "snap" # aliases for Linux snap commands
+        "ubuntu" # completions and aliases
+        "history" # aliases
+        "vscode" # Enable interaction between terminal and VS code
+        "tmux" # aliases
 
         ## Interaction
         "vi-mode" # vi functionality
