@@ -1,5 +1,8 @@
 { config, pkgs, ... }: {
   users.users.kylecoberly.isNormalUser = true;
+
+  # Allow HM to manage itself
+  programs.home-manager.enable = true;
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
@@ -9,9 +12,6 @@
         ./apps.nix
         ../dotfiles
       ];
-
-      # Allow HM to manage itself
-      programs.home-manager.enable = true;
 
       home = {
         username = "kylecoberly";
