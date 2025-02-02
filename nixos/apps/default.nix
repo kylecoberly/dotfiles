@@ -4,7 +4,6 @@
   imports = [
     ./unix.nix
     ./dotfiles.nix
-    ../desktop/dconf.nix
   ];
 
   home.packages = with pkgs; [

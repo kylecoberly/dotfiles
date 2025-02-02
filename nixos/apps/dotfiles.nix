@@ -6,6 +6,7 @@
     ./alacritty
     ./tmux
     ./zsh.nix
+    ../desktop/dconf.nix
   ];
   xdg = {
     enable = true;
