@@ -17,6 +17,5 @@
     useGlobalPkgs = true;
     useUserPackages = true;
     users.kylecoberly = import ./home.nix;
-    nixosModules.home-manager
   }
 }
