@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./dcon
+    ./dconf
     ./git
     ./alacritty
     ./tmux
