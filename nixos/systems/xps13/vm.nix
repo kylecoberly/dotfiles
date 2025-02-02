@@ -8,5 +8,5 @@
     qemuGuest.enable = true; # For QEMU VMs
   };
 
-  boot.kernel.sysctl.vm.swappiness = 10;
+  boot.kernel.sysctl."vm.swappiness" = 10;
 }
