@@ -21,6 +21,6 @@
       xdg = { # Use standard folders
         enable = true;
       };
-    }
+    };
   };
 }
