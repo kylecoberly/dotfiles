@@ -31,6 +31,11 @@
     # slack
     # teams
 
+    # Games
+    higan
+    dolphin-emu
+    steam
+
     # Tools
     ventoy # Thumb drive burner
     handbrake # Video and DVD ripper

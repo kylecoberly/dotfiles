@@ -7,5 +7,7 @@
     ./alacritty
     ./tmux
     ./zsh
+    ./higan
+    ./dolphin-emu
   ];
 }
