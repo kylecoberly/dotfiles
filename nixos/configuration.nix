@@ -4,6 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./os
+    ./home
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
