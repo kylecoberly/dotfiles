@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  users.users.kylecoberly = isNormalUser = true;
+  users.users.kylecoberly.isNormalUser = true;
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
