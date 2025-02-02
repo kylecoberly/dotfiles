@@ -14,7 +14,6 @@
     autocd = true;
 
     initExtraFirst = ''
-# PATH
 # Search
 bindkey '^R' history-incremental-search-backward # Search
 setopt extendedglob nocaseglob globdots

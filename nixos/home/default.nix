@@ -1,27 +1,25 @@
 { config, pkgs, ... }: {
-  programs.home-manager.enable = true;
-  dconf.enable = true;
-
-  home.stateVersion = "24.11";
-
   users.users.kylecoberly = isNormalUser = true;
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
     users.kylecoberly = { config, pkgs, ... }: {
+      # Home manager modules, not NixOS modules
       imports = [
         ./apps.nix
         ../dotfiles
       ];
 
+      # Allow HM to manage itself
       programs.home-manager.enable = true;
-      xdg = {
-        enable = true;
-      };
 
       home = {
         username = "kylecoberly";
         homeDirectory = "/home/kylecoberly";
+        stateVersion = "24.11";
+      };
+      xdg = { # Use standard folders
+        enable = true;
       };
     }
   };

@@ -33,9 +33,9 @@
 
     # Tools
     ventoy # Thumb drive burner
-    handbrake # Vide and DVD ripper
-    gparted # Partition manager
+    handbrake # Video and DVD ripper
     simple-scan # Document scanner
+    gparted # Partition manager
     just # Shell command runner
 
     # Remotes and VMs

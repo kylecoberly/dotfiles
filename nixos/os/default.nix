@@ -5,7 +5,8 @@
     ./boot.nix
     ./locale.nix
     ./users.nix
-    ./packages.nix
+    ./gnome.nix
+    ./apps.nix
     ./input.nix
     ./fonts.nix
     ./peripherals.nix
