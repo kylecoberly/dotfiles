@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 
 {
-  environment.etc = {
+  config.environment.etc = {
     # somerc.source = /etc/somerc;
     "tmux/tmux.conf" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/tmux/tmux.conf";
