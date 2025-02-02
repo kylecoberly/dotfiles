@@ -7,7 +7,7 @@
   ];
   environment.etc = {
     "tmux" = {
-      source = "~/dotfiles/nixos/dotfiles/tmux";
+      source = ~/dotfiles/nixos/dotfiles/tmux;
     };
   };
 
