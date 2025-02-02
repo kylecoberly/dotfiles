@@ -52,7 +52,7 @@ function scan(){
       "ranger" = "'ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`; rm -f $HOME/rangerdir; cd \"$LASTDIR\"'";
       "vi" = "nvim";
       "vim" = "nvim";
-      "tmux" = "tmux -f ~/.config/tmux/tmux.conf";
+      "tmux" = "tmux -f ~/.config/tmux/tmux.conf -f ~/.config/tmux/tmux.conf.local";
       "open" = "xdg-open";
       "top" = "htop";
       "du"="ncdu --color dark -rr -x --exclude .git --exclude node_modules";
