@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./fonts.nix
-    ./gnome.nix
+    ./hardware-configuration.nix
+    ./vm.nix
   ];
 }

@@ -1,7 +1,8 @@
-{ config, lib, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
+  environment.systemPackages = with pkgs; [
+    git
     zsh
 
     # Navigation

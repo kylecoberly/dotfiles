@@ -4,6 +4,7 @@
 with lib.hm.gvariant;
 
 {
+  dconf.enable = true;
   dconf.settings = {
     "org/gnome/boxes" = {
       first-run = false;

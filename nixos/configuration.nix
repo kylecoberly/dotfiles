@@ -2,15 +2,11 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ./nix
+    ./systems/xps13
     ./os
+    ./desktops/gnome
     ./home.nix
-  ];
-
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-  environment.systemPackages = with pkgs; [
-    git
   ];
 
   system.stateVersion = "24.11";
