@@ -1,5 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  users.users.kylecoberly.isNormalUser = true;
+  users.users.kylecoberly = {
+    isNormalUser = true;
+    shell = pkgs.zsh;
+  };
 }
