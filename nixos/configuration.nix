@@ -1,4 +1,4 @@
-{ inputs, config, lib, pkgs, ... }:
+{ inputs, config, pkgs, ... }:
 
 {
   imports = [
@@ -7,7 +7,7 @@
   ];
   environment.etc = {
     "tmux" = {
-      source = lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/tmux";
+      source = "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/tmux";
     };
   };
 
