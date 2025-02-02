@@ -27,7 +27,8 @@
               useUserPackages = true;
               users.kylecoberly = import ./home;
               extraSpecialArgs = { inherit inputs; };
-          };
+            };
+          }
         ];
       };
     };
