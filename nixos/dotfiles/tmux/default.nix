@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  xdg.configFile = {
+  environment.etc = {
+    # somerc.source = /etc/somerc;
     "tmux/tmux.conf" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/tmux/tmux.conf";
       recursive = true;
@@ -11,6 +12,8 @@
       recursive = true;
     };
   };
+  # xdg.configFile = {
+  # };
 
   programs.tmux = {
     enable = true;
