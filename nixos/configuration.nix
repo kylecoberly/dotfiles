@@ -4,7 +4,6 @@
   imports = [
     ./systems/xps13
     ./os
-    ./home
   ];
 
   nix = {

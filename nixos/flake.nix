@@ -20,6 +20,14 @@
         };
         modules = [
           ./configuration.nix
+          home-manager.nixosModules.home-manager,
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              users.kylecoberly = import ./home;
+              extraSpecialArgs = { inherit inputs };
+          };
         ];
       };
     };
