@@ -19,14 +19,13 @@
     aggressiveResize = true;
     disableConfirmationPrompt = true;
     newSession = true;
-    shell = "\${pkgs.zsh}/bin/zsh";
     plugins = with pkgs; [
       tmuxPlugins.yank
       # tmuxPlugins.tmux-which-key
-      tmuxPlugins.power-theme
-      tmuxPlugins.open
+      # tmuxPlugins.power-theme
+      # tmuxPlugins.open
       tmuxPlugins.mode-indicator
-      tmuxPlugins.gruvbox
+      # tmuxPlugins.gruvbox
       tmuxPlugins.cpu
       tmuxPlugins.copycat
       {

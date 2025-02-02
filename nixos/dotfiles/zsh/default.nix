@@ -48,7 +48,7 @@ function scan(){
       "c" = "clear";
       "lsa" = "ls -lAGhp --group-directories-first --color=always | awk '{print \$1,\$3,\$4,\$8}' | column -t";
       "ll" = "ls -lGhp --group-directories-first --color=always | awk '{print \$1,\$3,\$4,\$8}' | column -t";
-      "cat" = "batcat";
+      "cat" = "bat";
       "ranger" = "'ranger --choosedir=$HOME/rangerdir; LASTDIR=`cat $HOME/rangerdir`; rm -f $HOME/rangerdir; cd \"$LASTDIR\"'";
       "vi" = "nvim";
       "vim" = "nvim";
@@ -65,62 +65,62 @@ function scan(){
         ## Aliases and completion
         "aliases" # als command to list available aliases
         "common-aliases" # standard aliases
-        "asdf" # Completion asdf language manager
-        "aws" # awscli v2 completion
-        "docker" # autocompletion and aliases for docker
-        "docker-compose" # autocompletion and aliases for docker-compose
+        # "asdf" # Completion asdf language manager
+        # "aws" # awscli v2 completion
+        # "docker" # autocompletion and aliases for docker
+        # "docker-compose" # autocompletion and aliases for docker-compose
         "git" # aliases and functions
         "git-extras" # completion for extra commands
-        "mongo-atlas" # completion for mongo-atlas
-        "mongocli" # completion for mongo
-        "node" # node docs links
-        "npm" # completion and aliases
-        "postgres" # aliases
-        "ssh" # Complete from .ssh folder
-        "snap" # aliases for Linux snap commands
-        "ubuntu" # completions and aliases
-        "history" # aliases
-        "vscode" # Enable interaction between terminal and VS code
-        "tmux" # aliases
+        # "mongo-atlas" # completion for mongo-atlas
+        # "mongocli" # completion for mongo
+        # "node" # node docs links
+        # "npm" # completion and aliases
+        # "postgres" # aliases
+        # "ssh" # Complete from .ssh folder
+        # "snap" # aliases for Linux snap commands
+        # "ubuntu" # completions and aliases
+        # "history" # aliases
+        # "vscode" # Enable interaction between terminal and VS code
+        # "tmux" # aliases
 
         ## Interaction
         "vi-mode" # vi functionality
-        "sudo" # Press ESC twice to prepend sudo to the current or previous command
-        "fancy-ctrl-z" # Toggle focus of suspended jobs back and forth
-        "copyfile" # copyfile command to copy file contents to clipboard
-        "copypath" # copypath command to copy path to clipboard
-        "thefuck" # command correction
+        # "sudo" # Press ESC twice to prepend sudo to the current or previous command
+        # "fancy-ctrl-z" # Toggle focus of suspended jobs back and forth
+        # "copyfile" # copyfile command to copy file contents to clipboard
+        # "copypath" # copypath command to copy path to clipboard
+        # "thefuck" # command correction
 
         ## Services
-        "1password"
-        "ssh-agent" # Autostart ssh-agent
+        # "1password"
+        # "ssh-agent" # Autostart ssh-agent
 
         ## Appearance
-        "colorize" # syntax for many languages
-        "emoji" # unicode support
-        "colored-man-pages"
-        "command-not-found" # suggestions from db for missing commands
+        # "colorize" # syntax for many languages
+        # "emoji" # unicode support
+        # "colored-man-pages"
+        # "command-not-found" # suggestions from db for missing commands
       ];
       theme = "agnoster";
       extraConfig = ''
         DEFAULT_USER=kylecoberly
       '';
     };
-    prezto = {
-      enable = true;
-      syntaxHighlighting.highlighters = [
-        "main"
-        "brackets"
-        "pattern"
-        "line"
-        "cursor"
-        "root"
-      ];
-      terminal.autoTitle = true;
-      tmux.autoStartLocal = true;
-      tmux.autoStartRemote = true;
-      utility.safeOps = true;
-    };
+    # prezto = {
+    #   enable = true;
+    #   syntaxHighlighting.highlighters = [
+    #     "main"
+    #     "brackets"
+    #     "pattern"
+    #     "line"
+    #     "cursor"
+    #     "root"
+    #   ];
+    #   terminal.autoTitle = true;
+    #   tmux.autoStartLocal = true;
+    #   tmux.autoStartRemote = true;
+    #   utility.safeOps = true;
+    # };
     sessionVariables = {
     };
   };
