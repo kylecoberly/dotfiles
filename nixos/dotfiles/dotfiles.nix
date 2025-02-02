@@ -2,13 +2,10 @@
 
 {
   imports = [
+    ./dconf.nix
     ./git
     ./alacritty
     ./tmux
     ./zsh.nix
-    ../desktop/dconf.nix
   ];
-  xdg = {
-    enable = true;
-  };
 }

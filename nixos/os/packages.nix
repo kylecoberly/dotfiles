@@ -21,6 +21,7 @@
     dnsutils
     nmap
     iftop
+    openssh
 
     # Fetching
     curl

@@ -10,10 +10,14 @@
     useUserPackages = true;
     users.kylecoberly = { config, pkgs, ... }: {
       imports = [
-        ./apps
+        ./apps.nix
+        ../dotfiles
       ];
 
       programs.home-manager.enable = true;
+      xdg = {
+        enable = true;
+      };
 
       home = {
         username = "kylecoberly";

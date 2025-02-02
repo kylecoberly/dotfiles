@@ -1,11 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  imports = [
-    ./unix.nix
-    ./dotfiles.nix
-  ];
-
   home.packages = with pkgs; [
     # Browsers
     google-chrome
@@ -47,8 +42,4 @@
     gnome-boxes
     remmina
   ];
-
-  programs = {
-    home-manager.enable = true;
-  };
 }
