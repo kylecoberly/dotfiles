@@ -5,11 +5,6 @@
     ./systems/xps13
     ./os
   ];
-  environment.etc = {
-    "tmux" = {
-      source = /home/kylecoberly/dotfiles/nixos/dotfiles/tmux;
-    };
-  };
 
   nix = {
     gc = {
