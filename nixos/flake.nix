@@ -26,7 +26,7 @@
               useGlobalPkgs = true;
               useUserPackages = true;
               users.kylecoberly = import ./home;
-              extraSpecialArgs = { inherit inputs };
+              extraSpecialArgs = { inherit inputs; };
           };
         ];
       };
