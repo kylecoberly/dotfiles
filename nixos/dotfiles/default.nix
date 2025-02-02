@@ -2,10 +2,10 @@
 
 {
   imports = [
-    ./dconf.nix
+    ./dcon
     ./git
     ./alacritty
     ./tmux
-    ./zsh.nix
+    ./zsh
   ];
 }
