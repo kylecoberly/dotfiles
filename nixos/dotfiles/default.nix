@@ -8,9 +8,9 @@
     ./dolphin-emu
     ./git
     ./higan
-    # ./nnn
+    ./nnn
     # ./nvim
-    # ./obs-studio
+    ./obs-studio
     # ./obsidian
     # ./rambox
     # ./ssh
