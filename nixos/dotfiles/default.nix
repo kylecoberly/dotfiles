@@ -12,7 +12,7 @@
     ./nvim
     ./obs-studio
     ./obsidian
-    # ./rambox
+    ./rambox
     ./ssh
     ./tmux
     ./zsh
