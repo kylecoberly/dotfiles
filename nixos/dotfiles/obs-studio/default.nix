@@ -4,7 +4,7 @@
     configFile."obs-studio" = {
       source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/obs-studio";
       recursive = true;
-    }
+    };
   };
 
   programs.obs-studio = {
