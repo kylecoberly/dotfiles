@@ -2,7 +2,10 @@
 
 {
   home.file."dotfiles" = {
-    source = "github:kylecoberly/dotfiles";
+    source = builtins.fetchGit {
+      url = "https://github.com/kylecoberly/dotfiles.git";
+      ref = "refs/heads/master";
+    };
     recursive = true;
   };
   xdg.userDirs.templates = null;
