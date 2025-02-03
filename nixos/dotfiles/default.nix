@@ -11,7 +11,7 @@
     # ./nnn
     # ./nvim
     ./obs-studio
-    ./obsidian
+    # ./obsidian
     # ./rambox
     # ./ssh
     ./tmux
