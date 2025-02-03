@@ -4,7 +4,7 @@
   imports = [
     ./alacritty
     ./dconf
-    ./display
+    ./autorandr
     ./dolphin-emu
     ./git
     ./higan
