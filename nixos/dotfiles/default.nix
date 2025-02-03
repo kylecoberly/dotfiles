@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./1password
     ./alacritty
     ./dconf
     ./display
