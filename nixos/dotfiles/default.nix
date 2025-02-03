@@ -12,8 +12,8 @@
     # ./nvim
     ./obs-studio
     # ./obsidian
-    ./rambox
-    # ./ssh
+    # ./rambox
+    ./ssh
     ./tmux
     ./zsh
   ];
