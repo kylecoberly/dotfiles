@@ -2,6 +2,6 @@
 
 {
   xdg.configFile = {
-    "higan/settings.bml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/apps/higan/settings.bml";
+    "higan/settings.bml".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/higan/settings.bml";
   };
 }

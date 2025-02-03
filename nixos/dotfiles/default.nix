@@ -9,6 +9,5 @@
     ./zsh
     ./higan
     ./dolphin-emu
-    ./autostart.nix
   ];
 }

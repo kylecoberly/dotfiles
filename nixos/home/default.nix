@@ -1,8 +1,10 @@
 {
   # Home manager modules, not NixOS modules
   imports = [
+    ./directories.nix
     ./apps.nix
     ../dotfiles
+    ./autostart.nix
   ];
 
   # Allow HM to manage itself
