@@ -23,7 +23,7 @@
 
     # Development
     docker
-    neovim
+    # neovim
     vscode
     asdf-vm
     awscli2
