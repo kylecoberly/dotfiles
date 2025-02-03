@@ -7,6 +7,8 @@
     firefox
 
     # Productivity
+    _1password
+    _1password-gui
     obsidian
     rambox
     libreoffice
