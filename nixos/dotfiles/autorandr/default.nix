@@ -15,7 +15,6 @@
           DP2 = {
             enable = true;
             crtc = 0;
-            primary = true;
             position = "0x0";
             mode = "1920x1080";
             rate = "60.00";
@@ -34,7 +33,6 @@
           eDP1 = {
             enable = true;
             crtc = 0;
-            primary = true;
             position = "0x0";
             mode = "1280x720";
             rate = "60.00";
