@@ -4,16 +4,16 @@
   imports = [
     ./alacritty
     ./dconf
-    ./display
-    ./dolphin-emu
+    # ./display
+    # ./dolphin-emu
     ./git
     ./higan
     ./nnn
     ./nvim
-    ./obs-studio
-    ./obsidian
-    ./rambox
-    ./ssh
+    # ./obs-studio
+    # ./obsidian
+    # ./rambox
+    # ./ssh
     ./tmux
     ./zsh
   ];
