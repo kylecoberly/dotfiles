@@ -1,12 +1,17 @@
 { config, lib, pkgs, ... }:
 
 {
-  home.file."Projects" = {
-    target = "Projects";
+  home.file."dotfiles" = {
+    source = "../..";
     recursive = true;
   };
-  home.file."Temp" = {
-    target = "Temp";
-    recursive = true;
-  };
+  xdg.userDirs.templates = null;
+  xdg.userDirs.music = null;
+  xdg.userDirs.pictures = null;
+  xdg.userDirs.videos = null;
+  xdg.userDirs.publicShare = null;
+  xdg.userDirs.extraConfig = [
+    "Projects"
+    "Temp"
+  ];
 }

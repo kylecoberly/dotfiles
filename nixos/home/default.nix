@@ -4,7 +4,7 @@
     ./directories.nix
     ./apps.nix
     ../dotfiles
-    ./autostart.nix
+    ./autostart
   ];
 
   # Allow HM to manage itself
