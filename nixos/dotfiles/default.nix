@@ -9,7 +9,7 @@
     ./git
     ./higan
     # ./nnn
-    # ./nvim
+    ./nvim
     ./obs-studio
     # ./obsidian
     # ./rambox
