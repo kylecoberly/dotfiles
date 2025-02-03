@@ -2,7 +2,7 @@
 
 {
   home.file."dotfiles" = {
-    source = "../..";
+    source = "github:kylecoberly/dotfiles";
     recursive = true;
   };
   xdg.userDirs.templates = null;
