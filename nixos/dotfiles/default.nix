@@ -8,7 +8,7 @@
     ./dolphin-emu
     ./git
     ./higan
-    # ./nnn
+    ./nnn
     ./nvim
     ./obs-studio
     # ./obsidian

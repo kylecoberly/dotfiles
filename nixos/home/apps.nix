@@ -45,7 +45,7 @@
     simple-scan # Document scanner
     gparted # Partition manager
     just # Shell command runner
-    nnn # File explorer
+    # nnn # File explorer
 
     # Remotes and VMs
     gnome-boxes
