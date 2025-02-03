@@ -6,18 +6,21 @@ with lib.hm.gvariant;
 {
   dconf.enable = true;
   imports = [
-    ./wacom-tablet.nix
+    ./system.nix
+    ./power.nix
+    ./sound.nix
+    
     ./keyboard.nix
     ./mouse.nix
+    ./wacom-tablet.nix
+    
+    ./interface.nix
+    ./wallpaper.nix
     ./file-picker.nix
-    ./calculator.nix
-    ./interface.nix
-    ./boxes.nix
-    ./sound.nix
-    ./simple-scan.nix
+    
     ./calendar.nix
-    ./system.nix
-    ./interface.nix
-    ./power.nix
+    ./calculator.nix
+    ./boxes.nix
+    ./simple-scan.nix
   ];
 }
