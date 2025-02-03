@@ -10,9 +10,9 @@
     ./higan
     # ./nnn
     # ./nvim
-    ./obs-studio
-    ./obsidian
-    ./rambox
+    # ./obs-studio
+    # ./obsidian
+    # ./rambox
     # ./ssh
     ./tmux
     ./zsh
