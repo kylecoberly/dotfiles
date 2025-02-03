@@ -7,7 +7,7 @@
     firefox
 
     # Productivity
-    _1password
+    _1password-cli
     _1password-gui
     obsidian
     rambox
@@ -27,6 +27,7 @@
     vscode
     asdf-vm
     awscli2
+    flyctl
 
     # Communication - These are in Rambox
     # discord
@@ -44,6 +45,7 @@
     simple-scan # Document scanner
     gparted # Partition manager
     just # Shell command runner
+    nnn # File explorer
 
     # Remotes and VMs
     gnome-boxes
