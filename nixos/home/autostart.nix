@@ -1,7 +1,8 @@
 { config, lib, pkgs, ... }:
 
 {
-  xdg.autoStart = {
+  xdg.autostart = {
+    enable = true;
     packages = with pkgs; [
       obsidian
       rambox
