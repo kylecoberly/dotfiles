@@ -18,7 +18,7 @@
     # todoist # In Rambox
 
     # Production
-    obs-studio
+    # obs-studio
     gimp-with-plugins
 
     # Development
