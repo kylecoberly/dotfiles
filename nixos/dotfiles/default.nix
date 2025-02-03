@@ -16,5 +16,6 @@
     ./ssh
     ./tmux
     ./zsh
+    ./nextcloud
   ];
 }
