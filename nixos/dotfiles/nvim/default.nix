@@ -14,8 +14,6 @@
       prettierd
       vscode-js-debug
       vscode-langservers-extracted
-      nodePackages.neovim
-      nodePackages.json-server
     ];
     viAlias = true;
     vimAlias = true;
