@@ -1,7 +1,6 @@
 { config, lib, pkgs, ... }:
 
 {
-  programs.alacritty.enable = true;
   xdg = {
     configFile."autorandr/docked-single/config".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/display/docked-single/config";
     configFile."autorandr/docked-single/setup".source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/nixos/dotfiles/display/docked-single/setup";

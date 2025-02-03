@@ -4,8 +4,8 @@
   programs.nnn = {
     enable = true;
     bookmarks = {
-      "P" = "~/Projects";
-      "d" = "~/dotfiles";
+      "P" = "${config.home.homeDirectory}/Projects";
+      "d" = "${config.home.homeDirectory}/dotfiles";
     };
     extraPackages = with pkgs; [
       ffmpegthumbnailer
