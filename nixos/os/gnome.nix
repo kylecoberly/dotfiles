@@ -24,7 +24,6 @@
     gnome-tweaks
     gnomeExtensions.just-perfection
     flameshot
-    autorandr
   ];
 
   ## Remove from Gnome
