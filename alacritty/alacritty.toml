@@ -1,3 +1,4 @@
+[general]
 import = ["./melange.toml"]
 
 [bell]
