@@ -14,6 +14,19 @@ return {
       inlay_hints = false, -- enable/disable inlay hints on start
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
+    -- Default configuration for LSP features
+    defaults = {
+      hover = {
+        border = "rounded",
+        focusable = false,
+        zindex = 40,
+      },
+      signature_help = {
+        border = "rounded",
+        focusable = false,
+        zindex = 40,
+      },
+    },
     -- customize lsp formatting options
     formatting = {
       -- control auto formatting on save

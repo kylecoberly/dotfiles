@@ -36,4 +36,20 @@ return {
       },
     },
   },
+  -- use mason-tool-installer to automatically install tools
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    -- overrides `require("mason-tool-installer").setup(...)`
+    opts = {
+      ensure_installed = {
+        -- LSP servers
+        "lua_ls",
+        -- Formatters
+        "stylua",
+        -- Debuggers
+        "python",
+        -- add more tools as needed
+      },
+    },
+  },
 }

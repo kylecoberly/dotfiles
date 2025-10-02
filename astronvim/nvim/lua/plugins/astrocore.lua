@@ -15,9 +15,10 @@ return {
       large_buf = { size = 1024 * 256, lines = 10000 }, -- set global limits for large files for disabling features like treesitter
       autopairs = true, -- enable autopairs at start
       cmp = true, -- enable completion at start
-      diagnostics_mode = 3, -- diagnostic mode on start (0 = off, 1 = no signs/virtual text, 2 = no virtual text, 3 = on)
+      diagnostics = { virtual_text = true, virtual_lines = false }, -- diagnostic mode on start
       highlighturl = true, -- highlight URLs at start
       notifications = true, -- enable notifications at start
+      mason = false, -- disable mason integration in astrocore (use mason-tool-installer instead)
     },
     -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
     diagnostics = {
@@ -72,7 +73,6 @@ return {
         -- ["<Leader>b"] = { desc = "Buffers" },
 
         -- setting a mapping to false will disable it
-        -- ["<C-S>"] = false,
       },
     },
   },

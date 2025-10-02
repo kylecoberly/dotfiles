@@ -35,5 +35,21 @@ return {
       LSPLoading9 = "⠇",
       LSPLoading10 = "⠏",
     },
+    -- Status providers and components can be configured here
+    status = {
+      providers = {
+        -- Example: customize LSP client names
+        lsp_client_names = {
+          mappings = {
+            -- display `lua_ls` as just `LUA` in the statusline
+            lua_ls = "LUA",
+          },
+        },
+      },
+      components = {
+        -- Example: customize component alignment/padding
+        -- lsp_client_names = { padding = { left = 1, right = 1 } },
+      },
+    },
   },
 }
