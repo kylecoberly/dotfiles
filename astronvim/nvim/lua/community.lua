@@ -17,7 +17,6 @@ return {
     { import = "astrocommunity.motion.nvim-surround" },
     { import = "astrocommunity.scrolling.mini-animate" },
     { import = "astrocommunity.search.nvim-spectre" },
-    { import = "astrocommunity.markdown-and-latex.peek-nvim" },
     { import = "astrocommunity.git.blame-nvim" },
     { import = "astrocommunity.completion.tabnine-nvim" },
   },
