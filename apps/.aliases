@@ -34,3 +34,4 @@ fi
 alias top=htop
 alias du="ncdu --color dark -rr -x --exclude .git --exclude node_modules"
 alias help='tldr'
+alias mgrep='~/.asdf/installs/nodejs/22.21.1/bin/mgrep'
