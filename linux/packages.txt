@@ -1,0 +1,46 @@
+# apt packages (one per line; # and blank lines ignored)
+# Tools not available via apt are installed separately in install.sh:
+# mise, starship, flyctl, just, obsidian, zoom
+
+# Core shell & CLI
+zsh
+git
+curl
+wget
+jq
+fzf
+zoxide
+bat
+ripgrep
+fd-find
+eza
+tldr
+tree
+htop
+ncdu
+nmap
+ranger
+ffmpeg
+p7zip-full
+unzip
+
+# Dev
+neovim
+tmux
+docker.io
+gh
+awscli
+code
+
+# Productivity
+1password
+1password-cli
+libreoffice
+gimp
+
+# Browsers
+google-chrome-stable
+firefox
+
+# Terminal
+alacritty

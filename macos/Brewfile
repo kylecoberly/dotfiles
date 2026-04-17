@@ -1,0 +1,52 @@
+# Shell & CLI
+brew "starship"
+brew "mise"
+brew "fzf"
+brew "zoxide"
+brew "eza"
+brew "bat"
+brew "ripgrep"
+brew "git-delta"
+brew "fd"
+brew "jq"
+brew "tldr"
+brew "tree"
+brew "wget"
+brew "ffmpeg"
+brew "htop"
+brew "ncdu"
+brew "nmap"
+brew "ranger"
+brew "p7zip"
+brew "iproute2mac"
+brew "switchaudio-osx"
+brew "coreutils"
+
+# Dev
+brew "neovim"
+brew "tmux"
+brew "just"
+brew "gh"
+brew "awscli"
+brew "flyctl"
+cask "visual-studio-code"
+cask "docker"
+
+# Productivity
+cask "1password"
+cask "1password-cli"
+cask "obsidian"
+cask "libreoffice"
+cask "zoom"
+cask "gimp"
+
+# Browsers
+cask "google-chrome"
+cask "firefox"
+
+# Terminal & window management
+cask "alacritty"
+tap "nikitabobko/tap"
+cask "nikitabobko/tap/aerospace"
+cask "karabiner-elements"
+cask "alt-tab"

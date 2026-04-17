@@ -1,37 +1,34 @@
-#!/bin/bash
+#!/usr/bin/env bash
+# Top-level entrypoint. Runs shared setup, then the platform-specific script.
+set -euo pipefail
 
-if [ -z "$HOME" ]; then
-	exit 1
+if [ -z "${HOME:-}" ]; then
+  echo "HOME not set" >&2
+  exit 1
 fi
 
-if [ "${CODESPACES}" == "true" ]; then
-	DOTFILE_DIRECTORY="/workspaces/.codespaces/.persistedshare/dotfiles"
+if [ "${CODESPACES:-}" = "true" ]; then
+  DOTFILES="/workspaces/.codespaces/.persistedshare/dotfiles"
 else
-	DOTFILE_DIRECTORY="${HOME}/dotfiles"
+  DOTFILES="${HOME}/dotfiles"
 fi
+export DOTFILES
 
-if [[ "$OSTYPE" == "linux-gnu"* ]]; then
-	sudo apt-get update >/dev/null
-fi
+echo "→ shared configuration"
+source "$DOTFILES/shared/install.sh"
 
-source "${DOTFILE_DIRECTORY}/zsh/install.sh" >/dev/null
-echo "Shell configured..."
-source "${DOTFILE_DIRECTORY}/apps/install.sh" >/dev/null
-echo "Apps configured..."
-source "${DOTFILE_DIRECTORY}/environments/install.sh" >/dev/null
-echo "Environments configured..."
-source "${DOTFILE_DIRECTORY}/alacritty/install.sh" >/dev/null
-echo "Alacritty configured"
-source "${DOTFILE_DIRECTORY}/tmux/install.sh" >/dev/null
-echo "TMUX configured..."
-source "${DOTFILE_DIRECTORY}/astronvim/install.sh" >/dev/null
-echo "Neovim configured..."
-source "${DOTFILE_DIRECTORY}/window-manager/install.sh" >/dev/null
-echo "Window manager configured..."
-source "${DOTFILE_DIRECTORY}/claude/install.sh" >/dev/null
-echo "Claude Code configured..."
-echo "Ready to go!"
+case "$OSTYPE" in
+  darwin*)
+    echo "→ macOS configuration"
+    source "$DOTFILES/macos/install.sh"
+    ;;
+  linux-gnu*)
+    echo "→ Linux configuration"
+    source "$DOTFILES/linux/install.sh"
+    ;;
+  *)
+    echo "Unknown OSTYPE: $OSTYPE — skipping platform install" >&2
+    ;;
+esac
 
-if [ "${CODESPACES}" == "true" ]; then
-	echo "Environment setup complete!" | wall
-fi
+echo "✓ Ready to go"

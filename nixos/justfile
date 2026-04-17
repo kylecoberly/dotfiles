@@ -1,8 +1,0 @@
-alias r := switch-xps-13
-alias h := copy-hardware-config
-
-switch-xps-13:
-  sudo nixos-rebuild --flake .#xps13 switch
-
-copy-hardware-config:
-  cp /etc/nixos/hardware-configuration.nix ./systems/xps13/

@@ -5,7 +5,7 @@
 # Updates:
 #   theme/palette.toml          (alacritty)
 #   theme/palette.lua           (neovim helper)
-#   zsh/starship.toml           (between palette markers only)
+#   shared/zsh/starship.toml    (between palette markers only)
 
 set -euo pipefail
 
@@ -77,7 +77,7 @@ EOF
 
 # ─── zsh/starship.toml [palettes.tokyonight] block ─────────────────────
 # Replaces lines between "# >>> palette ..." and "# <<< palette" markers.
-STARSHIP="$DOTFILES/zsh/starship.toml"
+STARSHIP="$DOTFILES/shared/zsh/starship.toml"
 [[ -f "$STARSHIP" ]] || { echo "missing: $STARSHIP" >&2; exit 1; }
 grep -q '^# >>> palette' "$STARSHIP" || { echo "missing palette markers in $STARSHIP" >&2; exit 1; }
 
