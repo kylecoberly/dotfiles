@@ -28,6 +28,8 @@ source "${DOTFILE_DIRECTORY}/astronvim/install.sh" >/dev/null
 echo "Neovim configured..."
 source "${DOTFILE_DIRECTORY}/window-manager/install.sh" >/dev/null
 echo "Window manager configured..."
+source "${DOTFILE_DIRECTORY}/claude/install.sh" >/dev/null
+echo "Claude Code configured..."
 echo "Ready to go!"
 
 if [ "${CODESPACES}" == "true" ]; then

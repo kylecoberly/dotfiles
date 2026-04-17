@@ -43,7 +43,6 @@ fi
 rm -rf "${HOME}/.config/alacritty"
 mkdir -p "${HOME}/.config/alacritty"
 ln -sf "${DOTFILE_DIRECTORY}/alacritty/alacritty.toml" "${HOME}/.config/alacritty/alacritty.toml"
-ln -sf "${DOTFILE_DIRECTORY}/alacritty/melange.toml" "${HOME}/.config/alacritty/melange.toml"
 
 ## ChromeOS and Ubuntu Desktop Icon
 if [[ "$OSTYPE" == "linux-gnu"* ]]; then

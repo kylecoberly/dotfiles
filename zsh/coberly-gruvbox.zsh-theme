@@ -95,7 +95,7 @@ prompt_context() {
     darwin*)  OS_LOGO="\ue29e" ;; # 
     linux*)   OS_LOGO="\ue712" ;; # 
   esac
-  prompt_segment 237 7 $OS_LOGO
+  prompt_segment 10 0 $OS_LOGO
 }
 
 # Git: branch/detached head, dirty status
@@ -151,11 +151,7 @@ prompt_git() {
     repo_path=$(git rev-parse --git-dir 2>/dev/null)
     dirty=$(parse_git_dirty)
     ref=$(git symbolic-ref HEAD 2> /dev/null) || ref="➦ $(git rev-parse --short HEAD 2> /dev/null)"
-    if [[ -n $dirty ]]; then
-      prompt_segment 3 0
-    else
-      prompt_segment 2 $CURRENT_FG
-    fi
+    prompt_segment 14 0
 
     if [[ -e "${repo_path}/BISECT_LOG" ]]; then
       mode=" <B>"
@@ -241,7 +237,7 @@ prompt_hg() {
 
 # Dir: current working directory
 prompt_dir() {
-  prompt_segment 4 $CURRENT_FG '%1d'
+  prompt_segment 13 0 '%1d'
 }
 
 # Virtualenv: current working virtualenv
@@ -260,17 +256,18 @@ prompt_virtualenv() {
 prompt_status() {
   local -a symbols
 
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{1}%}\uf7d3" #
+  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{15}%}\uf7d3" #
   [[ $UID -eq 0 ]] && symbols+="%{%F{11}%}\ue77a" #
   [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{15}%}\ufb36" #󰘷
 
-  [[ -n "$symbols" ]] && prompt_segment 166 7 "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment 9 15 "$symbols"
 }
 
 ## Main prompt
 build_prompt() {
   RETVAL=$?
   prompt_status
+  prompt_context
   prompt_dir
   prompt_git
   prompt_bzr

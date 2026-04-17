@@ -1,5 +1,5 @@
 return {
-  colorscheme = "melange",
+  colorscheme = "tokyonight",
   mappings = {
     n = {
       ["<Leader>z"] = { "<cmd>ZenMode<cr>" },
@@ -10,7 +10,7 @@ return {
     {
       "AstroNvim/astrocommunity",
       {
-        import = "astrocommunity.colorscheme.melange-nvim",
+        import = "astrocommunity.colorscheme.tokyonight-nvim",
       },
       {
         import = "astrocommunity.pack.typescript",
@@ -52,6 +52,10 @@ return {
     {
       "nvim-autopairs",
       enabled = false,
+    },
+    {
+      "folke/tokyonight.nvim",
+      opts = { style = "night" },
     },
     {
       "aserowy/tmux.nvim",
