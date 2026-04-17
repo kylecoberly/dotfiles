@@ -68,11 +68,13 @@ dotfiles/zsh/
 6. **Aliases** — `source` `aliases.zsh` and `~/.aliases`
 7. **Misc** — colored man pages via `LESS_TERMCAP_*` exports (~5 lines, replaces `colored-man-pages` OMZ plugin)
 
-### Keybindings preserved
+### Keybindings
 
 - vi-mode (`bindkey -v`)
 - `jj` / `jk` → normal mode (viins)
-- `^R` → zsh's native history-incremental-search-backward (NOT overridden by fzf)
+- `^R` → fzf fuzzy history search (via `fzf --zsh` default binding — replaces native history-incremental-search)
+- `^T` → fzf file picker (fzf default)
+- `Alt-C` → fzf directory picker + cd (fzf default)
 - `Esc-.` → insert-last-word
 
 ### Prompt (starship.toml)
@@ -110,7 +112,7 @@ Mimics current segments in order: OS icon → directory → git branch + status.
 
 | Tool | Integration |
 |------|-------------|
-| `fzf` | `eval "$(fzf --zsh)"` — adds `^T`, `Alt-C`, tab-completion |
+| `fzf` | `eval "$(fzf --zsh)"` — fuzzy `^R` history, `^T` files, `Alt-C` dirs |
 | `fzf-tab` | Sourced as plugin — fuzzy tab-completion menus |
 | `zoxide` | `eval "$(zoxide init zsh)"` — adds `z` command |
 | `eza` | `alias ls='eza'`, `alias ll='eza -l --git'`, `alias la='eza -la --git'`, `alias lt='eza --tree'` |
@@ -140,7 +142,7 @@ Mimics current segments in order: OS icon → directory → git branch + status.
 
 - New shell opens without oh-my-zsh present on disk
 - Prompt renders with starship showing OS icon, dir, git branch + async status
-- `jj`/`jk` still exits to vi cmd mode; `^R` still searches history
+- `jj`/`jk` still exits to vi cmd mode; `^R` opens fzf fuzzy history
 - `mise ls` shows previously-asdf-managed tools
 - `z dotfiles` jumps to `~/dotfiles`; `ls` uses eza; `cat foo.js` shows plain file
 - Tab-completing `cd <TAB>` shows an fzf picker
