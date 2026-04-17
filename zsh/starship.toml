@@ -1,6 +1,6 @@
 # Starship prompt — Tokyo Night palette, agnoster-inspired Powerline style
 # Requires a Nerd Font (Alacritty is configured for "NotoMono Nerd Font").
-# Powerline separator: U+E0B0 ()
+# Palette uses TN's distinctive purple / blue / cyan accent trio.
 
 add_newline = false
 command_timeout = 500
@@ -15,32 +15,31 @@ $cmd_duration\
 $line_break\
 $character"""
 
-# ─── OS icon (leftmost segment) ────────────────────────────────────────
+# ─── OS icon (leftmost segment) — TN purple ────────────────────────────
 [os]
 disabled = false
-format = "[ $symbol ](bg:#9ece6a fg:#1a1b26)"
+format = "[ $symbol ](bg:#bb9af7 fg:#1a1b26)"
 
 [os.symbols]
 Macos  = ""
 Linux  = ""
 Ubuntu = ""
 
-# ─── Current directory ─────────────────────────────────────────────────
+# ─── Current directory — TN blue ───────────────────────────────────────
 [directory]
-format = "[](fg:#9ece6a bg:#7aa2f7)[ $path ](bg:#7aa2f7 fg:#1a1b26)"
+format = "[](fg:#bb9af7 bg:#7aa2f7)[ $path ](bg:#7aa2f7 fg:#1a1b26)"
 truncation_length = 3
 truncation_symbol = "…/"
 home_symbol = "~"
 read_only = "  "
 
-# ─── Git branch (only rendered inside a repo) ──────────────────────────
+# ─── Git branch — TN cyan ──────────────────────────────────────────────
 [git_branch]
 symbol = ""
-format = "[](fg:#7aa2f7 bg:#e0af68)[ $symbol $branch ](bg:#e0af68 fg:#1a1b26)"
+format = "[](fg:#7aa2f7 bg:#7dcfff)[ $symbol $branch ](bg:#7dcfff fg:#1a1b26)"
 
-# ─── Git status (continues yellow segment, closes arrow into void) ─────
 [git_status]
-format = "[$all_status$ahead_behind](bg:#e0af68 fg:#1a1b26)[](fg:#e0af68)"
+format = "[$all_status$ahead_behind](bg:#7dcfff fg:#1a1b26)[](fg:#7dcfff)"
 modified   = "${count}● "
 staged     = "${count}+ "
 untracked  = "${count}? "
@@ -53,6 +52,7 @@ renamed    = "${count}» "
 stashed    = "${count}* "
 
 # ─── Runtime versions (only when project files present) ────────────────
+# Each runtime uses a TN-palette-accurate accent tied to its ecosystem
 [nodejs]
 format = "[  $symbol $version ](fg:#9ece6a)"
 symbol = ""
@@ -65,7 +65,7 @@ detect_extensions = ["py"]
 detect_files = ["pyproject.toml", "requirements.txt", ".python-version", "Pipfile"]
 
 [golang]
-format = "[  $symbol $version ](fg:#7aa2f7)"
+format = "[  $symbol $version ](fg:#7dcfff)"
 symbol = ""
 detect_files = ["go.mod", "go.sum"]
 
@@ -75,11 +75,11 @@ symbol = ""
 detect_files = ["Cargo.toml"]
 
 [java]
-format = "[  $symbol $version ](fg:#bb9af7)"
+format = "[  $symbol $version ](fg:#ff9e64)"
 symbol = ""
 detect_files = ["pom.xml", "build.gradle", "build.gradle.kts", "deps.edn"]
 
-# ─── Command duration (only for slow commands) ─────────────────────────
+# ─── Command duration ──────────────────────────────────────────────────
 [cmd_duration]
 format = "[ took $duration ](fg:#ff9e64)"
 min_time = 2000
