@@ -5,19 +5,6 @@
   user = kylecoberly
 [color]
   ui = true
-[color "branch"]
-  current = yellow reverse
-  local = yellow
-  remote = green
-[color "diff"]
-  meta = yellow bold
-  frag = magenta bold
-  old = red bold
-  new = green bold
-[color "status"]
-  added = yellow
-  changed = green
-  untracked = red
 [alias]
   co = checkout
   cob = checkout -b
@@ -43,7 +30,6 @@
 	autosquash = true
 [rerere]
   enabled = true
-  s = "status -s"
 [diff]
 	colorMoved = zebra
 [core]
@@ -51,7 +37,6 @@
   autocrlf = input
   editor = nvim
   filemode = false
-  pager = bat
   excludesfile = ~/.gitignore
 [log]
   decorate = short
