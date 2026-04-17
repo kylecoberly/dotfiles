@@ -1,3 +1,4 @@
+[general]
 import = ["~/dotfiles/theme/palette.toml"]
 
 [bell]

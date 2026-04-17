@@ -7,6 +7,16 @@ add_newline = false
 command_timeout = 500
 palette = "tokyonight"
 
+format = """\
+$os\
+$directory\
+$git_branch\
+$git_status\
+$nodejs$python$golang$rust$java\
+$cmd_duration\
+$line_break\
+$character"""
+
 # >>> palette (generated from theme/palette.sh — do not edit) >>>
 [palettes.tokyonight]
 bg = "#1a1b26"
@@ -27,41 +37,32 @@ magenta = "#bb9af7"
 purple = "#9d7cd8"
 # <<< palette <<<
 
-format = """\
-$os\
-$directory\
-$git_branch\
-$git_status\
-$nodejs$python$golang$rust$java\
-$cmd_duration\
-$line_break\
-$character"""
-
 # ─── OS icon (leftmost segment) ────────────────────────────────────────
 [os]
 disabled = false
 format = "[ $symbol ](bg:magenta fg:bg)"
 
 [os.symbols]
-Macos  = ""
-Linux  = ""
-Ubuntu = ""
+Macos  = ""
+Linux  = ""
+Ubuntu = ""
 
 # ─── Current directory ─────────────────────────────────────────────────
 [directory]
-format = "[](fg:magenta bg:blue0)[ $path ](bg:blue0 fg:fg)"
-truncation_length = 3
-truncation_symbol = "…/"
+format = "[](fg:magenta bg:blue0)[ $path ](bg:blue0 fg:fg)"
+truncation_length = 0
+truncate_to_repo = false
+truncation_symbol = ""
 home_symbol = "~"
-read_only = "  "
+read_only = "  "
 
 # ─── Git branch + status ───────────────────────────────────────────────
 [git_branch]
-symbol = ""
-format = "[](fg:blue0 bg:cyan)[ $symbol $branch ](bg:cyan fg:bg)"
+symbol = ""
+format = "[](fg:blue0 bg:cyan)[ $symbol $branch ](bg:cyan fg:bg)"
 
 [git_status]
-format = "[$all_status$ahead_behind](bg:cyan fg:bg)[](fg:cyan)"
+format = "[$all_status$ahead_behind](bg:cyan fg:bg)[](fg:cyan)"
 modified   = "${count}● "
 staged     = "${count}+ "
 untracked  = "${count}? "
@@ -76,28 +77,28 @@ stashed    = "${count}* "
 # ─── Runtime versions (only when project files present) ────────────────
 [nodejs]
 format = "[  $symbol $version ](fg:green)"
-symbol = ""
+symbol = ""
 detect_files = ["package.json", ".nvmrc", ".node-version"]
 
 [python]
 format = "[  $symbol $version ](fg:yellow)"
-symbol = ""
+symbol = ""
 detect_extensions = ["py"]
 detect_files = ["pyproject.toml", "requirements.txt", ".python-version", "Pipfile"]
 
 [golang]
 format = "[  $symbol $version ](fg:cyan)"
-symbol = ""
+symbol = ""
 detect_files = ["go.mod", "go.sum"]
 
 [rust]
 format = "[  $symbol $version ](fg:red)"
-symbol = ""
+symbol = ""
 detect_files = ["Cargo.toml"]
 
 [java]
 format = "[  $symbol $version ](fg:orange)"
-symbol = ""
+symbol = ""
 detect_files = ["pom.xml", "build.gradle", "build.gradle.kts", "deps.edn"]
 
 # ─── Command duration ──────────────────────────────────────────────────
