@@ -14,7 +14,6 @@ $git_branch\
 $git_status\
 $nodejs$python$golang$rust$java\
 $cmd_duration\
-$line_break\
 $character"""
 
 # >>> palette (generated from theme/palette.sh — do not edit) >>>
@@ -108,6 +107,6 @@ min_time = 2000
 
 # ─── Prompt character (vi-mode aware) ──────────────────────────────────
 [character]
-success_symbol = "[❯](bold green)"
+success_symbol = ""
 error_symbol   = "[❯](bold red)"
 vimcmd_symbol  = "[❮](bold blue0)"
