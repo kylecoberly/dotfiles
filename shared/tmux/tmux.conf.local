@@ -35,8 +35,12 @@ set -g mouse on
 set -s escape-time 0
 
 # true-color + undercurl for modern nvim themes
+# terminal-features matches on client_termname (outer $TERM).
+# alacritty and xterm-256color cover native + SSH; tmux-256color covers nesting.
+set-option -sa terminal-features ',alacritty:RGB'
+set-option -sa terminal-features ',xterm-256color:RGB'
 set-option -sa terminal-features ',tmux-256color:RGB'
-set-option -as terminal-features ',*:usstyle'
+set-option -sa terminal-features ',*:usstyle'
 
 # C-space prefix; strip the C-a compatibility prefix oh-my-tmux sets
 set -gu prefix2
@@ -109,16 +113,13 @@ set -g @plugin 'o0th/tmux-nova'
 
 # -- tmux-nova (Tokyo Night) ---------------------------------------------------
 
-# palette (sourced from shared Tokyo Night file; aliased with tn_ prefix)
+# palette source of truth: theme/palette.sh
 source-file ~/dotfiles/theme/palette.sh
-tn_fg="$fg"
-tn_grey="$grey"
-tn_green="$green"
-tn_orange="$orange"
-tn_blue="$blue"
 
-tn_seg_a="$tn_green $tn_grey"
-tn_seg_b="$tn_grey $tn_fg"
+# segment colors mirror the starship prompt (os / dir / git in starship.toml)
+os_colors="$magenta $bg"
+dir_colors="$blue0 $fg"
+git_colors="$cyan $bg"
 
 set -g @nova-nerdfonts true
 set -g @nova-nerdfonts-left  "\uE0B0"
@@ -126,26 +127,27 @@ set -g @nova-nerdfonts-right "\uE0B2"
 set -g @nova-pane "#I #W"
 set -g @nova-rows 0
 
-set -g "@nova-status-style-bg"        "$tn_grey"
-set -g "@nova-status-style-fg"        "$tn_fg"
-set -g "@nova-status-style-active-bg" "$tn_fg"
-set -g "@nova-status-style-active-fg" "$tn_grey"
+# bar + active window (active window mirrors starship's dir segment)
+set -g @nova-status-style-bg        "$bg"
+set -g @nova-status-style-fg        "$fg"
+set -g @nova-status-style-active-bg "$blue0"
+set -g @nova-status-style-active-fg "$fg"
 
-set -g "@nova-pane-border-style"        "$tn_orange"
-set -g "@nova-pane-active-border-style" "$tn_blue"
+set -g @nova-pane-border-style        "$orange"
+set -g @nova-pane-active-border-style "$blue0"
 
 # segments
-set -g @nova-segment-session "#{session_name}"
-set -g @nova-segment-session-colors "$tn_seg_a"
+set -g @nova-segment-session        "#{session_name}"
+set -g @nova-segment-session-colors "$os_colors"
 
-set -g @nova-segment-prefix "#{?client_prefix,PREFIX,}"
-set -g @nova-segment-prefix-colors "$tn_seg_b"
+set -g @nova-segment-prefix         "#{?client_prefix,PREFIX,}"
+set -g @nova-segment-prefix-colors  "$fg $bg"
 
-set -g @nova-segment-git "#(~/.config/tmux/scripts/git-branch.sh '#{pane_current_path}')"
-set -g @nova-segment-git-colors "$tn_seg_b"
+set -g @nova-segment-git            "#(~/.config/tmux/scripts/git-branch.sh '#{pane_current_path}')"
+set -g @nova-segment-git-colors     "$git_colors"
 
-set -g @nova-segment-host "#(~/.config/tmux/scripts/ssh-host.sh)"
-set -g @nova-segment-host-colors "$tn_seg_a"
+set -g @nova-segment-host           "#(~/.config/tmux/scripts/ssh-host.sh)"
+set -g @nova-segment-host-colors    "$git_colors"
 
 set -g @nova-segments-0-left  "session"
 set -g @nova-segments-0-right "prefix git host"
