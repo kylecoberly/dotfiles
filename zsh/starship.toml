@@ -27,7 +27,7 @@ Ubuntu = ""
 
 # ─── Current directory — TN blue ───────────────────────────────────────
 [directory]
-format = "[](fg:#bb9af7 bg:#7aa2f7)[ $path ](bg:#7aa2f7 fg:#1a1b26)"
+format = "[](fg:#bb9af7 bg:#3d59a1)[ $path ](bg:#3d59a1 fg:#c0caf5)"
 truncation_length = 3
 truncation_symbol = "…/"
 home_symbol = "~"
@@ -36,7 +36,7 @@ read_only = "  "
 # ─── Git branch — TN cyan ──────────────────────────────────────────────
 [git_branch]
 symbol = ""
-format = "[](fg:#7aa2f7 bg:#7dcfff)[ $symbol $branch ](bg:#7dcfff fg:#1a1b26)"
+format = "[](fg:#3d59a1 bg:#7dcfff)[ $symbol $branch ](bg:#7dcfff fg:#1a1b26)"
 
 [git_status]
 format = "[$all_status$ahead_behind](bg:#7dcfff fg:#1a1b26)[](fg:#7dcfff)"
@@ -88,4 +88,4 @@ min_time = 2000
 [character]
 success_symbol = "[❯](bold #9ece6a)"
 error_symbol   = "[❯](bold #f7768e)"
-vimcmd_symbol  = "[❮](bold #7aa2f7)"
+vimcmd_symbol  = "[❮](bold #3d59a1)"
