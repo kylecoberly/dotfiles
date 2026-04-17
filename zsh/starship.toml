@@ -1,0 +1,47 @@
+# Starship prompt config
+# Mimics coberly-gruvbox.zsh-theme segments: OS icon → dir → git branch + status
+# Gruvbox palette: yellow #fabd2f, blue #83a598, green #b8bb26, red #fb4934, purple #d3869b
+
+add_newline = false
+command_timeout = 1000
+
+format = """
+$os\
+$directory\
+$git_branch\
+$git_status\
+$character"""
+
+[os]
+disabled = false
+format = '[ $symbol ](bg:green fg:black)'
+
+[os.symbols]
+Macos = ""
+Linux = ""
+Ubuntu = ""
+
+[directory]
+format = '[ $path ](bg:purple fg:black)'
+truncation_length = 1
+truncation_symbol = ""
+
+[git_branch]
+symbol = " "
+format = '[ $symbol$branch ](bg:cyan fg:black)'
+
+[git_status]
+format = '[$all_status$ahead_behind ](bg:cyan fg:black)'
+modified = "${count}● "
+staged = "${count} "
+untracked = "${count} "
+ahead = ""
+behind = ""
+conflicted = "="
+deleted = ""
+renamed = "»"
+stashed = "\\$"
+
+[character]
+success_symbol = '[ ❯](green)'
+error_symbol = '[ ❯](red)'
