@@ -15,8 +15,8 @@ COLORTERM=truecolor
 # Plugins
 plugins=( \
   git git-extras command-not-found common-aliases \
-  npm tmux vi-mode zsh-autosuggestions sudo \
-  zsh-syntax-highlighting ubuntu docker-compose asdf \
+  npm tmux vi-mode sudo \
+  ubuntu docker-compose asdf \
   copyfile history colored-man-pages fancy-ctrl-z \
 )
 

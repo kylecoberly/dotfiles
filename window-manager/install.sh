@@ -14,6 +14,8 @@
 
 # Requires Brew and NotoMono Nerd Font
 
+# Simple Bar sometimes requires running the Simple Bar Server, which is a separate repo you clone and run a node server with
+
 if [ -z "$HOME" ]; then
 	exit 1
 fi

@@ -1,8 +1,8 @@
-alias x := switch-xps-13
-alias iso := build-iso
+alias r := switch-xps-13
+alias h := copy-hardware-config
 
 switch-xps-13:
   sudo nixos-rebuild --flake .#xps13 switch
 
-build-iso:
-  nix build .#nixosConfigurations.live.config.system.build.isoImage
+copy-hardware-config:
+  cp /etc/nixos/hardware-configuration.nix ./systems/xps13/

@@ -33,6 +33,7 @@
   graph = log --graph --pretty=format:'%C(yellow)%h -%C(auto)%d %C(bold cyan)%s %C(bold white)(%cr)%Creset %C(dim white)<%an>'
 [push]
   default = upstream
+  autoSetupRemote = true
   followTags = true
 [pull]
   rebase = true

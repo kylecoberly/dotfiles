@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Rambox
+Exec=rambox %U
+Terminal=false
+Type=Application
+Icon=rambox
+StartupWMClass=Rambox
+Categories=Network;
+Comment=Workspace simplifier
