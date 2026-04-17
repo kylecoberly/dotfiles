@@ -12,12 +12,12 @@ cost_usd=$(echo "$input"   | jq -r '.cost.total_cost_usd // 0')
 RESET='\033[0m'
 BOLD='\033[1m'
 DIM='\033[2m'
-BLUE='\033[34m'
-GREEN='\033[32m'
-YELLOW='\033[33m'
-CYAN='\033[36m'
-MAGENTA='\033[35m'
-RED='\033[31m'
+BLUE='\033[94m'
+GREEN='\033[92m'
+YELLOW='\033[93m'
+CYAN='\033[96m'
+MAGENTA='\033[95m'
+RED='\033[91m'
 
 # --- Line 1: directory + git ----------------------------------------------
 dir=$(basename "$cwd")
@@ -46,17 +46,17 @@ if git -C "$cwd" rev-parse --is-inside-work-tree >/dev/null 2>&1; then
     [ "$behind"    -gt 0 ] 2>/dev/null && dirty="${dirty}↓"
 
     if [ -n "$dirty" ]; then
-        git_part=" $(printf "${YELLOW}${BOLD} ${branch} ${dirty}${RESET}")"
+        git_part=" $(printf "${CYAN}${BOLD} ${branch} ${dirty}${RESET}")"
     else
-        git_part=" $(printf "${GREEN}${BOLD} ${branch}${RESET}")"
+        git_part=" $(printf "${CYAN}${BOLD} ${branch}${RESET}")"
     fi
 fi
 
-line1=$(printf "${BLUE}${BOLD} %s${RESET}%s" "$dir" "$git_part")
+line1=$(printf "${MAGENTA}${BOLD} %s${RESET}%s" "$dir" "$git_part")
 
 # --- Line 2: model / style / cost / context --------------------------------
 
-model_part=$(printf "${CYAN}🤖 %s${RESET}" "$model")
+model_part=$(printf "${GREEN}🤖 %s${RESET}" "$model")
 
 if [ "$style" = "default" ]; then
     style_part=$(printf "${DIM}🎨 %s${RESET}" "$style")
