@@ -276,8 +276,14 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export COLORTERM=truecolor
 
-# ─── PATH (macOS) ──────────────────────────────────────────────────────
-export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+# ─── PATH / Homebrew (arch-aware) ──────────────────────────────────────
+# brew shellenv sets PATH, MANPATH, INFOPATH, HOMEBREW_* correctly for
+# whichever install is present (Apple Silicon /opt/homebrew, Intel /usr/local).
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.fly/bin:$PATH"
