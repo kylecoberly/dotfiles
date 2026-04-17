@@ -1,72 +1,59 @@
-export ZSH="$HOME/.oh-my-zsh" # Path to your oh-my-zsh installation.
+# ─── Options ───────────────────────────────────────────────────────────
+setopt extendedglob nocaseglob globdots
+setopt hist_ignore_all_dups hist_reduce_blanks share_history
+HISTFILE="$HOME/.zsh_history"
+HISTSIZE=50000
+SAVEHIST=50000
 
-# Global
-enable_correction="true"
-COMPLETION_WAITING_DOTS="true"
-HIST_STAMPS="mm/dd/yyyy" # Log format
 export VISUAL=nvim
 export EDITOR="$VISUAL"
+export COLORTERM=truecolor
 
-# Theme
-ZSH_THEME="coberly-gruvbox"
-SOLARIZED_THEME="dark"
-COLORTERM=truecolor
-
-# Plugins
-plugins=( \
-  git git-extras command-not-found common-aliases \
-  npm tmux vi-mode sudo \
-  ubuntu docker-compose asdf \
-  copyfile history colored-man-pages fancy-ctrl-z \
-)
-
-# PATH
-export PATH="/root/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin"
+# ─── PATH / Homebrew (arch-aware) ──────────────────────────────────────
+# brew shellenv sets PATH, MANPATH, INFOPATH, HOMEBREW_* correctly for
+# whichever install is present (Apple Silicon /opt/homebrew, Intel /usr/local).
+if [[ -x /opt/homebrew/bin/brew ]]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+elif [[ -x /usr/local/bin/brew ]]; then
+  eval "$(/usr/local/bin/brew shellenv)"
+fi
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="/usr/local/heroku/bin:$PATH"
-export PATH="/root/.config/composer/vendor/bin:$PATH"
-export PATH="/usr/bin/gradle-6.6.1/bin:$PATH"
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
-export PATH="$HOME/.fly/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$PATH:/nix/var/nix/profiles/default/bin"
+export PATH="$HOME/.fly/bin:$PATH"
 
-# MacOS - Brew
-if [[ "$OSTYPE" == "darwin"* ]]; then
-	export PATH="/opt/homebrew/bin:$PATH"
-fi
+# ─── Keybindings ───────────────────────────────────────────────────────
+bindkey -v                                  # vi-mode
+bindkey -M viins 'jj' vi-cmd-mode
+bindkey -M viins 'jk' vi-cmd-mode
+bindkey "\e." insert-last-word              # Alt/Esc-. → last word
 
-# Tmux
-# ZSH_TMUX_AUTOSTART=true
-ZSH_TMUX_FIXTERM=true
-ZSH_TMUX_UNICODE=true
-ZSH_TMUX_CONFIG="${HOME}/.config/tmux/tmux.conf"
-ZSH_TMUX_DEFAULT_SESSION_NAME=Playground
+# ─── Completion ────────────────────────────────────────────────────────
+autoload -Uz compinit && compinit
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-# Search
-bindkey '^R' history-incremental-search-backward # Search
-setopt extendedglob nocaseglob globdots
+# ─── Plugins ───────────────────────────────────────────────────────────
+# Order matters: fzf-tab before compinit-dependent plugins,
+# syntax-highlighting MUST be sourced LAST.
+source ~/.zsh/plugins/fzf-tab/fzf-tab.plugin.zsh
+source ~/.zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Vim Mode
-bindkey -v # Enable vim mode
-bindkey -M viins 'jj' vi-cmd-mode # Go to normal with jj
-bindkey -M viins 'jk' vi-cmd-mode # Go to normal with jk
+# ─── Tool init ─────────────────────────────────────────────────────────
+eval "$(starship init zsh)"
+eval "$(mise activate zsh)"
+eval "$(zoxide init zsh)"
+eval "$(fzf --zsh)"          # adds fuzzy ^R, ^T, Alt-C
 
-# Bootstrap
-source $ZSH/oh-my-zsh.sh
+# ─── Colored man pages ─────────────────────────────────────────────────
+export LESS_TERMCAP_mb=$'\e[1;31m'     # begin blink
+export LESS_TERMCAP_md=$'\e[1;36m'     # begin bold
+export LESS_TERMCAP_me=$'\e[0m'        # reset bold/blink
+export LESS_TERMCAP_so=$'\e[01;44;33m' # begin reverse video
+export LESS_TERMCAP_se=$'\e[0m'        # reset reverse video
+export LESS_TERMCAP_us=$'\e[1;32m'     # begin underline
+export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 
-# Shortcuts
-source ~/.aliases
-bindkey "\e." insert-last-word
-
-. "$HOME/.asdf/asdf.sh"
-
-## asdf Java
-if [[ -d ~/.asdf/plugins/java ]]; then
-  . ~/.asdf/plugins/java/set-java-home.zsh
-fi
-## asdf Golang
-if [[ -d ~/.asdf/plugins/golang ]]; then
-  export ASDF_GOLANG_MOD_VERSION_ENABLED=false
-  . ~/.asdf/plugins/golang/set-env.zsh
-fi
+# ─── Aliases ───────────────────────────────────────────────────────────
+[ -f ~/dotfiles/zsh/aliases.zsh ] && source ~/dotfiles/zsh/aliases.zsh
+[ -f ~/.aliases ] && source ~/.aliases
