@@ -51,7 +51,10 @@ bind -T copy-mode-vi v send-keys -X begin-selection
 bind -T copy-mode-vi C-v send-keys -X rectangle-toggle
 
 # quiet bells and activity highlights
-setw -g window-status-activity none
+# monitor-activity fires on any pane redraw (TUIs like claude/nvim trigger it
+# constantly), and tmux-nova's activity branch drops the powerline glyph — so
+# just turn the whole mechanism off.
+set -g monitor-activity off
 set-option -g bell-action none
 
 # splits that match layout (| is vertical, - is horizontal)
@@ -106,12 +109,13 @@ set -g @plugin 'o0th/tmux-nova'
 
 # -- tmux-nova (Tokyo Night) ---------------------------------------------------
 
-# palette
-tn_fg="#a9b1d6"
-tn_grey="#32344a"
-tn_green="#9ece6a"
-tn_orange="#ff9e64"
-tn_blue="#7aa2f7"
+# palette (sourced from shared Tokyo Night file; aliased with tn_ prefix)
+source-file ~/dotfiles/theme/palette.sh
+tn_fg="$fg"
+tn_grey="$grey"
+tn_green="$green"
+tn_orange="$orange"
+tn_blue="$blue"
 
 tn_seg_a="$tn_green $tn_grey"
 tn_seg_b="$tn_grey $tn_fg"

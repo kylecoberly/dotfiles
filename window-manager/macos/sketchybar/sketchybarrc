@@ -14,7 +14,7 @@ BORDER="0xff${fg_gutter#\#}"       # subtle bar border
 # Opaque content colors
 FG="0xff${fg#\#}"
 FG_DIM="0xff${comment#\#}"
-ACCENT="0xff${purple#\#}"
+ACCENT="0xff${magenta#\#}"
 CYAN="0xff${cyan#\#}"
 GREEN="0xff${green#\#}"
 YELLOW="0xff${yellow#\#}"

@@ -1,9 +1,31 @@
 # Starship prompt — Tokyo Night palette, agnoster-inspired Powerline style
 # Requires a Nerd Font (Alacritty is configured for "NotoMono Nerd Font").
-# Palette uses TN's distinctive purple / blue / cyan accent trio.
+# Color values live in the [palettes.tokyonight] block below; format strings
+# reference them by name. Regenerate that block with theme/regenerate.sh.
 
 add_newline = false
 command_timeout = 500
+palette = "tokyonight"
+
+# >>> palette (generated from theme/palette.sh — do not edit) >>>
+[palettes.tokyonight]
+bg = "#1a1b26"
+bg_dark = "#16161e"
+bg_highlight = "#292e42"
+fg = "#c0caf5"
+fg_dark = "#a9b1d6"
+comment = "#565f89"
+red = "#f7768e"
+orange = "#ff9e64"
+yellow = "#e0af68"
+green = "#9ece6a"
+teal = "#1abc9c"
+cyan = "#7dcfff"
+blue = "#7aa2f7"
+blue0 = "#3d59a1"
+magenta = "#bb9af7"
+purple = "#9d7cd8"
+# <<< palette <<<
 
 format = """\
 $os\
@@ -15,31 +37,31 @@ $cmd_duration\
 $line_break\
 $character"""
 
-# ─── OS icon (leftmost segment) — TN purple ────────────────────────────
+# ─── OS icon (leftmost segment) ────────────────────────────────────────
 [os]
 disabled = false
-format = "[ $symbol ](bg:#bb9af7 fg:#1a1b26)"
+format = "[ $symbol ](bg:magenta fg:bg)"
 
 [os.symbols]
-Macos  = ""
-Linux  = ""
-Ubuntu = ""
+Macos  = ""
+Linux  = ""
+Ubuntu = ""
 
-# ─── Current directory — TN blue ───────────────────────────────────────
+# ─── Current directory ─────────────────────────────────────────────────
 [directory]
-format = "[](fg:#bb9af7 bg:#3d59a1)[ $path ](bg:#3d59a1 fg:#c0caf5)"
+format = "[](fg:magenta bg:blue0)[ $path ](bg:blue0 fg:fg)"
 truncation_length = 3
 truncation_symbol = "…/"
 home_symbol = "~"
-read_only = "  "
+read_only = "  "
 
-# ─── Git branch — TN cyan ──────────────────────────────────────────────
+# ─── Git branch + status ───────────────────────────────────────────────
 [git_branch]
-symbol = ""
-format = "[](fg:#3d59a1 bg:#7dcfff)[ $symbol $branch ](bg:#7dcfff fg:#1a1b26)"
+symbol = ""
+format = "[](fg:blue0 bg:cyan)[ $symbol $branch ](bg:cyan fg:bg)"
 
 [git_status]
-format = "[$all_status$ahead_behind](bg:#7dcfff fg:#1a1b26)[](fg:#7dcfff)"
+format = "[$all_status$ahead_behind](bg:cyan fg:bg)[](fg:cyan)"
 modified   = "${count}● "
 staged     = "${count}+ "
 untracked  = "${count}? "
@@ -52,40 +74,39 @@ renamed    = "${count}» "
 stashed    = "${count}* "
 
 # ─── Runtime versions (only when project files present) ────────────────
-# Each runtime uses a TN-palette-accurate accent tied to its ecosystem
 [nodejs]
-format = "[  $symbol $version ](fg:#9ece6a)"
-symbol = ""
+format = "[  $symbol $version ](fg:green)"
+symbol = ""
 detect_files = ["package.json", ".nvmrc", ".node-version"]
 
 [python]
-format = "[  $symbol $version ](fg:#e0af68)"
-symbol = ""
+format = "[  $symbol $version ](fg:yellow)"
+symbol = ""
 detect_extensions = ["py"]
 detect_files = ["pyproject.toml", "requirements.txt", ".python-version", "Pipfile"]
 
 [golang]
-format = "[  $symbol $version ](fg:#7dcfff)"
-symbol = ""
+format = "[  $symbol $version ](fg:cyan)"
+symbol = ""
 detect_files = ["go.mod", "go.sum"]
 
 [rust]
-format = "[  $symbol $version ](fg:#f7768e)"
-symbol = ""
+format = "[  $symbol $version ](fg:red)"
+symbol = ""
 detect_files = ["Cargo.toml"]
 
 [java]
-format = "[  $symbol $version ](fg:#ff9e64)"
-symbol = ""
+format = "[  $symbol $version ](fg:orange)"
+symbol = ""
 detect_files = ["pom.xml", "build.gradle", "build.gradle.kts", "deps.edn"]
 
 # ─── Command duration ──────────────────────────────────────────────────
 [cmd_duration]
-format = "[ took $duration ](fg:#ff9e64)"
+format = "[ took $duration ](fg:orange)"
 min_time = 2000
 
 # ─── Prompt character (vi-mode aware) ──────────────────────────────────
 [character]
-success_symbol = "[❯](bold #9ece6a)"
-error_symbol   = "[❯](bold #f7768e)"
-vimcmd_symbol  = "[❮](bold #3d59a1)"
+success_symbol = "[❯](bold green)"
+error_symbol   = "[❯](bold red)"
+vimcmd_symbol  = "[❮](bold blue0)"

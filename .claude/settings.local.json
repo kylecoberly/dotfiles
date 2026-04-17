@@ -56,7 +56,15 @@
       "Bash(brew upgrade *)",
       "Bash(bash *)",
       "Bash(/usr/local/bin/tmux source-file *)",
-      "Bash(sketchybar --reload)"
+      "Bash(sketchybar --reload)",
+      "Bash(/usr/local/bin/tmux ls *)",
+      "Bash(echo \"tmux exit: $?\")",
+      "Bash(echo \"sketchybar exit: $?\")",
+      "Bash(STARSHIP_CONFIG=/Users/kylecoberly/dotfiles/zsh/starship.toml starship prompt --status=0)",
+      "Bash(echo \"---exit:$?\")",
+      "Bash(chmod +x /Users/kylecoberly/dotfiles/theme/regenerate.sh)",
+      "Bash(/Users/kylecoberly/dotfiles/theme/regenerate.sh)",
+      "Bash(git reset *)"
     ]
   }
 }
