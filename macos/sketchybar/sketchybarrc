@@ -69,7 +69,7 @@ for sid in 1 2 3 4; do
     sketchybar --add item space_apps.$sid left \
                --set space_apps.$sid \
                     label="" \
-                    label.font="$FONT:Regular:15.0" \
+                    label.font="sketchybar-app-font:Regular:16.0" \
                     label.padding_left=2 \
                     label.padding_right=10 \
                     background.drawing=off

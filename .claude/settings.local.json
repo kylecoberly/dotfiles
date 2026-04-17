@@ -64,7 +64,8 @@
       "Bash(echo \"---exit:$?\")",
       "Bash(chmod +x /Users/kylecoberly/dotfiles/theme/regenerate.sh)",
       "Bash(/Users/kylecoberly/dotfiles/theme/regenerate.sh)",
-      "Bash(git reset *)"
+      "Bash(git reset *)",
+      "Bash(git -C /Users/kylecoberly/dotfiles log --oneline --all -- '**/.yabairc' '**/.skhdrc' '**/.markdownlintrc')"
     ]
   }
 }

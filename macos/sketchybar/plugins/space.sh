@@ -8,19 +8,19 @@ FOCUSED_WS="${FOCUSED:-$(aerospace list-workspaces --focused)}"
 
 source "$HOME/.config/sketchybar/plugins/icon_map.sh"
 
-# Collect unique app icons for windows on this workspace
+# Collect unique app icons for windows on this workspace.
+# __icon_map (from sketchybar-app-font) sets $icon_result to a :slug: that the
+# sketchybar-app-font ligature renders as a single glyph.
 icons=""
 seen=""
 while IFS= read -r app; do
     [ -z "$app" ] && continue
-    # de-dupe: only add icon if we haven't shown this app yet
     case " $seen " in *" $app "*) continue ;; esac
     seen="$seen $app"
-    glyph="$(app_icon "$app")"
-    icons="$icons $glyph"
+    __icon_map "$app"
+    icons="$icons $icon_result"
 done < <(aerospace list-windows --workspace "$WS" --format '%{app-name}' 2>/dev/null)
 
-# Trim leading space
 icons="${icons# }"
 
 # Colors (Tokyo Night, sourced from shared palette)
