@@ -1,9 +1,0 @@
-## Debugging
-## Errors from launching this script show up in `/tmp/skhd_kylecoberly.err.log`
-## You can check what key command is firing by running `skhd -o`
-## You can reload skhd with `skhd -r`
-
-.load "/Users/kylecoberly/dotfiles/window-manager/macos/skhd/.apps"
-.load "/Users/kylecoberly/dotfiles/window-manager/macos/skhd/.focus"
-.load "/Users/kylecoberly/dotfiles/window-manager/macos/skhd/.layout"
-.load "/Users/kylecoberly/dotfiles/window-manager/macos/skhd/.modes"

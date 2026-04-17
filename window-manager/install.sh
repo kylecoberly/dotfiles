@@ -1,20 +1,8 @@
 #!/bin/bash
 
-# IMPORTANT: For MacOS, disable SIP first: https://github.com/koekeishiya/yabai/wiki/Disabling-System-Integrity-Protection
-# On Intel: Hold command-R while booting. Then, go to "Utilities" → "Terminal" to open bash, then run `csrutil disable --with kext --with dtrace --with nvram --with basesystem`. Reboot.
-# On Apple Silicon: Press and hold the power button on your Mac until “Loading startup options” appears. Click Options, then click Continue.
-#   Run `csrutil enable --without fs --without debug --without nvram`. Reboot. Run `sudo nvram boot-args=-arm64e_preview_abi`.
-# After reboot, run `sudo visudo -f /private/etc/sudoers.d/yabai` to add Yabai to sudoers and add the following line:
-# <output of `whoami`> ALL=(root) NOPASSWD: sha256:<output of `shasum -a 256 $(which yabai)`> <output of `which yabai`> --load-sa
-# For example:
-# kylecoberly ALL=(root) NOPASSWD: sha256:740b9e6aab46f8c499f0fc651ae1861d4ebe48b6e6a50296bf4a9ad879bbad93 /usr/local/bin/yabai --load-sa
-
-# For MacOS, put Ubersicht in System Preferences → Users & Groups → Login Items to make it launch simple-bar on startup
-# You'll also need to put `macos/startup.sh` in there
-
-# Requires Brew and NotoMono Nerd Font
-
-# Simple Bar sometimes requires running the Simple Bar Server, which is a separate repo you clone and run a node server with
+# macOS: uses aerospace (tiling WM, no SIP needed) + sketchybar (status bar).
+# Aerospace auto-starts via `start-at-login = true` in its config — no LaunchAgent.
+# Requires Brew and a Nerd Font (Hack Nerd Font used by sketchybar).
 
 if [ -z "$HOME" ]; then
 	exit 1
@@ -41,40 +29,62 @@ if [[ "$OSTYPE" == "linux-gnu"* ]]; then
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/rofi/config.rasi" "${HOME}/.config/rofi/config.rasi"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/ubuntu/polybar" "${HOME}/.config/polybar"
 elif [[ "$OSTYPE" == "darwin"* ]]; then
-	DOTFILES=(.yabairc .skhdrc)
-	for dotfile in "${DOTFILES[@]}"; do
-		rm "${HOME}/${dotfile}"
-		ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/${dotfile}" "${HOME}/"
-	done
-	# simple-bar config
-	rm "${HOME}/.simplebarrc"
-	if [[ $(uname -p) == 'arm' ]]; then
-		ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/.simplebarrc-m1" "${HOME}/.simplebarrc"
-	else
-		ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/.simplebarrc-intel" "${HOME}/.simplebarrc"
-	fi
-	rm "${HOME}/.config/karabiner/karabiner.json"
+	# aerospace config (TOML)
+	rm -f "${HOME}/.aerospace.toml"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/.aerospace.toml" "${HOME}/.aerospace.toml"
+
+	# sketchybar config
+	mkdir -p "${HOME}/.config"
+	rm -rf "${HOME}/.config/sketchybar"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/sketchybar" "${HOME}/.config/sketchybar"
+
+	# karabiner + alt-tab (independent of window manager)
+	mkdir -p "${HOME}/.config/karabiner"
+	rm -f "${HOME}/.config/karabiner/karabiner.json"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/karabiner.json" "${HOME}/.config/karabiner/karabiner.json"
 	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/alt-tab.plist" "${HOME}/Library/Preferences/com.lwouis.alt-tab-macos.plist"
 
 	# Stop Dock icon bouncing
 	defaults write com.apple.dock no-bouncing -bool TRUE
+	# Group Mission Control windows by app (fixes aerospace off-screen windows appearing in a cramped corner)
+	defaults write com.apple.dock expose-group-apps -bool true
+	# Speed up Mission Control / Expose animation
+	defaults write com.apple.dock expose-animation-duration -float 0.1
+	# Disable window animations — makes aerospace workspace switches feel instant
+	defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+	# Near-instant window resize animation
+	defaults write -g NSWindowResizeTime -float 0.001
 	killall Dock
- 	# Show hidden files by default
- 	defaults write com.apple.Finder AppleShowAllFiles true
+	# Show hidden files by default
+	defaults write com.apple.Finder AppleShowAllFiles true
 
-	brew install koekeishiya/formulae/yabai
-	yabai --start-service
+	# Window manager
+	brew install --cask nikitabobko/tap/aerospace
 
-	brew install koekeishiya/formulae/skhd
-	skhd --start-service
-	brew install --cask ubersicht
-	git clone https://github.com/Jean-Tinland/simple-bar "$HOME/Library/Application Support/Übersicht/widgets/simple-bar"
-	# Activate Simple Bar manually in spotlight now
+	# Status bar — sketchybar, built from source so it works with older Xcode.
+	# Latest sketchybar (>=2.17.1) requires newer macOS SDK symbols; v2.16.4 is
+	# the last release that builds with Xcode 14.2 / macOS SDK 13.
+	if ! command -v sketchybar >/dev/null 2>&1; then
+		SB_BUILD="$(mktemp -d)"
+		git clone --depth=1 --branch v2.16.4 https://github.com/FelixKratz/SketchyBar.git "${SB_BUILD}/SketchyBar"
+		(cd "${SB_BUILD}/SketchyBar" && make)
+		cp "${SB_BUILD}/SketchyBar/bin/sketchybar" /usr/local/bin/sketchybar
+		chmod +x /usr/local/bin/sketchybar
+		rm -rf "${SB_BUILD}"
+	fi
+
+	# Sketchybar LaunchAgent (auto-start at login; KeepAlive on crash)
+	mkdir -p "${HOME}/Library/LaunchAgents"
+	rm -f "${HOME}/Library/LaunchAgents/org.felixkratz.sketchybar.plist"
+	ln -sf "${DOTFILE_DIRECTORY}/window-manager/macos/sketchybar/org.felixkratz.sketchybar.plist" \
+		"${HOME}/Library/LaunchAgents/org.felixkratz.sketchybar.plist"
+	launchctl bootout "gui/$(id -u)/org.felixkratz.sketchybar" 2>/dev/null || true
+	launchctl bootstrap "gui/$(id -u)" "${HOME}/Library/LaunchAgents/org.felixkratz.sketchybar.plist"
+
+	# Audio device switching (used by sketchybar's sound widget)
+	brew install switchaudio-osx
+
+	# Supporting apps
 	brew install --cask karabiner-elements
 	brew install --cask alt-tab
-
-	# Add borders for Yabai
-	brew tap FelixKratz/formulae
-	brew install borders
 fi

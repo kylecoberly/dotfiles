@@ -1,0 +1,271 @@
+config-version = 2
+
+start-at-login = true
+after-startup-command = []
+exec-on-workspace-change = ['/bin/bash', '-c',
+    'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE']
+
+enable-normalization-flatten-containers = true
+enable-normalization-opposite-orientation-for-nested-containers = true
+accordion-padding = 30
+default-root-container-layout = 'tiles'
+default-root-container-orientation = 'auto'
+
+on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
+
+automatically-unhide-macos-hidden-apps = false
+
+persistent-workspaces = ["1", "2", "3", "4"]
+
+[key-mapping]
+    preset = 'qwerty'
+
+[gaps]
+    inner.horizontal = 8
+    inner.vertical   = 8
+    outer.left       = 8
+    outer.right      = 8
+    outer.top        = 52
+    outer.bottom     = 8
+
+# ============================================================================
+# MAIN MODE — direct bindings, no mode entry required
+# ============================================================================
+[mode.main.binding]
+    # Focus window (yabai: alt - h/j/k/l)
+    alt-h = 'focus left'
+    alt-j = 'focus down'
+    alt-k = 'focus up'
+    alt-l = 'focus right'
+
+    # Focus workspace (yabai: alt - 1..4)
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+
+    # Prev/next workspace (yabai: alt - 0x21 / 0x1E  =  alt - [ / ])
+    alt-leftSquareBracket  = 'workspace --wrap-around prev'
+    alt-rightSquareBracket = 'workspace --wrap-around next'
+
+    # Focus monitor (yabai: alt - a / b)
+    alt-a = 'focus-monitor --wrap-around next'
+    alt-b = 'focus-monitor --wrap-around prev'
+
+    # Swap/move window direction (yabai: shift+alt - h/j/k/l "swap")
+    alt-shift-h = 'move left'
+    alt-shift-j = 'move down'
+    alt-shift-k = 'move up'
+    alt-shift-l = 'move right'
+
+    # Move window to workspace + follow (yabai: shift+alt - 1..4)
+    alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
+    alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
+    alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
+    alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
+
+    # Move window to prev/next workspace + follow (yabai: shift+alt - p / n)
+    alt-shift-p = ['move-node-to-workspace --wrap-around prev', 'workspace --wrap-around prev']
+    alt-shift-n = ['move-node-to-workspace --wrap-around next', 'workspace --wrap-around next']
+
+    # Layout ops (yabai: alt - f / e / s / 0 / o)
+    alt-f = 'fullscreen'
+    alt-e = 'layout tiles horizontal vertical'
+    alt-s = 'layout accordion horizontal vertical'
+    alt-0 = 'balance-sizes'
+    alt-o = 'layout floating tiling'
+
+    # Rotate (yabai: alt - r) — aerospace has no rotate; closest is flattening + re-tiling
+    alt-r = 'flatten-workspace-tree'
+
+    # NOTE: yabai's alt-x / alt-y (mirror) and alt-p (sticky/topmost/pip) have no
+    # aerospace equivalent and are intentionally omitted.
+
+    # Close window (yabai: alt - q)
+    alt-q = 'close'
+
+    # Launch terminal (yabai: shift+ctrl - return)
+    shift-ctrl-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
+
+    # Mode entry — match original skhd trigger keys
+    alt-semicolon = 'mode arrange'  # was alt - 0x29
+    alt-slash     = 'mode resize'   # was alt - 0x2C
+    alt-quote     = 'mode service'  # was alt - 0x27
+
+# ============================================================================
+# ARRANGE MODE — modifier-free access to navigation + arrangement ops
+#   entered with alt-; (semicolon), exit with q
+# ============================================================================
+[mode.arrange.binding]
+    # Focus window
+    h = 'focus left'
+    j = 'focus down'
+    k = 'focus up'
+    l = 'focus right'
+
+    # Focus prev/next workspace
+    shift-h = 'workspace --wrap-around prev'
+    shift-l = 'workspace --wrap-around next'
+
+    # Focus workspace 1..4 (5..9 dropped per 4-workspace setup)
+    1 = 'workspace 1'
+    2 = 'workspace 2'
+    3 = 'workspace 3'
+    4 = 'workspace 4'
+
+    # Focus monitor
+    a = 'focus-monitor --wrap-around next'
+    b = 'focus-monitor --wrap-around prev'
+
+    # Swap/move window (yabai: ctrl - h/j/k/l in arrange)
+    ctrl-h = 'move left'
+    ctrl-j = 'move down'
+    ctrl-k = 'move up'
+    ctrl-l = 'move right'
+
+    # Move window to workspace + follow (yabai: ctrl - 1..4)
+    ctrl-1 = ['move-node-to-workspace 1', 'workspace 1']
+    ctrl-2 = ['move-node-to-workspace 2', 'workspace 2']
+    ctrl-3 = ['move-node-to-workspace 3', 'workspace 3']
+    ctrl-4 = ['move-node-to-workspace 4', 'workspace 4']
+
+    # Move window to other monitor (yabai: ctrl - a / b moved workspace→display;
+    # aerospace's closest: move the window to the other monitor)
+    ctrl-a = 'move-node-to-monitor --wrap-around next'
+    ctrl-b = 'move-node-to-monitor --wrap-around prev'
+
+    # Layout
+    f = 'fullscreen'
+    e = 'layout tiles horizontal vertical'
+    s = 'layout accordion horizontal vertical'
+    0 = 'balance-sizes'
+    o = 'layout floating tiling'
+    r = 'flatten-workspace-tree'
+    # NOTE: yabai's arrange-mode [/] bound windows to left/right half-screen grids.
+    # aerospace has no half-screen grid command; omitted.
+
+    # Mode exits
+    q = 'mode main'
+    esc = 'mode main'
+    alt-slash = 'mode resize'
+    alt-quote = 'mode service'
+
+# ============================================================================
+# RESIZE MODE — h/j/k/l resize focused window; ctrl = grow, shift+ctrl = shrink
+#   entered with alt-/ (slash), exit with q
+# ============================================================================
+[mode.resize.binding]
+    # Basic resize (yabai resize-mode had a separate move; aerospace can't pixel-
+    # move tiled windows, so bare h/j/k/l becomes resize here)
+    h = 'resize width -50'
+    j = 'resize height +50'
+    k = 'resize height -50'
+    l = 'resize width +50'
+
+    # Grow (yabai: ctrl - h/j/k/l)
+    ctrl-h = 'resize width -50'
+    ctrl-j = 'resize height +50'
+    ctrl-k = 'resize height -50'
+    ctrl-l = 'resize width +50'
+
+    # Shrink (yabai: shift+ctrl - h/j/k/l)
+    shift-ctrl-h = 'resize width +50'
+    shift-ctrl-j = 'resize height -50'
+    shift-ctrl-k = 'resize height +50'
+    shift-ctrl-l = 'resize width -50'
+
+    # Mode exits
+    q = 'mode main'
+    esc = 'mode main'
+    enter = 'mode main'
+    alt-semicolon = 'mode arrange'
+    alt-quote = 'mode service'
+
+# ============================================================================
+# SERVICE MODE (= system_mode in skhd)
+#   entered with alt-' (quote), exit with q
+# ============================================================================
+[mode.service.binding]
+    # Reload config (yabai had: restart wm; aerospace just reloads TOML)
+    r = ['reload-config', 'mode main']
+
+    # Reboot / shutdown (yabai: ctrl-r, ctrl-s)
+    ctrl-r = 'exec-and-forget sudo shutdown -r now'
+    ctrl-s = 'exec-and-forget sudo shutdown -h now'
+
+    # Aerospace extras — useful service-mode commands
+    f = ['layout floating tiling', 'mode main']
+    backspace = ['close-all-windows-but-current', 'mode main']
+
+    # Mode exits
+    q = 'mode main'
+    esc = 'mode main'
+    alt-semicolon = 'mode arrange'
+    alt-slash = 'mode resize'
+
+# ============================================================================
+# Window rules — yabai `manage=off` → aerospace `layout floating`
+# ============================================================================
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.systempreferences'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.ActivityMonitor'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.iCal'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.calculator'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.Music'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.podcasts'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.DiskUtility'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.SystemProfiler'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.agilebits.onepassword7'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'org.pqrs.Karabiner-Elements.Preferences'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'org.pqrs.Karabiner-EventViewer'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.window-title-regex-substring = '(?i)preferences$'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.window-title-regex-substring = '(?i)settings$'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.window-title-regex-substring = '(?i)^install'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.window-title-regex-substring = '(?i)software update'
+    run = 'layout floating'

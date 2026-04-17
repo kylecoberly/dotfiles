@@ -2055,11 +2055,11 @@
                   "modifiers": {
                     "mandatory": [
                       "control"
+                    ],
+                    "optional": [
+                      "any"
                     ]
-                  },
-                  "optional": [
-                    "any"
-                  ]
+                  }
                 },
                 "to": [
                   {

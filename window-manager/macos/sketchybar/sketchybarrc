@@ -1,0 +1,123 @@
+#!/bin/bash
+
+PLUGIN_DIR="$HOME/.config/sketchybar/plugins"
+
+# ─── Palette: Tokyo Night (sourced from shared file) ───────────
+source "$HOME/dotfiles/theme/palette.sh"
+
+# Translucent surfaces — alpha encodes hierarchy
+BG="0xd9${bg#\#}"              # bar background (~85%)
+SURFACE="0x99${bg_highlight#\#}"   # inactive pill (~60%)
+ACTIVE="0xb3${blue#\#}"            # active pill (~70%)
+BORDER="0xff${fg_gutter#\#}"       # subtle bar border
+
+# Opaque content colors
+FG="0xff${fg#\#}"
+FG_DIM="0xff${comment#\#}"
+ACCENT="0xff${purple#\#}"
+CYAN="0xff${cyan#\#}"
+GREEN="0xff${green#\#}"
+YELLOW="0xff${yellow#\#}"
+ORANGE="0xff${orange#\#}"
+RED="0xff${red#\#}"
+
+FONT="NotoSans Nerd Font"
+
+# ─── Bar ───────────────────────────────────────────────────────
+sketchybar --bar height=40 \
+                 position=top \
+                 padding_left=14 \
+                 padding_right=14 \
+                 color=$BG \
+                 blur_radius=30 \
+                 corner_radius=14 \
+                 y_offset=8 \
+                 margin=12 \
+                 border_width=1 \
+                 border_color=$BORDER
+
+# ─── Item defaults ─────────────────────────────────────────────
+sketchybar --default updates=when_shown \
+                    icon.font="$FONT:Semibold:15.0" \
+                    icon.color=$FG \
+                    icon.padding_left=8 \
+                    icon.padding_right=4 \
+                    label.font="$FONT:Regular:14.0" \
+                    label.color=$FG \
+                    label.padding_left=4 \
+                    label.padding_right=8 \
+                    padding_left=2 \
+                    padding_right=2 \
+                    background.corner_radius=10 \
+                    background.height=28
+
+# ─── Custom event fired by aerospace.toml ──────────────────────
+sketchybar --add event aerospace_workspace_change
+
+# ─── LEFT: workspace pills (number + app icons, shared pill) ──
+for sid in 1 2 3 4; do
+    sketchybar --add item space.$sid left \
+               --set space.$sid \
+                    label="$sid" \
+                    label.padding_left=10 \
+                    label.padding_right=2 \
+                    click_script="aerospace workspace $sid" \
+                    script="$PLUGIN_DIR/space.sh $sid" \
+                    background.drawing=off \
+               --subscribe space.$sid aerospace_workspace_change front_app_switched
+
+    sketchybar --add item space_apps.$sid left \
+               --set space_apps.$sid \
+                    label="" \
+                    label.font="$FONT:Regular:15.0" \
+                    label.padding_left=2 \
+                    label.padding_right=10 \
+                    background.drawing=off
+
+    sketchybar --add bracket space_bracket.$sid space.$sid space_apps.$sid \
+               --set space_bracket.$sid \
+                    background.drawing=on \
+                    background.color=$SURFACE \
+                    background.corner_radius=10 \
+                    background.height=30
+done
+
+# ─── CENTER: apps in focused workspace ─────────────────────────
+sketchybar --add item focused_windows center \
+           --set focused_windows \
+                    label.color=$FG \
+                    label.font="$FONT:Medium:14.0" \
+                    script="$PLUGIN_DIR/focused_windows.sh" \
+           --subscribe focused_windows aerospace_workspace_change front_app_switched
+
+# ─── RIGHT: clock (rightmost), sound, cpu ──────────────────────
+# Sketchybar stacks right-aligned items from right to left in add order,
+# so the FIRST right item added ends up at the far right edge.
+sketchybar --add item clock right \
+           --set clock \
+                    update_freq=10 \
+                    icon.drawing=off \
+                    label.color=$FG \
+                    label.padding_left=24 \
+                    label.padding_right=12 \
+                    script="$PLUGIN_DIR/clock.sh"
+
+sketchybar --add item sound right \
+           --set sound \
+                    update_freq=5 \
+                    icon="󰕾" \
+                    icon.color=$ORANGE \
+                    icon.padding_left=10 \
+                    label.color=$FG \
+                    script="$PLUGIN_DIR/sound.sh"
+
+sketchybar --add item cpu right \
+           --set cpu \
+                    update_freq=2 \
+                    icon="󰍛" \
+                    icon.color=$GREEN \
+                    icon.padding_left=10 \
+                    label.color=$FG \
+                    script="$PLUGIN_DIR/cpu.sh"
+
+sketchybar --update
