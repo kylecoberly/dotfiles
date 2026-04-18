@@ -1,6 +1,6 @@
 # apt packages (one per line; # and blank lines ignored)
 # Tools not available via apt are installed separately in install.sh:
-# mise, starship, flyctl, just, obsidian, zoom
+# mise, starship, flyctl, docker, aws, fzf, just, obsidian, zoom
 
 # Core shell & CLI
 zsh
@@ -22,12 +22,19 @@ ranger
 ffmpeg
 p7zip-full
 unzip
+xclip
+imagemagick
+graphviz
 
 # Dev
 neovim
 tmux
 gh
 code
+git-delta
+entr
+pipx
+build-essential
 
 # Productivity
 1password

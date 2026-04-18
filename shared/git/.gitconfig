@@ -38,6 +38,12 @@
   editor = nvim
   filemode = false
   excludesfile = ~/.gitignore
+  pager = delta
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  navigate = true
+  line-numbers = true
 [log]
   decorate = short
   abbrevCommit = true

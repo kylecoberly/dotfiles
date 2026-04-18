@@ -81,6 +81,21 @@ if ! command -v just >/dev/null 2>&1; then
     bash -s -- --to "$HOME/.local/bin"
 fi
 
+# Obsidian and Zoom ship only as .deb downloads — no apt repo.
+if ! command -v obsidian >/dev/null 2>&1; then
+  OBSIDIAN_DEB_URL=$(curl -fsSL https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest |
+    jq -r '.assets[] | select(.name | test("^obsidian_[0-9.]+_amd64\\.deb$")) | .browser_download_url')
+  curl -fsSL "$OBSIDIAN_DEB_URL" -o /tmp/obsidian.deb
+  sudo apt-get install -y /tmp/obsidian.deb
+  rm /tmp/obsidian.deb
+fi
+
+if ! command -v zoom >/dev/null 2>&1; then
+  curl -fsSL https://zoom.us/client/latest/zoom_amd64.deb -o /tmp/zoom.deb
+  sudo apt-get install -y /tmp/zoom.deb
+  rm /tmp/zoom.deb
+fi
+
 # ─── Font ─────────────────────────────────────────────────────────────
 mkdir -p "$HOME/.local/share/fonts"
 cp -f "$DOTFILES/shared/fonts/Noto Mono Nerd Font Complete.ttf" "$HOME/.local/share/fonts/"
