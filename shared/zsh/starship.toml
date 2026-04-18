@@ -53,7 +53,7 @@ case "$(uname -s)" in
 esac
 printf "%s" "$ICON"
 '''
-format = "[ $output ](bg:magenta fg:bg)[](fg:magenta bg:blue0)"
+format = "[ $output ](bg:magenta fg:bg)[](fg:magenta bg:cyan)"
 
 [custom.os_err]
 when = '[ "${STARSHIP_CMD_STATUS:-0}" != "0" ]'
@@ -70,11 +70,11 @@ case "$(uname -s)" in
 esac
 printf "%s" "$ICON"
 '''
-format = "[ $output ](bg:red fg:bg)[](fg:red bg:blue0)"
+format = "[ $output ](bg:red fg:bg)[](fg:red bg:cyan)"
 
 # ─── Current directory ─────────────────────────────────────────────────
 [directory]
-format = "[ $path ](bg:blue0 fg:fg)"
+format = "[ $path ](bg:cyan fg:bg)"
 truncation_length = 0
 truncate_to_repo = false
 truncation_symbol = ""
@@ -82,7 +82,7 @@ home_symbol = "~"
 read_only = "  "
 
 # ─── Directory close (only when not in a git repo) ────────────────────
-# Inside a repo the blue0→cyan opener of [git_branch] closes the
+# Inside a repo the cyan→blue0 opener of [git_branch] closes the
 # directory segment. Outside a repo there's no next segment, so emit
 # the powerline terminator explicitly. Octal escapes encode U+E0B0
 # () because starship's custom module requires a non-empty command
@@ -91,15 +91,15 @@ read_only = "  "
 shell = ["sh"]
 when = "! git rev-parse --is-inside-work-tree >/dev/null 2>&1"
 command = 'printf "\356\202\260"'
-format = "[$output](fg:blue0)"
+format = "[$output](fg:cyan)"
 
 # ─── Git branch + status ───────────────────────────────────────────────
 [git_branch]
 symbol = ""
-format = "[](fg:blue0 bg:cyan)[ $symbol $branch ](bg:cyan fg:bg)"
+format = "[](fg:cyan bg:blue0)[ $symbol $branch ](bg:blue0 fg:fg)"
 
 [git_status]
-format = "[$all_status$ahead_behind](bg:cyan fg:bg)[](fg:cyan)"
+format = "[$all_status$ahead_behind](bg:blue0 fg:fg)[](fg:blue0)"
 modified   = "${count}● "
 staged     = "${count}+ "
 untracked  = "${count}? "
@@ -147,4 +147,4 @@ min_time = 2000
 [character]
 success_symbol = ""
 error_symbol   = ""
-vimcmd_symbol  = "[❮](bold blue0)"
+vimcmd_symbol  = "[❮](bold cyan)"
