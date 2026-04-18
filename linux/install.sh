@@ -125,6 +125,16 @@ mkdir -p "$HOME/.local/share/fonts"
 cp -f "$DOTFILES/shared/fonts/Noto Mono Nerd Font Complete.ttf" "$HOME/.local/share/fonts/"
 fc-cache -f
 
+# ─── GNOME keybindings ────────────────────────────────────────────────
+# Alt+N → workspace N. GNOME default is Shift+Ctrl+N (and only for odd
+# numbers on this box, for reasons lost to history).
+if command -v gsettings >/dev/null 2>&1; then
+  for i in 1 2 3 4; do
+    gsettings set org.gnome.desktop.wm.keybindings \
+      "switch-to-workspace-$i" "['<Alt>$i']"
+  done
+fi
+
 # ─── Alacritty desktop integration ────────────────────────────────────
 if [ -d /etc/X11/xorg.conf.d ]; then
   sudo rm -f /etc/X11/xorg.conf.d/40-libinput.conf
