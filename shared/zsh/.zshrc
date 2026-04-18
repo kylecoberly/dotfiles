@@ -55,5 +55,6 @@ export LESS_TERMCAP_us=$'\e[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 
 # ─── Aliases ───────────────────────────────────────────────────────────
-[ -f ~/dotfiles/shared/zsh/aliases.zsh ] && source ~/dotfiles/shared/zsh/aliases.zsh
-[ -f ~/.aliases ] && source ~/.aliases
+# Resolve relative to this file's real path so aliases load from wherever the
+# dotfiles live (e.g. Codespaces under /workspaces/... rather than ~/dotfiles).
+source "${${(%):-%x}:A:h}/aliases.zsh"

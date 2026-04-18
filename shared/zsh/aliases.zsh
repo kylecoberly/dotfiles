@@ -1,4 +1,21 @@
-# Git aliases (migrated subset from oh-my-zsh git plugin)
+# ─── Shortcuts ─────────────────────────────────────────────────────────
+alias c='clear'
+alias ll='ls -lGhp --group-directories-first --color=always | awk "{print \$1,\$3,\$4,\$8}" | column -t'
+alias lsa='ls -lAGhp --group-directories-first --color=always | awk "{print \$1,\$3,\$4,\$8}" | column -t'
+
+# ─── Overrides ─────────────────────────────────────────────────────────
+alias vi='nvim'
+alias vim='nvim'
+alias top='htop'
+alias du='ncdu --color dark -rr -x --exclude .git --exclude node_modules'
+alias ranger='ranger --choosedir=$HOME/rangerdir; LASTDIR=$(cat $HOME/rangerdir); rm -f $HOME/rangerdir; cd "$LASTDIR"'
+if [[ "$OSTYPE" == "linux-gnu"* ]]; then
+  alias cat='batcat'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  alias cat='bat'
+fi
+
+# ─── Git (subset of oh-my-zsh git plugin) ──────────────────────────────
 alias g='git'
 alias gst='git status'
 alias gss='git status -s'
@@ -33,7 +50,21 @@ alias grhh='git reset --hard'
 alias gcl='git clone'
 alias gcp='git cherry-pick'
 
-# eza (modern ls) — non-conflicting additions
+# ─── eza (modern ls) ───────────────────────────────────────────────────
 alias la='eza -la --git --group-directories-first'
 alias lt='eza --tree --level=2 --git-ignore'
 alias lta='eza --tree --level=3'
+
+# ─── Functions ─────────────────────────────────────────────────────────
+# Show what's listening on every TCP port (macOS).
+ports() {
+  sudo lsof -iTCP -sTCP:LISTEN -n -P \
+    | awk 'NR>1 {print $9, $1, $2}' \
+    | sed 's/.*://' \
+    | while read port process pid; do
+        echo "Port $port: $(ps -p $pid -o command= | sed 's/^-//') (PID: $pid)"
+      done \
+    | sort -n
+}
+
+untar() { tar -zxvf "$1"; }

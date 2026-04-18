@@ -15,7 +15,9 @@ fi
 brew bundle --file="$DOTFILES/macos/Brewfile"
 
 # ─── Font ─────────────────────────────────────────────────────────────
-sudo cp -f "$DOTFILES/shared/fonts/Noto Mono Nerd Font Complete.ttf" /Library/Fonts/
+# Per-user install — no sudo needed, and every GUI app still finds it.
+mkdir -p "$HOME/Library/Fonts"
+cp -f "$DOTFILES/shared/fonts/Noto Mono Nerd Font Complete.ttf" "$HOME/Library/Fonts/"
 
 # ─── Aerospace ────────────────────────────────────────────────────────
 ln -sf "$DOTFILES/macos/aerospace/aerospace.toml" "$HOME/.aerospace.toml"
@@ -32,8 +34,7 @@ if ! command -v sketchybar >/dev/null 2>&1; then
 fi
 
 mkdir -p "$HOME/.config"
-rm -rf "$HOME/.config/sketchybar"
-ln -sf "$DOTFILES/macos/sketchybar" "$HOME/.config/sketchybar"
+link_dir "$DOTFILES/macos/sketchybar" "$HOME/.config/sketchybar"
 
 mkdir -p "$HOME/Library/LaunchAgents"
 ln -sf "$DOTFILES/macos/sketchybar/org.felixkratz.sketchybar.plist" \
