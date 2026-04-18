@@ -146,5 +146,5 @@ min_time = 2000
 # ─── Prompt character (vi-mode aware) ──────────────────────────────────
 [character]
 success_symbol = ""
-error_symbol   = "[•](bold red)"
+error_symbol   = ""
 vimcmd_symbol  = "[❮](bold blue0)"
