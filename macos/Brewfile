@@ -54,6 +54,7 @@ cask "vlc"
 # Browsers
 cask "google-chrome"
 cask "firefox"
+cask "zen"
 
 # Terminal & window management
 cask "alacritty"

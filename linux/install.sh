@@ -96,6 +96,30 @@ if ! command -v zoom >/dev/null 2>&1; then
   rm /tmp/zoom.deb
 fi
 
+# Zen Browser ships only as a tarball on Linux — no apt repo, no .deb.
+if ! command -v zen >/dev/null 2>&1; then
+  ZEN_TARBALL_URL=$(curl -fsSL https://api.github.com/repos/zen-browser/desktop/releases/latest |
+    jq -r '.assets[] | select(.name == "zen.linux-x86_64.tar.xz") | .browser_download_url')
+  curl -fsSL "$ZEN_TARBALL_URL" -o /tmp/zen.tar.xz
+  sudo rm -rf /opt/zen
+  sudo tar -xJf /tmp/zen.tar.xz -C /opt
+  sudo ln -sf /opt/zen/zen /usr/local/bin/zen
+  sudo tee /usr/share/applications/zen.desktop >/dev/null <<'EOF'
+[Desktop Entry]
+Name=Zen Browser
+GenericName=Web Browser
+Exec=/opt/zen/zen %u
+Icon=/opt/zen/browser/chrome/icons/default/default128.png
+Terminal=false
+Type=Application
+MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+StartupNotify=true
+Categories=Network;WebBrowser;
+StartupWMClass=zen
+EOF
+  rm /tmp/zen.tar.xz
+fi
+
 # ─── Font ─────────────────────────────────────────────────────────────
 mkdir -p "$HOME/.local/share/fonts"
 cp -f "$DOTFILES/shared/fonts/Noto Mono Nerd Font Complete.ttf" "$HOME/.local/share/fonts/"

@@ -1,6 +1,6 @@
 # apt packages (one per line; # and blank lines ignored)
 # Tools not available via apt are installed separately in install.sh:
-# mise, starship, flyctl, docker, aws, fzf, just, obsidian, zoom
+# mise, starship, flyctl, docker, aws, fzf, just, obsidian, zoom, zen
 
 # Core shell & CLI
 zsh
