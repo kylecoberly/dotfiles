@@ -52,6 +52,11 @@ ln -sf "$DOTFILES/shared/alacritty/alacritty.toml" "$HOME/.config/alacritty/alac
 ln -sf "$DOTFILES/shared/mise/.asdfrc"       "$HOME/.asdfrc"
 ln -sf "$DOTFILES/shared/mise/.tool-versions" "$HOME/.tool-versions"
 
+# mise rejects ~/.netrc unless it's 0600/0400
+if [ -f "$HOME/.netrc" ]; then
+  chmod 600 "$HOME/.netrc"
+fi
+
 # ─── Claude Code ──────────────────────────────────────────────────────
 CLAUDE_SRC="$DOTFILES/shared/claude"
 CLAUDE_DEST="$HOME/.claude"

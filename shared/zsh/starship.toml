@@ -8,8 +8,9 @@ command_timeout = 500
 palette = "tokyonight"
 
 format = """\
-$os\
+${custom.os_ok}${custom.os_err}\
 $directory\
+${custom.dir_close}\
 $git_branch\
 $git_status\
 $nodejs$python$golang$rust$java\
@@ -37,23 +38,60 @@ purple = "#9d7cd8"
 # <<< palette <<<
 
 # ─── OS icon (leftmost segment) ────────────────────────────────────────
-[os]
-disabled = false
-format = "[ $symbol ](bg:magenta fg:bg)"
+[custom.os_ok]
+when = '[ "${STARSHIP_CMD_STATUS:-0}" = "0" ]'
+shell = ["sh"]
+command = '''
+case "$(uname -s)" in
+  Darwin) ICON=$(printf "\357\214\202") ;;
+  Linux)
+    if [ -r /etc/os-release ] && grep -qi "^id=ubuntu" /etc/os-release; then
+      ICON=$(printf "\357\214\233")
+    else
+      ICON=$(printf "\357\205\274")
+    fi ;;
+esac
+printf "%s" "$ICON"
+'''
+format = "[ $output ](bg:magenta fg:bg)[](fg:magenta bg:blue0)"
 
-[os.symbols]
-Macos  = ""
-Linux  = ""
-Ubuntu = ""
+[custom.os_err]
+when = '[ "${STARSHIP_CMD_STATUS:-0}" != "0" ]'
+shell = ["sh"]
+command = '''
+case "$(uname -s)" in
+  Darwin) ICON=$(printf "\357\214\202") ;;
+  Linux)
+    if [ -r /etc/os-release ] && grep -qi "^id=ubuntu" /etc/os-release; then
+      ICON=$(printf "\357\214\233")
+    else
+      ICON=$(printf "\357\205\274")
+    fi ;;
+esac
+printf "%s" "$ICON"
+'''
+format = "[ $output ](bg:red fg:bg)[](fg:red bg:blue0)"
 
 # ─── Current directory ─────────────────────────────────────────────────
 [directory]
-format = "[](fg:magenta bg:blue0)[ $path ](bg:blue0 fg:fg)"
+format = "[ $path ](bg:blue0 fg:fg)"
 truncation_length = 0
 truncate_to_repo = false
 truncation_symbol = ""
 home_symbol = "~"
 read_only = "  "
+
+# ─── Directory close (only when not in a git repo) ────────────────────
+# Inside a repo the blue0→cyan opener of [git_branch] closes the
+# directory segment. Outside a repo there's no next segment, so emit
+# the powerline terminator explicitly. Octal escapes encode U+E0B0
+# () because starship's custom module requires a non-empty command
+# stdout to render, and dash's printf doesn't understand \uXXXX.
+[custom.dir_close]
+shell = ["sh"]
+when = "! git rev-parse --is-inside-work-tree >/dev/null 2>&1"
+command = 'printf "\356\202\260"'
+format = "[$output](fg:blue0)"
 
 # ─── Git branch + status ───────────────────────────────────────────────
 [git_branch]
@@ -107,6 +145,6 @@ min_time = 2000
 
 # ─── Prompt character (vi-mode aware) ──────────────────────────────────
 [character]
-success_symbol = "[❯](bold green)"
-error_symbol   = "[❯](bold red)"
+success_symbol = ""
+error_symbol   = "[•](bold red)"
 vimcmd_symbol  = "[❮](bold blue0)"

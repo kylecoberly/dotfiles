@@ -41,6 +41,10 @@ source ~/.zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # ─── Tool init ─────────────────────────────────────────────────────────
 eval "$(starship init zsh)"
+# Starship sets STARSHIP_CMD_STATUS as a shell variable but doesn't export it;
+# this makes it visible to [custom.*] module subprocesses.
+_starship_export_status() { export STARSHIP_CMD_STATUS; }
+add-zsh-hook precmd _starship_export_status
 eval "$(mise activate zsh)"
 eval "$(zoxide init zsh)"
 eval "$(fzf --zsh)"          # adds fuzzy ^R, ^T, Alt-C
