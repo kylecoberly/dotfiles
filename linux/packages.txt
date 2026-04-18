@@ -25,6 +25,11 @@ unzip
 xclip
 imagemagick
 graphviz
+jpegoptim
+optipng
+pngquant
+tcpdump
+whois
 
 # Dev
 neovim
@@ -35,12 +40,16 @@ git-delta
 entr
 pipx
 build-essential
+postgresql
+bruno
 
 # Productivity
 1password
 1password-cli
 libreoffice
 gimp
+handbrake
+vlc
 
 # Browsers
 google-chrome-stable
