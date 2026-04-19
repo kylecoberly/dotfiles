@@ -40,9 +40,11 @@ persistent-workspaces = ["1", "2", "3", "4"]
 
     # Cycle windows in the current workspace (replaces alt-tab-macos, which
     # can't scope to aerospace workspaces because aerospace keeps all windows
-    # on one macOS Space via off-screen positioning).
-    alt-tab       = 'focus dfs-next'
-    alt-shift-tab = 'focus dfs-prev'
+    # on one macOS Space via off-screen positioning). The cycler walks all
+    # windows (including floating) in a stable window-id order; DFS-order
+    # would jump unpredictably across splits and skip floating windows.
+    alt-tab       = 'exec-and-forget ~/dotfiles/macos/aerospace/scripts/cycle-windows.sh next'
+    alt-shift-tab = 'exec-and-forget ~/dotfiles/macos/aerospace/scripts/cycle-windows.sh prev'
 
     # Focus workspace (yabai: alt - 1..4)
     alt-1 = 'workspace 1'
