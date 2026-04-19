@@ -18,7 +18,7 @@ history = 10000
 save_to_clipboard = true
 
 [window]
-decorations = "transparent"
+decorations = "buttonless"
 decorations_theme_variant = "Dark"
 option_as_alt = "Both"
 startup_mode = "Maximized"
