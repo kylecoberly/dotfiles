@@ -14,6 +14,14 @@ fi
 
 brew bundle --file="$DOTFILES/macos/Brewfile"
 
+# ─── Claude Code ──────────────────────────────────────────────────────
+# Native installer puts the binary under ~/.local/share/claude/versions/
+# and self-updates in the background. Not using the Homebrew cask so
+# updates don't require `brew upgrade`.
+if ! command -v claude >/dev/null 2>&1; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
 # ─── Font ─────────────────────────────────────────────────────────────
 # Per-user install — no sudo needed, and every GUI app still finds it.
 mkdir -p "$HOME/Library/Fonts"

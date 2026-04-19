@@ -81,6 +81,19 @@ if ! command -v just >/dev/null 2>&1; then
     bash -s -- --to "$HOME/.local/bin"
 fi
 
+# Claude Code — same native installer as macOS; ~/.local/share/claude/...
+if ! command -v claude >/dev/null 2>&1; then
+  curl -fsSL https://claude.ai/install.sh | bash
+fi
+
+# peon-ping — voice + overlay notifications for Claude Code.
+# Installs binary, default sound packs, and registers the hook at
+# ~/.claude/hooks/peon-ping/. ffmpeg (already in packages.txt) is needed
+# for non-WAV pack formats.
+if ! command -v peon >/dev/null 2>&1; then
+  curl -fsSL https://raw.githubusercontent.com/PeonPing/peon-ping/main/install.sh | bash
+fi
+
 # Obsidian and Zoom ship only as .deb downloads — no apt repo.
 if ! command -v obsidian >/dev/null 2>&1; then
   OBSIDIAN_DEB_URL=$(curl -fsSL https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest |
