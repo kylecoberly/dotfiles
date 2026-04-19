@@ -49,8 +49,9 @@ launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/org.felixkratz.sk
 "$DOTFILES/macos/karabiner/sync.sh"
 
 # ─── Alt-Tab ──────────────────────────────────────────────────────────
-ln -sf "$DOTFILES/macos/alt-tab/alt-tab.plist" \
-  "$HOME/Library/Preferences/com.lwouis.alt-tab-macos.plist"
+# Same symlink story as Karabiner — cfprefsd replaces the symlink on save,
+# so push-copy via sync.sh. Run after editing alt-tab.plist.
+"$DOTFILES/macos/alt-tab/sync.sh"
 
 # ─── macOS defaults ───────────────────────────────────────────────────
 defaults write com.apple.dock no-bouncing -bool true
