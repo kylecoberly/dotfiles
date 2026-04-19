@@ -59,7 +59,4 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write -g NSWindowResizeTime -float 0.001
 defaults write com.apple.Finder AppleShowAllFiles -bool true
-# Keep the menu bar visible so sketchybar stays clickable while apps are focused.
-defaults write NSGlobalDomain _HIHideMenuBar -bool false
 killall Dock 2>/dev/null || true
-killall Finder 2>/dev/null || true
