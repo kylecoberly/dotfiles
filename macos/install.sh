@@ -43,8 +43,10 @@ launchctl bootout "gui/$(id -u)/org.felixkratz.sketchybar" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/org.felixkratz.sketchybar.plist"
 
 # ─── Karabiner ────────────────────────────────────────────────────────
-mkdir -p "$HOME/.config/karabiner"
-ln -sf "$DOTFILES/macos/karabiner/karabiner.json" "$HOME/.config/karabiner/karabiner.json"
+# Karabiner-Elements rewrites karabiner.json on UI saves (atomic rename),
+# so a symlink can't hold. Push the dotfiles version + restart the service.
+# Run "$DOTFILES/macos/karabiner/sync.sh" after editing karabiner.json.
+"$DOTFILES/macos/karabiner/sync.sh"
 
 # ─── Alt-Tab ──────────────────────────────────────────────────────────
 ln -sf "$DOTFILES/macos/alt-tab/alt-tab.plist" \
@@ -57,4 +59,7 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write -g NSWindowResizeTime -float 0.001
 defaults write com.apple.Finder AppleShowAllFiles -bool true
+# Keep the menu bar visible so sketchybar stays clickable while apps are focused.
+defaults write NSGlobalDomain _HIHideMenuBar -bool false
 killall Dock 2>/dev/null || true
+killall Finder 2>/dev/null || true
