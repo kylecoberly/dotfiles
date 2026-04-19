@@ -38,6 +38,12 @@ persistent-workspaces = ["1", "2", "3", "4"]
     alt-k = 'focus up'
     alt-l = 'focus right'
 
+    # Cycle windows in the current workspace (replaces alt-tab-macos, which
+    # can't scope to aerospace workspaces because aerospace keeps all windows
+    # on one macOS Space via off-screen positioning).
+    alt-tab       = 'focus dfs-next'
+    alt-shift-tab = 'focus dfs-prev'
+
     # Focus workspace (yabai: alt - 1..4)
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
