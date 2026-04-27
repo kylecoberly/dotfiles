@@ -4,11 +4,12 @@
 # on the same remote host. Otherwise, open the pane at the source pane's
 # local cwd.
 #
-# Remote cwd preservation requires the remote shell to emit OSC 7 (see
-# osc7-remote.sh). When OSC 7 is set up, tmux exposes the remote path via
-# pane_path as a "file://host/path" URI; we parse it and cd to that path
-# after re-establishing ssh. When it's not set up, pane_path is empty and we
-# just re-run ssh (lands in remote $HOME — same as before this feature).
+# Remote cwd preservation requires the remote shell to emit OSC 7 (sourced
+# from shared/zsh/osc7.zsh via .zshrc on every dotfiles-installed host).
+# Tmux exposes the remote path via pane_path as a "file://host/path" URI;
+# we parse it and cd to that path after re-establishing ssh. When OSC 7
+# isn't set up on a remote, pane_path is empty and we just re-run ssh
+# (lands in remote $HOME — same as before this feature).
 #
 # Usage: spawn-pane.sh <verb> <pane_pid> <pane_current_path> <pane_path>
 #   verb: "new-window" | "split-h" | "split-v"

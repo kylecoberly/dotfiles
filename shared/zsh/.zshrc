@@ -66,3 +66,8 @@ export LESS_TERMCAP_ue=$'\e[0m'        # reset underline
 # Resolve relative to this file's real path so aliases load from wherever the
 # dotfiles live (e.g. Codespaces under /workspaces/... rather than ~/dotfiles).
 source "${${(%):-%x}:A:h}/aliases.zsh"
+
+# ─── OSC 7 (cwd → terminal) ────────────────────────────────────────────
+# Tells tmux's pane_path the shell's cwd via file:// URI. On ssh panes
+# this is what lets spawn-pane.sh reopen at the remote folder.
+source "${${(%):-%x}:A:h}/osc7.zsh"
