@@ -37,6 +37,24 @@ if [ ! -f /usr/share/keyrings/google-chrome.gpg ]; then
     sudo tee /etc/apt/sources.list.d/google-chrome.list
 fi
 
+# Bruno ships via its own apt repo — not in Ubuntu's defaults.
+# Bruno publishes only via GPG keyserver (no .asc URL), so dirmngr is
+# required; minimal server installs often lack it. Also pre-create
+# /root/.gnupg because gpg won't auto-create it when invoked via sudo.
+# Guard on bruno.list (written last) — bruno.gpg gets created empty
+# before the network fetch, so it's not a reliable "done" marker.
+if [ ! -f /etc/apt/sources.list.d/bruno.list ]; then
+  if ! command -v dirmngr >/dev/null 2>&1; then
+    sudo apt-get install -y gnupg dirmngr
+  fi
+  sudo install -d -m 700 /root/.gnupg
+  sudo rm -f /usr/share/keyrings/bruno.gpg
+  sudo gpg --no-default-keyring --keyring /usr/share/keyrings/bruno.gpg \
+    --keyserver keyserver.ubuntu.com --recv-keys 9FA6017ECABE0266
+  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/bruno.gpg] http://debian.usebruno.com/ bruno stable' |
+    sudo tee /etc/apt/sources.list.d/bruno.list
+fi
+
 sudo apt-get update
 
 # ─── apt packages (comments + blank lines stripped) ───────────────────

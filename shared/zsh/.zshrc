@@ -71,3 +71,7 @@ source "${${(%):-%x}:A:h}/aliases.zsh"
 # Tells tmux's pane_path the shell's cwd via file:// URI. On ssh panes
 # this is what lets spawn-pane.sh reopen at the remote folder.
 source "${${(%):-%x}:A:h}/osc7.zsh"
+
+# peon-ping quick controls
+alias peon="bash /home/kylecoberly/.claude/hooks/peon-ping/peon.sh"
+[ -f /home/kylecoberly/.claude/hooks/peon-ping/completions.bash ] && source /home/kylecoberly/.claude/hooks/peon-ping/completions.bash

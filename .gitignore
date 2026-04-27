@@ -3,3 +3,8 @@
 *~
 theme/palette.sh.bak
 tmux-client-*.log
+
+# peon-ping's installer owns these skill dirs — it creates them fresh per
+# machine (Homebrew on macOS, curl|bash on Linux). Don't let the repo and
+# the installer fight over the same files.
+shared/claude/skills/peon-ping-*/
