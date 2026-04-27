@@ -1,0 +1,61 @@
+{
+  "default_pack": "glados",
+  "volume": 0,
+  "enabled": true,
+  "desktop_notifications": true,
+  "categories": {
+    "session.start": false,
+    "task.acknowledge": false,
+    "task.complete": true,
+    "task.error": false,
+    "input.required": true,
+    "resource.limit": false,
+    "user.spam": false
+  },
+  "annoyed_threshold": 3,
+  "annoyed_window_seconds": 10,
+  "silent_window_seconds": 20,
+  "session_start_cooldown_seconds": 30,
+  "suppress_subagent_complete": false,
+  "suppress_delegate_sessions": false,
+  "no_rc": false,
+  "pack_rotation": [],
+  "pack_rotation_mode": "random",
+  "path_rules": [],
+  "exclude_dirs": [],
+  "ide_rules": [],
+  "session_ttl_days": 7,
+  "use_sound_effects_device": true,
+  "linux_audio_player": "",
+  "debug": false,
+  "debug_retention_days": 7,
+  "headphones_only": false,
+  "meeting_detect": false,
+  "suppress_sound_when_tab_focused": false,
+  "notification_position": "top-center",
+  "notification_dismiss_seconds": 2,
+  "notification_all_screens": true,
+  "notification_title_override": "",
+  "notification_title_marker": "●",
+  "notification_title_script": "",
+  "project_name_map": {},
+  "debug": false,
+  "debug_retention_days": 7,
+  "trainer": {
+    "enabled": false,
+    "exercises": {
+      "pushups": 300,
+      "squats": 300
+    },
+    "reminder_interval_minutes": 20,
+    "reminder_min_gap_minutes": 5
+  },
+  "tts": {
+    "enabled": false,
+    "backend": "auto",
+    "voice": "default",
+    "rate": 1.0,
+    "volume": 0.5,
+    "mode": "sound-then-speak"
+  }
+}

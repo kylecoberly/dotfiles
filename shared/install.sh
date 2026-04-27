@@ -67,10 +67,11 @@ claude_link() {
   local src="$CLAUDE_SRC/$name"
   local dest="$CLAUDE_DEST/$name"
   [ -e "$src" ] || return 0
+  mkdir -p "$(dirname "$dest")"
   if [ -L "$dest" ]; then
     rm "$dest"
   elif [ -e "$dest" ]; then
-    mkdir -p "$BACKUP_DIR"
+    mkdir -p "$BACKUP_DIR/$(dirname "$name")"
     mv "$dest" "$BACKUP_DIR/$name"
   fi
   ln -s "$src" "$dest"
@@ -78,3 +79,11 @@ claude_link() {
 for item in settings.json CLAUDE.md statusline-command.sh commands agents skills; do
   claude_link "$item"
 done
+
+# peon-ping owns most of hooks/peon-ping/ (binary, packs, scripts), so we
+# track only config.json. Skip on a fresh machine where peon-ping isn't
+# installed yet — the platform install scripts install it, then a re-run
+# of install.sh will pick this up.
+if [ -d "$CLAUDE_DEST/hooks/peon-ping" ]; then
+  claude_link "hooks/peon-ping/config.json"
+fi
