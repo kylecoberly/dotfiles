@@ -2,6 +2,11 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "hooks": {},
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
   "enabledPlugins": {
     "frontend-design@claude-plugins-official": true,
     "superpowers@claude-plugins-official": true,
@@ -36,9 +41,5 @@
     "legalzoom@claude-plugins-official": true
   },
   "skipAutoPermissionPrompt": true,
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
-  },
-  "hooks": {}
+  "theme": "dark-ansi"
 }
