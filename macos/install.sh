@@ -50,6 +50,19 @@ ln -sf "$DOTFILES/macos/sketchybar/org.felixkratz.sketchybar.plist" \
 launchctl bootout "gui/$(id -u)/org.felixkratz.sketchybar" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/org.felixkratz.sketchybar.plist"
 
+# ─── Peon-ping relay ──────────────────────────────────────────────────
+# LaunchAgent runs `peon relay` in the foreground (no --daemon — launchd
+# manages the process). KeepAlive only on crash so `peon relay --stop`
+# still works. Plist is templated for the local brew prefix.
+if command -v peon >/dev/null 2>&1; then
+  PEON_BIN="$(command -v peon)"
+  PEON_PLIST="$HOME/Library/LaunchAgents/com.peon-ping.relay.plist"
+  sed -e "s|__PEON_BIN__|$PEON_BIN|g" -e "s|__HOME__|$HOME|g" \
+    "$DOTFILES/macos/peon/com.peon-ping.relay.plist" > "$PEON_PLIST"
+  launchctl bootout "gui/$(id -u)/com.peon-ping.relay" 2>/dev/null || true
+  launchctl bootstrap "gui/$(id -u)" "$PEON_PLIST"
+fi
+
 # ─── Karabiner ────────────────────────────────────────────────────────
 # Karabiner-Elements rewrites karabiner.json on UI saves (atomic rename),
 # so a symlink can't hold. Push the dotfiles version + restart the service.

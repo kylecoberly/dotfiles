@@ -27,6 +27,8 @@ brew "iproute2mac"
 brew "switchaudio-osx"
 brew "coreutils"
 brew "terminal-notifier"  # peon-ping uses this for reliable native notifications
+tap "peonping/tap"
+brew "peonping/tap/peon-ping"
 
 # Dev
 brew "neovim"
