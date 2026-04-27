@@ -26,6 +26,10 @@ bindkey -v                                  # vi-mode
 bindkey -M viins 'jj' vi-cmd-mode
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey "\e." insert-last-word              # Alt/Esc-. → last word
+# Restore emacs-style line motion in viins. ^E doubles as autosuggest-accept
+# because zsh-autosuggestions hooks the end-of-line widget.
+bindkey -M viins '^E' end-of-line
+bindkey -M viins '^A' beginning-of-line
 
 # ─── Completion ────────────────────────────────────────────────────────
 autoload -Uz compinit && compinit
