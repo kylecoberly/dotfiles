@@ -2,6 +2,9 @@
 # Linux (Ubuntu/Debian) setup. Sourced by ../install.sh with $DOTFILES exported.
 set -euo pipefail
 
+# Recover from any half-finished dpkg transaction left by an interrupted prior run.
+sudo dpkg --configure -a
+
 sudo apt-get update
 
 # add-apt-repository needed for the alacritty PPA below
@@ -58,8 +61,12 @@ fi
 sudo apt-get update
 
 # ─── apt packages (comments + blank lines stripped) ───────────────────
+# DEBIAN_FRONTEND=noninteractive suppresses the VS Code postinst whiptail prompt
+# (we add the MS repo ourselves above); the Dpkg::Options keep the maintainer's
+# defaults on conffile conflicts so package upgrades don't stop to ask.
 grep -v '^\s*#' "$DOTFILES/linux/packages.txt" | grep -v '^\s*$' |
-  xargs sudo apt-get install -y --no-install-recommends
+  xargs sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+    -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold
 
 # ─── Tools not in apt ─────────────────────────────────────────────────
 if ! command -v mise >/dev/null 2>&1; then
@@ -117,13 +124,13 @@ if ! command -v obsidian >/dev/null 2>&1; then
   OBSIDIAN_DEB_URL=$(curl -fsSL https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest |
     jq -r '.assets[] | select(.name | test("^obsidian_[0-9.]+_amd64\\.deb$")) | .browser_download_url')
   curl -fsSL "$OBSIDIAN_DEB_URL" -o /tmp/obsidian.deb
-  sudo apt-get install -y /tmp/obsidian.deb
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y /tmp/obsidian.deb
   rm /tmp/obsidian.deb
 fi
 
 if ! command -v zoom >/dev/null 2>&1; then
   curl -fsSL https://zoom.us/client/latest/zoom_amd64.deb -o /tmp/zoom.deb
-  sudo apt-get install -y /tmp/zoom.deb
+  sudo DEBIAN_FRONTEND=noninteractive apt-get install -y /tmp/zoom.deb
   rm /tmp/zoom.deb
 fi
 

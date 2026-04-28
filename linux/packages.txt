@@ -43,6 +43,20 @@ build-essential
 postgresql
 bruno
 
+# Ruby build deps (for `mise install ruby` — ruby-build compiles from source
+# and silently drops C extensions like fiddle/psych without these headers).
+autoconf
+bison
+libssl-dev
+libyaml-dev
+libreadline-dev
+libffi-dev
+libgmp-dev
+libgdbm-dev
+libdb-dev
+libncurses-dev
+uuid-dev
+
 # Productivity
 1password
 1password-cli
