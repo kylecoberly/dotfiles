@@ -9,7 +9,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10
           }
         ]
@@ -21,7 +21,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -34,7 +34,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -47,7 +47,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -60,7 +60,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -71,12 +71,12 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/scripts/hook-handle-use.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/scripts/hook-handle-use.sh",
             "timeout": 5
           },
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/scripts/hook-handle-rename.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/scripts/hook-handle-rename.sh",
             "timeout": 5
           }
         ]
@@ -88,7 +88,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -101,7 +101,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -114,7 +114,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -127,7 +127,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -140,7 +140,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }
@@ -153,7 +153,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/kylecoberly/.claude/hooks/peon-ping/peon.sh",
+            "command": "$HOME/.claude/hooks/peon-ping/peon.sh",
             "timeout": 10,
             "async": true
           }

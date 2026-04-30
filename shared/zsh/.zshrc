@@ -73,5 +73,5 @@ source "${${(%):-%x}:A:h}/aliases.zsh"
 source "${${(%):-%x}:A:h}/osc7.zsh"
 
 # peon-ping quick controls
-alias peon="bash /home/kylecoberly/.claude/hooks/peon-ping/peon.sh"
-[ -f /home/kylecoberly/.claude/hooks/peon-ping/completions.bash ] && source /home/kylecoberly/.claude/hooks/peon-ping/completions.bash
+alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
+[ -f $HOME/.claude/hooks/peon-ping/completions.bash ] && source $HOME/.claude/hooks/peon-ping/completions.bash
