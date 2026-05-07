@@ -198,6 +198,6 @@
     "netlify-skills@claude-plugins-official": true,
     "legalzoom@claude-plugins-official": true
   },
-  "skipAutoPermissionPrompt": true,
-  "theme": "dark-ansi"
+  "theme": "dark-ansi",
+  "skipAutoPermissionPrompt": true
 }
