@@ -211,5 +211,6 @@
     "legalzoom@claude-plugins-official": true
   },
   "theme": "dark-ansi",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true
 }
