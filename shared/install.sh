@@ -76,7 +76,7 @@ claude_link() {
   fi
   ln -s "$src" "$dest"
 }
-for item in settings.json CLAUDE.md statusline-command.sh commands agents skills; do
+for item in settings.json CLAUDE.md statusline-command.sh commands agents skills hooks/save-plan; do
   claude_link "$item"
 done
 

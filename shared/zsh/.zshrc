@@ -9,6 +9,20 @@ export VISUAL=nvim
 export EDITOR="$VISUAL"
 export COLORTERM=truecolor
 
+# ─── Obsidian vault (overridable per-machine before sourcing) ──────────
+# Read by Claude Code's save-plan hook to know where to write plans.
+# The :- form respects a value set earlier (e.g. in ~/.zshenv on machines
+# where the default doesn't apply, like a work laptop with a custom path).
+if [[ -z "${OBSIDIAN_VAULT:-}" ]]; then
+  if [[ "$OSTYPE" == darwin* ]]; then
+    export OBSIDIAN_VAULT="$HOME/Documents/notes"
+  elif [[ -d /mnt/files/application-data/obsidian/notes ]]; then
+    export OBSIDIAN_VAULT="/mnt/files/application-data/obsidian/notes"
+  else
+    export OBSIDIAN_VAULT="$HOME/Documents/notes"
+  fi
+fi
+
 # ─── PATH / Homebrew (arch-aware) ──────────────────────────────────────
 # brew shellenv sets PATH, MANPATH, INFOPATH, HOMEBREW_* correctly for
 # whichever install is present (Apple Silicon /opt/homebrew, Intel /usr/local).
