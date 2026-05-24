@@ -5,9 +5,18 @@
 # by determine_subfolder() below.
 set -euo pipefail
 
-# Silently no-op if the vault isn't configured or doesn't exist on this
-# machine — better than failing the tool call.
-[ -z "${OBSIDIAN_VAULT:-}" ] && exit 0
+# Claude Code spawns hooks directly (not via a shell), so .zshrc may not
+# have run in the parent. Fall back to the same platform defaults .zshrc
+# uses, so the hook works regardless of launch context.
+if [ -z "${OBSIDIAN_VAULT:-}" ]; then
+  if [ -d /mnt/files/application-data/obsidian/notes ]; then
+    OBSIDIAN_VAULT="/mnt/files/application-data/obsidian/notes"
+  else
+    OBSIDIAN_VAULT="$HOME/Documents/notes"
+  fi
+fi
+# Silently no-op if the resolved vault doesn't exist — better than failing
+# the tool call on a machine without a vault.
 [ ! -d "$OBSIDIAN_VAULT" ] && exit 0
 
 INPUT=$(cat)
@@ -16,15 +25,6 @@ CWD=$(printf '%s' "$INPUT" | jq -r '.cwd // empty')
 [ -z "$PLAN" ] && exit 0
 [ -z "$CWD" ] && CWD=$(pwd)
 
-# ─── Subfolder selection ──────────────────────────────────────────────
-# Spec (per user):
-#   - if $CWD is inside a git repo  → basename of the repo root
-#   - if $CWD is exactly /Users/kylecoberly or /home/kylecoberly → "home"
-#   - otherwise → basename of $CWD
-#
-# TODO(user): implement. Echo the chosen subfolder name to stdout.
-# Inputs: $CWD (absolute path string)
-# Output: a single folder-name (no slashes), echoed to stdout
 determine_subfolder() {
   local cwd="$1"
   local repo_root
