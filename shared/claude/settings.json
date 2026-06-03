@@ -198,7 +198,6 @@
     "serena@claude-plugins-official": true,
     "explanatory-output-style@claude-plugins-official": true,
     "plugin-dev@claude-plugins-official": true,
-    "greptile@claude-plugins-official": true,
     "hookify@claude-plugins-official": true,
     "playground@claude-plugins-official": true,
     "learning-output-style@claude-plugins-official": true,
@@ -207,7 +206,6 @@
     "mcp-server-dev@claude-plugins-official": true,
     "deploy-on-aws@claude-plugins-official": true,
     "aws-serverless@claude-plugins-official": true,
-    "optibot@claude-plugins-official": true,
     "netlify-skills@claude-plugins-official": true,
     "legalzoom@claude-plugins-official": true
   },
