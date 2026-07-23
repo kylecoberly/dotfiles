@@ -5,7 +5,7 @@
 
 set -euo pipefail
 
-AEROSPACE=/usr/local/bin/aerospace
+AEROSPACE=/opt/homebrew/bin/aerospace
 
 layout=$("$AEROSPACE" list-windows --focused --format '%{window-layout}')
 

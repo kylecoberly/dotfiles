@@ -4,7 +4,7 @@
 
 set -euo pipefail
 
-AEROSPACE=/usr/local/bin/aerospace
+AEROSPACE=/opt/homebrew/bin/aerospace
 
 read -r layout fullscreen < <("$AEROSPACE" list-windows --focused --format '%{window-layout} %{window-is-fullscreen}')
 

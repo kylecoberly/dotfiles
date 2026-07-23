@@ -9,7 +9,7 @@
 
 set -euo pipefail
 
-AEROSPACE=/usr/local/bin/aerospace
+AEROSPACE=/opt/homebrew/bin/aerospace
 dir="${1:-next}"
 
 # All windows in the focused workspace, sorted numerically for stable cycling.
