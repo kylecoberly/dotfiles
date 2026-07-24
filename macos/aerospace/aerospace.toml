@@ -2,8 +2,12 @@ config-version = 2
 
 start-at-login = true
 after-startup-command = []
+# Full path: AeroSpace's process PATH is the bare launchd set
+# (/usr/bin:/bin:/usr/sbin:/sbin) and `-c` doesn't source a profile, so bare
+# `sketchybar` isn't found and the trigger silently drops — which left empty
+# workspaces (no front_app_switched to fall back on) never repainting.
 exec-on-workspace-change = ['/bin/bash', '-c',
-    'sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE']
+    '/usr/local/bin/sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE']
 
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
@@ -284,7 +288,9 @@ persistent-workspaces = ["1", "2", "3"]
     run = 'layout floating'
 
 # Zen Browser opens floating by default; force tiling so sketchybar stays
-# reachable and opt-bound Aerospace nav (via Karabiner) works predictably.
+# reachable and directional nav (alt-h/j/k/l, alt-shift-h/j/k/l) has a node to
+# act on — those commands silently no-op on a floating window, which reads like
+# the keybinding itself is broken.
 [[on-window-detected]]
     if.app-id = 'app.zen-browser.zen'
     run = ['layout tiling', 'move-node-to-workspace 2']
