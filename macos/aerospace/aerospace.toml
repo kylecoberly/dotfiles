@@ -23,15 +23,18 @@ persistent-workspaces = ["1", "2", "3"]
 [gaps]
     inner.horizontal = 8
     inner.vertical   = 8
-    outer.left       = 8
-    outer.right      = 8
-    # Per-monitor top gap. AeroSpace measures outer.top from each monitor's
-    # visibleFrame, which on the notched built-in display already sits 32pt below
-    # the physical top (notch/menu-bar band) — but sketchybar draws from the
-    # physical top. So the built-in needs 48-32=16 to land flush under the bar,
-    # while external (non-notched) monitors need the full 48. Trailing number is
-    # the fallback for any monitor that isn't the built-in.
-    outer.top        = [{ monitor.built-in = 16 }, 48]
+    # Match the sketchybar pill's left/right edges: the bar has margin=12, so its
+    # outer edges sit 12pt from the screen edge — windows use the same inset.
+    outer.left       = 12
+    outer.right      = 12
+    # Per-monitor top gap, with ~4pt breathing room under the bar (bar bottom is
+    # at 48pt; window top lands at 52pt). AeroSpace measures outer.top from each
+    # monitor's visibleFrame, which on the notched built-in display already sits
+    # 32pt below the physical top (notch/menu-bar band) — but sketchybar draws
+    # from the physical top. So the built-in needs 52-32=20, while external
+    # (non-notched) monitors need the full 52. Trailing number is the fallback
+    # for any monitor that isn't the built-in.
+    outer.top        = [{ monitor.built-in = 20 }, 52]
     outer.bottom     = 8
 
 # ============================================================================
