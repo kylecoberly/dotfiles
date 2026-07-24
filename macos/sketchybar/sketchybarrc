@@ -55,7 +55,7 @@ sketchybar --default updates=when_shown \
 sketchybar --add event aerospace_workspace_change
 
 # ─── LEFT: workspace pills (number + app icons, shared pill) ──
-for sid in 1 2 3 4; do
+for sid in 1 2 3; do
     sketchybar --add item space.$sid left \
                --set space.$sid \
                     label="$sid" \

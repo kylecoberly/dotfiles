@@ -15,7 +15,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 
 automatically-unhide-macos-hidden-apps = false
 
-persistent-workspaces = ["1", "2", "3", "4"]
+persistent-workspaces = ["1", "2", "3"]
 
 [key-mapping]
     preset = 'qwerty'
@@ -25,7 +25,7 @@ persistent-workspaces = ["1", "2", "3", "4"]
     inner.vertical   = 8
     outer.left       = 8
     outer.right      = 8
-    outer.top        = 52
+    outer.top        = 48
     outer.bottom     = 8
 
 # ============================================================================
@@ -50,7 +50,6 @@ persistent-workspaces = ["1", "2", "3", "4"]
     alt-1 = 'workspace 1'
     alt-2 = 'workspace 2'
     alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
 
     # Prev/next workspace (yabai: alt - 0x21 / 0x1E  =  alt - [ / ])
     alt-leftSquareBracket  = 'workspace --wrap-around prev'
@@ -70,7 +69,6 @@ persistent-workspaces = ["1", "2", "3", "4"]
     alt-shift-1 = ['move-node-to-workspace 1', 'workspace 1']
     alt-shift-2 = ['move-node-to-workspace 2', 'workspace 2']
     alt-shift-3 = ['move-node-to-workspace 3', 'workspace 3']
-    alt-shift-4 = ['move-node-to-workspace 4', 'workspace 4']
 
     # Move window to prev/next workspace + follow (yabai: shift+alt - p / n)
     alt-shift-p = ['move-node-to-workspace --wrap-around prev', 'workspace --wrap-around prev']
@@ -115,11 +113,10 @@ persistent-workspaces = ["1", "2", "3", "4"]
     shift-h = 'workspace --wrap-around prev'
     shift-l = 'workspace --wrap-around next'
 
-    # Focus workspace 1..4 (5..9 dropped per 4-workspace setup)
+    # Focus workspace 1..3
     1 = 'workspace 1'
     2 = 'workspace 2'
     3 = 'workspace 3'
-    4 = 'workspace 4'
 
     # Focus monitor
     a = 'focus-monitor --wrap-around next'
@@ -135,7 +132,6 @@ persistent-workspaces = ["1", "2", "3", "4"]
     ctrl-1 = ['move-node-to-workspace 1', 'workspace 1']
     ctrl-2 = ['move-node-to-workspace 2', 'workspace 2']
     ctrl-3 = ['move-node-to-workspace 3', 'workspace 3']
-    ctrl-4 = ['move-node-to-workspace 4', 'workspace 4']
 
     # Move window to other monitor (yabai: ctrl - a / b moved workspace→display;
     # aerospace's closest: move the window to the other monitor)
@@ -216,11 +212,11 @@ persistent-workspaces = ["1", "2", "3", "4"]
 # ============================================================================
 [[on-window-detected]]
     if.app-id = 'com.apple.finder'
-    run = 'layout floating'
+    run = ['layout floating', 'move-node-to-workspace 2']
 
 [[on-window-detected]]
     if.app-id = 'com.apple.systempreferences'
-    run = 'layout floating'
+    run = ['layout floating', 'move-node-to-workspace 3']
 
 [[on-window-detected]]
     if.app-id = 'com.apple.ActivityMonitor'
@@ -282,4 +278,40 @@ persistent-workspaces = ["1", "2", "3", "4"]
 # reachable and opt-bound Aerospace nav (via Karabiner) works predictably.
 [[on-window-detected]]
     if.app-id = 'app.zen-browser.zen'
-    run = 'layout tiling'
+    run = ['layout tiling', 'move-node-to-workspace 2']
+
+# ============================================================================
+# App → workspace pins. Fire once when a window is first detected; unpinned
+# apps open on the focused workspace. Finder, System Settings, and Zen carry
+# their pins on the layout rules above.
+#   WS 1: Obsidian, Todoist
+#   WS 2: Zen, Alacritty, Finder, Zoom, Moonlight
+#   WS 3: Focusrite Control, Camo Studio, System Settings
+# ============================================================================
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+    if.app-id = 'com.todoist.mac.Todoist'
+    run = 'move-node-to-workspace 1'
+
+[[on-window-detected]]
+    if.app-id = 'org.alacritty'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'us.zoom.xos'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'com.moonlight-stream.Moonlight'
+    run = 'move-node-to-workspace 2'
+
+[[on-window-detected]]
+    if.app-id = 'com.focusrite.FocusriteControl'
+    run = 'move-node-to-workspace 3'
+
+[[on-window-detected]]
+    if.app-id = 'com.reincubate.macos.cam'
+    run = 'move-node-to-workspace 3'

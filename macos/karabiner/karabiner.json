@@ -2254,30 +2254,6 @@
                   }
                 ],
                 "from": {
-                  "key_code": "4",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_option"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "/usr/local/bin/aerospace workspace 4"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^app\\.zen-browser\\.zen(\\.twilight)?$"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
                   "key_code": "open_bracket",
                   "modifiers": {
                     "mandatory": [
@@ -2775,31 +2751,6 @@
                 "to": [
                   {
                     "shell_command": "/usr/local/bin/aerospace move-node-to-workspace 3 && /usr/local/bin/aerospace workspace 3"
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "conditions": [
-                  {
-                    "bundle_identifiers": [
-                      "^app\\.zen-browser\\.zen(\\.twilight)?$"
-                    ],
-                    "type": "frontmost_application_if"
-                  }
-                ],
-                "from": {
-                  "key_code": "4",
-                  "modifiers": {
-                    "mandatory": [
-                      "left_option",
-                      "shift"
-                    ]
-                  }
-                },
-                "to": [
-                  {
-                    "shell_command": "/usr/local/bin/aerospace move-node-to-workspace 4 && /usr/local/bin/aerospace workspace 4"
                   }
                 ],
                 "type": "basic"
