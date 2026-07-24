@@ -30,6 +30,10 @@ cp -f "$DOTFILES/shared/fonts/Noto Mono Nerd Font Complete.ttf" "$HOME/Library/F
 # ─── Aerospace ────────────────────────────────────────────────────────
 ln -sf "$DOTFILES/macos/aerospace/aerospace.toml" "$HOME/.aerospace.toml"
 
+# Trackpad-swipe workspace switching. Builds a launchd daemon into
+# ~/.local/opt; needs a one-time Accessibility grant (script prints how).
+"$DOTFILES/macos/aerospace/install-swipe.sh"
+
 # ─── Sketchybar ───────────────────────────────────────────────────────
 # Build from source; v2.17+ requires newer SDK than some Xcode versions have.
 if ! command -v sketchybar >/dev/null 2>&1; then
@@ -73,4 +77,9 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write -g NSWindowResizeTime -float 0.001
 defaults write com.apple.Finder AppleShowAllFiles -bool true
+# Disable the native 3-finger horizontal Spaces swipe — under AeroSpace's
+# single-Space model it only fights aerospace-swipe when a fullscreen app has
+# created a real Space. 4-finger horizontal stays bound to native Spaces.
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
 killall Dock 2>/dev/null || true
