@@ -50,10 +50,45 @@ open_switcher() { # $1 = "--last" to start on the furthest-MRU window
   render
 }
 
-# Real render lands in Task 3; stub keeps `open` working under test.
+_count() { awk 'NR>1 && NF' "$STATE_FILE" | wc -l | tr -d ' '; }
+
+_move() { # $1 = +1 or -1
+  [ -f "$STATE_FILE" ] || return 0
+  local idx count
+  idx="$(sed -n '1p' "$STATE_FILE")"
+  count="$(_count)"
+  [ "$count" -lt 1 ] && return 0
+  idx=$(( (idx + $1 + count) % count ))
+  # rewrite line 1 with new index, keep rows
+  { echo "$idx"; awk 'NR>1' "$STATE_FILE"; } > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE"
+  render
+}
+
+commit_switcher() {
+  [ -f "$STATE_FILE" ] || return 0
+  local idx id
+  idx="$(sed -n '1p' "$STATE_FILE")"
+  # row for idx: file line number is idx+2 (line1=index, rows start line2)
+  id="$(sed -n "$((idx + 2))p" "$STATE_FILE" | cut -d'|' -f1)"
+  teardown
+  rm -f "$STATE_FILE"
+  [ -n "$id" ] && "$AEROSPACE" focus --window-id "$id"
+}
+
+cancel_switcher() {
+  teardown
+  rm -f "$STATE_FILE"
+}
+
+# Real render/teardown land in Task 3; stubs keep logic working under test.
 render() { :; }
+teardown() { :; }
 
 case "${1:-}" in
-  open) open_switcher "${2:-}" ;;
-  *)    echo "usage: switcher.sh open|next|prev|commit|cancel" >&2; exit 2 ;;
+  open)   open_switcher "${2:-}" ;;
+  next)   _move 1 ;;
+  prev)   _move -1 ;;
+  commit) commit_switcher ;;
+  cancel) cancel_switcher ;;
+  *)      echo "usage: switcher.sh open|next|prev|commit|cancel" >&2; exit 2 ;;
 esac

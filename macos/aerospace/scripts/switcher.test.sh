@@ -65,3 +65,37 @@ run open
 [ ! -f "$TMP/state" ] || fail "open wrote state for single window"
 
 echo "Task 1 tests passed"
+
+# --- next advances index, wraps around ---
+printf '10|Alacritty|nvim\n20|Zen|GitHub\n30|Obsidian|notes\n' > "$TMP/live"
+printf '30\n20\n10\n' > "$TMP/mru"   # recency 10,20,30
+run open                              # index 1 (row 20)
+run next                              # index 2 (row 30)
+[ "$(sed -n '1p' "$TMP/state")" = "2" ] || fail "next did not advance to 2"
+run next                              # wrap to 0
+[ "$(sed -n '1p' "$TMP/state")" = "0" ] || fail "next did not wrap to 0"
+
+# --- prev goes backward, wraps ---
+run prev                              # 0 -> 2
+[ "$(sed -n '1p' "$TMP/state")" = "2" ] || fail "prev did not wrap to 2"
+
+# --- commit focuses the selected window and clears state ---
+run open                              # index 1 -> row is 20|Zen|GitHub
+run commit
+[ "$(cat "$TMP/focused")" = "20" ] || fail "commit focused $(cat "$TMP/focused"), want 20"
+[ ! -f "$TMP/state" ] || fail "commit left state behind"
+
+# --- cancel clears state without focusing ---
+: > "$TMP/focused"
+run open
+run cancel
+[ ! -f "$TMP/state" ] || fail "cancel left state behind"
+[ ! -s "$TMP/focused" ] || fail "cancel changed focus"
+
+# --- next/commit with no state are harmless no-ops ---
+rm -f "$TMP/state"; : > "$TMP/focused"
+run next
+run commit
+[ ! -s "$TMP/focused" ] || fail "commit without state changed focus"
+
+echo "Task 2 tests passed"
