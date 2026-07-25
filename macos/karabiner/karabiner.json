@@ -18,6 +18,173 @@
         },
         "rules": [
           {
+            "description": "Window switcher (alt-tab): hold left_option, Tab cycles, release commits",
+            "manipulators": [
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option",
+                      "left_shift"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_unless",
+                    "name": "alt_tab_active",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "alt_tab_active",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh open --last"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option",
+                      "left_shift"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "alt_tab_active",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh prev"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_unless",
+                    "name": "alt_tab_active",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "alt_tab_active",
+                      "value": 1
+                    }
+                  },
+                  {
+                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh open"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "tab",
+                  "modifiers": {
+                    "mandatory": [
+                      "left_option"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "alt_tab_active",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh next"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "escape",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "alt_tab_active",
+                    "value": 1
+                  }
+                ],
+                "to": [
+                  {
+                    "set_variable": {
+                      "name": "alt_tab_active",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh cancel"
+                  }
+                ]
+              },
+              {
+                "type": "basic",
+                "from": {
+                  "key_code": "left_option",
+                  "modifiers": {
+                    "optional": [
+                      "any"
+                    ]
+                  }
+                },
+                "to": [
+                  {
+                    "key_code": "left_option"
+                  }
+                ],
+                "to_after_key_up": [
+                  {
+                    "set_variable": {
+                      "name": "alt_tab_active",
+                      "value": 0
+                    }
+                  },
+                  {
+                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh commit"
+                  }
+                ]
+              }
+            ]
+          },
+          {
             "description": "A (Ctrl)",
             "manipulators": [
               {
