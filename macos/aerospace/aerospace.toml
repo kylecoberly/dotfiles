@@ -9,6 +9,13 @@ after-startup-command = []
 exec-on-workspace-change = ['/bin/bash', '-c',
     '/usr/local/bin/sketchybar --trigger aerospace_workspace_change FOCUSED=$AEROSPACE_FOCUSED_WORKSPACE']
 
+# MRU tracker for the window switcher: append the focused window-id to a
+# history file on every focus change. `on-focus-changed` takes AeroSpace
+# commands, so use exec-and-forget (which runs the string via /bin/bash -c).
+# Full path — AeroSpace's callback PATH is the bare launchd set. `mkdir -p` is
+# cheap and makes first run self-healing.
+on-focus-changed = ['exec-and-forget mkdir -p "$HOME/.cache/aerospace"; id=$(/opt/homebrew/bin/aerospace list-windows --focused --format "%{window-id}" 2>/dev/null); [ -n "$id" ] && echo "$id" >> "$HOME/.cache/aerospace/mru"']
+
 enable-normalization-flatten-containers = true
 enable-normalization-opposite-orientation-for-nested-containers = true
 accordion-padding = 0
