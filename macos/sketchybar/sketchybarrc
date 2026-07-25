@@ -90,6 +90,25 @@ sketchybar --add item focused_windows center \
                     script="$PLUGIN_DIR/focused_windows.sh" \
            --subscribe focused_windows aerospace_workspace_change front_app_switched
 
+# ─── Window switcher popup (driven by switcher.sh) ─────────────
+# Anchor in the bar center: DRAWN (so the popup has an on-screen position to
+# anchor to) but visually empty — no icon, label, or background — so it takes
+# no visible space. switcher.sh fills the popup on alt-tab.
+sketchybar --add item switcher center \
+           --set switcher \
+                    drawing=on \
+                    width=0 \
+                    icon.drawing=off \
+                    label.drawing=off \
+                    background.drawing=off \
+                    popup.drawing=off \
+                    popup.horizontal=on \
+                    popup.align=center \
+                    popup.background.color=$BG \
+                    popup.background.corner_radius=14 \
+                    popup.background.border_width=1 \
+                    popup.background.border_color=$BORDER
+
 # ─── RIGHT: clock (rightmost), sound, cpu ──────────────────────
 # Sketchybar stacks right-aligned items from right to left in add order,
 # so the FIRST right item added ends up at the far right edge.
