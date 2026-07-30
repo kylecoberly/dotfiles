@@ -35,6 +35,17 @@ export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="$HOME/.fly/bin:$PATH"
 
+# ─── GitHub token for the MCP server ───────────────────────────────────
+# The github plugin's .mcp.json interpolates ${GITHUB_PERSONAL_ACCESS_TOKEN}
+# into its Authorization header. Reading it from the gh keyring at startup
+# keeps the only copy in the login keychain, so `gh auth refresh` is the
+# whole rotation story — nothing to re-paste into a config file.
+# The :- form lets CI/Codespaces inject a token where gh isn't logged in.
+if [[ -z "${GITHUB_PERSONAL_ACCESS_TOKEN:-}" ]] && command -v gh >/dev/null 2>&1; then
+  export GITHUB_PERSONAL_ACCESS_TOKEN="$(gh auth token 2>/dev/null)"
+  [[ -n "$GITHUB_PERSONAL_ACCESS_TOKEN" ]] || unset GITHUB_PERSONAL_ACCESS_TOKEN
+fi
+
 # ─── Keybindings ───────────────────────────────────────────────────────
 bindkey -v                                  # vi-mode
 bindkey -M viins 'jj' vi-cmd-mode
