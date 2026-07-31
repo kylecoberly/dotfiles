@@ -1,5 +1,5 @@
 [general]
-import = ["~/dotfiles/theme/palette.toml"]
+import = ["~/.config/alacritty/palette.toml"]
 
 [bell]
 duration = 10
