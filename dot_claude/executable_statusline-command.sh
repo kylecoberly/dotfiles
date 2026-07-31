@@ -106,4 +106,9 @@ fi
 line2="${model_part}  ${style_part}  ${cost_part}"
 [ -n "$ctx_part" ] && line2="${line2}  ${ctx_part}"
 
+# chezmoi-sync failure marker (see ~/.local/bin/chezmoi-sync)
+if [ -f "$HOME/.cache/chezmoi-sync/last-error" ]; then
+    line1="$(printf "${RED}${BOLD}⚠ sync${RESET}") ${line1}"
+fi
+
 printf "%s\n%s" "$line1" "$line2"
