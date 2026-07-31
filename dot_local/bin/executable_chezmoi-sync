@@ -27,7 +27,8 @@ for f in "${MUTATED[@]}"; do
   fi
 done
 
-chezmoi update --apply || fail "chezmoi update (pull+apply) failed"
+# files only — run_ scripts can need sudo/TTY and belong to interactive applies
+chezmoi update --apply --exclude scripts || fail "chezmoi update (pull+apply) failed"
 chezmoi git -- push --quiet || fail "git push failed"
 
 rm -f "$ERR_FILE"
