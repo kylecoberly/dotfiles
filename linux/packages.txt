@@ -32,7 +32,6 @@ tcpdump
 whois
 
 # Dev
-neovim
 tmux
 gh
 code

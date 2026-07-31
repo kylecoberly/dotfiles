@@ -2,6 +2,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -210,7 +211,8 @@
     "netlify-skills@claude-plugins-official": true,
     "legalzoom@claude-plugins-official": true
   },
+  "tui": "default",
   "theme": "dark-ansi",
-  "skipAutoPermissionPrompt": true,
-  "agentPushNotifEnabled": true
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
 }

@@ -134,6 +134,20 @@ if ! command -v zoom >/dev/null 2>&1; then
   rm /tmp/zoom.deb
 fi
 
+# Ubuntu's apt neovim (24.04: 0.9.5) is capped below what AstroNvim requires
+# (>=0.10.0) — install the official release tarball instead.
+if ! nvim --version 2>/dev/null | head -1 | grep -qE 'NVIM v0\.(1[0-9]|[2-9][0-9])'; then
+  sudo apt-get remove -y neovim neovim-runtime 2>/dev/null || true
+  NVIM_TARBALL_URL=$(curl -fsSL https://api.github.com/repos/neovim/neovim/releases/latest |
+    jq -r '.assets[] | select(.name == "nvim-linux-x86_64.tar.gz") | .browser_download_url')
+  curl -fsSL "$NVIM_TARBALL_URL" -o /tmp/nvim.tar.gz
+  sudo rm -rf /opt/nvim
+  sudo tar -xzf /tmp/nvim.tar.gz -C /opt
+  sudo mv /opt/nvim-linux-x86_64 /opt/nvim
+  sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
+  rm /tmp/nvim.tar.gz
+fi
+
 # Zen Browser ships only as a tarball on Linux — no apt repo, no .deb.
 if ! command -v zen >/dev/null 2>&1; then
   ZEN_TARBALL_URL=$(curl -fsSL https://api.github.com/repos/zen-browser/desktop/releases/latest |

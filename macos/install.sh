@@ -53,14 +53,11 @@ launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/org.felixkratz.sk
 # ─── Peon-ping relay ──────────────────────────────────────────────────
 # LaunchAgent runs `peon relay` in the foreground (no --daemon — launchd
 # manages the process). KeepAlive only on crash so `peon relay --stop`
-# still works. Plist is templated for the local brew prefix.
+# still works. Plist is templated for the local brew prefix — install-relay.sh
+# re-resolves it independently so it's also safe to re-run standalone (e.g.
+# over SSH) after a Homebrew prefix change breaks the relay.
 if command -v peon >/dev/null 2>&1; then
-  PEON_BIN="$(command -v peon)"
-  PEON_PLIST="$HOME/Library/LaunchAgents/com.peon-ping.relay.plist"
-  sed -e "s|__PEON_BIN__|$PEON_BIN|g" -e "s|__HOME__|$HOME|g" \
-    "$DOTFILES/macos/peon/com.peon-ping.relay.plist" > "$PEON_PLIST"
-  launchctl bootout "gui/$(id -u)/com.peon-ping.relay" 2>/dev/null || true
-  launchctl bootstrap "gui/$(id -u)" "$PEON_PLIST"
+  "$DOTFILES/macos/peon/install-relay.sh"
 fi
 
 # ─── Karabiner ────────────────────────────────────────────────────────

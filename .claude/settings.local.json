@@ -65,7 +65,12 @@
       "Bash(chmod +x /Users/kylecoberly/dotfiles/theme/regenerate.sh)",
       "Bash(/Users/kylecoberly/dotfiles/theme/regenerate.sh)",
       "Bash(git reset *)",
-      "Bash(git -C /Users/kylecoberly/dotfiles log --oneline --all -- '**/.yabairc' '**/.skhdrc' '**/.markdownlintrc')"
+      "Bash(git -C /Users/kylecoberly/dotfiles log --oneline --all -- '**/.yabairc' '**/.skhdrc' '**/.markdownlintrc')",
+      "Bash(nvim --version)",
+      "Bash(command -v mise)",
+      "Bash(mise list *)",
+      "Bash(dpkg -l)",
+      "Bash(nvim --headless \"+q\")"
     ]
   }
 }
