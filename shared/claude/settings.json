@@ -2,7 +2,6 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus",
   "hooks": {
     "SessionStart": [
       {
@@ -207,10 +206,13 @@
     "deploy-on-aws@claude-plugins-official": true,
     "aws-serverless@claude-plugins-official": true,
     "netlify-skills@claude-plugins-official": true,
-    "legalzoom@claude-plugins-official": true
+    "legalzoom@claude-plugins-official": true,
+    "vercel@claude-plugins-official": true
   },
-  "tui": "default",
+  "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "model": "fable"
 }
