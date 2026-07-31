@@ -61,7 +61,7 @@ persistent-workspaces = ["1", "2", "3"]
     # alt-tab / alt-shift-tab are handled by Karabiner (window switcher with a
     # sketchybar popup, commit on option-release) — Karabiner intercepts the
     # keys before AeroSpace, so there is no binding here. See
-    # macos/aerospace/scripts/switcher.sh and the karabiner.json switcher rule.
+    # ~/.config/aerospace/scripts/switcher.sh and the karabiner.json switcher rule.
 
     # Focus workspace (yabai: alt - 1..4)
     alt-1 = 'workspace 1'
