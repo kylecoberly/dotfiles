@@ -1,15 +1,14 @@
 #!/usr/bin/env bash
 # Installs/repairs the peon-ping relay LaunchAgent. Self-contained: resolves
 # the Homebrew prefix itself rather than trusting the caller's PATH, so it
-# works from a plain non-interactive SSH command (`ssh mac 'dotfiles/macos/peon/install-relay.sh'`)
-# and not just when sourced from install.sh inside an interactive shell.
+# works from a plain non-interactive SSH command
+# (`ssh mac 'dotfiles/machine/darwin/peon/install-relay.sh'`) and not just
+# from the chezmoi run_onchange service script.
 #
 # Re-run this any time `peon relay` is dead in `launchctl list` — the usual
 # cause is `peon` moving Homebrew prefix (Intel /usr/local vs Apple Silicon
 # /opt/homebrew) out from under the plist's hardcoded binary path.
 set -euo pipefail
-
-DOTFILES="${DOTFILES:-$HOME/dotfiles}"
 
 if [[ -x /opt/homebrew/bin/brew ]]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -28,7 +27,7 @@ PEON_PLIST="$HOME/Library/LaunchAgents/com.peon-ping.relay.plist"
 
 mkdir -p "$HOME/Library/LaunchAgents"
 sed -e "s|__PEON_BIN__|$PEON_BIN|g" -e "s|__HOME__|$HOME|g" \
-  "$DOTFILES/macos/peon/com.peon-ping.relay.plist" > "$PEON_PLIST"
+  "$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/com.peon-ping.relay.plist" > "$PEON_PLIST"
 
 launchctl bootout "gui/$(id -u)/com.peon-ping.relay" 2>/dev/null || true
 launchctl bootstrap "gui/$(id -u)" "$PEON_PLIST"

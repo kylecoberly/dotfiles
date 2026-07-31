@@ -46,7 +46,7 @@
                     }
                   },
                   {
-                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh open --last"
+                    "shell_command": "$HOME/.config/aerospace/scripts/switcher.sh open --last"
                   }
                 ]
               },
@@ -70,7 +70,7 @@
                 ],
                 "to": [
                   {
-                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh prev"
+                    "shell_command": "$HOME/.config/aerospace/scripts/switcher.sh prev"
                   }
                 ]
               },
@@ -99,7 +99,7 @@
                     }
                   },
                   {
-                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh open"
+                    "shell_command": "$HOME/.config/aerospace/scripts/switcher.sh open"
                   }
                 ]
               },
@@ -122,7 +122,7 @@
                 ],
                 "to": [
                   {
-                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh next"
+                    "shell_command": "$HOME/.config/aerospace/scripts/switcher.sh next"
                   }
                 ]
               },
@@ -151,7 +151,7 @@
                     }
                   },
                   {
-                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh cancel"
+                    "shell_command": "$HOME/.config/aerospace/scripts/switcher.sh cancel"
                   }
                 ]
               },
@@ -178,7 +178,7 @@
                     }
                   },
                   {
-                    "shell_command": "/Users/kylecoberly/dotfiles/macos/aerospace/scripts/switcher.sh commit"
+                    "shell_command": "$HOME/.config/aerospace/scripts/switcher.sh commit"
                   }
                 ]
               }

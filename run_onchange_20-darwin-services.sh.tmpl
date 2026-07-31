@@ -1,0 +1,28 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Service wiring. Re-runs when the sketchybar plist or swipe/relay installers change:
+# sketchybar plist hash: {{ include "Library/LaunchAgents/org.felixkratz.sketchybar.plist" | sha256sum }}
+# swipe installer hash:  {{ include "machine/darwin/aerospace-swipe/install-swipe.sh" | sha256sum }}
+# relay installer hash:  {{ include "machine/darwin/peon/install-relay.sh" | sha256sum }}
+set -euo pipefail
+
+# Sketchybar — build from source (v2.17+ needs a newer SDK than some Xcodes)
+if ! command -v sketchybar >/dev/null 2>&1; then
+  SB_BUILD="$(mktemp -d)"
+  git clone --depth=1 --branch v2.16.4 https://github.com/FelixKratz/SketchyBar.git "$SB_BUILD/SketchyBar"
+  (cd "$SB_BUILD/SketchyBar" && make)
+  sudo cp "$SB_BUILD/SketchyBar/bin/sketchybar" /usr/local/bin/sketchybar
+  sudo chmod +x /usr/local/bin/sketchybar
+  rm -rf "$SB_BUILD"
+fi
+launchctl bootout "gui/$(id -u)/org.felixkratz.sketchybar" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/org.felixkratz.sketchybar.plist"
+
+# Aerospace trackpad-swipe daemon (one-time Accessibility grant; script prints how)
+"{{ .chezmoi.sourceDir }}/machine/darwin/aerospace-swipe/install-swipe.sh"
+
+# Peon-ping relay LaunchAgent
+if command -v peon >/dev/null 2>&1; then
+  "{{ .chezmoi.sourceDir }}/machine/darwin/peon/install-relay.sh"
+fi
+{{ end -}}

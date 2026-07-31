@@ -96,7 +96,7 @@ persistent-workspaces = ["1", "2", "3"]
     alt-e = 'layout tiles horizontal vertical'
     alt-s = 'layout accordion horizontal vertical'
     alt-0 = 'balance-sizes'
-    alt-o = 'exec-and-forget ~/dotfiles/macos/aerospace/scripts/toggle-float.sh'
+    alt-o = 'exec-and-forget ~/.config/aerospace/scripts/toggle-float.sh'
 
     # Rotate (yabai: alt - r) — aerospace has no rotate; closest is flattening + re-tiling
     alt-r = 'flatten-workspace-tree'
@@ -112,7 +112,7 @@ persistent-workspaces = ["1", "2", "3"]
 
     # Mode entry — match original skhd trigger keys
     alt-semicolon = 'mode arrange'  # was alt - 0x29
-    alt-slash     = 'exec-and-forget ~/dotfiles/macos/aerospace/scripts/enter-resize-if-floating.sh'
+    alt-slash     = 'exec-and-forget ~/.config/aerospace/scripts/enter-resize-if-floating.sh'
     alt-quote     = 'mode service'  # was alt - 0x27
 
 # ============================================================================
@@ -160,7 +160,7 @@ persistent-workspaces = ["1", "2", "3"]
     e = 'layout tiles horizontal vertical'
     s = 'layout accordion horizontal vertical'
     0 = 'balance-sizes'
-    o = 'exec-and-forget ~/dotfiles/macos/aerospace/scripts/toggle-float.sh'
+    o = 'exec-and-forget ~/.config/aerospace/scripts/toggle-float.sh'
     r = 'flatten-workspace-tree'
     # NOTE: yabai's arrange-mode [/] bound windows to left/right half-screen grids.
     # aerospace has no half-screen grid command; omitted.
@@ -168,7 +168,7 @@ persistent-workspaces = ["1", "2", "3"]
     # Mode exits
     q = 'mode main'
     esc = 'mode main'
-    alt-slash = 'exec-and-forget ~/dotfiles/macos/aerospace/scripts/enter-resize-if-floating.sh'
+    alt-slash = 'exec-and-forget ~/.config/aerospace/scripts/enter-resize-if-floating.sh'
     alt-quote = 'mode service'
 
 # ============================================================================
@@ -215,14 +215,14 @@ persistent-workspaces = ["1", "2", "3"]
     ctrl-s = 'exec-and-forget sudo shutdown -h now'
 
     # Aerospace extras — useful service-mode commands
-    f = ['exec-and-forget ~/dotfiles/macos/aerospace/scripts/toggle-float.sh', 'mode main']
+    f = ['exec-and-forget ~/.config/aerospace/scripts/toggle-float.sh', 'mode main']
     backspace = ['close-all-windows-but-current', 'mode main']
 
     # Mode exits
     q = 'mode main'
     esc = 'mode main'
     alt-semicolon = 'mode arrange'
-    alt-slash = 'exec-and-forget ~/dotfiles/macos/aerospace/scripts/enter-resize-if-floating.sh'
+    alt-slash = 'exec-and-forget ~/.config/aerospace/scripts/enter-resize-if-floating.sh'
 
 # ============================================================================
 # Window rules — yabai `manage=off` → aerospace `layout floating`

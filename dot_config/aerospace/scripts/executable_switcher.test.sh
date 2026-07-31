@@ -3,7 +3,10 @@
 set -uo pipefail
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# In the applied tree the sibling is switcher.sh; in the chezmoi source tree
+# it carries the executable_ attribute prefix.
 SCRIPT="$DIR/switcher.sh"
+[ -f "$SCRIPT" ] || SCRIPT="$DIR/executable_switcher.sh"
 TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 

@@ -1,0 +1,14 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+set -euo pipefail
+defaults write com.apple.dock no-bouncing -bool true
+defaults write com.apple.dock expose-group-apps -bool true
+defaults write com.apple.dock expose-animation-duration -float 0.1
+defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+defaults write -g NSWindowResizeTime -float 0.001
+defaults write com.apple.Finder AppleShowAllFiles -bool true
+# Disable native 3-finger horizontal Spaces swipe — fights aerospace-swipe
+defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+killall Dock 2>/dev/null || true
+{{ end -}}
