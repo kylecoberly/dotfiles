@@ -1,0 +1,21 @@
+{{ if eq .chezmoi.os "darwin" -}}
+#!/usr/bin/env bash
+# Re-runs when the Brewfile changes:
+# Brewfile hash: {{ include "machine/darwin/Brewfile" | sha256sum }}
+set -euo pipefail
+
+if ! command -v brew >/dev/null 2>&1; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
+if [[ -x /opt/homebrew/bin/brew ]]; then eval "$(/opt/homebrew/bin/brew shellenv)"; fi
+if [[ -x /usr/local/bin/brew ]]; then eval "$(/usr/local/bin/brew shellenv)"; fi
+
+brew bundle --file="{{ .chezmoi.sourceDir }}/machine/darwin/Brewfile"
+
+# Claude Code — native installer (self-updates; not the brew cask)
+command -v claude >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash
+
+# Font — per-user install, no sudo
+mkdir -p "$HOME/Library/Fonts"
+cp -f "{{ .chezmoi.sourceDir }}/machine/fonts/Noto Mono Nerd Font Complete.ttf" "$HOME/Library/Fonts/"
+{{ end -}}

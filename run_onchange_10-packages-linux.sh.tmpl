@@ -1,0 +1,70 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+# Headless Ubuntu server packages. Re-runs when this file's content changes.
+# GUI apps, browsers, alacritty, desktop repos, fonts, and GNOME/X11
+# integration were dropped when Serena went headless; Obsidian runs in its
+# own desktop-emulator container, not on the host.
+set -euo pipefail
+
+sudo dpkg --configure -a
+sudo apt-get update
+
+# 1password-cli needs 1Password's apt repo
+if [ ! -f /usr/share/keyrings/1password-archive-keyring.gpg ]; then
+  curl -sS https://downloads.1password.com/linux/keys/1password.asc |
+    sudo gpg --dearmor --output /usr/share/keyrings/1password-archive-keyring.gpg
+  echo 'deb [arch=amd64 signed-by=/usr/share/keyrings/1password-archive-keyring.gpg] https://downloads.1password.com/linux/debian/amd64 stable main' |
+    sudo tee /etc/apt/sources.list.d/1password.list
+  sudo apt-get update
+fi
+
+sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+  -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold \
+  zsh git curl wget jq zoxide bat ripgrep fd-find eza tldr tree htop ncdu \
+  nmap ranger ffmpeg p7zip-full unzip imagemagick graphviz tcpdump whois \
+  tmux gh git-delta entr pipx build-essential postgresql \
+  autoconf bison libssl-dev libyaml-dev libreadline-dev libffi-dev \
+  libgmp-dev libgdbm-dev libdb-dev libncurses-dev uuid-dev \
+  1password-cli
+
+# ── Tools without apt packages ──
+command -v mise     >/dev/null 2>&1 || curl https://mise.run | sh
+command -v starship >/dev/null 2>&1 || curl -sS https://starship.rs/install.sh | sh -s -- -y
+command -v flyctl   >/dev/null 2>&1 || curl -L https://fly.io/install.sh | sh
+command -v docker   >/dev/null 2>&1 || curl -fsSL https://get.docker.com | sh
+command -v claude   >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash
+command -v peon     >/dev/null 2>&1 || curl -fsSL https://raw.githubusercontent.com/PeonPing/peon-ping/main/install.sh | bash
+
+if ! command -v aws >/dev/null 2>&1; then
+  curl -sS "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
+  unzip -qo /tmp/awscliv2.zip -d /tmp
+  sudo /tmp/aws/install
+  rm -rf /tmp/awscliv2.zip /tmp/aws
+fi
+
+# apt fzf predates `fzf --zsh` (needs 0.48+)
+if ! command -v fzf >/dev/null 2>&1 || ! fzf --zsh >/dev/null 2>&1; then
+  FZF_VERSION=0.56.3
+  mkdir -p "$HOME/.local/bin"
+  curl -fsSL "https://github.com/junegunn/fzf/releases/download/v${FZF_VERSION}/fzf-${FZF_VERSION}-linux_amd64.tar.gz" |
+    tar -xz -C "$HOME/.local/bin"
+fi
+
+if ! command -v just >/dev/null 2>&1; then
+  mkdir -p "$HOME/.local/bin"
+  curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to "$HOME/.local/bin"
+fi
+
+# apt neovim is capped below AstroNvim's floor (>=0.10)
+if ! nvim --version 2>/dev/null | head -1 | grep -qE 'NVIM v0\.(1[0-9]|[2-9][0-9])'; then
+  sudo apt-get remove -y neovim neovim-runtime 2>/dev/null || true
+  NVIM_TARBALL_URL=$(curl -fsSL https://api.github.com/repos/neovim/neovim/releases/latest |
+    jq -r '.assets[] | select(.name == "nvim-linux-x86_64.tar.gz") | .browser_download_url')
+  curl -fsSL "$NVIM_TARBALL_URL" -o /tmp/nvim.tar.gz
+  sudo rm -rf /opt/nvim
+  sudo tar -xzf /tmp/nvim.tar.gz -C /opt
+  sudo mv /opt/nvim-linux-x86_64 /opt/nvim
+  sudo ln -sf /opt/nvim/bin/nvim /usr/local/bin/nvim
+  rm /tmp/nvim.tar.gz
+fi
+{{ end -}}
