@@ -41,7 +41,7 @@ brew "entr"
 brew "pipx"
 brew "postgresql@17"
 cask "visual-studio-code"
-cask "docker"
+cask "orbstack"
 cask "bruno"
 
 # Productivity
@@ -51,7 +51,7 @@ cask "obsidian"
 cask "libreoffice"
 cask "zoom"
 cask "gimp"
-cask "handbrake"
+cask "handbrake-app"
 cask "vlc"
 
 # Browsers
