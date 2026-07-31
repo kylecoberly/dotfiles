@@ -3,9 +3,9 @@
 # After editing palette.sh, run: ./theme/regenerate.sh
 #
 # Updates:
-#   theme/palette.toml          (alacritty)
-#   theme/palette.lua           (neovim helper)
-#   shared/zsh/starship.toml    (between palette markers only)
+#   dot_config/alacritty/palette.toml   (alacritty, applied by chezmoi)
+#   theme/palette.lua                   (neovim helper, read in place)
+#   dot_config/starship.toml            (between palette markers only)
 
 set -euo pipefail
 
@@ -20,7 +20,7 @@ source "$THEME_DIR/palette.sh"
 # Normal slots use the standard accent values; bright slots reuse the same
 # accents (TN doesn't ship distinct bright variants), with bg_dark for
 # normal black and a lighter grey for bright black.
-cat > "$THEME_DIR/palette.toml" <<EOF
+cat > "$DOTFILES/dot_config/alacritty/palette.toml" <<EOF
 # Tokyo Night — Night variant
 # GENERATED from theme/palette.sh by regenerate.sh — do not edit by hand.
 
@@ -77,7 +77,7 @@ EOF
 
 # ─── zsh/starship.toml [palettes.tokyonight] block ─────────────────────
 # Replaces lines between "# >>> palette ..." and "# <<< palette" markers.
-STARSHIP="$DOTFILES/shared/zsh/starship.toml"
+STARSHIP="$DOTFILES/dot_config/starship.toml"
 [[ -f "$STARSHIP" ]] || { echo "missing: $STARSHIP" >&2; exit 1; }
 grep -q '^# >>> palette' "$STARSHIP" || { echo "missing palette markers in $STARSHIP" >&2; exit 1; }
 
@@ -117,6 +117,7 @@ EOF
 mv "$STARSHIP.tmp" "$STARSHIP"
 
 echo "regenerated:"
-echo "  $THEME_DIR/palette.toml"
+echo "  $DOTFILES/dot_config/alacritty/palette.toml"
 echo "  $THEME_DIR/palette.lua"
 echo "  $STARSHIP (palette block)"
+echo "→ run 'chezmoi apply' to propagate to ~/.config."

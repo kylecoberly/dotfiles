@@ -5,17 +5,17 @@ Canonical palette: **Tokyo Night — Night variant**.
 ## How to change a color
 
 1. Edit `palette.sh` (the only hand-maintained file).
-2. Run `./theme/regenerate.sh`.
-3. Reload affected tools: `tmux source-file ~/dotfiles/shared/tmux/tmux.conf.local`, `sketchybar --reload`, restart Alacritty / Neovim.
+2. Run `./theme/regenerate.sh`, then `chezmoi apply`.
+3. Reload affected tools: `tmux source-file ~/.config/tmux/tmux.conf`, `sketchybar --reload`, restart Alacritty / Neovim.
 
 ## Files
 
-- `palette.sh` — **canonical source.** Hand-maintained. Sourced directly by:
-  - `shared/tmux/tmux.conf.local` via `source-file`
-  - `macos/sketchybar/sketchybarrc` and `plugins/space.sh` via `source`
-- `palette.toml` — generated. Imported by `shared/alacritty/alacritty.toml`.
-- `palette.lua` — generated. Available to Neovim (tokyonight.nvim has its own; this is for ad-hoc lua references).
-- `shared/zsh/starship.toml` — the `[palettes.tokyonight]` block between `# >>> palette` and `# <<< palette` markers is generated; the rest of the file (format strings) is hand-maintained and references palette names like `bg:magenta` instead of hex.
+- `palette.sh` — **canonical source.** Hand-maintained. Sourced directly (at `~/dotfiles/theme/palette.sh`) by:
+  - `dot_config/tmux/tmux.conf` via `source-file`
+  - `dot_config/sketchybar/executable_sketchybarrc` and `plugins/executable_space.sh` via `source`
+- `dot_config/alacritty/palette.toml` — generated. Imported by the applied `~/.config/alacritty/alacritty.toml`.
+- `palette.lua` — generated. Read by `dot_config/nvim/lua/plugins/tokyonight.lua` from `~/dotfiles/theme/palette.lua`.
+- `dot_config/starship.toml` — the `[palettes.tokyonight]` block between `# >>> palette` and `# <<< palette` markers is generated; the rest of the file (format strings) is hand-maintained and references palette names like `bg:magenta` instead of hex.
 
 `regenerate.sh` overwrites the three generated targets from `palette.sh`. Don't edit them by hand — changes will be lost on the next regen.
 
