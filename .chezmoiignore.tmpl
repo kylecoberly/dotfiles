@@ -1,0 +1,19 @@
+README.md
+docs
+theme
+tests
+machine
+# migration shims — legacy tree, deleted task-by-task; drop these lines in the final sweep
+install.sh
+shared
+macos
+linux
+{{ if ne .chezmoi.os "darwin" }}
+.config/aerospace
+.config/karabiner
+.config/sketchybar
+Library
+{{ end }}
+{{ if ne .chezmoi.os "linux" }}
+.config/systemd
+{{ end }}
