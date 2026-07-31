@@ -1,0 +1,23 @@
+#!/usr/bin/env python3
+# chezmoi modify_ script: karabiner.json = repo rules + THIS machine's device
+# state. Karabiner writes `devices` and `keyboard_type_v2` into the live file
+# when you answer its "identify keyboard" prompt; that state is per-machine,
+# so it must never live in the shared source (two Macs would ping-pong it
+# through chezmoi-sync). Rules come from machine/darwin/karabiner-base.json.
+import json
+import sys
+
+base = json.load(open("{{ .chezmoi.sourceDir }}/machine/darwin/karabiner-base.json"))
+raw = sys.stdin.read().strip()
+if raw:
+    try:
+        live_profile = json.loads(raw).get("profiles", [{}])[0]
+        base_profile = base["profiles"][0]
+        if live_profile.get("devices"):
+            base_profile["devices"] = live_profile["devices"]
+        keyboard_type = live_profile.get("virtual_hid_keyboard", {}).get("keyboard_type_v2")
+        if keyboard_type:
+            base_profile.setdefault("virtual_hid_keyboard", {})["keyboard_type_v2"] = keyboard_type
+    except ValueError:
+        pass  # corrupt live file: fall back to pure base
+print(json.dumps(base, indent=4))

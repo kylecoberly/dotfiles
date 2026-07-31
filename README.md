@@ -28,10 +28,13 @@ it anywhere.)
 
 - Config changes: edit in `~/dotfiles` (or `chezmoi edit`), `chezmoi apply`;
   autoCommit/autoPush handle git.
-- Runtime-mutated files (Claude settings, karabiner.json): captured by
+- Runtime-mutated files (Claude settings): captured by
   `chezmoi-sync` (launchd/systemd, every 30 min) via `chezmoi re-add`, then
   pull+apply+push. Failures surface as `⚠ sync` in the Claude statusline;
   check `~/.cache/chezmoi-sync/last-error`.
+- karabiner.json: rules live in `machine/darwin/karabiner-base.json`; a
+  `modify_` script merges them with each machine's own device state at apply
+  time, so multiple Macs never fight over `devices`.
 - Claude plans (`ExitPlanMode` hook) and `/save-artifact` write into the
   Obsidian vault at `zz_/plans|artifacts/<account>/<project>/` — Obsidian
   Sync is their transport, not git. The account (`personal`/`work`) is

@@ -16,10 +16,11 @@ command -v chezmoi >/dev/null 2>&1 || fail "chezmoi not on PATH"
 
 # Files that tools rewrite at runtime; live copy wins, repo captures it.
 # (autoCommit/autoPush in chezmoi config commit+push each re-add.)
+# karabiner.json is NOT here: its modify_ script preserves per-machine device
+# state at apply time, and its rules are edited in the repo, not the UI.
 MUTATED=(
   "$HOME/.claude/settings.json"
   "$HOME/.claude/CLAUDE.md"
-  "$HOME/.config/karabiner/karabiner.json"
 )
 for f in "${MUTATED[@]}"; do
   if [ -f "$f" ]; then
