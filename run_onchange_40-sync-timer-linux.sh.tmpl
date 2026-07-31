@@ -1,0 +1,7 @@
+{{ if eq .chezmoi.os "linux" -}}
+#!/usr/bin/env bash
+# timer hash: {{ include "dot_config/systemd/user/chezmoi-sync.timer" | sha256sum }}
+set -euo pipefail
+systemctl --user daemon-reload
+systemctl --user enable --now chezmoi-sync.timer
+{{ end -}}

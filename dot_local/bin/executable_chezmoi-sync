@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+# Periodic sync: capture runtime-mutated files, pull+apply, push.
+# On failure: stop and surface (statusline shows ⚠ sync) — never force.
+set -uo pipefail
+
+STATE_DIR="$HOME/.cache/chezmoi-sync"
+mkdir -p "$STATE_DIR"
+ERR_FILE="$STATE_DIR/last-error"
+
+fail() {
+  printf '%s\n%s\n' "$(date -Iseconds)" "$1" > "$ERR_FILE"
+  exit 1
+}
+
+command -v chezmoi >/dev/null 2>&1 || fail "chezmoi not on PATH"
+
+# Files that tools rewrite at runtime; live copy wins, repo captures it.
+# (autoCommit/autoPush in chezmoi config commit+push each re-add.)
+MUTATED=(
+  "$HOME/.claude/settings.json"
+  "$HOME/.claude/CLAUDE.md"
+  "$HOME/.config/karabiner/karabiner.json"
+)
+for f in "${MUTATED[@]}"; do
+  if [ -f "$f" ]; then
+    chezmoi re-add "$f" || fail "chezmoi re-add $f failed"
+  fi
+done
+
+chezmoi update --apply || fail "chezmoi update (pull+apply) failed"
+chezmoi git -- push --quiet || fail "git push failed"
+
+rm -f "$ERR_FILE"

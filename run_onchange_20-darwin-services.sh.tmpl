@@ -4,6 +4,7 @@
 # sketchybar plist hash: {{ include "Library/LaunchAgents/org.felixkratz.sketchybar.plist" | sha256sum }}
 # swipe installer hash:  {{ include "machine/darwin/aerospace-swipe/install-swipe.sh" | sha256sum }}
 # relay installer hash:  {{ include "machine/darwin/peon/install-relay.sh" | sha256sum }}
+# chezmoi-sync plist hash: {{ include "Library/LaunchAgents/com.kylecoberly.chezmoi-sync.plist" | sha256sum }}
 set -euo pipefail
 
 # Sketchybar — build from source (v2.17+ needs a newer SDK than some Xcodes)
@@ -25,4 +26,8 @@ launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/org.felixkratz.sk
 if command -v peon >/dev/null 2>&1; then
   "{{ .chezmoi.sourceDir }}/machine/darwin/peon/install-relay.sh"
 fi
+
+# chezmoi periodic sync
+launchctl bootout "gui/$(id -u)/com.kylecoberly.chezmoi-sync" 2>/dev/null || true
+launchctl bootstrap "gui/$(id -u)" "$HOME/Library/LaunchAgents/com.kylecoberly.chezmoi-sync.plist"
 {{ end -}}
