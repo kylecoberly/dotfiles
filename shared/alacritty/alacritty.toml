@@ -27,3 +27,6 @@ startup_mode = "Maximized"
 key = "Enter"
 mods = "Shift"
 chars = "\u001b\r"
+
+[env]
+TERM = "xterm-256color"
