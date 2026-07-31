@@ -18,9 +18,13 @@ echo '{"oauthAccount":{"emailAddress":"Someone.Else@Corp.IO"}}' > "$TMP/claude.j
 # vault resolution
 mkdir "$TMP/vault"
 [ "$(OBSIDIAN_VAULT=$TMP/vault HOME=$TMP resolve_vault)" = "$TMP/vault" ] || fail "explicit vault wins"
-if OBSIDIAN_VAULT=$TMP/nope HOME=$TMP resolve_vault >/dev/null 2>&1; then fail "no vault should return 1"; fi
-mkdir -p "$TMP/Documents/notes"
-[ "$(OBSIDIAN_VAULT=$TMP/nope HOME=$TMP resolve_vault)" = "$TMP/Documents/notes" ] || fail "home fallback"
+# the /mnt fallback is a real absolute path — on machines that have it
+# (Serena) the no-vault and home-fallback branches are unreachable by design
+if [ ! -d /mnt/files/application-data/obsidian/notes ]; then
+  if OBSIDIAN_VAULT=$TMP/nope HOME=$TMP resolve_vault >/dev/null 2>&1; then fail "no vault should return 1"; fi
+  mkdir -p "$TMP/Documents/notes"
+  [ "$(OBSIDIAN_VAULT=$TMP/nope HOME=$TMP resolve_vault)" = "$TMP/Documents/notes" ] || fail "home fallback"
+fi
 
 # project resolution
 mkdir -p "$TMP/proj/sub" && git -C "$TMP/proj" init -q
