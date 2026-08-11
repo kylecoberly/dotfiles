@@ -2,6 +2,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "fable",
   "hooks": {
     "SessionStart": [
       {
@@ -157,6 +158,16 @@
             "timeout": 5
           }
         ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/save-plan/save-superpowers-doc.sh",
+            "timeout": 5
+          }
+        ]
       }
     ],
     "PreCompact": [
@@ -209,10 +220,9 @@
     "legalzoom@claude-plugins-official": true,
     "vercel@claude-plugins-official": true
   },
-  "tui": "fullscreen",
+  "tui": "default",
   "skipWorkflowUsageWarning": true,
   "theme": "dark-ansi",
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "model": "fable"
+  "skipAutoPermissionPrompt": true
 }

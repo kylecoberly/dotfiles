@@ -33,9 +33,11 @@ resolve_account() {
 }
 
 resolve_project() {
-  local cwd="${1:-$PWD}" repo_root
-  if repo_root=$(git -C "$cwd" rev-parse --show-toplevel 2>/dev/null); then
-    basename "$repo_root"
+  local cwd="${1:-$PWD}" common_dir
+  # --git-common-dir (not --show-toplevel) so a worktree resolves to the main
+  # checkout's name; otherwise every worktree opens its own vault folder.
+  if common_dir=$(git -C "$cwd" rev-parse --path-format=absolute --git-common-dir 2>/dev/null); then
+    basename "$(dirname "$common_dir")"
   elif [ "$cwd" = "$HOME" ]; then
     echo home
   else
