@@ -3,4 +3,4 @@ Description=chezmoi periodic sync
 
 [Service]
 Type=oneshot
-ExecStart=/bin/bash -lc "$HOME/.local/bin/chezmoi-sync"
+ExecStart=/bin/bash -lc "%h/.local/bin/chezmoi-sync"
