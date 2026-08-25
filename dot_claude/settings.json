@@ -1,10 +1,24 @@
 {
   "permissions": {
+    "allow": [
+      "Bash(bash /Users/kylecoberly/.claude/local-plugins/nsls-builder-toolkit/hooks/skill-event.sh)"
+    ],
     "defaultMode": "auto"
   },
   "model": "opus",
   "hooks": {
     "SessionStart": [
+      {
+        "matcher": "startup",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 -c \"exec(open('/Users/kylecoberly/.claude/local-plugins/nsls-builder-toolkit/hooks/session-start.py').read())\"",
+            "timeout": 90,
+            "statusMessage": "Syncing builder toolkit..."
+          }
+        ]
+      },
       {
         "matcher": "",
         "hooks": [
@@ -133,6 +147,17 @@
             "async": true
           }
         ]
+      },
+      {
+        "matcher": "Skill",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash /Users/kylecoberly/.claude/local-plugins/nsls-builder-toolkit/hooks/skill-event.sh",
+            "timeout": 5,
+            "statusMessage": "Logging skill use so you get NSLS credit (nothing else)…"
+          }
+        ]
       }
     ],
     "PostToolUseFailure": [
@@ -218,7 +243,24 @@
     "aws-serverless@claude-plugins-official": true,
     "netlify-skills@claude-plugins-official": true,
     "legalzoom@claude-plugins-official": true,
-    "vercel@claude-plugins-official": true
+    "vercel@claude-plugins-official": true,
+    "nsls-builder-toolkit@local": true,
+    "compound-engineering@compound-engineering-plugin": true,
+    "nsls-builder-toolkit@nsls-toolkit": true
+  },
+  "extraKnownMarketplaces": {
+    "compound-engineering-plugin": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/EveryInc/compound-engineering-plugin.git"
+      }
+    },
+    "nsls-toolkit": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/thensls/nsls-builder-toolkit.git"
+      }
+    }
   },
   "tui": "default",
   "skipWorkflowUsageWarning": true,
