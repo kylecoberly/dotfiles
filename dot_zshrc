@@ -99,6 +99,9 @@ source "$HOME/.config/zsh/osc7.zsh"
 alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
 [ -f $HOME/.claude/hooks/peon-ping/completions.bash ] && source $HOME/.claude/hooks/peon-ping/completions.bash
 
+# Claude Code shortcut
+alias cc='claude'
+
 # NSLS work sessions run in their own CLAUDE_CONFIG_DIR, not ~/.claude. The org
 # toolkit reports every skill call to an NSLS tracker keyed on the account's
 # email, so binding the toolkit to a config dir is what keeps work telemetry off
