@@ -1,24 +1,10 @@
 {
   "permissions": {
-    "allow": [
-      "Bash(bash /Users/kylecoberly/.claude/local-plugins/nsls-builder-toolkit/hooks/skill-event.sh)"
-    ],
     "defaultMode": "auto"
   },
   "model": "opus",
   "hooks": {
     "SessionStart": [
-      {
-        "matcher": "startup",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "python3 -c \"exec(open('/Users/kylecoberly/.claude/local-plugins/nsls-builder-toolkit/hooks/session-start.py').read())\"",
-            "timeout": 90,
-            "statusMessage": "Syncing builder toolkit..."
-          }
-        ]
-      },
       {
         "matcher": "",
         "hooks": [
@@ -147,17 +133,6 @@
             "async": true
           }
         ]
-      },
-      {
-        "matcher": "Skill",
-        "hooks": [
-          {
-            "type": "command",
-            "command": "bash /Users/kylecoberly/.claude/local-plugins/nsls-builder-toolkit/hooks/skill-event.sh",
-            "timeout": 5,
-            "statusMessage": "Logging skill use so you get NSLS credit (nothing else)…"
-          }
-        ]
       }
     ],
     "PostToolUseFailure": [
@@ -244,21 +219,13 @@
     "netlify-skills@claude-plugins-official": true,
     "legalzoom@claude-plugins-official": true,
     "vercel@claude-plugins-official": true,
-    "nsls-builder-toolkit@local": true,
-    "compound-engineering@compound-engineering-plugin": true,
-    "nsls-builder-toolkit@nsls-toolkit": true
+    "compound-engineering@compound-engineering-plugin": true
   },
   "extraKnownMarketplaces": {
     "compound-engineering-plugin": {
       "source": {
         "source": "git",
         "url": "https://github.com/EveryInc/compound-engineering-plugin.git"
-      }
-    },
-    "nsls-toolkit": {
-      "source": {
-        "source": "git",
-        "url": "https://github.com/thensls/nsls-builder-toolkit.git"
       }
     }
   },
@@ -273,24 +240,24 @@
       "**Organization**: None configured",
       "**Cloud provider(s)**: None configured",
       "**Repository visibility**: assume private unless the remote host and repo name indicate otherwise, or a visibility check in the transcript shows public",
-      "**Internal sharing / snippet hosting**: None configured — treat public paste/gist services as outside the trust boundary",
+      "**Internal sharing / snippet hosting**: None configured \u2014 treat public paste/gist services as outside the trust boundary",
       "**Secrets management**: None configured",
-      "**Default / protected branches**: unknown — no git remotes configured and origin/HEAD unset for this repo",
+      "**Default / protected branches**: unknown \u2014 no git remotes configured and origin/HEAD unset for this repo",
       "**CI/CD deploy targets**: None configured",
       "**Network posture**: None configured",
-      "**Source control**: The trusted repo only (no remotes configured) — no additional orgs configured",
+      "**Source control**: The trusted repo only (no remotes configured) \u2014 no additional orgs configured",
       "**Trusted internal domains**: None configured",
       "**Trusted cloud buckets**: None configured",
       "**Key internal services**: None configured",
       "**Internal package registry**: None configured",
       "**Sensitive data locations & audiences**: any file or store holding personal data, confidential business data, credentials, regulated data, or similarly sensitive material; preserve exact handles when known and share only with audiences cleared at the [named+specifics] bar",
       "**Data retention / declassification**: None configured",
-      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment (hyphen/underscore/dot-delimited — e.g. matches `prod-db`, not `producer`)",
-      "**Protected deployment namespaces / environments**: None configured — fall back to the Sensitive remote targets heuristic",
+      "**Sensitive remote targets**: any namespace, host, or container whose name carries `prod` or `production` as a whole word or name segment (hyphen/underscore/dot-delimited \u2014 e.g. matches `prod-db`, not `producer`)",
+      "**Protected deployment namespaces / environments**: None configured \u2014 fall back to the Sensitive remote targets heuristic",
       "**Protected IaC scopes**: IAM, RBAC, networking, quota, and node-pool resources; anything whose name or tag carries `prod` or `production` as a whole word or name segment",
       "### User-specific",
       "**Primary use of Claude Code**: software development",
-      "**Trusted repo**: The git repository the agent started in (/mnt/files/profiles/shared/Scans) — it has no tracked files and no configured remotes",
+      "**Trusted repo**: The git repository the agent started in (/mnt/files/profiles/shared/Scans) \u2014 it has no tracked files and no configured remotes",
       "**Org-specific CLIs**: None configured"
     ]
   }
