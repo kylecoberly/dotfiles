@@ -102,6 +102,28 @@ alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
 # Claude Code shortcut
 alias cc='claude'
 
+# ─── tmux ──────────────────────────────────────────────────────────────
+# Bare `tmux` is `tmux new-session`, so every attach spawned another session
+# and they piled up. Reuse the most recently used session instead, and create
+# one only when there is nothing to attach to.
+#
+# A function, not an alias: an alias expands only the FIRST word, so `tmux ls`
+# would become `tmux attach ls`. `command` is what stops the recursion.
+#
+# Putting `new-session -A` in tmux.conf does not work here: the config is read
+# when the SERVER starts, and the server is already running, so it would never
+# be evaluated.
+tmux() {
+  (( $# )) && { command tmux "$@"; return }
+  # Nesting is how sessions accumulate from the inside; attaching is impossible
+  # from in here anyway. Ask for it explicitly if you really want it.
+  if [[ -n "$TMUX" ]]; then
+    print -u2 "tmux: already inside a session — use 'tmux new-session' to nest deliberately"
+    return 1
+  fi
+  command tmux attach 2>/dev/null || command tmux new-session
+}
+
 # NSLS work sessions run in their own CLAUDE_CONFIG_DIR, not ~/.claude. The org
 # toolkit reports every skill call to an NSLS tracker keyed on the account's
 # email, so binding the toolkit to a config dir is what keeps work telemetry off
