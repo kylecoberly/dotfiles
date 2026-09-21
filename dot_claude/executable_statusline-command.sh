@@ -92,7 +92,19 @@ if [ -n "$transcript" ] && [ -f "$transcript" ]; then
            + (.cache_creation_input_tokens // 0))')
         pct=$(( tokens * 100 / context_max ))
         k=$(( tokens / 1000 ))
+    fi
+fi
 
+# Claude Code ≥2.1 reports the real window and usage itself; prefer that over
+# the transcript guess, which hardcodes 200k and is wrong for the Claude 5 models.
+cw_pct=$(echo "$input" | jq -r '.context_window.used_percentage // empty' | cut -d. -f1)
+cw_size=$(echo "$input" | jq -r '.context_window.context_window_size // empty')
+if [ -n "$cw_pct" ] && [ -n "$cw_size" ]; then
+    pct=$cw_pct
+    k=$(( cw_pct * cw_size / 100 / 1000 ))
+fi
+
+if [ -n "${pct:-}" ]; then
         if   [ "$pct" -lt 50 ]; then
             ctx_part=$(printf "${DIM}📊 %d%% (%dk)${RESET}" "$pct" "$k")
         elif [ "$pct" -lt 80 ]; then
@@ -100,7 +112,6 @@ if [ -n "$transcript" ] && [ -f "$transcript" ]; then
         else
             ctx_part=$(printf "${RED}${BOLD}⚠️  %d%% (%dk)${RESET}" "$pct" "$k")
         fi
-    fi
 fi
 
 line2="${model_part}  ${style_part}  ${cost_part}"

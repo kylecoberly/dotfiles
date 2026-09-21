@@ -256,5 +256,8 @@
       "**Primary use of Claude Code**: operating and extending this home server: docker services, the life-story Next.js app, Home Assistant, the integrations CLI, and headless timers that run `claude -p`",
       "**Org-specific CLIs**: ./scripts/* (each catalogued in docs/inventory.md), integrations/bin/integrations, op (1Password), docker, psql via docker exec, and restic (root-owned timers only)"
     ]
+  },
+  "env": {
+    "ENABLE_STOP_REVIEW": "0"
   }
 }
