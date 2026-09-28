@@ -70,3 +70,6 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !gh auth git-credential
+[include]
+	# per-machine settings (e.g. safe.directory) that must not sync
+	path = ~/.gitconfig.local
