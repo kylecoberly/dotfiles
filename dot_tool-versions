@@ -1,5 +1,0 @@
-node lts
-python 3.12
-ruby 3.3
-java openjdk-20
-golang 1.21.0
