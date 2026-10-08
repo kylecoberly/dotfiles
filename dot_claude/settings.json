@@ -64,7 +64,7 @@
     "aws-serverless@claude-plugins-official": false,
     "netlify-skills@claude-plugins-official": false,
     "legalzoom@claude-plugins-official": false,
-    "vercel@claude-plugins-official": false,
+    "vercel@claude-plugins-official": true,
     "compound-engineering@compound-engineering-plugin": false
   },
   "extraKnownMarketplaces": {
