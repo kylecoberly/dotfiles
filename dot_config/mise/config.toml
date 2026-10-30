@@ -1,5 +1,5 @@
 [tools]
-node = "24.15.0"
+node = "24.22.2"
 java = "openjdk-25.0.2"
 python = "3.14.4"
 rust = "1.95.0"
