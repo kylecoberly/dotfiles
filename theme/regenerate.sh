@@ -4,6 +4,7 @@
 #
 # Updates:
 #   dot_config/alacritty/palette.toml   (alacritty, applied by chezmoi)
+#   dot_config/ghostty/palette          (ghostty, applied by chezmoi)
 #   theme/palette.lua                   (neovim helper, read in place)
 #   dot_config/starship.toml            (between palette markers only)
 
@@ -47,6 +48,31 @@ blue    = "$blue"
 magenta = "$magenta"
 cyan    = "$cyan"
 white   = "$fg"
+EOF
+
+# ─── palette (ghostty) ─────────────────────────────────────────────────
+# Same ANSI slot mapping as alacritty above.
+cat > "$DOTFILES/dot_config/ghostty/palette" <<EOF
+# Tokyo Night — Night variant
+# GENERATED from theme/palette.sh by regenerate.sh — do not edit by hand.
+background = $bg
+foreground = $fg
+palette = 0=$bg_dark
+palette = 1=$red
+palette = 2=$green
+palette = 3=$yellow
+palette = 4=$blue
+palette = 5=$magenta
+palette = 6=$cyan
+palette = 7=$fg_dark
+palette = 8=$fg_gutter
+palette = 9=$red
+palette = 10=$green
+palette = 11=$yellow
+palette = 12=$blue
+palette = 13=$magenta
+palette = 14=$cyan
+palette = 15=$fg
 EOF
 
 # ─── palette.lua (neovim helper) ───────────────────────────────────────
@@ -118,6 +144,7 @@ mv "$STARSHIP.tmp" "$STARSHIP"
 
 echo "regenerated:"
 echo "  $DOTFILES/dot_config/alacritty/palette.toml"
+echo "  $DOTFILES/dot_config/ghostty/palette"
 echo "  $THEME_DIR/palette.lua"
 echo "  $STARSHIP (palette block)"
 echo "→ run 'chezmoi apply' to propagate to ~/.config."

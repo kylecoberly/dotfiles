@@ -1,4 +1,4 @@
--- Feed theme/palette.lua into tokyonight so nvim, starship, alacritty, and
+-- Feed theme/palette.lua into tokyonight so nvim, starship, ghostty, and
 -- tmux-nova all draw from the same source of truth. The chezmoi source repo
 -- lives at ~/dotfiles by convention; without it, tokyonight defaults apply.
 local function load_palette()

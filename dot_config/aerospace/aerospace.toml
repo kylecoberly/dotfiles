@@ -108,7 +108,7 @@ persistent-workspaces = ["1", "2", "3"]
     alt-q = 'close'
 
     # Launch terminal (yabai: shift+ctrl - return)
-    shift-ctrl-enter = 'exec-and-forget open -n /Applications/Alacritty.app'
+    shift-ctrl-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
 
     # Mode entry — match original skhd trigger keys
     alt-semicolon = 'mode arrange'  # was alt - 0x29
@@ -304,7 +304,7 @@ persistent-workspaces = ["1", "2", "3"]
 # apps open on the focused workspace. Finder, System Settings, and Zen carry
 # their pins on the layout rules above.
 #   WS 1: Obsidian, Todoist
-#   WS 2: Zen, Alacritty, Finder, Zoom, Moonlight
+#   WS 2: Zen, Ghostty, Finder, Zoom, Moonlight
 #   WS 3: Focusrite Control, Camo Studio, System Settings
 # ============================================================================
 [[on-window-detected]]
@@ -316,7 +316,7 @@ persistent-workspaces = ["1", "2", "3"]
     run = 'move-node-to-workspace 1'
 
 [[on-window-detected]]
-    if.app-id = 'org.alacritty'
+    if.app-id = 'com.mitchellh.ghostty'
     run = 'move-node-to-workspace 2'
 
 [[on-window-detected]]

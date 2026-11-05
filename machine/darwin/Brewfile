@@ -60,7 +60,7 @@ cask "firefox"
 cask "zen"
 
 # Terminal & window management
-cask "alacritty"
+cask "ghostty"
 tap "nikitabobko/tap"
 cask "nikitabobko/tap/aerospace"
 cask "karabiner-elements"

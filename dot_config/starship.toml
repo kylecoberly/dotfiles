@@ -1,5 +1,5 @@
 # Starship prompt — Tokyo Night palette, agnoster-inspired Powerline style
-# Requires a Nerd Font (Alacritty is configured for "NotoMono Nerd Font").
+# Requires a Nerd Font (Ghostty is configured for "NotoMono Nerd Font").
 # Color values live in the [palettes.tokyonight] block below; format strings
 # reference them by name. Regenerate that block with theme/regenerate.sh.
 
