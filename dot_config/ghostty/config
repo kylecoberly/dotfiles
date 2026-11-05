@@ -1,0 +1,18 @@
+# Ghostty. Colors come from theme/palette.sh via theme/regenerate.sh.
+config-file = palette
+
+font-family = NotoMono Nerd Font
+font-size = 19
+
+# Same look as the old alacritty "buttonless" window
+macos-titlebar-style = hidden
+macos-option-as-alt = true
+maximize = true
+copy-on-select = clipboard
+confirm-close-surface = false
+
+# Push terminfo and TERM to ssh hosts so xterm-ghostty works remotely
+shell-integration-features = cursor,no-sudo,title,ssh-env,ssh-terminfo,path
+
+# Shift+Enter sends ESC CR (newline in Claude Code and other TUIs)
+keybind = shift+enter=text:\x1b\r
