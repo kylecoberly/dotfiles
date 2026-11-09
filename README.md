@@ -28,9 +28,14 @@ it anywhere.)
 
 - Config changes: edit in `~/dotfiles` (or `chezmoi edit`), `chezmoi apply`;
   autoCommit/autoPush handle git.
-- Runtime-mutated files (Claude settings): captured by
+- Runtime-mutated files (`~/.claude/CLAUDE.md`): captured by
   `chezmoi-sync` (launchd/systemd, every 30 min) via `chezmoi re-add`, then
-  pull+apply+push. Failures surface as `⚠ sync` in the Claude statusline;
+  pull+apply+push.
+- `~/.claude/settings.json` renders from `machine/claude/settings.base.json`
+  plus a per-OS overlay (`settings.darwin.json` for every Mac: peon-ping
+  hooks, output styles; `settings.linux.json` for the server: autoMode
+  environment). Not re-added by sync — after a `/plugin` or `/config` change,
+  copy it into the right file there, then `chezmoi apply`. Failures surface as `⚠ sync` in the Claude statusline;
   check `~/.cache/chezmoi-sync/last-error`.
 - karabiner.json: rules live in `machine/darwin/karabiner-base.json`; a
   `modify_` script merges them with each machine's own device state at apply

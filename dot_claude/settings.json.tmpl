@@ -1,0 +1,10 @@
+{{- /* Shared base + per-OS overlay. Both Macs render the darwin overlay
+       (peon-ping hooks, output styles); the Linux server adds its autoMode
+       environment. Edit the files in machine/claude/, not ~/.claude/settings.json:
+       chezmoi re-add can't write back through a template. */ -}}
+{{- $settings := include "machine/claude/settings.base.json" | fromJson -}}
+{{- $overlay := printf "machine/claude/settings.%s.json" .chezmoi.os -}}
+{{- if stat (joinPath .chezmoi.sourceDir $overlay) -}}
+{{-   $settings = mergeOverwrite $settings (include $overlay | fromJson) -}}
+{{- end -}}
+{{ $settings | toPrettyJson }}

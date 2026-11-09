@@ -1,0 +1,83 @@
+{
+  "env": {
+    "ENABLE_STOP_REVIEW": "0"
+  },
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "model": "fable",
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "ExitPlanMode",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/save-plan/save-plan.sh",
+            "timeout": 5
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/save-plan/save-superpowers-doc.sh",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "enabledPlugins": {
+    "frontend-design@claude-plugins-official": false,
+    "superpowers@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "code-review@claude-plugins-official": false,
+    "code-simplifier@claude-plugins-official": false,
+    "github@claude-plugins-official": false,
+    "feature-dev@claude-plugins-official": false,
+    "playwright@claude-plugins-official": true,
+    "skill-creator@claude-plugins-official": false,
+    "claude-md-management@claude-plugins-official": false,
+    "ralph-loop@claude-plugins-official": true,
+    "typescript-lsp@claude-plugins-official": false,
+    "security-guidance@claude-plugins-official": true,
+    "commit-commands@claude-plugins-official": false,
+    "claude-code-setup@claude-plugins-official": false,
+    "pr-review-toolkit@claude-plugins-official": false,
+    "serena@claude-plugins-official": false,
+    "explanatory-output-style@claude-plugins-official": false,
+    "plugin-dev@claude-plugins-official": false,
+    "hookify@claude-plugins-official": true,
+    "playground@claude-plugins-official": false,
+    "learning-output-style@claude-plugins-official": false,
+    "chrome-devtools-mcp@claude-plugins-official": false,
+    "discord@claude-plugins-official": false,
+    "mcp-server-dev@claude-plugins-official": false,
+    "deploy-on-aws@claude-plugins-official": false,
+    "aws-serverless@claude-plugins-official": false,
+    "netlify-skills@claude-plugins-official": false,
+    "legalzoom@claude-plugins-official": false,
+    "vercel@claude-plugins-official": true,
+    "compound-engineering@compound-engineering-plugin": false
+  },
+  "extraKnownMarketplaces": {
+    "compound-engineering-plugin": {
+      "source": {
+        "source": "git",
+        "url": "https://github.com/EveryInc/compound-engineering-plugin.git"
+      }
+    }
+  },
+  "tui": "fullscreen",
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark-ansi",
+  "agentPushNotifEnabled": true,
+  "skipAutoPermissionPrompt": true
+}

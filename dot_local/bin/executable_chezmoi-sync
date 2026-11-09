@@ -18,8 +18,9 @@ command -v chezmoi >/dev/null 2>&1 || fail "chezmoi not on PATH"
 # (autoCommit/autoPush in chezmoi config commit+push each re-add.)
 # karabiner.json is NOT here: its modify_ script preserves per-machine device
 # state at apply time, and its rules are edited in the repo, not the UI.
+# ~/.claude/settings.json is NOT here: it renders from a per-OS template
+# (machine/claude/), which re-add can't write back to. Edit those files.
 MUTATED=(
-  "$HOME/.claude/settings.json"
   "$HOME/.claude/CLAUDE.md"
 )
 for f in "${MUTATED[@]}"; do
