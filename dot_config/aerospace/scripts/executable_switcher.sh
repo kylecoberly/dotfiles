@@ -4,7 +4,10 @@
 # Target: macOS system bash 3.2 (no mapfile / associative arrays).
 set -uo pipefail
 
-AEROSPACE="${AEROSPACE_BIN:-/opt/homebrew/bin/aerospace}"
+# Callers (AeroSpace, Karabiner) run with launchd's bare PATH; cover both
+# Homebrew prefixes so one file works on Apple Silicon and Intel Macs.
+PATH="/opt/homebrew/bin:/usr/local/bin:$PATH"
+AEROSPACE="${AEROSPACE_BIN:-aerospace}"
 SKETCHYBAR="${SKETCHYBAR_BIN:-/usr/local/bin/sketchybar}"
 MRU_FILE="${MRU_FILE:-$HOME/.cache/aerospace/mru}"
 STATE_FILE="${STATE_FILE:-/tmp/aerospace-switcher.state}"
