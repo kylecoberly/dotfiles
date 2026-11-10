@@ -6,14 +6,14 @@ Canonical palette: **Tokyo Night — Night variant**.
 
 1. Edit `palette.sh` (the only hand-maintained file).
 2. Run `./theme/regenerate.sh`, then `chezmoi apply`.
-3. Reload affected tools: `tmux source-file ~/.config/tmux/tmux.conf`, `sketchybar --reload`, restart Alacritty / Neovim.
+3. Reload affected tools: `tmux source-file ~/.config/tmux/tmux.conf`, `sketchybar --reload`, restart Ghostty / Neovim.
 
 ## Files
 
 - `palette.sh` — **canonical source.** Hand-maintained. Sourced directly (at `~/dotfiles/theme/palette.sh`) by:
   - `dot_config/tmux/tmux.conf` via `source-file`
   - `dot_config/sketchybar/executable_sketchybarrc` and `plugins/executable_space.sh` via `source`
-- `dot_config/alacritty/palette.toml` — generated. Imported by the applied `~/.config/alacritty/alacritty.toml`.
+- `dot_config/ghostty/palette` — generated. Loaded by the applied `~/.config/ghostty/config` via `config-file`.
 - `palette.lua` — generated. Read by `dot_config/nvim/lua/plugins/tokyonight.lua` from `~/dotfiles/theme/palette.lua`.
 - `dot_config/starship.toml` — the `[palettes.tokyonight]` block between `# >>> palette` and `# <<< palette` markers is generated; the rest of the file (format strings) is hand-maintained and references palette names like `bg:magenta` instead of hex.
 

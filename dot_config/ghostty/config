@@ -4,7 +4,7 @@ config-file = palette
 font-family = NotoMono Nerd Font
 font-size = 19
 
-# Same look as the old alacritty "buttonless" window
+# Buttonless window: no titlebar or traffic lights
 macos-titlebar-style = hidden
 macos-option-as-alt = true
 maximize = true

@@ -3,7 +3,6 @@
 # After editing palette.sh, run: ./theme/regenerate.sh
 #
 # Updates:
-#   dot_config/alacritty/palette.toml   (alacritty, applied by chezmoi)
 #   dot_config/ghostty/palette          (ghostty, applied by chezmoi)
 #   theme/palette.lua                   (neovim helper, read in place)
 #   dot_config/starship.toml            (between palette markers only)
@@ -16,42 +15,11 @@ DOTFILES="$(dirname "$THEME_DIR")"
 # shellcheck source=palette.sh
 source "$THEME_DIR/palette.sh"
 
-# ─── palette.toml (alacritty) ──────────────────────────────────────────
-# Map TN palette → alacritty's 16-color ANSI grid.
+# ─── palette (ghostty) ─────────────────────────────────────────────────
+# Map TN palette → the 16-color ANSI grid.
 # Normal slots use the standard accent values; bright slots reuse the same
 # accents (TN doesn't ship distinct bright variants), with bg_dark for
 # normal black and a lighter grey for bright black.
-cat > "$DOTFILES/dot_config/alacritty/palette.toml" <<EOF
-# Tokyo Night — Night variant
-# GENERATED from theme/palette.sh by regenerate.sh — do not edit by hand.
-
-[colors.primary]
-background = "$bg"
-foreground = "$fg"
-
-[colors.normal]
-black   = "$bg_dark"
-red     = "$red"
-green   = "$green"
-yellow  = "$yellow"
-blue    = "$blue"
-magenta = "$magenta"
-cyan    = "$cyan"
-white   = "$fg_dark"
-
-[colors.bright]
-black   = "$fg_gutter"
-red     = "$red"
-green   = "$green"
-yellow  = "$yellow"
-blue    = "$blue"
-magenta = "$magenta"
-cyan    = "$cyan"
-white   = "$fg"
-EOF
-
-# ─── palette (ghostty) ─────────────────────────────────────────────────
-# Same ANSI slot mapping as alacritty above.
 cat > "$DOTFILES/dot_config/ghostty/palette" <<EOF
 # Tokyo Night — Night variant
 # GENERATED from theme/palette.sh by regenerate.sh — do not edit by hand.
@@ -143,7 +111,6 @@ EOF
 mv "$STARSHIP.tmp" "$STARSHIP"
 
 echo "regenerated:"
-echo "  $DOTFILES/dot_config/alacritty/palette.toml"
 echo "  $DOTFILES/dot_config/ghostty/palette"
 echo "  $THEME_DIR/palette.lua"
 echo "  $STARSHIP (palette block)"
