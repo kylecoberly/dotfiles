@@ -10,7 +10,9 @@ fi
 if [[ -x /opt/homebrew/bin/brew ]]; then eval "$(/opt/homebrew/bin/brew shellenv)"; fi
 if [[ -x /usr/local/bin/brew ]]; then eval "$(/usr/local/bin/brew shellenv)"; fi
 
-brew bundle --file="{{ .chezmoi.sourceDir }}/machine/darwin/Brewfile"
+# Intel Macs get no bottles, so an upgrade is a from-source build (rust pulls
+# in llvm: hours). Install what's missing there and leave the rest alone.
+brew bundle {{ if eq .chezmoi.arch "amd64" }}--no-upgrade {{ end }}--file="{{ .chezmoi.sourceDir }}/machine/darwin/Brewfile"
 
 # Claude Code — native installer (self-updates; not the brew cask)
 command -v claude >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash
