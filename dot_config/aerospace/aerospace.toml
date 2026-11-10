@@ -94,9 +94,15 @@ persistent-workspaces = ["1", "2", "3"]
     # Layout ops (yabai: alt - f / e / s / 0 / o)
     alt-f = 'fullscreen'
     alt-e = 'layout tiles horizontal vertical'
+    alt-g = 'exec-and-forget ~/.config/aerospace/scripts/grid.sh'
     alt-s = 'layout accordion horizontal vertical'
     alt-0 = 'balance-sizes'
     alt-o = 'exec-and-forget ~/.config/aerospace/scripts/toggle-float.sh'
+
+    # Stack the focused window into the neighbouring column (top/bottom split).
+    # Undo with alt-shift-h/l, which moves it back out to a column of its own.
+    alt-comma  = 'join-with left'
+    alt-period = 'join-with right'
 
     # Rotate (yabai: alt - r) — aerospace has no rotate; closest is flattening + re-tiling
     alt-r = 'flatten-workspace-tree'
@@ -158,10 +164,13 @@ persistent-workspaces = ["1", "2", "3"]
     # Layout
     f = 'fullscreen'
     e = 'layout tiles horizontal vertical'
+    g = 'exec-and-forget ~/.config/aerospace/scripts/grid.sh'
     s = 'layout accordion horizontal vertical'
     0 = 'balance-sizes'
     o = 'exec-and-forget ~/.config/aerospace/scripts/toggle-float.sh'
     r = 'flatten-workspace-tree'
+    comma  = 'join-with left'
+    period = 'join-with right'
     # NOTE: yabai's arrange-mode [/] bound windows to left/right half-screen grids.
     # aerospace has no half-screen grid command; omitted.
 
