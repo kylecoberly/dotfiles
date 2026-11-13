@@ -60,6 +60,8 @@ return {
     },
     -- customize how language servers are attached
     handlers = {
+      -- astrocommunity.pack.typescript runs vtsls; a second TS server doubles every diagnostic and completion
+      ts_ls = false,
       -- a function without a key is simply the default handler, functions take two parameters, the server name and the configured options table for that server
       -- function(server, opts) require("lspconfig")[server].setup(opts) end
 
