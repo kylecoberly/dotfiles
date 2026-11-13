@@ -61,5 +61,6 @@ return {
     "nvim-tree/nvim-web-devicons",
     "folke/snacks.nvim",
     "MeanderingProgrammer/render-markdown.nvim",
+    { "ColinKennedy/mega.cmdparse", dependencies = { "ColinKennedy/mega.logging" } },
   },
 }
