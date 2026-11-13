@@ -27,8 +27,6 @@ return {
     { import = "astrocommunity.search.nvim-spectre" },
   },
   { "nvim-autopairs", enabled = false },
-  -- Replaced by oil.nvim (see plugins/oil.lua)
-  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
   -- Broken against nvim 0.12's treesitter API; :Telescope lsp_document_symbols covers it
   { "stevearc/aerial.nvim", enabled = false },
   { "aserowy/tmux.nvim" },

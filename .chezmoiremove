@@ -1,1 +1,2 @@
 .config/alacritty
+.config/nvim/lua/plugins/oil.lua

@@ -27,7 +27,6 @@ return {
     mappings = {
       n = {
         ["<Leader>z"] = { "<cmd>ZenMode<cr>", desc = "Zen Mode" },
-        ["<Leader>e"] = { "<cmd>Oil<cr>", desc = "Open parent directory (oil)" },
       },
     },
   },
