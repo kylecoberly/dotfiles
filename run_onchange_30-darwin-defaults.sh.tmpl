@@ -7,6 +7,19 @@ defaults write com.apple.dock expose-animation-duration -float 0.1
 defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
 defaults write -g NSWindowResizeTime -float 0.001
 defaults write com.apple.Finder AppleShowAllFiles -bool true
+# Auto-hide the macOS menu bar; sketchybar takes its place. Via System Events,
+# not `defaults write -g _HIHideMenuBar`: the pref alone isn't picked up until
+# re-login, and toggling off→on is what makes the menu bar re-read it live.
+osascript \
+  -e 'tell application "System Events" to tell dock preferences to set autohide menu bar to false' \
+  -e 'delay 1' \
+  -e 'tell application "System Events" to tell dock preferences to set autohide menu bar to true' \
+  || echo "menu bar auto-hide: allow your terminal to control System Events, then re-run" >&2
+# Spotlight on ctrl-shift-space (caps lock is ctrl via Karabiner).
+# Symbolic hotkey 64 = Show Spotlight search; params: ascii, keycode, ctrl|shift.
+defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 64 \
+  '<dict><key>enabled</key><true/><key>value</key><dict><key>type</key><string>standard</string><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>393216</integer></array></dict></dict>'
+/System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
 # Disable native 3-finger horizontal Spaces swipe — fights aerospace-swipe
 defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
 defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
