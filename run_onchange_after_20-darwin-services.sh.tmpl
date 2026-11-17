@@ -12,8 +12,10 @@ if ! command -v sketchybar >/dev/null 2>&1; then
   SB_BUILD="$(mktemp -d)"
   git clone --depth=1 --branch v2.16.4 https://github.com/FelixKratz/SketchyBar.git "$SB_BUILD/SketchyBar"
   (cd "$SB_BUILD/SketchyBar" && make)
-  sudo cp "$SB_BUILD/SketchyBar/bin/sketchybar" /usr/local/bin/sketchybar
-  sudo chmod +x /usr/local/bin/sketchybar
+  # Explicit modes: a restrictive root umask (common on managed Macs) would
+  # otherwise leave /usr/local/bin or the binary unreadable to the user.
+  sudo install -d -m 755 /usr/local/bin
+  sudo install -m 755 "$SB_BUILD/SketchyBar/bin/sketchybar" /usr/local/bin/sketchybar
   rm -rf "$SB_BUILD"
 fi
 launchctl bootout "gui/$(id -u)/org.felixkratz.sketchybar" 2>/dev/null || true
