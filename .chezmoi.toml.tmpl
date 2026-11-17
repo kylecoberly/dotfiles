@@ -1,5 +1,15 @@
 {{/* Rendered to ~/.config/chezmoi/chezmoi.toml by `chezmoi init`. */}}
+{{- /* Templates read these with `get . "profile"` so machines initialised
+       before profiles existed render as personal instead of erroring. */ -}}
+{{- $profile := promptChoiceOnce . "profile" "Machine profile" (list "personal" "work") "personal" -}}
+{{- $defaultEmail := "" -}}
+{{- if eq $profile "personal" }}{{ $defaultEmail = "kyle.coberly@gmail.com" }}{{ end -}}
+{{- $email := promptStringOnce . "email" "Git email" $defaultEmail }}
 sourceDir = {{ .chezmoi.workingTree | quote }}
+
+[data]
+    profile = {{ $profile | quote }}
+    email = {{ $email | quote }}
 
 [git]
     autoCommit = true

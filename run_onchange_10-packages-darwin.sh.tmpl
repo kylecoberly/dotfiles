@@ -2,6 +2,8 @@
 #!/usr/bin/env bash
 # Re-runs when the Brewfile changes:
 # Brewfile hash: {{ include "machine/darwin/Brewfile" | sha256sum }}
+# Brewfile.personal hash: {{ include "machine/darwin/Brewfile.personal" | sha256sum }}
+# profile: {{ get . "profile" | default "personal" }}
 set -euo pipefail
 
 if ! command -v brew >/dev/null 2>&1; then
@@ -13,6 +15,9 @@ if [[ -x /usr/local/bin/brew ]]; then eval "$(/usr/local/bin/brew shellenv)"; fi
 # Intel Macs get no bottles, so an upgrade is a from-source build (rust pulls
 # in llvm: hours). Install what's missing there and leave the rest alone.
 brew bundle {{ if eq .chezmoi.arch "amd64" }}--no-upgrade {{ end }}--file="{{ .chezmoi.sourceDir }}/machine/darwin/Brewfile"
+{{ if ne (get . "profile") "work" -}}
+brew bundle {{ if eq .chezmoi.arch "amd64" }}--no-upgrade {{ end }}--file="{{ .chezmoi.sourceDir }}/machine/darwin/Brewfile.personal"
+{{ end -}}
 
 # Claude Code — native installer (self-updates; not the brew cask)
 command -v claude >/dev/null 2>&1 || curl -fsSL https://claude.ai/install.sh | bash

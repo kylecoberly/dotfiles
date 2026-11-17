@@ -13,3 +13,9 @@ Library
 {{ if ne .chezmoi.os "linux" }}
 .config/systemd
 {{ end }}
+{{ if eq (get . "profile") "work" }}
+{{/* Work keeps its own Claude Code setup; nothing in ~/.claude is managed. */}}
+.claude
+.claude/**
+.config/zsh/personal.zsh
+{{ end }}

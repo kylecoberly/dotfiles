@@ -95,10 +95,6 @@ source "$HOME/.config/zsh/aliases.zsh"
 # this is what lets spawn-pane.sh reopen at the remote folder.
 source "$HOME/.config/zsh/osc7.zsh"
 
-# peon-ping quick controls
-alias peon="bash $HOME/.claude/hooks/peon-ping/peon.sh"
-[ -f $HOME/.claude/hooks/peon-ping/completions.bash ] && source $HOME/.claude/hooks/peon-ping/completions.bash
-
 # Claude Code shortcut
 alias cc='claude'
 
@@ -124,14 +120,6 @@ tmux() {
   command tmux attach 2>/dev/null || command tmux new-session
 }
 
-# NSLS work sessions run in their own CLAUDE_CONFIG_DIR, not ~/.claude. The org
-# toolkit reports every skill call to an NSLS tracker keyed on the account's
-# email, so binding the toolkit to a config dir is what keeps work telemetry off
-# the personal account — enabling the plugin globally does not.
-claude-nsls() {
-  if [ ! -d "$HOME/.claude-nsls" ]; then
-    echo "claude-nsls: no ~/.claude-nsls on $(hostname -s) — the NSLS toolkit is Mac-only." >&2
-    return 1
-  fi
-  CLAUDE_CONFIG_DIR="$HOME/.claude-nsls" command claude "$@"
-}
+# ─── Personal-profile extras (peon-ping, NSLS) ─────────────────────────
+# Not deployed on the work profile; see .chezmoiignore.tmpl.
+[[ -f "$HOME/.config/zsh/personal.zsh" ]] && source "$HOME/.config/zsh/personal.zsh"

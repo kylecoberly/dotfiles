@@ -1,0 +1,11 @@
+# Installed on top of Brewfile on the personal profile only.
+
+# peon-ping uses this for reliable native notifications. Intel Macs get no
+# bottle and must build it with full Xcode, which the Intel Mac mini's macOS
+# is too old to install; peon-ping falls back to osascript there.
+brew "terminal-notifier" if Hardware::CPU.arm?
+tap "peonping/tap"
+brew "peonping/tap/peon-ping"
+
+cask "gimp"
+cask "handbrake-app"

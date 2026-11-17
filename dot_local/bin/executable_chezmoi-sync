@@ -24,7 +24,8 @@ MUTATED=(
   "$HOME/.claude/CLAUDE.md"
 )
 for f in "${MUTATED[@]}"; do
-  if [ -f "$f" ]; then
+  # Skip files this profile doesn't manage (work ignores ~/.claude).
+  if [ -f "$f" ] && chezmoi source-path "$f" >/dev/null 2>&1; then
     chezmoi re-add "$f" || fail "chezmoi re-add $f failed"
   fi
 done

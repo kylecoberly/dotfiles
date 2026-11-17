@@ -12,6 +12,19 @@ sh -c "$(curl -fsLS get.chezmoi.io)" -- init --source ~/dotfiles --apply git@git
 (`chezmoi` itself comes from brew on macOS; the bootstrap line above installs
 it anywhere.)
 
+## Profiles
+
+`chezmoi init` asks for a profile (`personal` or `work`) and a git email,
+stored in `~/.config/chezmoi/chezmoi.toml`. Machines with no profile set are
+treated as `personal`. On `work`:
+
+- nothing under `~/.claude` is managed, so work keeps its own Claude Code setup
+- `~/.config/zsh/personal.zsh` (peon-ping, `claude-nsls`) isn't deployed
+- `machine/darwin/Brewfile.personal` (peon-ping, GIMP, HandBrake) is skipped
+
+To change a machine's profile or email: `chezmoi init --source ~/dotfiles
+--data=false`, or edit `chezmoi.toml` directly, then `chezmoi apply`.
+
 ## Layout
 
 - `dot_*`, `dot_config/` — chezmoi source state, applied into `$HOME`

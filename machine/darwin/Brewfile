@@ -26,12 +26,6 @@ brew "pngquant"
 brew "iproute2mac"
 brew "switchaudio-osx"
 brew "coreutils"
-# peon-ping uses this for reliable native notifications. Intel Macs get no
-# bottle and must build it with full Xcode, which the Intel Mac mini's macOS
-# is too old to install; peon-ping falls back to osascript there.
-brew "terminal-notifier" if Hardware::CPU.arm?
-tap "peonping/tap"
-brew "peonping/tap/peon-ping"
 
 # Dev
 brew "neovim"
@@ -53,8 +47,6 @@ cask "1password-cli"
 cask "obsidian"
 cask "libreoffice"
 cask "zoom"
-cask "gimp"
-cask "handbrake-app"
 cask "vlc"
 
 # Browsers
