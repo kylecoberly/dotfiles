@@ -9,7 +9,7 @@ brew "ripgrep"
 brew "git-delta"
 brew "fd"
 brew "jq"
-brew "tldr"
+brew "tlrc"  # official tldr client; provides `tldr`
 brew "tree"
 brew "wget"
 brew "ffmpeg"
