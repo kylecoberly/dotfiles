@@ -24,27 +24,15 @@ fi
 
 # Reorder live `id|app|title` lines (stdin) MRU-first. $1 = mru file.
 build_order() {
-  local mru="$1"
-  local live; live="$(cat)"
-  local recency=""
-  [ -f "$mru" ] && recency="$(tail -r "$mru" 2>/dev/null | awk 'NF && !seen[$0]++')"
-  local emitted=" "
-  local id line
-  while IFS= read -r id; do
-    [ -z "$id" ] && continue
-    line="$(printf '%s\n' "$live" | awk -F'|' -v id="$id" '$1==id{print; exit}')"
-    if [ -n "$line" ]; then
-      printf '%s\n' "$line"
-      emitted="$emitted$id "
-    fi
-  done <<EOF
-$recency
-EOF
-  # Live windows never focused (absent from history), in input order.
-  printf '%s\n' "$live" | while IFS='|' read -r id app title; do
-    [ -z "$id" ] && continue
-    case "$emitted" in *" $id "*) ;; *) printf '%s|%s|%s\n' "$id" "$app" "$title" ;; esac
-  done
+  # One pass: the mru file only ever grows (thousands of closed-window ids), so
+  # anything that does per-history-entry work makes open take seconds.
+  # `pass=` assignments mark which input is which — FNR==NR would misfire when
+  # there are no live windows.
+  awk -F'|' '
+    pass == 1 { if ($1 != "") { row[$1] = $0; ids[++n] = $1 }; next }
+    ($1 in row) && !done[$1]++ { print row[$1] }
+    END { for (i = 1; i <= n; i++) if (!done[ids[i]]++) print row[ids[i]] }
+  ' pass=1 - pass=2 <(tail -r "$1" 2>/dev/null)
 }
 
 open_switcher() { # $1 = "--last" to start on the furthest-MRU window

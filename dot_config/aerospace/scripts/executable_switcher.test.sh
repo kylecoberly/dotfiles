@@ -118,3 +118,23 @@ wait
 [ ! -f "$TMP/state" ] || fail "quick tap left state behind"
 
 echo "Task 3 tests passed"
+
+# --- long focus history stays fast ---
+# on-focus-changed appends forever, so after months the mru file holds
+# thousands of closed-window ids. open must not scale with that history.
+printf '10|Ghostty|nvim\n20|Zen|GitHub\n30|Obsidian|notes\n' > "$TMP/live"
+{ seq 1000 3000; printf '30\n20\n10\n'; } > "$TMP/mru"
+rm -f "$TMP/state"
+TIMEFORMAT=%R
+elapsed="$( { time run open; } 2>&1 )"
+awk -v t="$elapsed" 'BEGIN { exit !(t < 0.5) }' || fail "open took ${elapsed}s with long history"
+[ "$(sed -n '2p' "$TMP/state")" = "10|Ghostty|nvim" ]   || fail "long history: row1 wrong"
+[ "$(sed -n '4p' "$TMP/state")" = "30|Obsidian|notes" ] || fail "long history: row3 wrong"
+
+# --- no live windows: history ids must not be mistaken for windows ---
+: > "$TMP/live"
+rm -f "$TMP/state"
+run open
+[ ! -f "$TMP/state" ] || fail "open wrote state with no live windows"
+
+echo "Task 4 tests passed"
