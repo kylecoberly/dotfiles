@@ -12,6 +12,15 @@ SKETCHYBAR="${SKETCHYBAR_BIN:-/usr/local/bin/sketchybar}"
 MRU_FILE="${MRU_FILE:-$HOME/.cache/aerospace/mru}"
 STATE_FILE="${STATE_FILE:-/tmp/aerospace-switcher.state}"
 ICON_MAP="${ICON_MAP:-$HOME/.config/sketchybar/plugins/icon_map.sh}"
+LOCK_FILE="${LOCK_FILE:-/tmp/aerospace-switcher.lock}"
+
+# Karabiner fires each command in the background, so on a quick alt-tab tap
+# `commit` (option up) starts while `open` (tab down) is still listing windows,
+# finds no state, and does nothing — then `open` leaves the popup up. Run every
+# invocation under one lock so they execute in the order Karabiner fired them.
+if [ -z "${_SWITCHER_LOCKED:-}" ]; then
+  _SWITCHER_LOCKED=1 exec /usr/bin/lockf -k -t 5 "$LOCK_FILE" /bin/bash "$0" "$@"
+fi
 
 # Reorder live `id|app|title` lines (stdin) MRU-first. $1 = mru file.
 build_order() {

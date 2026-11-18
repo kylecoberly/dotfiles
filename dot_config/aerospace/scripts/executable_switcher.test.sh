@@ -15,7 +15,7 @@ trap 'rm -rf "$TMP"' EXIT
 cat > "$TMP/aerospace" <<'STUB'
 #!/usr/bin/env bash
 case "$1 $2" in
-  "list-windows --workspace") cat "$AEROSPACE_FIXTURE" ;;
+  "list-windows --workspace") sleep "${AEROSPACE_DELAY:-0}"; cat "$AEROSPACE_FIXTURE" ;;
   "focus --window-id")        echo "$3" > "$AEROSPACE_FOCUSED_OUT" ;;
 esac
 STUB
@@ -27,6 +27,7 @@ run() {
   SKETCHYBAR_BIN="/usr/bin/true" \
   MRU_FILE="$TMP/mru" \
   STATE_FILE="$TMP/state" \
+  LOCK_FILE="$TMP/lock" \
   ICON_MAP="/dev/null" \
   AEROSPACE_FIXTURE="$TMP/live" \
   AEROSPACE_FOCUSED_OUT="$TMP/focused" \
@@ -102,3 +103,18 @@ run commit
 [ ! -s "$TMP/focused" ] || fail "commit without state changed focus"
 
 echo "Task 2 tests passed"
+
+# --- quick tap: commit fired while open is still running still switches ---
+# Karabiner runs both in the background; open is slow (list-windows), so an
+# unserialized commit would see no state and leave the popup up.
+printf '10|Ghostty|nvim\n20|Zen|GitHub\n' > "$TMP/live"
+printf '20\n10\n' > "$TMP/mru"
+rm -f "$TMP/state"; : > "$TMP/focused"
+AEROSPACE_DELAY=0.2 run open &
+sleep 0.02
+run commit
+wait
+[ "$(cat "$TMP/focused")" = "20" ] || fail "quick tap focused '$(cat "$TMP/focused")', want 20"
+[ ! -f "$TMP/state" ] || fail "quick tap left state behind"
+
+echo "Task 3 tests passed"
