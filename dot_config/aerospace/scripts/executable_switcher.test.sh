@@ -24,10 +24,11 @@ chmod +x "$TMP/aerospace"
 # Common env for invoking switcher.sh under test.
 run() {
   AEROSPACE_BIN="$TMP/aerospace" \
-  SKETCHYBAR_BIN="/usr/bin/true" \
+  SKETCHYBAR_BIN="${SKETCHYBAR_STUB:-/usr/bin/true}" \
   MRU_FILE="$TMP/mru" \
   STATE_FILE="$TMP/state" \
   LOCK_FILE="$TMP/lock" \
+  RENDER_LOCK_FILE="$TMP/render.lock" \
   ICON_MAP="/dev/null" \
   AEROSPACE_FIXTURE="$TMP/live" \
   AEROSPACE_FOCUSED_OUT="$TMP/focused" \
@@ -154,3 +155,19 @@ run open
 [ "$(wc -l < "$TMP/mru" | tr -d ' ')" = "3" ] || fail "short mru was modified"
 
 echo "Task 5 tests passed"
+
+# --- commit focuses without waiting on popup drawing ---
+# Real sketchybar calls cost ~0.3s per redraw; focus must not queue behind them.
+printf '#!/bin/sh\nsleep 0.2\n' > "$TMP/slowbar"; chmod +x "$TMP/slowbar"
+printf '10|Ghostty|nvim\n20|Zen|GitHub\n' > "$TMP/live"
+printf '20\n10\n' > "$TMP/mru"
+rm -f "$TMP/state"; : > "$TMP/focused"
+SKETCHYBAR_STUB="$TMP/slowbar" run open &
+sleep 0.05
+SKETCHYBAR_STUB="$TMP/slowbar" run commit &
+sleep 0.4
+[ "$(cat "$TMP/focused")" = "20" ] || fail "focus still waiting on drawing after 0.4s"
+wait
+[ ! -f "$TMP/state" ] || fail "slow draw: state left behind"
+
+echo "Task 6 tests passed"

@@ -13,13 +13,16 @@ MRU_FILE="${MRU_FILE:-$HOME/.cache/aerospace/mru}"
 STATE_FILE="${STATE_FILE:-/tmp/aerospace-switcher.state}"
 ICON_MAP="${ICON_MAP:-$HOME/.config/sketchybar/plugins/icon_map.sh}"
 LOCK_FILE="${LOCK_FILE:-/tmp/aerospace-switcher.lock}"
+RENDER_LOCK_FILE="${RENDER_LOCK_FILE:-/tmp/aerospace-switcher.render.lock}"
 
 # Karabiner fires each command in the background, so on a quick alt-tab tap
-# `commit` (option up) starts while `open` (tab down) is still listing windows,
-# finds no state, and does nothing — then `open` leaves the popup up. Run every
-# invocation under one lock so they execute in the order Karabiner fired them.
-if [ -z "${_SWITCHER_LOCKED:-}" ]; then
-  _SWITCHER_LOCKED=1 exec /usr/bin/lockf -k -t 5 "$LOCK_FILE" /bin/bash "$0" "$@"
+# `commit` (option up) starts while `open` (tab down) is still listing windows.
+# State changes therefore run under one lock, in the order Karabiner fired them.
+# Drawing runs afterwards under a second lock: a sketchybar redraw costs ~0.3s,
+# and with a single lock commit's focus queued behind every pending redraw.
+if [ -z "${_SWITCHER_PHASE:-}" ]; then
+  _SWITCHER_PHASE=state /usr/bin/lockf -k -t 5 "$LOCK_FILE" /bin/bash "$0" "$@" || exit
+  _SWITCHER_PHASE=draw exec /usr/bin/lockf -k -t 5 "$RENDER_LOCK_FILE" /bin/bash "$0" "$@"
 fi
 
 # Reorder live `id|app|title` lines (stdin) MRU-first. $1 = mru file.
@@ -57,7 +60,6 @@ open_switcher() { # $1 = "--last" to start on the furthest-MRU window
   fi
   [ "${1:-}" = "--last" ] && sel=$((count - 1))
   { echo "$sel"; printf '%s\n' "$ordered" | awk 'NF'; } > "$STATE_FILE"
-  render
 }
 
 _count() { awk 'NR>1 && NF' "$STATE_FILE" | wc -l | tr -d ' '; }
@@ -71,7 +73,6 @@ _move() { # $1 = +1 or -1
   idx=$(( (idx + $1 + count) % count ))
   # rewrite line 1 with new index, keep rows
   { echo "$idx"; awk 'NR>1' "$STATE_FILE"; } > "$STATE_FILE.tmp" && mv "$STATE_FILE.tmp" "$STATE_FILE"
-  render
 }
 
 commit_switcher() {
@@ -80,14 +81,8 @@ commit_switcher() {
   idx="$(sed -n '1p' "$STATE_FILE")"
   # row for idx: file line number is idx+2 (line1=index, rows start line2)
   id="$(sed -n "$((idx + 2))p" "$STATE_FILE" | cut -d'|' -f1)"
-  teardown
   rm -f "$STATE_FILE"
   [ -n "$id" ] && "$AEROSPACE" focus --window-id "$id"
-}
-
-cancel_switcher() {
-  teardown
-  rm -f "$STATE_FILE"
 }
 
 # --- rendering (sketchybar popup) --------------------------------------------
@@ -125,13 +120,14 @@ teardown() {
 }
 
 render() {
-  [ -f "$STATE_FILE" ] || return 0
+  # Read state once: commit (other lock) may delete the file mid-render.
+  local snap; snap="$(cat "$STATE_FILE" 2>/dev/null)" || return 0
   _load_palette
   _clear_children
   # Hide the center app-list while switching so the anchor is the sole center
   # item (true center) and doesn't overlap the popup.
   "$SKETCHYBAR" --set focused_windows drawing=off >/dev/null 2>&1 || true
-  local idx; idx="$(sed -n '1p' "$STATE_FILE")"
+  local idx; idx="$(printf '%s\n' "$snap" | sed -n '1p')"
   local n=0 id app title glyph icon_color bg lbl
   while IFS='|' read -r id app title; do
     [ -z "$id" ] && continue
@@ -149,17 +145,22 @@ render() {
             background.color="$bg" background.corner_radius=8 background.height=34 \
             >/dev/null
     n=$((n + 1))
-  done < <(awk 'NR>1' "$STATE_FILE")
+  done < <(printf '%s\n' "$snap" | awk 'NR>1')
   "$SKETCHYBAR" --set switcher popup.drawing=on >/dev/null
   # Force a repaint — hiding focused_windows can otherwise leave a stale frame.
   "$SKETCHYBAR" --update >/dev/null 2>&1 || true
 }
 
-case "${1:-}" in
-  open)   open_switcher "${2:-}" ;;
-  next)   _move 1 ;;
-  prev)   _move -1 ;;
-  commit) commit_switcher ;;
-  cancel) cancel_switcher ;;
-  *)      echo "usage: switcher.sh open|next|prev|commit|cancel" >&2; exit 2 ;;
+# render bails when there's no state, so a redraw that lands after commit's
+# teardown is a no-op. Teardown skips when state exists again: a new alt-tab
+# started before this commit got to draw, and its popup must stay up.
+case "$_SWITCHER_PHASE/${1:-}" in
+  state/open)           open_switcher "${2:-}" ;;
+  state/next)           _move 1 ;;
+  state/prev)           _move -1 ;;
+  state/commit)         commit_switcher ;;
+  state/cancel)         rm -f "$STATE_FILE" ;;
+  draw/open|draw/next|draw/prev) render ;;
+  draw/commit|draw/cancel)       [ -f "$STATE_FILE" ] || teardown ;;
+  *) echo "usage: switcher.sh open|next|prev|commit|cancel" >&2; exit 2 ;;
 esac
