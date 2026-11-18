@@ -35,7 +35,17 @@ build_order() {
   ' pass=1 - pass=2 <(tail -r "$1" 2>/dev/null)
 }
 
+# on-focus-changed only ever appends to the mru file. Trim in batches (let it
+# reach 1000, cut back to 500) so most opens skip the rewrite. A live window
+# that falls out of the kept history just sorts to the tail.
+trim_mru() {
+  [ -f "$MRU_FILE" ] || return 0
+  [ "$(wc -l < "$MRU_FILE")" -gt 1000 ] || return 0
+  tail -n 500 "$MRU_FILE" > "$MRU_FILE.tmp" && mv "$MRU_FILE.tmp" "$MRU_FILE"
+}
+
 open_switcher() { # $1 = "--last" to start on the furthest-MRU window
+  trim_mru
   local live ordered count sel=1
   live="$("$AEROSPACE" list-windows --workspace focused \
           --format '%{window-id}|%{app-name}|%{window-title}')"

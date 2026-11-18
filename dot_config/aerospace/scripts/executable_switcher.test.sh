@@ -138,3 +138,19 @@ run open
 [ ! -f "$TMP/state" ] || fail "open wrote state with no live windows"
 
 echo "Task 4 tests passed"
+
+# --- open trims a long mru file, keeping the most recent entries ---
+printf '10|Ghostty|nvim\n20|Zen|GitHub\n' > "$TMP/live"
+{ seq 1000 3000; printf '20\n10\n'; } > "$TMP/mru"
+run open
+lines="$(wc -l < "$TMP/mru" | tr -d ' ')"
+[ "$lines" -le 1000 ] || fail "mru not trimmed: $lines lines"
+[ "$(tail -n 1 "$TMP/mru")" = "10" ] || fail "trim dropped the most recent entry"
+[ "$(sed -n '2p' "$TMP/state")" = "10|Ghostty|nvim" ] || fail "trim broke ordering"
+
+# --- short mru file is left alone ---
+printf '30\n20\n10\n' > "$TMP/mru"
+run open
+[ "$(wc -l < "$TMP/mru" | tr -d ' ')" = "3" ] || fail "short mru was modified"
+
+echo "Task 5 tests passed"
